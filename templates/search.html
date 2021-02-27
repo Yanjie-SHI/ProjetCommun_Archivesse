@@ -1,0 +1,83 @@
+{% extends "home_base.html" %}
+{% block body_main %}
+<div id="search-bg-image">
+    <div id="content-main">
+        <div id="search_1">
+            <div id="search_1_particle">  <!-- 查询粒度选择 -->
+                <div class="radio">
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                    Tous les mots saisis
+                  </label>
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                    Au moins un des mots saisis
+                  </label>
+                  <label>
+                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+                    Expression exacte
+                  </label>
+                </div>
+            </div>
+            <div class="search-input-div">
+                <input type="text" placeholder="Rechercher">
+                <div>
+                    <span class="glyphicon glyphicon-play btn-xs" aria-hidden="true"></span>
+                    <span>Tous les mots saisis</span>
+                </div>
+                <!--<div class="search-btn-div"></div>-->
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-search btn-lg"></span>
+                </span>
+            </div>
+            <div class="search-type-btns-div">
+                <div class="search-type-btn" id="search-type-toutes"><span>Toutes les archives</span></div>
+                <div class="search-type-btn" id="search-type-numeric"><span>Archives numérisées</span></div>
+                <div class="search-type-btn" id="search-type-producteurs"><span>Producteurs d'archives</span></div>
+            </div>
+        </div>
+
+        <div id="search_2">
+            <div>
+                <span>Ville</span>
+                <input type="text" name="ville">
+            </div>
+            <div>
+                <span>Date</span>
+                <!-- <input type="text" name="date"> -->
+                <div class="form-group">
+                    <!--指定 date标记-->
+                    <div class='input-group date' id='datetimepicker1'>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar btn-lg"></span>
+                        </span>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-search btn-lg"></span>
+                        </span>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        $('#datetimepicker1').datetimepicker({
+                            format: 'YYYY-MM-DD',
+                            locale: moment.locale('en-us')
+                        });
+                        $('#datetimepicker2').datetimepicker({
+                            format: 'YYYY-MM-DD hh:mm',
+                            locale: moment.locale('zh-cn')
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+
+        <div id="type_switch">
+            <span>Recherche</span>
+            <div class="switch_indicator" id="si1"></div>
+            <span>Rendez-vous</span>
+            <div class="switch_indicator" id="si2"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

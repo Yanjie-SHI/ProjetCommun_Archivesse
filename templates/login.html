@@ -1,0 +1,42 @@
+{% extends "home_base.html" %}
+{% block body_main %}
+    <div id="login-bg-image">
+        <div class="title">Mon espace personnel</div>
+        <div class="subtitle">Se connecter</div>
+        <form action="">
+            <div>Les champs précédés d'un astérisque (<span style="color: red; ">*</span>) sont obligatoires</div>
+            <div>
+                <span>Adresse courriel (exemple : nomprenom@domaine.com)  *</span><br/>
+                <input type="text" name="email">
+            </div>
+            <div>
+                <span>Mot de passe  *</span><br/>
+                <input type="text" name="password">
+            </div>
+            <div>
+                <span>Mot de passe oublié ?</span><div>Se connecter</div>
+            </div>
+        </form>
+
+        <div class="subtitle">S
+            'inscrire</div>
+        <div>
+            <div>Inscrivez-vous et bénéficiez des services de l'espace personnel pour :</div>
+            <ul>
+                <li>participer au projet d’indexation collaborative</li>
+                <li>sauvegarder vos recherches dans les archives (notices ou images)</li>
+                <li>télécharger des fichiers disponibles depuis la visionneuse</li>
+                <li>faire une demande d’accès à des fichiers en accès réservé</li>
+                <li>faire une demande de réservation de documents en salle de lecture (sous réserve de vous être inscrit au préalable lors de votre venue en salle de lecture)</li>
+                <li>faire une demande de copie de transcription hypothécaire</li>
+            </ul>
+        </div>
+        <div>
+            <div>Cette inscription est indépendante de celle réalisée en salle de lecture. Afin de préparer votre venue
+                aux Archives départementales : <span style="color: #2aabd2;">veuillez consulter les informations pratiques.</span>
+            </div>
+            <div>Vous pouvez aussi utiliser le <span style="color: #2aabd2;">classeur temporaire</span> sans être connecté.</div>
+            <div>S'inscrire</div>
+        </div>
+    </div>
+{% endblock %}

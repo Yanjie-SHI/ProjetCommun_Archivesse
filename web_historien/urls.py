@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^login', views.login),
     url(r'^register', views.register),
     url(r'^selfcenter', views.selfcenter),
+    url(r'^messagelist', views.message_list),
 ]

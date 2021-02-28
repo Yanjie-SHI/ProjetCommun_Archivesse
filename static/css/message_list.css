@@ -1,0 +1,170 @@
+#messages-list-bg-image {
+    width: 100%;
+    height: 100%;
+    background-image: url('/static/image/bg_login.jpeg');
+    background-repeat: no-repeat;
+    filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+    -moz-background-size: 100% 100%;
+    background-size: 100% 100%;
+    position: absolute;
+    z-index: 50;
+    top: 0;
+    left: 0;
+    color: black;
+    padding: 30px 80px;
+    font-size: 18px;
+}
+
+.return_link {
+    width: 95%;
+    margin-top: 50px;
+    margin-left: 10%;
+    color: #2b669a;
+    font-size: 20px;
+}
+
+.return_link > span {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background-image: url("/static/image/btn_back.png");
+    background-repeat: no-repeat;
+    filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+    -moz-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+.return_link > a {
+    text-decoration-color: #2b669a;
+}
+
+#messages-list-bg-image > div:nth-child(2) {
+    width: 80%;
+    height: 600px;
+    margin-top: 50px;
+    margin-left: 10%;
+    border: 1px solid dimgray;
+    border-radius: 50px;
+    padding: 30px 70px;
+    background-color: white;
+}
+
+#messages-list-bg-image > div:nth-child(2) > div:nth-child(1) {
+    width: 100%;
+    height: 50px;
+    font-size: 34px;
+    line-height: 50px;
+    font-weight: bold;
+    color: #2b669a;
+}
+
+#messages-list-bg-image > div:nth-child(2) > div:nth-child(2), #messages-list-bg-image > div:nth-child(2) > div:nth-child(3) {
+    width: 100%;
+    font-size: 20px;
+    color: #2b669a;
+    margin-top: 10px;
+}
+
+#messages-list-bg-image > div:nth-child(2) > div:nth-child(4) {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 20px;
+}
+
+#messages-list-bg-image > div:nth-child(2) > div:nth-child(4) > div {
+    float: left;
+}
+
+#messages-list-bg-image > div:nth-child(2) > div:nth-child(4) > div > select {
+    width: 300px;
+    margin-left: 20px;
+}
+
+#messages-list-bg-image > div:nth-child(2) > ul {
+    list-style: none;
+    margin-top: 30px;
+}
+
+#messages-list-bg-image > div:nth-child(2) > ul > li {
+    height: 80px;
+    line-height: 80px;
+    border-bottom: 2px solid dimgray;
+}
+
+.envelop {
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    background-repeat: no-repeat;
+    filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+    -moz-background-size: 100% 100%;
+    background-size: 100% 100%;
+    float: left;
+}
+
+#messages-list-bg-image > div:nth-child(2) > ul > li:nth-child(1) > div:nth-child(1) {
+    background-image: url("/static/image/icon_envelop_close.png");
+}
+
+#messages-list-bg-image > div:nth-child(2) > ul > li:nth-child(2) > div:nth-child(1) {
+    background-image: url("/static/image/icon_envelop_open.png");
+    width: 75px;
+    height: 75px;
+}
+
+#messages-list-bg-image > div:nth-child(2) > ul > li > div {
+    float: left;
+    text-align: center;
+}
+
+#messages-list-bg-image > div:nth-child(2) > ul > li > div:nth-child(2) {
+    width: 200px;
+}
+
+#messages-list-bg-image > div:nth-child(2) > ul > li > div:nth-child(3) {
+    width: 200px;
+}
+
+#messages-list-bg-image > div:nth-child(2) > ul > li > div:nth-child(3) > div {
+    width: 180px;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 15px;
+}
+
+#messages-list-bg-image > div:nth-child(2) > ul > li > div:nth-child(4) {
+    width: 480px;
+}
+
+#messages-list-bg-image > div:nth-child(2) > ul > li > div:nth-child(5) {
+    width: 200px;
+}
+
+#messages-list-bg-image > div:nth-child(2) > ul > li > div:nth-child(5) > a {
+    color: red;
+}
+
+#messages-list-bg-image > div:nth-child(2) > ul > li:nth-child(1) > div:nth-child(3) > div {
+    background-color: aqua;
+}
+
+#messages-list-bg-image > div:nth-child(2) > ul > li:nth-child(2) > div:nth-child(3) > div {
+    background-color: orangered;
+}
+
+.pager {
+    position: relative;
+    top: 50px;
+    left: 0;
+}
+
+.pager > div:nth-child(1) {
+    float: left;
+    width: 20%;
+}
+
+.pager > div:nth-child(2) {
+    float: right;
+    width: 20%;
+}

@@ -22,3 +22,7 @@ def register(request):
 
 def selfcenter(request):
     return render(request, 'selfcenter.html')
+
+
+def message_list(request):
+    return render(request, 'message_list.html')

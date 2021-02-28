@@ -19,6 +19,8 @@
     font-size: 36px;
     font-weight: bold;
     margin-top: 40px;
+    width: 400px;
+    border-bottom: 3px solid #2aabd2;
 }
 .subtitle {
     font-size: 26px;

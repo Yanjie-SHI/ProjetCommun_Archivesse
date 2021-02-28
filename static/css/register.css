@@ -1,43 +1,179 @@
-#login-bg-image {
+#register-bg-image {
     width: 100%;
-    height: 100%;
+    height: 200%;
     background-image: url('/static/image/bg_login.jpeg');
     background-repeat: no-repeat;
     filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
-    -moz-background-size: 100% 100%;
-    background-size: 100% 100%;
+    -moz-background-size: 100% 200%;
+    background-size: 100% 200%;
     position: absolute;
     z-index: 50;
     top: 0;
     left: 0;
     color: black;
     padding: 30px 80px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .title {
     font-size: 36px;
     font-weight: bold;
     margin-top: 40px;
+    width: 400px;
+    border-bottom: 3px solid #2aabd2;
 }
+
 .subtitle {
     font-size: 26px;
     font-weight: bold;
     margin-top: 30px;
 }
 
+#register-bg-image > form > div {
+    margin: 10px 0;
+}
+
 #fiche_personnelle {
     float: left;
     width: 48%;
-    height: 500px;
+    height: 530px;
     border: 1px solid darkgray;
     border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 18px;
+}
+
+#fiche_personnelle > div {
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#fiche_personnelle > div:nth-child(1) {
+    border-bottom: 2px solid black;
+    font-size: 24px;
+    margin: 0;
+}
+
+#fiche_personnelle > div:nth-child(2) > div.radio > label {
+    margin-left: 30px;
+}
+
+#fiche_personnelle > div > input[type=text], #fiche_personnelle > div > select {
+    width: 100%;
+}
+
+#fiche_personnelle > ul {
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    list-style-image: url("/static/image/list_icon.png");
 }
 
 #code_dacces {
     float: right;
     width: 48%;
-    height: 500px;
+    height: 530px;
+    padding: 10px 20px;
     border: 1px solid darkgray;
     border-radius: 8px;
+    /*margin-left: 20px;*/
+}
+
+#code_dacces > div {
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#code_dacces > div:nth-child(1) {
+    border-bottom: 2px solid black;
+    font-size: 24px;
+    margin: 0;
+}
+
+#code_dacces > div > input[type=text] {
+    width: 100%;
+}
+
+#register-bg-image > form > div:nth-child(4) > div:nth-child(1) {
+    width: 58%;
+    height: 150px;
+    float: left;
+    margin-top: 50px;
+}
+
+#register-bg-image > form > div:nth-child(4) > div:nth-child(1) > ul {
+    margin-left: 20px;
+    list-style-image: url("/static/image/list_icon.png");
+}
+
+#register-bg-image > form > div:nth-child(4) > div:nth-child(1) > ul > li {
+    margin-top: 20px;
+}
+
+#lettre_dinformation {
+    width: 23%;
+    height: 150px;
+    float: left;
+    margin-left: 50px;
+    margin-top: 50px;
+    padding: 10px 20px;
+    border: 1px solid darkgray;
+}
+
+#lettre_dinformation > div:nth-child(1) {
+    width: 75%;
+    border-bottom: 2px solid black;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+#lettre_dinformation > div:nth-child(2) {
+    width: 75%;
+    margin-top: 10px;
+}
+
+#lettre_dinformation > div:nth-child(3) {
+    width: 30px;
+    margin-top: 10px;
+    color: #2aabd2;
+}
+
+#register-bg-image > form > div:nth-child(5) {
+    clear: both;
+    width: 90%;
+}
+
+#register-bg-image > form > div:nth-child(5) > div:nth-child(1) {
+    width: 100%;
+    padding-top: 50px;
+}
+
+#register-bg-image > form > div:nth-child(5) > div:nth-child(2) {
+    width: 200px;
+    float: right;
+}
+
+#register-bg-image > form > div:nth-child(5) > div:nth-child(2) > div:nth-child(1) {
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 10px;
+    float: left;
+    background-color: #2aabd2;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+#register-bg-image > form > div:nth-child(5) > div:nth-child(2) > div:nth-child(2) {
+    width: 64px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 10px;
+    float: right;
+    color: red;
+    border-bottom: 1px solid red;
+
 }

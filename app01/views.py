@@ -1,4 +1,5 @@
-from django.shortcuts import render,redirect,HttpResponse
+from django.shortcuts import render
+
 
 # Create your views here.
 
@@ -17,3 +18,7 @@ def login(request):
 
 def register(request):
     return render(request, 'register.html')
+
+
+def selfcenter(request):
+    return render(request, 'selfcenter.html')

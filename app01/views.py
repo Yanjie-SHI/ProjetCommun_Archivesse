@@ -12,6 +12,10 @@ def search(request):
     return render(request, 'search.html')
 
 
+def search_result(request):
+    return render(request, 'search_result.html')
+
+
 def login(request):
     return render(request, 'login.html')
 

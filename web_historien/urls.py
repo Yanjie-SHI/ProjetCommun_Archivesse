@@ -24,7 +24,8 @@ urlpatterns = [
     url(r'^search', views.search),
     url(r'^login', views.login),
     url(r'^register', views.register),
-    url(r'^selfcenter', views.selfcenter),
+    url(r'^selfcenter', views.self_center),
     url(r'^messagelist', views.message_list),
-    url(r'^selfprofile', views.self_profile),
+    url(r'^profile', views.profile),
+    url(r'^favorites', views.favorites),
 ]

@@ -20,13 +20,17 @@ def register(request):
     return render(request, 'register.html')
 
 
-def selfcenter(request):
-    return render(request, 'selfcenter.html')
+def self_center(request):
+    return render(request, 'self_center.html')
 
 
 def message_list(request):
     return render(request, 'message_list.html')
 
 
-def self_profile(request):
-    return render(request, 'self_profile.html')
+def profile(request):
+    return render(request, 'profile.html')
+
+
+def favorites(request):
+    return render(request, 'favorites.html')

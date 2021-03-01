@@ -34,3 +34,7 @@ def profile(request):
 
 def favorites(request):
     return render(request, 'favorites.html')
+
+
+def reservation(request):
+    return render(request, 'reservation.html')

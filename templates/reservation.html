@@ -1,0 +1,45 @@
+{% extends "home_base.html" %}
+{% block body_main %}
+    <div id="reservation-bg-image">
+        <div class="return_link"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="">Retour au menu de l'espace
+            personnel</a></div>
+
+        <div>
+            <div>Mes rendez-vous</div>
+            <div>Retrouvez touts les rendez-vous que vous avez demandés ou rejoint.</div>
+            <div>
+                <div>
+                    <div>En cours</div>
+                    <div class="indicator"></div>
+                </div>
+                <div>
+                    <div>Passé</div>
+                    <div class="indicator invisible"></div>
+                </div>
+            </div>
+
+            <div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Lieu</th>
+                        <th>Archive demandé</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="3">Vous n'avez pas de rendez-vous en cours.</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pager">
+                <div>0 sur 0</div>
+                <div><a href="">1</a></div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

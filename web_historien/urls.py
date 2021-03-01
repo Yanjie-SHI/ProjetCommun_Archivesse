@@ -28,4 +28,5 @@ urlpatterns = [
     url(r'^messagelist', views.message_list),
     url(r'^profile', views.profile),
     url(r'^favorites', views.favorites),
+    url(r'^reservation', views.reservation),
 ]

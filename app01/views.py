@@ -26,3 +26,7 @@ def selfcenter(request):
 
 def message_list(request):
     return render(request, 'message_list.html')
+
+
+def self_profile(request):
+    return render(request, 'self_profile.html')

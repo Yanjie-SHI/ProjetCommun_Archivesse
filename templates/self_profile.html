@@ -1,0 +1,84 @@
+{% extends "home_base.html" %}
+{% block body_main %}
+    <div id="self-profile-bg-image">
+        <div class="return_link"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="">Retour au menu de l'espace
+            personnel</a></div>
+
+        <div>
+            <div>Mon profil</div>
+            <div>Vous pouvez ici modifier ou compléter vos coordonnées et informations personnelles.</div>
+            <div>Les champs précédés d'un astérisque (<span style="color: red;">*</span>) sont obligatoires.</div>
+            <div>
+                <div>
+                    <div class="hint">Civilité <span style="color: red">*</span> :</div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                            M.
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                            Mme.
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <div class="hint">Nom <span style="color: red">*</span> :</div>
+                    <input type="text" name="lastname">
+                    <div class="hint hint2">Prénom <span style="color: red">*</span> :</div>
+                    <input type="text" name="firstname">
+                </div>
+                <div>
+                    <div class="hint">Date de naissance :</div>
+                    <input type="text" name="lastname">
+                    <div class="hint hint2">Lieu de naissance :</div>
+                    <input type="text" name="firstname">
+                </div>
+                <div>
+                    <div class="hint">Pays<span style="color: red">*</span> :</div>
+                    <input type="text" name="lastname">
+                </div>
+                <div>
+                    <div class="hint">Code Postal<span style="color: red">*</span> :</div>
+                    <input type="text" name="lastname">
+                    <div class="hint hint2">Ville<span style="color: red">*</span> :</div>
+                    <input type="text" name="firstname">
+                </div>
+                <div>
+                    <div class="hint">Adresse :</div>
+                    <input type="text" name="lastname">
+                </div>
+                <div>
+                    <div class="hint">E-mail<span style="color: red">*</span> :</div>
+                    <input type="text" name="lastname">
+                </div>
+                <div>
+                    <div class="hint">Téléphone :</div>
+                    <input type="text" name="lastname">
+                </div>
+            </div>
+
+            <div>
+                <div>Sécurité</div>
+                <div>
+                    <div>
+                        <div class="hint3">Ancien mot de passe :</div>
+                        <input type="text" name="lastname">
+                    </div>
+                    <div>
+                        <div class="hint3">Nouveau mot de passe :</div>
+                        <input type="text" name="lastname">
+                    </div>
+                    <div>
+                        <div class="hint3">Confirmez le nouveau mot de passe :</div>
+                        <input type="text" name="lastname">
+                    </div>
+                </div>
+                <div>
+                    <span>Enregistrer les modification</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

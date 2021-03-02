@@ -31,7 +31,8 @@
                 </span>
             </div>
             <div class="search-type-btns-div">
-                <div class="search-type-btn" id="search-type-toutes"><span>Toutes les archives</span></div>
+                <div class="search-type-btn search-type-btn-selected" id="search-type-toutes">
+                    <span>Toutes les archives</span></div>
                 <div class="search-type-btn" id="search-type-numeric"><span>Archives numérisées</span></div>
                 <div class="search-type-btn" id="search-type-producteurs"><span>Producteurs d'archives</span></div>
             </div>
@@ -48,24 +49,20 @@
                 <div class="form-group">
                     <!--指定 date标记-->
                     <div class='input-group date' id='datetimepicker1'>
-                        <input type='text' class="form-control" />
+                        <input type='text' class="form-control"/>
                         <span class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar btn-lg"></span>
                         </span>
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-search btn-lg"></span>
-                        </span>
                     </div>
                 </div>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-search btn-lg"></span>
+                </span>
                 <script type="text/javascript">
                     $(function () {
                         $('#datetimepicker1').datetimepicker({
                             format: 'YYYY-MM-DD',
                             locale: moment.locale('en-us')
-                        });
-                        $('#datetimepicker2').datetimepicker({
-                            format: 'YYYY-MM-DD hh:mm',
-                            locale: moment.locale('zh-cn')
                         });
                     });
                 </script>

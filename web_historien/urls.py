@@ -21,7 +21,7 @@ from app01 import views
 urlpatterns = [
     url('admin/', admin.site.urls),
     url(r'^$', views.welcome),
-    url(r'^search$', views.search),
+    url(r'^search/', views.search),
     url(r'^searchresult', views.search_result),
     url(r'^login', views.login),
     url(r'^register', views.register),
@@ -30,4 +30,5 @@ urlpatterns = [
     url(r'^profile', views.profile),
     url(r'^favorites', views.favorites),
     url(r'^reservation', views.reservation),
+    url(r'^logout', views.logout),
 ]

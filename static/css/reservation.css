@@ -100,13 +100,13 @@
     border-radius: 10px;
 }
 
-table {
+#reservation_detail > table {
     width: 100%;
     border-spacing: 5px;
     border-collapse: separate;
 }
 
-table > thead > tr > th {
+#reservation_detail > table > thead > tr > th {
     color: white;
     font-size: 22px;
     background-color: #2b669a;
@@ -114,12 +114,12 @@ table > thead > tr > th {
     text-align: center;
 }
 
-table > tbody > tr {
+#reservation_detail > table > tbody > tr {
     height: 200px;
     line-height: 200px;
 }
 
-table > tbody > tr > td {
+#reservation_detail > table > tbody > tr > td {
     color: black;
     font-size: 18px;
     text-align: center;

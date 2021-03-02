@@ -78,8 +78,8 @@ a {
     left: 0;
 }
 
-/*search 1*/
-#search_1 {
+/*result_search_1*/
+#result_search_1 {
     position: relative;
     top: 40%;
     left: 25%;
@@ -98,7 +98,7 @@ a {
     font-size: 22px;
 }
 
-#search_1 > div.search-input-div > input[type=text] {
+#result_search_1 > div.search-input-div > input[type=text] {
     width: 70%;
     height: 100%;
     line-height: 60px;
@@ -107,7 +107,7 @@ a {
     border: none;
 }
 
-#search_1 > div.search-input-div > div:nth-child(2) {
+#result_search_1 > div.search-input-div > div:nth-child(2) {
     font-size: 20px;
     color: dimgray;
     float: left;
@@ -126,7 +126,7 @@ a {
     background-size: 80% 80%;
 }
 
-#search_1 > div.search-input-div > span {
+#result_search_1 > div.search-input-div > span {
     width: 60px;
     height: 60px;
     float: right;
@@ -149,9 +149,6 @@ a {
     color: black;
 }
 
-#search-type-toutes {
-    background-color: #2b669a;
-}
 
 .search_filters {
     width: 92%;
@@ -206,7 +203,7 @@ a {
     margin-top: 10px;
 }
 
-#search-result-bg-image > div.search_filters > div:nth-child(2) > div.radio {
+#search-result-bg-image > div.search_filters > div:nth-child(2) > div.result_radio {
     margin-left: 250px;
 }
 
@@ -251,20 +248,20 @@ a {
     margin-right: 40px;
 }
 
-.radio {
+.result_radio {
     width: 70% !important;
     height: 30px;
     line-height: 30px;
     margin-left: 20px;
 }
 
-.radio > label {
+.result_radio > label {
     height: 30px;
     line-height: 30px;
     margin-left: 50px;
 }
 
-.radio > label > input[type=radio] {
+.result_radio > label > input[type=radio] {
     height: 20px;
     line-height: 20px;
 }

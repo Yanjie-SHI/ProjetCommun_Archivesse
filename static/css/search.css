@@ -91,6 +91,7 @@ a {
     background-color: #e5e5e5;
     opacity: 0.8;
     font-size: 18px;
+    display: none;
 }
 #search_1_particle > .radio {
     width: 90%;
@@ -126,6 +127,7 @@ a {
     font-size: 20px;
     color: dimgray;
     float: left;
+    cursor: pointer;
 }
 .btn-xs {
     padding: 0 !important;
@@ -143,6 +145,7 @@ a {
     width: 60px;
     height: 60px;
     float: right;
+    cursor: pointer;
 }
 
 .search-type-btns-div {
@@ -160,9 +163,10 @@ a {
     text-align: center;
     font-size: 22px;
     color: black;
+    cursor: pointer;
 }
 
-#search-type-toutes {
+.search-type-btn-selected {
     background-color: #2b669a;
 }
 
@@ -173,7 +177,6 @@ a {
     left: 0;
     width: 100%;
     height: 320px;
-    color: black;
     font-size: 22px;
     display: none;
 }
@@ -181,13 +184,14 @@ a {
     width: 50%;
     height: 60px;
     line-height: 60px;
-    background-color: #2aabd2;
+    background-color: #2b669a;
     text-align: center;
     float: left;
 }
 #search_2 > div > span {
     width: 25%;
     float: left;
+    color: white;
 }
 #search_2 > div:nth-child(1) > input[type=text] {
     width: 75%;
@@ -195,21 +199,40 @@ a {
     line-height: 60px;
     padding-left: 10px;
     border: none;
+    color: black;
 }
+
 #search_2 > div:nth-child(2) > div {
     width: 75%;
     height: 60px;
     line-height: 60px;
     float: left;
 }
+
+#search_2 > div:nth-child(2) > .form-group {
+    width: 276px;
+}
+
+#search_2 > div:nth-child(2) > .input-group-addon {
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    width: 60px;
+    float: left;
+    height: 60px;
+    color: dimgray;
+}
+
 #datetimepicker1 {
     width: 100%;
+    color: black !important;
 }
+
 #datetimepicker1 > input {
     height: 60px;
     line-height: 60px;
     font-size: 22px;
 }
+
 #datetimepicker1 > span {
     width: 50px;
 }
@@ -238,10 +261,12 @@ a {
 #type_switch > span:nth-child(1) {
     text-align: right;
     padding-right: 10%;
+    cursor: pointer;
 }
 #type_switch > span:nth-child(3) {
     text-align: left;
     padding-left: 10%;
+    cursor: pointer;
 }
 
 .switch_indicator {
@@ -256,5 +281,5 @@ a {
 }
 #si2 {
     left: 68%;
-    /*display: none;*/
+    display: none;
 }

@@ -3,7 +3,7 @@
     <div id="login-bg-image">
         <div class="title">Mon espace personnel</div>
         <div class="subtitle">Se connecter</div>
-        <form action="">
+        <form id="form_login" action="/login" method="post">
             <div>Les champs précédés d'un astérisque (<span style="color: red; ">*</span>) sont obligatoires</div>
             <div>
                 <span>Adresse courriel (exemple : nomprenom@domaine.com)  *</span><br/>
@@ -11,15 +11,17 @@
             </div>
             <div>
                 <span>Mot de passe  *</span><br/>
-                <input type="text" name="password">
+                <input type="password" name="password">
             </div>
             <div>
-                <span>Mot de passe oublié ?</span><div>Se connecter</div>
+                <span>Mot de passe oublié ?</span>
+                <div id="btn_login">Se connecter</div>
             </div>
         </form>
 
         <div class="subtitle">S
-            'inscrire</div>
+            'inscrire
+        </div>
         <div>
             <div>Inscrivez-vous et bénéficiez des services de l'espace personnel pour :</div>
             <ul>

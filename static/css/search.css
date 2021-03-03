@@ -109,11 +109,12 @@ a {
 
 .search-input-div{
     width: 100%;
-    height:60px;
+    height: 60px;
     background-color: white;
     line-height: 60px;
     color: black;
     font-size: 22px;
+    border-radius: 5px;
 }
 #search_1 > div.search-input-div > input[type=text] {
     width: 70%;
@@ -146,6 +147,7 @@ a {
     height: 60px;
     float: right;
     cursor: pointer;
+    border-radius: 3px;
 }
 
 .search-type-btns-div {
@@ -184,7 +186,6 @@ a {
     width: 50%;
     height: 60px;
     line-height: 60px;
-    background-color: #2b669a;
     text-align: center;
     float: left;
 }
@@ -192,6 +193,7 @@ a {
     width: 25%;
     float: left;
     color: white;
+    background-color: #2b669a;
 }
 #search_2 > div:nth-child(1) > input[type=text] {
     width: 75%;
@@ -202,24 +204,21 @@ a {
     color: black;
 }
 
-#search_2 > div:nth-child(2) > div {
-    width: 75%;
+#search_2 > div:nth-child(2) > .form-group {
+    width: 61%;
     height: 60px;
     line-height: 60px;
     float: left;
 }
 
-#search_2 > div:nth-child(2) > .form-group {
-    width: 276px;
-}
-
 #search_2 > div:nth-child(2) > .input-group-addon {
     border: 1px solid #ccc;
-    border-radius: 2px;
-    width: 60px;
-    float: left;
+    border-radius: 5px;
+    width: 14%;
+    float: right;
     height: 60px;
     color: dimgray;
+    background-color: #eeeeee;
 }
 
 #datetimepicker1 {

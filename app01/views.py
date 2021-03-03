@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from app01.models import Utilisateur
+from app01.models import Users
 
 
 # Create your views here.
@@ -27,9 +27,9 @@ def login(request):
         return render(request, 'login.html')
     elif request.method == "POST":
         options = {}
-        user = Utilisateur.objects.get(u_mail=request.POST.get('email'), u_mdp=request.POST.get('password'))
+        user = Users.objects.get(u_mail=request.POST.get('email'), u_password=request.POST.get('password'))
         if user:
-            request.session['login_user_name'] = user.u_pseudo
+            request.session['login_user_name'] = user.u_username
             return render(request, 'search.html')
             # return render(request, 'search.html')
         else:

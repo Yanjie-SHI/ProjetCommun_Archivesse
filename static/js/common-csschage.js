@@ -6,9 +6,6 @@ $(document).ready(function () {
     $("#link_to_login").mouseleave(function () {
         $("#link_to_login").removeClass("mouse_over_highlight");
     });
-    $("#link_to_login").click(function () {
-        $(location).attr("href", "/login");
-    });
 
 
     $("#link_to_selfcenter").hover(function () {
@@ -16,10 +13,6 @@ $(document).ready(function () {
     });
     $("#link_to_selfcenter").mouseleave(function () {
         $("#link_to_selfcenter").removeClass("mouse_over_highlight");
-    });
-    $("#link_to_selfcenter").click(function () {
-        let login_user_name = $("#header-right > span:nth-child(3)").html();
-        $(location).attr("href", "/selfcenter?login_user_name=" + login_user_name);
     });
 
 
@@ -37,35 +30,73 @@ $(document).ready(function () {
         }
     });
 
+
     $("#search-type-toutes").click(function () {
         $("#search-type-toutes").addClass("search-type-btn-selected");
         $("#search-type-numeric").removeClass("search-type-btn-selected");
         $("#search-type-producteurs").removeClass("search-type-btn-selected");
+        $("#archiveSearchType").val("1");
     });
     $("#search-type-numeric").click(function () {
         $("#search-type-toutes").removeClass("search-type-btn-selected");
         $("#search-type-numeric").addClass("search-type-btn-selected");
         $("#search-type-producteurs").removeClass("search-type-btn-selected");
+        $("#archiveSearchType").val("2");
     });
     $("#search-type-producteurs").click(function () {
         $("#search-type-toutes").removeClass("search-type-btn-selected");
         $("#search-type-numeric").removeClass("search-type-btn-selected");
         $("#search-type-producteurs").addClass("search-type-btn-selected");
+        $("#archiveSearchType").val("3");
     });
 
     $("#type_switch > span:nth-child(1)").click(function () {
         $("#si1").css("display", "block");
         $("#si2").css("display", "none");
+        $("#si3").css("display", "none");
         $("#search_1").css("display", "block");
         $("#search_2").css("display", "none");
+        $("#search_3").css("display", "none");
+        $("#searchType").val("1");
     });
     $("#type_switch > span:nth-child(3)").click(function () {
         $("#si1").css("display", "none");
         $("#si2").css("display", "block");
+        $("#si3").css("display", "none");
         $("#search_1").css("display", "none");
         $("#search_2").css("display", "block");
+        $("#search_3").css("display", "none");
+        $("#searchType").val("2");
+    });
+    $("#type_switch > span:nth-child(5)").click(function () {
+        $("#si1").css("display", "none");
+        $("#si2").css("display", "none");
+        $("#si3").css("display", "block");
+        $("#search_1").css("display", "none");
+        $("#search_2").css("display", "none");
+        $("#search_3").css("display", "block");
+        $("#searchType").val("3");
     });
 
+
+    /* search result page */
+    $("#search-result-bg-image > div.search_filters > div:nth-child(3) > a").click(function () {
+        // search filter div display link
+        $("#search-result-bg-image > div.search_filters > div:nth-child(2)").css("display", "block");
+        $(".search_filters").css("height", "440px");
+        $("#search-result-bg-image > div.search_filters > div:nth-child(3) > a").html("Recherche");
+    });
+    $("#search-result-bg-image > div.search_resv_filters > div:nth-child(3) > a").click(function () {
+        // search filter div display link
+        $("#search-result-bg-image > div.search_resv_filters > div:nth-child(2)").css("display", "block");
+        $(".search_resv_filters").css("height", "300px");
+        $("#search-result-bg-image > div.search_resv_filters > div:nth-child(3) > a").html("Recherche");
+    });
+
+    /* archive detail page */
+    $("#btn_star").hover(function () {
+        $("#btn_star").css("background-image", "url('/static/image/star-yellow.png')")
+    });
 
     /* login page */
     $("#btn_login").hover(function () {
@@ -73,9 +104,6 @@ $(document).ready(function () {
     });
     $("#btn_login").mouseleave(function () {
         $("#btn_login").removeClass("mouse_over_highlight");
-    });
-    $("#btn_login").click(function () {
-        $("#form_login").submit();
     });
 
 
@@ -111,25 +139,13 @@ $(document).ready(function () {
         $("#link_to_logout").removeClass("mouse_over_highlight");
     });
 
-    $("#link_to_profile").click(function () {
-        let login_user_name = $("#header-right > span:nth-child(3)").html()
-        $(location).attr("href", "/profile?login_user_name=" + login_user_name);
-    })
-    $("#link_to_favorites").click(function () {
-        let login_user_name = $("#header-right > span:nth-child(3)").html()
-        $(location).attr("href", "/favorites?login_user_name=" + login_user_name);
-    })
-    $("#link_to_messagelist").click(function () {
-        let login_user_name = $("#header-right > span:nth-child(3)").html()
-        $(location).attr("href", "/messagelist?login_user_name=" + login_user_name);
-    })
-    $("#link_to_reservation").click(function () {
-        let login_user_name = $("#header-right > span:nth-child(3)").html()
-        $(location).attr("href", "/reservation?login_user_name=" + login_user_name);
-    })
-    $("#link_to_logout").click(function () {
-        let login_user_name = $("#header-right > span:nth-child(3)").html()
-        $(location).attr("href", "/logout?login_user_name=" + login_user_name);
-    })
+
+    /* profile */
+    $("#edit_profile_form > div:nth-child(2) > div:nth-child(3) > span").hover(function () {
+        $("#edit_profile_form > div:nth-child(2) > div:nth-child(3) > span").addClass("hover");
+    });
+    $("#edit_profile_form > div:nth-child(2) > div:nth-child(3) > span").mouseleave(function () {
+        $("#edit_profile_form > div:nth-child(2) > div:nth-child(3) > span").removeClass("hover");
+    });
 });
 

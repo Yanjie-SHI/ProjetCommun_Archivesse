@@ -49,15 +49,14 @@ a {
     width: 50%;
 }
 
-#splash-content > div > span:nth-child(3) {
-    margin-left: 140px;
-}
-#splash-content > div:nth-child(3) > span:nth-child(3) {
-    margin-left: 70px;
+#splash-content > div:nth-child(2) {
+    margin-top: 30px;
+    margin-left: 120px;
 }
 
-#splash-content > div:nth-child(2), #splash-content > div:nth-child(3) {
+#splash-content > div:nth-child(3) {
     margin-top: 30px;
+    margin-left: 240px;
 }
 
 #clear-split {
@@ -70,4 +69,5 @@ a {
     left: 7%;
     height: 30px;
     font-size: 28px;
+    font-style: italic;
 }

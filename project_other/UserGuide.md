@@ -12,13 +12,10 @@
 - message detail
        
 ## TODO list
-- Page
-    - Favorites page with data (design - Amy)
-    - Reservation page with data (design - Amy)
-    - Reservation detail page
-    - Change password page (design - Amy)
-    - Archive detail page (search result: view detail)
-- DB tables need to be modified √
+- archive detail page return button (jump to search result list)
+- favorites table create
+- no reservation title in db
+
 
 
 ## URLs

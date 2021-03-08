@@ -1,0 +1,160 @@
+{% extends "home_base.html" %}
+{% block body_main %}
+    <div id="search-result-bg-image">
+        <div class="search_div">
+            <div id="result_search_2">
+                <div>
+                    <span>Centre</span>
+                    <input type="text" name="museumName">
+                </div>
+                <div>
+                    <span>Fin de Date</span>
+                    <!-- <input type="text" name="date"> -->
+                    <div class="form-group">
+                        <!--指定 date标记-->
+                        <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" name="resvEndDate"/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar btn-lg"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-search btn-lg"></span>
+                    </span>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#datetimepicker1').datetimepicker({
+                                format: 'YYYY-MM-DD',
+                                locale: moment.locale('en-us')
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div class="search_resv_filters">
+            <div>
+                <div>CRITÈRES SÉLECTIONNÉS :</div>
+                <div class="filter_tag">Type de producteur : Personne <span>✖️</span></div>
+                <div class="filter_tag">Producteur : Etude I <span>✖️</span>️</div>
+                <div class="filter_tag">Catégories d'archives : Tous les catégories <span>✖️</span>️</div>
+            </div>
+
+            <div>
+                <div>
+                    <div>Localisation :</div>
+                    <input type="text" name="location">
+                </div>
+                <div>
+                    <div>Fin de date :</div>
+                    <div class="form-group">
+                        <!--指定 date标记-->
+                        <div class='input-group date' id='datetimepicker2'>
+                            <input type='text' class="form-control" name="resvEndDate"/>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar btn-sm"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#datetimepicker2').datetimepicker({
+                                format: 'YYYY-MM-DD',
+                                locale: moment.locale('en-us')
+                            });
+                        });
+                    </script>
+                </div>
+                <div>
+                    <div>Type d'archive :</div>
+                    <div class="result_radio">
+                        <label class="first">
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                            Tous
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                            Document
+                        </label>
+                        <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+                            Audio-visuelle
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <div>Nombre d'archive :</div>
+                    <input type="text" name="lastname">
+                </div>
+            </div>
+
+            <div>
+                <a href="#">Modifier la recherche</a>
+            </div>
+        </div>
+
+        <div class="search_result">
+            <div class="trier_par">
+                <div>
+                    <!-- order by -->
+                    <span>Trier par:</span>
+                    <select name="" id="">
+                        <option value="">Fin de date</option>
+                    </select>
+                </div>
+                <div>{% if total_size > 0 %}{{ total_size }}{% else %}0{% endif %} résultats</div>
+            </div>
+
+            {% for item in reservation_list %}
+                <div class="result_resv_general">
+                    <div class="result_title">{{ item.museum.name }}</div>
+                    <div class="code_producer_location">
+                        <div>Proposé par : {{ item.creator.username }}</div>
+                        <div>Fin de date : {{ item.expire_date }}</div>
+                        <div>Nombre document disponible : {{ item.museum.document_limit }}</div>
+                        <div>Nombre vidéo disponible :{{ item.museum.video_limit }}</div>
+                    </div>
+                    <div class="resv_status_div">
+                        {% if item.status == 1 %}
+                            <a href="#" class="resv_status_complete">Complet</a>
+                        {% else %}
+                            <a href="/reservationdetail?id={{ item.id }}" class="resv_status_incomplete">Réserver</a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+
+            <div class="create_resv_div">
+                <div>Je veux proposer un rendez-vous</div>
+            </div>
+
+            <div class="pager">
+                <div>
+                    {{ current_page }} sur {{ total_size }} résultats
+                </div>
+
+                <div>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            {% for page in pages %}
+                                <li><a href="#">{{ page }}</a></li>
+                            {% endfor %}
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

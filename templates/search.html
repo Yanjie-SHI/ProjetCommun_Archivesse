@@ -1,80 +1,97 @@
 {% extends "home_base.html" %}
 {% block body_main %}
-<div id="search-bg-image">
-    <div id="content-main">
-        <div id="search_1">
-            <div id="search_1_particle">  <!-- 查询粒度选择 -->
-                <div class="radio">
-                  <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                    Tous les mots saisis
-                  </label>
-                  <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                    Au moins un des mots saisis
-                  </label>
-                  <label>
-                    <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-                    Expression exacte
-                  </label>
-                </div>
-            </div>
-            <div class="search-input-div">
-                <input type="text" placeholder="Rechercher">
-                <div>
-                    <span class="glyphicon glyphicon-play btn-xs" aria-hidden="true"></span>
-                    <span>Tous les mots saisis</span>
-                </div>
-                <!--<div class="search-btn-div"></div>-->
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-search btn-lg"></span>
-                </span>
-            </div>
-            <div class="search-type-btns-div">
-                <div class="search-type-btn search-type-btn-selected" id="search-type-toutes">
-                    <span>Toutes les archives</span></div>
-                <div class="search-type-btn" id="search-type-numeric"><span>Archives numérisées</span></div>
-                <div class="search-type-btn" id="search-type-producteurs"><span>Producteurs d'archives</span></div>
-            </div>
-        </div>
-
-        <div id="search_2">
-            <div>
-                <span>Ville</span>
-                <input type="text" name="ville">
-            </div>
-            <div>
-                <span>Date</span>
-                <!-- <input type="text" name="date"> -->
-                <div class="form-group">
-                    <!--指定 date标记-->
-                    <div class='input-group date' id='datetimepicker1'>
-                        <input type='text' class="form-control"/>
+    <form action="/search" method="post" id="searchForm">
+        <div id="search-bg-image">
+            <div id="content-main">
+                <div id="search_1">
+                    <div id="search_1_particle">  <!-- 查询粒度选择 -->
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="particleRadios" id="particleRadio1" value="1" checked>
+                                Tous les mots saisis
+                            </label>
+                            <label>
+                                <input type="radio" name="particleRadios" id="particleRadio2" value="2">
+                                Au moins un des mots saisis
+                            </label>
+                            <label>
+                                <input type="radio" name="particleRadios" id="particleRadio3" value="3">
+                                Expression exacte
+                            </label>
+                        </div>
+                    </div>
+                    <div class="search-input-div">
+                        <input type="text" placeholder="Rechercher" name="searchInput">
+                        <div>
+                            <span class="glyphicon glyphicon-play btn-xs" aria-hidden="true"></span>
+                            <span>Tous les mots saisis</span>
+                        </div>
+                        <!--<div class="search-btn-div"></div>-->
                         <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar btn-lg"></span>
-                        </span>
+                        <span class="glyphicon glyphicon-search btn-lg"></span>
+                    </span>
+                    </div>
+                    <div class="search-type-btns-div">
+                        <div class="search-type-btn search-type-btn-selected" id="search-type-toutes" value="1">
+                            <span>Toutes les archives<!--All archives--></span></div>
+                        <div class="search-type-btn" id="search-type-numeric" value="2"><span>Archives numérisées
+                            <!--digital archives--></span></div>
+                        <div class="search-type-btn" id="search-type-producteurs" value="3"><span>Producteurs d'archives
+                            <!--Archive producer--></span></div>
+                        <input type="hidden" name="archiveSearchType" id="archiveSearchType">
                     </div>
                 </div>
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-search btn-lg"></span>
-                </span>
-                <script type="text/javascript">
-                    $(function () {
-                        $('#datetimepicker1').datetimepicker({
-                            format: 'YYYY-MM-DD',
-                            locale: moment.locale('en-us')
-                        });
-                    });
-                </script>
+
+                <div id="search_2">
+                    <div>
+                        <span>Centre</span>
+                        <input type="text" name="museumName">
+                    </div>
+                    <div>
+                        <span>Fin de Date</span>
+                        <!-- <input type="text" name="date"> -->
+                        <div class="form-group">
+                            <!--指定 date标记-->
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input type='text' class="form-control" name="resvEndDate"/>
+                                <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar btn-lg"></span>
+                            </span>
+                            </div>
+                        </div>
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-search btn-lg"></span>
+                    </span>
+                        <script type="text/javascript">
+                            $(function () {
+                                $('#datetimepicker1').datetimepicker({
+                                    format: 'YYYY-MM-DD',
+                                    locale: moment.locale('en-us')
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+
+                <div id="search_3">
+                    <div class="search-input-div">
+                        <input type="text" placeholder="Taper le cote d'archives que vous voulez" name="searchInput">
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-search btn-lg"></span>
+                    </span>
+                    </div>
+                </div>
+
+                <div id="type_switch">
+                    <span>Recherche</span>
+                    <div class="switch_indicator" id="si1"></div>
+                    <span>Rendez-vous</span>
+                    <div class="switch_indicator" id="si2"></div>
+                    <span>Demande</span>
+                    <div class="switch_indicator" id="si3"></div>
+                    <input type="hidden" name="searchType" id="searchType" value="1"></input>
+                </div>
             </div>
         </div>
-
-        <div id="type_switch">
-            <span>Recherche</span>
-            <div class="switch_indicator" id="si1"></div>
-            <span>Rendez-vous</span>
-            <div class="switch_indicator" id="si2"></div>
-        </div>
-    </div>
-</div>
+    </form>
 {% endblock %}

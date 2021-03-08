@@ -1,0 +1,31 @@
+{% extends "home_base.html" %}
+{% block body_main %}
+    <form id="form_add_favorites" action="/addfavorites" method="post">
+        <div id="archive-detail-bg-image">
+            <div class="img_div">
+            </div>
+
+            <div class="archive_detail">
+                <div class="result_general">
+                    <div class="result_title">{{ archive.title }}</div>
+                    <div class="ar_detail">
+                        <div>Cotes : {{ archive.id }}</div>
+                        <input type="hidden" name="archive_id" value="{{ archive.id }}">
+                        <div>Producteur : {{ archive.author }}</div>
+                        <div>Type : {{ archive.type }}</div>
+                        <div>Localisation : {{ archive.museum.address }}</div>
+                        <div>Langue des documents : {{ archive.language }}</div>
+                        <div>
+                            <div>Présentation de contenue :</div>
+                            <div> {{ archive.description }}</div>
+                        </div>
+                    </div>
+                    <div class="star_div">
+                        <div id="btn_star"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+{% endblock %}

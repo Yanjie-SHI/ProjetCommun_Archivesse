@@ -66,10 +66,10 @@ a {
 #content-main {
     width: 50%;
     /*border: 1px solid red;*/
-    height: 400px;
+    height: 410px;
     position: relative;
     left: 25%;
-    top: 45%;
+    top: 42%;
 }
 
 /*search 1*/
@@ -78,7 +78,7 @@ a {
     top: 0;
     left: 0;
     width: 100%;
-    height: 320px;
+    height: 360px;
     color: black;
     /*display: none;*/
 }
@@ -178,10 +178,11 @@ a {
     top: 0;
     left: 0;
     width: 100%;
-    height: 320px;
+    height: 360px;
     font-size: 22px;
     display: none;
 }
+
 #search_2 > div {
     width: 50%;
     height: 60px;
@@ -189,14 +190,24 @@ a {
     text-align: center;
     float: left;
 }
+
+#search_2 > div:nth-child(1) {
+    width: 45%;
+}
+
+#search_2 > div:nth-child(2) {
+    width: 55%;
+}
+
 #search_2 > div > span {
-    width: 25%;
+    width: 30%;
     float: left;
     color: white;
     background-color: #2b669a;
 }
+
 #search_2 > div:nth-child(1) > input[type=text] {
-    width: 75%;
+    width: 70%;
     height: 60px;
     line-height: 60px;
     padding-left: 10px;
@@ -205,7 +216,7 @@ a {
 }
 
 #search_2 > div:nth-child(2) > .form-group {
-    width: 61%;
+    width: 56%;
     height: 60px;
     line-height: 60px;
     float: left;
@@ -235,8 +246,41 @@ a {
 #datetimepicker1 > span {
     width: 50px;
 }
+
 .btn-lg {
     padding: 10px !important;
+}
+
+/* search_3*/
+#search_3 {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 360px;
+    color: black;
+    display: none;
+}
+
+#search_3 > div:nth-child(1) > input[type=text] {
+    width: 92%;
+    height: 60px;
+    line-height: 60px;
+    padding-left: 10px;
+    border: none;
+    color: black;
+    float: left;
+}
+
+#search_3 > div:nth-child(1) > .input-group-addon {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 60px;
+    height: 60px;
+    float: right;
+    color: dimgray;
+    padding: 7px 12px;
+    background-color: #eeeeee;
 }
 
 /*type switch*/
@@ -252,7 +296,7 @@ a {
 }
 #type_switch > span {
     float: left;
-    width: 50%;
+    width: 33.3%;
     line-height: 60px;
     vertical-align: top;
 }
@@ -262,7 +306,13 @@ a {
     padding-right: 10%;
     cursor: pointer;
 }
+
 #type_switch > span:nth-child(3) {
+    text-align: center;
+    cursor: pointer;
+}
+
+#type_switch > span:nth-child(5) {
     text-align: left;
     padding-left: 10%;
     cursor: pointer;
@@ -275,10 +325,17 @@ a {
     position: absolute;
     top: 80%;
 }
+
 #si1 {
-    left: 30%;
+    left: 13%;
 }
+
 #si2 {
-    left: 68%;
+    left: 48%;
+    display: none;
+}
+
+#si3 {
+    left: 82%;
     display: none;
 }

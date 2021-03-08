@@ -94,80 +94,39 @@
             </div>
 
             <div>
-                <a href="">Recherche</a>
+                <a href="#">Modifier la recherche</a>
             </div>
         </div>
 
         <div class="search_result">
             <div class="trier_par">
                 <div>
+                    <!-- order by -->
                     <span>Trier par:</span>
                     <select name="" id="">
                         <option value="">Pertinance</option>
                     </select>
                 </div>
-                <div>162 résultats</div>
+                <div>{% if total_size > 0 %}{{ total_size }}{% else %}0{% endif %} résultats</div>
             </div>
 
-            <div class="result_general">
-                <div class="result_title">Archives de l'agence d'architecture du Louvre et des Tuileries (XIXe-XXe
-                    siècles)
-                </div>
-                <div class="code_producer_location">
-                    <div>Cotes : 64/AJ/1 - 64/AJ/922</div>
-                    <div>Producteur : Agence d'architecture du domaine national du Louvre et des Tuileries</div>
-                    <div>Localisation :</div>
-                </div>
-                <div class="view_detail_link">
-                    <a href="">Voir les détails</a>
-                </div>
-            </div>
-
-            <div class="result_general">
-                <div class="result_title">Archives de l'agence d'architecture du Louvre et des Tuileries (XIXe-XXe
-                    siècles)
-                </div>
-                <div class="code_producer_location">
-                    <div>Cotes : 64/AJ/1 - 64/AJ/922</div>
-                    <div>Producteur : Agence d'architecture du domaine national du Louvre et des Tuileries</div>
-                    <div>Localisation :</div>
-                </div>
-                <div class="view_detail_link">
-                    <a href="">Voir les détails</a>
-                </div>
-            </div>
-
-            <div class="result_general">
-                <div class="result_title">Archives de l'agence d'architecture du Louvre et des Tuileries (XIXe-XXe
-                    siècles)
-                </div>
-                <div class="code_producer_location">
-                    <div>Cotes : 64/AJ/1 - 64/AJ/922</div>
-                    <div>Producteur : Agence d'architecture du domaine national du Louvre et des Tuileries</div>
-                    <div>Localisation :</div>
+            {% for item in archive_list %}
+                <div class="result_general">
+                    <div class="result_title">{{ item.title }}</div>
+                    <div class="code_producer_location">
+                        <div>Cotes : {{ item.id }}</div>
+                        <div>Producteur : {{ item.author }}</div>
+                        <div>Localisation : {{ item.museum.address }}</div>
+                    </div>
                     <div class="view_detail_link">
-                        <a href="">Voir les détails</a>
+                        <a href="/archivedetail?id={{ item.id }}">Voir les détails</a>
                     </div>
                 </div>
-            </div>
-
-            <div class="result_general">
-                <div class="result_title">Archives de l'agence d'architecture du Louvre et des Tuileries (XIXe-XXe
-                    siècles)
-                </div>
-                <div class="code_producer_location">
-                    <div>Cotes : 64/AJ/1 - 64/AJ/922</div>
-                    <div>Producteur : Agence d'architecture du domaine national du Louvre et des Tuileries</div>
-                    <div>Localisation :</div>
-                    <div class="view_detail_link">
-                        <a href="">Voir les détails</a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
 
             <div class="pager">
                 <div>
-                    20 sur 162 résultats
+                    {{ current_page }} sur {{ total_size }} résultats
                 </div>
 
                 <div>
@@ -178,11 +137,9 @@
                                     <span aria-hidden="true">&laquo;</span>
                                 </a>
                             </li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
+                            {% for page in pages %}
+                                <li><a href="#">{{ page }}</a></li>
+                            {% endfor %}
                             <li>
                                 <a href="#" aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>

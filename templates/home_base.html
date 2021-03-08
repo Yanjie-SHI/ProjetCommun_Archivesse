@@ -14,11 +14,13 @@
     <link rel="stylesheet" href="/static/css/favorites.css">
     <link rel="stylesheet" href="/static/css/reservation.css">
     <link rel="stylesheet" href="/static/css/search_result.css">
+    <link rel="stylesheet" href="/static/css/archive_detail.css">
     <script src="/static/js/jquery-3.2.1.min.js"></script>
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
     <script src="/static/bootstrap/js/moment-with-locales.js"></script>
     <script src="/static/bootstrap/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="/static/js/common.js"></script>
+    <script src="/static/js/common-csschage.js"></script>
+    <script src="/static/js/common-business.js"></script>
 </head>
 <body>
 <div id="header">
@@ -27,9 +29,9 @@
         <span>Archivesses</span>
     </div>
     <div id="header-right">
-        <span{% if request.session.login_user_name %} id="link_to_selfcenter" style="cursor:pointer;"{% endif %}>Espace Personnel</span>
+        <span{% if request.session.login_user_id != '' %} id="link_to_selfcenter" style="cursor:pointer;"{% endif %}>Espace Personnel</span>
         <span>-</span>
-        {% if request.session.login_user_name %}<span>{{ request.session.login_user_name }}</span>{% else %}
+        {% if request.session.login_user_id %}<span>{{ user.u_username }}</span>{% else %}
             <span id="link_to_login">Me connecter</span>{% endif %}
     </div>
 </div>

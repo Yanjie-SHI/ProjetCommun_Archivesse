@@ -6,6 +6,8 @@
     - Toutes les archives / Archives numérisées / Producteurs d'archives: switch background change
     - Tous les mots saisis: click to show/hide search particle view
     - Recherch / Rendez-vous indicator show/hide when cliced
+- archive detail
+- reservation detail
 - self_center:
     - profile / favorites / message_list / reservation / logout click to jump to relevant page
     - logout logic (clear browser session and cache, return to search page)
@@ -13,26 +15,26 @@
        
 ## TODO list
 - archive detail page return button (jump to search result list)
+- reservation detail page return button
 - favorites table create
-- no reservation title in db
 
 
 
 ## URLs
-```
-# can view directly from URL
-localhost:8000  ->  welcome.html
-localhost:8000/search  ->  search.html
-localhost:8000/login  ->  login.html
-# can only be used internally by javascripts
-localhost:8000/register  ->  register.html
-localhost:8000/selfcenter  ->  self_center.html
-localhost:8000/profile  ->  profile.html
-localhost:8000/favorites  ->  favorites.html
-localhost:8000/messagelist  ->  message_list.html
-localhost:8000/reservation  ->  reservation.html
-localhost:8000/searchresult  ->  search_result.html
-localhost:8000/logout  ->  jump to search.html
+```djangourlpath
+url('admin/', admin.site.urls),
+url(r'^$', views.welcome),
+url(r'^search', views.search),
+url(r'^archivedetail', views.archive_detail),
+url(r'^login', views.login),
+url(r'^register', views.register),
+url(r'^selfcenter', views.self_center),
+url(r'^messagelist', views.message_list),
+url(r'^profile', views.profile),
+url(r'^favorites', views.favorites),
+url(r'^addfavorites', views.add_favorites),
+url(r'^reservation', views.reservation),
+url(r'^logout', views.logout),
 ```
 
 ## MySQL settings
@@ -59,24 +61,45 @@ DATABASES = {
 ```shell script
 $ python3 manage.py makemigrations  
 $ python3 manage.py migrate  
+$ python3 manage.py loaddata app01.json
 ```
 - Migrate command will also create tables that django needed, like auth_user, django_session etc.  
 <font color=red>**\* Remember not to delete these tables.**</font>
   
-**\* Note other:**  
+
+## Note other  
 - If you create tables from MySQL client(navicat), and want to generate models.py file automatically, use the following command:   
 ```shell script
 $ python3 manage.py inspectdb Users Archive Museum Reservation Res_Dem_Arch > app01/models.py
 ```
+- Providing initial data for models  
+    - Providing data with fixtures, create a *.fixture file under project/app01/fixture directory, this needs to be added for each app in a project
+    - use the following commad to load data into db  
+```
+[
+  {
+    "model": "myapp.person",
+    "pk": 1,
+    "fields": {
+      "first_name": "John",
+      "last_name": "Lennon"
+    }
+  },
+  {
+    "model": "myapp.person",
+    "pk": 2,
+    "fields": {
+      "first_name": "Paul",
+      "last_name": "McCartney"
+    }
+  }
+]
+```
 
-## Screenshots
-- Welcom  ![Image of welcome](1_welcome.png)
-- Search  ![Image of search](2_search.png)
-- login  ![Image of login](3_login.png)
-- register  ![Image of register](4_register.png)
-- self_center  ![Image of self_center](5_self_center.png)
-- message_list  ![Image of message_list](6_message_list.png)
-- profile  ![Image of profile](7_profile.png)
-- favorites  ![Image of favorites](8_favorites.png)
-- reservation  ![Image of reservation](9_reservation.png)
-- search_result  ![Image of search_result](10_search_result.png)
+```shell script
+$ python3 manage.py loaddata <fixturename> 
+```
+- for django admin page: http://localhost:8000/admin, there is a username and password, we need to generate a super user by following command:  
+```shell script
+$ python3 manage.py createsuperuser
+```

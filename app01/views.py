@@ -200,6 +200,18 @@ def reservation(request):
     return render(request, 'reservation.html')
 
 
+def reservation_detail(request):
+    if request.method == "POST":
+        resv_id = request.POSt.get("id")
+        reservation = Reservation.objects.filter(id=resv_id)
+        oprions = {}
+        if len(reservation) > 0:
+            oprions.update({"reservation", reservation})
+            return render(request, "reservation_detail.html", oprions)
+    else:
+        pass
+
+
 def logout(request):
     request.session.clear()
     return render(request, 'search.html')

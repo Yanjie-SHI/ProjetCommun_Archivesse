@@ -9,6 +9,21 @@ a {
 
 #archive-detail-bg-image {
     width: 100%;
+    height: 130%;
+    background-image: url('/static/image/bg_login.jpeg');
+    background-repeat: repeat-y;
+    filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+    -moz-background-size: 100% 130%;
+    background-size: 100% 130%;
+    position: absolute;
+    z-index: 30;
+    top: 0;
+    left: 0;
+    color: white;
+}
+
+#reservation-detail-bg-image {
+    width: 100%;
     height: 115%;
     background-image: url('/static/image/bg_login.jpeg');
     background-repeat: repeat-y;
@@ -26,6 +41,20 @@ a {
     width: 100%;
     height: 380px;
     background-image: url('/static/image/bg_search_result.jpg');
+    background-repeat: no-repeat;
+    filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+    -moz-background-size: 100% 380px;
+    background-size: 100% 380px;
+    position: absolute;
+    z-index: 100;
+    top: -80px;
+    left: 0;
+}
+
+.resv_detail_banner_img_div {
+    width: 100%;
+    height: 380px;
+    background-image: url('/static/image/bg_resv_detail.jpg');
     background-repeat: no-repeat;
     filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
     -moz-background-size: 100% 380px;

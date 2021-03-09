@@ -1,0 +1,29 @@
+{% extends "home_base.html" %}
+{% block body_main %}
+    <form id="form_add_favorites" action="/addfavorites" method="post">
+        <div id="reservation-detail-bg-image">
+            <div class="resv_detail_banner_img_div">
+            </div>
+
+            <div class="reservation_detail">
+                <div class="result_title">Aperçu de rendez-vous</div>
+                <div class="resv_detail">
+                    <div>Cotes : {{ reservation.id }}</div>
+                    <input type="hidden" name="archive_id" value="{{ reservation.id }}">
+                    <div>Producteur : {{ reservation.author }}</div>
+                    <div>Type : {{ reservation.type }}</div>
+                    <div>Localisation : {{ reservation.museum.address }}</div>
+                    <div>Langue des documents : {{ reservation.language }}</div>
+                    <div>
+                        <div>Présentation de contenue :</div>
+                        <div> {{ archive.description }}</div>
+                    </div>
+                </div>
+                <div class="star_div">
+                    <div id="btn_star"></div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+{% endblock %}

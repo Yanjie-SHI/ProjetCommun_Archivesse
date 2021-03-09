@@ -27,7 +27,7 @@ class Museum(models.Model):
     city = models.CharField(db_column='m_city', max_length=32, blank=False, null=False, help_text="文献馆所在的城市")
     address = models.CharField(db_column='m_address', max_length=500, blank=False, null=False, help_text="文献馆所在的地址")
     post_code = models.IntegerField(db_column='m_zipcode', blank=True, null=True, help_text="文献馆所在的地址的邮编")
-    tel = models.IntegerField(db_column='m_tel', blank=True, null=True, help_text="文献馆的联系电话")
+    tel = models.CharField(db_column='m_tel', max_length=20, blank=True, null=True, help_text="文献馆的联系电话")
     mail = models.CharField(db_column='m_mail', max_length=100, blank=True, null=True, help_text="文献馆的联系邮箱")
     document_limit = models.IntegerField(db_column='m_nbdocumentlimit', blank=True, null=True,
                                          help_text="文献馆每个人一次能查看的文字档案数量")
@@ -114,3 +114,13 @@ class Demand(models.Model):
     class Meta:
         managed = True
         db_table = 'Demand'
+
+
+class Favorites(models.Model):
+    id = models.AutoField(db_column="f_id", primary_key=True, help_text="收藏id")
+    user = models.ForeignKey(Users, db_index=True, on_delete=models.DO_NOTHING, help_text="收藏者id")
+    archive = models.ForeignKey(Archive, db_index=True, on_delete=models.DO_NOTHING, help_text="被收藏的文献id")
+
+    class Meta:
+        managed = True
+        db_table = 'Favorite'

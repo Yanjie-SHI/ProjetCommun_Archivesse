@@ -4,7 +4,9 @@ from django.db import models
 class Users(models.Model):
     id = models.AutoField(db_column='u_id', primary_key=True, help_text="使用者的id（由系统随机生成）")
     mail = models.CharField(db_column='u_mailaddress', max_length=100, unique=True, blank=False, null=False,
-                            help_text="使用者的邮箱")
+                            help_text="使用者注册时的邮箱")
+    receiver_mail = models.CharField(db_column='u_receiver_mail', max_length=100, blank=True, null=True,
+                                     help_text="使用者填写的用于接收别人发的文献的邮箱")
     first_name = models.CharField(db_column='u_firstname', max_length=64, blank=True, null=True, help_text="使用者的姓")
     last_name = models.CharField(db_column='u_lastname', max_length=64, blank=True, null=True, help_text="使用者的名")
     username = models.CharField(db_column='u_username', max_length=128, blank=True, null=True,
@@ -43,7 +45,7 @@ class Archive(models.Model):
     id = models.CharField(db_column='a_id', primary_key=True, max_length=32, help_text="文献编号")
     title = models.CharField(db_column='a_title', max_length=200, blank=False, null=False, help_text="文献标题")
     type = models.IntegerField(db_column='a_type', blank=False, null=False,
-                               help_text="文献类型(1:Document physique 2:Document numérisé 3:Audio-visuelle(三选一)")
+                               help_text="文献类型(0:Document physique 1:Document numérisé 2:Audio-visuelle(三选一)")
     folio = models.IntegerField(db_column="a_folio", blank=True, null=True, help_text="文献的页数(有些馆藏的文献只有部分页)")
     language = models.CharField(db_column="a_language", max_length=100, blank=False, null=False, help_text="文献的语言")
     author = models.CharField(db_column='a_author', max_length=200, blank=False, null=False)
@@ -84,6 +86,7 @@ class Res_Dem_Arch(models.Model):
     reservation = models.ForeignKey(Reservation, db_index=True, on_delete=models.DO_NOTHING, help_text="预约号")
     resv_user = models.ForeignKey(Users, db_index=True, on_delete=models.DO_NOTHING, help_text="预约的用户编号")
     archive = models.ForeignKey(Archive, db_index=True, on_delete=models.DO_NOTHING, help_text="文献编号")
+    folio = models.IntegerField(db_column="a_folio", db_index=True, blank=True, null=True, help_text="加入者想预约的文献篇章/页码")
 
     class Meta:
         managed = True

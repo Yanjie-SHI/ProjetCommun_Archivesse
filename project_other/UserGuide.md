@@ -1,3 +1,12 @@
+## business logic  
+- search archive
+    - anyone who want to know info of a certain archive, or keyword of archives
+- search reservation
+- search demand  
+    - this is for person who has certain digital archive backup on his disk, he search for demands who need this archive
+    - for people who need an digital archive regardless of whether there is a suitable reservation, he can create a demand directly from the link in search page
+    
+
 ## Done
 - welcome: Commence votre visite
 - header: Me connecter -> login / Espace Personnel -> self_center
@@ -72,6 +81,12 @@ $ python3 manage.py loaddata app01.json
 ```shell script
 $ python3 manage.py inspectdb Users Archive Museum Reservation Res_Dem_Arch > app01/models.py
 ```
+
+- dump data from db to fixture
+```shell script
+$ python3 manage.py dumpdata app01 --format=json --indent=4 > app01/fixtures/app01.json
+```
+
 - Providing initial data for models  
     - Providing data with fixtures, create a *.fixture file under project/app01/fixture directory, this needs to be added for each app in a project
     - use the following commad to load data into db  
@@ -99,7 +114,30 @@ $ python3 manage.py inspectdb Users Archive Museum Reservation Res_Dem_Arch > ap
 ```shell script
 $ python3 manage.py loaddata <fixturename> 
 ```
-- for django admin page: http://localhost:8000/admin, there is a username and password, we need to generate a super user by following command:  
+
+- Django admin page: http://localhost:8000/admin, there is a username and password, we need to generate a super user by following command:  
 ```shell script
 $ python3 manage.py createsuperuser
 ```
+
+- export Class Diagram from project
+    1. install graphviz on Mac  
+    2. install pylint and graphvi in django(python) project  
+    3. run command from virtualenv  
+```shell script
+brew install graphvi  # for mac
+apt-get install graphviz  # for ubuntu
+# for windows, install from their website: http://www.graphviz.org/download/ 
+```
+    
+```
+pip install pylint
+pip install graphviz
+```
+    
+```
+pyreverse ./app01 -o mydiagram.png 
+```
+  
+    
+    

@@ -1,0 +1,168 @@
+{% extends "home_base.html" %}
+{% block body_main %}
+    <form id="form_join_reservation" action="/joinreservation" method="post">
+        <div id="reservation-detail-bg-image">
+            <div class="resv_detail_banner_img_div">
+            </div>
+
+            <div class="reservation_detail">
+                <div class="return_link">
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="javascript:history.back(-1)">Retour au résultat</a>
+                </div>
+                <div class="result_title">Aperçu de rendez-vous</div>
+                <div class="resv_basic">
+                    <div>Nom de centre : {{ reservation.museum.name }}</div>
+                    <div>Adresse : {{ reservation.museum.address }}</div>
+                    <div>
+                        <div>Proposé par : {{ reservation.creator.username }}</div>
+                        <div>Fin de date : {{ reservation.expire_date|date:"d/m/Y" }}</div>
+                    </div>
+                    <div>
+                        <div>Nombre document disponible : {{ reservation.museum.document_limit }}</div>
+                        <div>Nombre vidéo disponible : {{ reservation.museum.video_limit }}</div>
+                    </div>
+                    <input type="hidden" name="resv_id" value="{{ reservation.id }}">
+                </div>
+                <div class="input_inform">Merci de compléter les informations suivantes pour finaliser votre
+                    rendez-vous
+                </div>
+                <div class="join_input_div">
+                    <div class="archive_document_demand">
+                        <div class="document_demand_title">
+                            Nombre d'archives documentaires demandées :
+                            <select name="" id="doc_demand_count">
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+                        {% if join %}
+                            <ul>
+                                <li>
+                                    <div class="doc_demand_item">
+                                        <div>- Archives N°1 :</div>
+                                        <div>
+                                            <div>
+                                                <div>Cote<span style="color:red;">*</span> :</div>
+                                                <input type="text" name="archive_id">
+                                            </div>
+                                            <div>
+                                                <div>Folio :</div>
+                                                <input type="number" name="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="doc_demand_item">
+                                        <div>- Archives N°2:</div>
+                                        <div>
+                                            <div>
+                                                <div>Cote<span style="color:red;">*</span> :</div>
+                                                <input type="text" name="">
+                                            </div>
+                                            <div>
+                                                <div>Folio :</div>
+                                                <input type="text" name="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="doc_demand_item">
+                                        <div>- Archives N°3:</div>
+                                        <div>
+                                            <div>
+                                                <div>Cote<span style="color:red;">*</span> :</div>
+                                                <input type="text" name="">
+                                            </div>
+                                            <div>
+                                                <div>Folio :</div>
+                                                <input type="text" name="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        {% endif %}
+                    </div>
+
+                    <div class="archive_video_demand">
+                        <div class="video_demand_title">
+                            Nombre d'archives audio-visuelles demandées :
+                            <select name="" id="video_demand_count">
+                                <option value="2">2</option>
+                            </select>
+                        </div>
+                        {% if join %}
+                            <ul>
+                                <li>
+                                    <div class="video_demand_item">
+                                        <div>- Archives N°1 :</div>
+                                        <div>
+                                            <div>
+                                                <div>Cote<span style="color:red;">*</span> :</div>
+                                                <input type="text" name="">
+                                            </div>
+                                            <div>
+                                                <div>Folio :</div>
+                                                <input type="text" name="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="video_demand_item">
+                                        <div>- Archives N°2:</div>
+                                        <div>
+                                            <div>
+                                                <div>Cote<span style="color:red;">*</span> :</div>
+                                                <input type="text" name="">
+                                            </div>
+                                            <div>
+                                                <div>Folio :</div>
+                                                <input type="text" name="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="no_results">Vous n'avez pas d'archives audio-visuelles demandées.</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="vos_information">
+                        <div class="vos_information_title">
+                            Vos informations :
+                        </div>
+                        <div class="vos_information_info">
+                            Merci de renseignez au moins une méthode de contact pour que le owner de ce rendez-vous peut
+                            vous contacter et peut vous envoyer les archives que vous avez demandées dans ce
+                            rendez-vous.
+                        </div>
+                        <div>
+                            <div>
+                                <div>Nom :</div>
+                                {{ user.last_name }}</div>
+                            <div>
+                                <div>Prénom :</div>
+                                {{ user.first_name }}</div>
+                        </div>
+                        <div>
+                            <div>Adresse e-mail :</div>
+                            <input type="email" value="{{ user.mail }}">
+                        </div>
+                        <div>
+                            <div>Téléphone :</div>
+                            <input type="tel">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cancle_comfirm_div">
+                    <a href="#">Annuler</a>
+                    <div>Envoyer la demande</div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+{% endblock %}

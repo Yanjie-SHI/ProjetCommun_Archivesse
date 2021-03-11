@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: underline;
+}
+
+#reservation-detail-bg-image {
+    width: 100%;
+    height: 200%;
+    background-image: url('/static/image/bg_login.jpeg');
+    background-repeat: repeat-y;
+    filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+    -moz-background-size: 100% 200%;
+    background-size: 100% 200%;
+    position: absolute;
+    z-index: 30;
+    top: 0;
+    left: 0;
+    color: white;
+}
+
+.resv_detail_banner_img_div {
+    width: 100%;
+    height: 380px;
+    background-image: url('/static/image/bg_resv_detail.jpg');
+    background-repeat: no-repeat;
+    filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+    -moz-background-size: 100% 380px;
+    background-size: 100% 380px;
+    position: absolute;
+    z-index: 100;
+    top: -80px;
+    left: 0;
+}
+
+#reservation-detail-bg-image > div.reservation_detail {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 320px;
+    color: black;
+    font-size: 22px;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.return_link {
+    width: 300px;
+    margin: 20px 0;
+    color: #2b669a;
+    font-size: 24px;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.result_title {
+    height: 40px;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.resv_basic {
+    width: 80%;
+    margin-left: 5%;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.resv_basic > div {
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 5px;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.resv_basic > div > div {
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 5px;
+    width: 50%;
+    float: left;
+    text-align: left;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.input_inform {
+    color: #2b669a;
+    font-size: 24px;
+    margin-top: 30px;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.join_input_div {
+    width: 80%;
+    margin-left: 5%;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.join_input_div > div > div {
+    font-weight: bold;
+    height: 50px;
+    line-height: 50px;
+    margin: 10px 0;
+}
+
+#doc_demand_count, #video_demand_count {
+    width: 80px;
+    margin-left: 20px;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.join_input_div > div:nth-child(2),
+#reservation-detail-bg-image > div.reservation_detail > div.join_input_div > div:nth-child(3) {
+    margin-top: 50px;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.join_input_div > div > ul {
+    margin-left: 50px;
+    list-style: none;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.join_input_div > div > ul > li > div {
+    height: 100px;
+    line-height: 40px;
+    margin-top: 10px;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.join_input_div > div > ul > li > div > div:nth-child(2) {
+    margin-left: 10%;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.join_input_div > div > ul > li > div > div:nth-child(2) > div {
+    width: 50%;
+    float: left;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.join_input_div > div > ul > li > div > div:nth-child(2) > div > div {
+    width: 20%;
+    float: left;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.join_input_div > div > ul > li > div > div:nth-child(2) > div > input {
+    width: 70%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.join_input_div > div > div.no_results {
+    font-weight: normal;
+    text-align: center;
+    height: 100px;
+    line-height: 100px;
+    display: none;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.join_input_div > div.vos_information > div.vos_information_info {
+    margin-left: 5%;
+    color: #2b669a;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: normal;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.join_input_div > div.vos_information > div:nth-child(3),
+#reservation-detail-bg-image > div.reservation_detail > div.join_input_div > div.vos_information > div:nth-child(4),
+#reservation-detail-bg-image > div.reservation_detail > div.join_input_div > div.vos_information > div:nth-child(5) {
+    margin-left: 10%;
+    font-weight: normal;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.join_input_div > div.vos_information > div:nth-child(3) > div {
+    width: 45%;
+    float: left;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.join_input_div > div.vos_information > div:nth-child(3) > div > div {
+    width: 20%;
+    float: left;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.join_input_div > div.vos_information > div:nth-child(4) > div {
+    width: 200px;
+    text-align: justify;
+    float: left;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.join_input_div > div.vos_information > div:nth-child(4) > input {
+    width: 70%;
+    height: 40px;
+    line-height: 40px;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.cancle_comfirm_div {
+    width: 90%;
+    margin-left: 5%;
+    height: 60px;
+    line-height: 60px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.cancle_comfirm_div > a {
+    width: 100px;
+    float: left;
+    color: red;
+}
+
+#btn_send_request {
+    width: 330px;
+    float: right;
+    background-color: #2b669a;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}

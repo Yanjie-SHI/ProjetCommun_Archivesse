@@ -137,6 +137,10 @@
     background-image: url("/static/image/sc_reservation.png");
 }
 
+#sc_demand_img {
+    background-image: url("/static/image/sc_demand.png");
+}
+
 #sc_logout_img {
     background-image: url("/static/image/sc_logout.png");
 }

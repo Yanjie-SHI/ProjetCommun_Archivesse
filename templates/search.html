@@ -1,7 +1,7 @@
 {% extends "home_base.html" %}
 {% block body_main %}
     <form action="/search" method="post" id="searchForm">
-        <div id="search-bg-image">
+        <div id="search-bg-image" class="bg_fill_parent">
             <div id="content-main">
                 <div id="search_1">
                     <div id="search_1_particle">  <!-- 查询粒度选择 -->
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="search-input-div">
-                        <input type="text" placeholder="Rechercher" name="searchInput">
+                        <input type="text" placeholder="Rechercher" name="archiveKeyword">
                         <div>
                             <span class="glyphicon glyphicon-play btn-xs" aria-hidden="true"></span>
                             <span>Tous les mots saisis</span>
@@ -38,7 +38,7 @@
                             <!--digital archives--></span></div>
                         <div class="search-type-btn" id="search-type-producteurs" value="3"><span>Producteurs d'archives
                             <!--Archive producer--></span></div>
-                        <input type="hidden" name="archiveSearchType" id="archiveSearchType">
+                        <input type="hidden" name="archiveSearchType" id="archiveSearchType" value="1">
                     </div>
                 </div>
 
@@ -65,8 +65,8 @@
                         <script type="text/javascript">
                             $(function () {
                                 $('#datetimepicker1').datetimepicker({
-                                    format: 'YYYY-MM-DD',
-                                    locale: moment.locale('en-us')
+                                    format: 'DD/MM/YYYY',
+                                    locale: moment.locale('fr-FR')
                                 });
                             });
                         </script>
@@ -75,7 +75,8 @@
 
                 <div id="search_3">
                     <div class="search-input-div">
-                        <input type="text" placeholder="Taper le cote d'archives que vous voulez" name="searchInput">
+                        <input type="text" placeholder="Taper le cote d'archives que vous voulez"
+                               name="demandSearchInput">
                         <span class="input-group-addon">
                         <span class="glyphicon glyphicon-search btn-lg"></span>
                     </span>

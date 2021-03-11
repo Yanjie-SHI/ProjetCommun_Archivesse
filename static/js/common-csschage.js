@@ -95,7 +95,56 @@ $(document).ready(function () {
 
     /* archive detail page */
     $("#btn_star").hover(function () {
-        $("#btn_star").css("background-image", "url('/static/image/star-yellow.png')")
+        if ($("#btn_star").css("background-image").endsWith("/star-white.png\")")) {
+            $("#btn_star").css("background-image", "url(\"/static/image/star-yellow.png\")");
+        } else {
+            $("#btn_star").css("background-image", "url(\"/static/image/star-white.png\")");
+        }
+    });
+
+    /* reservation detail join page */
+    $("#doc_demand_count").change(function () {
+        let needed_li_count = $("#doc_demand_count").val();
+        if (needed_li_count == "0") {
+            $("#doc_archive_input_ul").css("display", "none");
+            $("#no_doc_archive_demand_notice_div").css("display", "block");
+        } else {
+            $("#doc_archive_input_ul").children("li").each(function (index) {
+                $("#no_doc_archive_demand_notice_div").css("display", "none");
+                $("#doc_archive_input_ul").css("display", "block");
+                let li_id = $(this).attr("id");
+                if (li_id.substr(7) > needed_li_count) {
+                    $(this).css("display", "none");
+                } else {
+                    if ($(this).css("display") == "none") {
+                        $(this).css("display", "block");
+                    }
+                    ;
+                }
+            });
+        }
+    });
+
+    $("#video_demand_count").change(function () {
+        let needed_li_count = $("#video_demand_count").val();
+        if (needed_li_count == "0") {
+            $("#video_archive_input_ul").css("display", "none");
+            $("#no_video_archive_demand_notice_div").css("display", "block");
+        } else {
+            $("#video_archive_input_ul").children("li").each(function (index) {
+                $("#no_video_archive_demand_notice_div").css("display", "none");
+                $("#video_archive_input_ul").css("display", "block");
+                let li_id = $(this).attr("id");
+                if (li_id.substr(9) > needed_li_count) {
+                    $(this).css("display", "none");
+                } else {
+                    if ($(this).css("display") == "none") {
+                        $(this).css("display", "block");
+                    }
+                    ;
+                }
+            });
+        }
     });
 
     /* login page */
@@ -131,6 +180,12 @@ $(document).ready(function () {
     });
     $("#link_to_reservation").mouseleave(function () {
         $("#link_to_reservation").removeClass("mouse_over_highlight");
+    });
+    $("#link_to_demand").hover(function () {
+        $("#link_to_demand").addClass("mouse_over_highlight");
+    });
+    $("#link_to_demand").mouseleave(function () {
+        $("#link_to_demand").removeClass("mouse_over_highlight");
     });
     $("#link_to_logout").hover(function () {
         $("#link_to_logout").addClass("mouse_over_highlight");

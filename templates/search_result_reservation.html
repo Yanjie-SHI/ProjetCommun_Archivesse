@@ -5,7 +5,7 @@
             <div id="result_search_2">
                 <div>
                     <span>Centre</span>
-                    <input type="text" name="museumName">
+                    <input type="text" name="museumName" value="{{ input_museum_name }}">
                 </div>
                 <div>
                     <span>Fin de Date</span>
@@ -13,7 +13,8 @@
                     <div class="form-group">
                         <!--指定 date标记-->
                         <div class='input-group date' id='datetimepicker1'>
-                            <input type='text' class="form-control" name="resvEndDate"/>
+                            <input type='text' class="form-control" name="resvEndDate"
+                                   value="{{ input_resv_end_date }}"/>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar btn-lg"></span>
                             </span>
@@ -25,8 +26,8 @@
                     <script type="text/javascript">
                         $(function () {
                             $('#datetimepicker1').datetimepicker({
-                                format: 'YYYY-MM-DD',
-                                locale: moment.locale('en-us')
+                                format: 'DD/MM/YYYY',
+                                locale: moment.locale('fr-FR')
                             });
                         });
                     </script>
@@ -52,7 +53,8 @@
                     <div class="form-group">
                         <!--指定 date标记-->
                         <div class='input-group date' id='datetimepicker2'>
-                            <input type='text' class="form-control" name="resvEndDate"/>
+                            <input type='text' class="form-control" name="resvEndDate"
+                                   value="{{ input_resv_end_date }}"/>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar btn-sm"></span>
                             </span>
@@ -61,8 +63,8 @@
                     <script type="text/javascript">
                         $(function () {
                             $('#datetimepicker2').datetimepicker({
-                                format: 'YYYY-MM-DD',
-                                locale: moment.locale('en-us')
+                                format: 'DD/MM/YYYY',
+                                locale: moment.locale('fr-FR')
                             });
                         });
                     </script>
@@ -112,15 +114,17 @@
                     <div class="result_title">{{ item.museum.name }}</div>
                     <div class="code_producer_location">
                         <div>Proposé par : {{ item.creator.username }}</div>
-                        <div>Fin de date : {{ item.expire_date }}</div>
-                        <div>Nombre document disponible : {{ item.museum.document_limit }}</div>
-                        <div>Nombre vidéo disponible :{{ item.museum.video_limit }}</div>
+                        <div>Fin de date : {{ item.expire_date|date:"d/m/Y" }}</div>
+                        <div>Nombre document disponible : {% if item.status == 1 %}0{% else %}
+                            {{ item.available_doc_archive_count }}{% endif %}</div>
+                        <div>Nombre vidéo disponible : {% if item.status == 1 %}0{% else %}
+                            {{ item.available_video_archive_count }}{% endif %}</div>
                     </div>
                     <div class="resv_status_div">
                         {% if item.status == 1 %}
                             <a href="#" class="resv_status_complete">Complet</a>
                         {% else %}
-                            <a href="/reservationdetail?id={{ item.id }}" class="resv_status_incomplete">Réserver</a>
+                            <a href="/joinreservation?id={{ item.id }}" class="resv_status_incomplete">Réserver</a>
                         {% endif %}
                     </div>
                 </div>
@@ -128,6 +132,7 @@
 
             <div class="create_resv_div">
                 <div>Je veux proposer un rendez-vous</div>
+                <div>Je veux faire une demande</div>
             </div>
 
             <div class="pager">

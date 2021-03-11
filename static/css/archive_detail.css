@@ -51,19 +51,6 @@ a {
     left: 0;
 }
 
-.resv_detail_banner_img_div {
-    width: 100%;
-    height: 380px;
-    background-image: url('/static/image/bg_resv_detail.jpg');
-    background-repeat: no-repeat;
-    filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
-    -moz-background-size: 100% 380px;
-    background-size: 100% 380px;
-    position: absolute;
-    z-index: 100;
-    top: -80px;
-    left: 0;
-}
 
 #archive-detail-bg-image > div.archive_detail {
     margin-top: 330px;
@@ -71,6 +58,12 @@ a {
     color: black;
 }
 
+#archive-detail-bg-image > div.archive_detail > div > div.return_link {
+    width: 300px;
+    margin: 0 0 30px 0;
+    color: #2b669a;
+    font-size: 24px;
+}
 
 .result_general {
     width: 96%;
@@ -83,7 +76,7 @@ a {
     padding: 20px 30px;
 }
 
-.result_general > .result_title {
+.result_general > div:nth-child(2) > .result_title {
     width: 1400px;
     height: 40px;
     font-size: 28px;
@@ -92,9 +85,33 @@ a {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    float: left;
 }
 
+.result_general > div:nth-child(2) > .star_div {
+    width: 100px;
+    height: 80px;
+    line-height: 80px;
+    float: right;
+}
+
+#btn_star {
+    width: 60px;
+    height: 60px;
+    float: right;
+    margin-right: 80px;
+    background-image: url("/static/image/star-white.png");
+    background-repeat: repeat-y;
+    filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+    -moz-background-size: 100% 100%;
+    background-size: 100% 100%;
+    z-index: 50;
+    cursor: pointer;
+}
+
+
 .result_general > .ar_detail {
+    clear: both;
     margin-left: 30px;
     font-size: 22px;
 }
@@ -121,23 +138,3 @@ a {
     text-align: justify;
 }
 
-.star_div {
-    width: 100%;
-    height: 80px;
-    line-height: 80px;
-    padding-top: 30px;
-    clear: both;
-}
-
-#btn_star {
-    width: 60px;
-    height: 60px;
-    float: right;
-    margin-right: 20px;
-    background-image: url("/static/image/star-white.png");
-    background-repeat: repeat-y;
-    filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
-    -moz-background-size: 100% 100%;
-    background-size: 100% 100%;
-    z-index: 50;
-}

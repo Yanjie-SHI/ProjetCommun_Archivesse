@@ -16,11 +16,11 @@
                         <div>Civilité <span style="color: red">*</span></div>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                <input type="radio" name="genderRadios" id="optionsRadios1" value="1" checked>
                                 M.
                             </label>
                             <label>
-                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                <input type="radio" name="genderRadios" id="optionsRadios2" value="2">
                                 Mme
                             </label>
                         </div>
@@ -37,11 +37,14 @@
                         <span>Votre pays</span><br/>
                         <select name="pays">
                             <option value="">Veuillez sélectionner un pays</option>
+                            {% for item in list_data_init_country %}
+                                <option value="{{ item.key }}">{{ item.display_name }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                     <div>
                         <span>Votre code postal (en chiffres et/ou lettres suivant le pays)</span><br/>
-                        <input type="text" name="postal_code">
+                        <input type="text" name="post_code">
                     </div>
                     <ul>
                         <li>Vous souhaitez accéder à des fichiers en accès réservé ? Veuillez compléter le <span

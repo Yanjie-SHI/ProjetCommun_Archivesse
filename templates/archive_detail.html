@@ -7,10 +7,21 @@
 
             <div class="archive_detail">
                 <div class="result_general">
-                    <div class="result_title">{{ archive.title }}</div>
+                    <div class="return_link">
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="javascript:history.back(-1)">Retour au
+                        résultat</a>
+                    </div>
+                    <div>
+                        <div class="result_title">{{ archive.title }}</div>
+                        <div class="star_div">
+                            <div id="btn_star"
+                                 {% if favorite_flag == "1" %}style="background-image: url('/static/image/star-yellow.png')"{% endif %}></div>
+                            <input type="hidden" id="favorite_flag"
+                                   value="{% if favorite_flag == "1" %}true{% else %}false{% endif %}">
+                        </div>
+                    </div>
                     <div class="ar_detail">
                         <div>Cotes : {{ archive.id }}</div>
-                        <input type="hidden" name="archive_id" value="{{ archive.id }}">
                         <div>Producteur : {{ archive.author }}</div>
                         <div>Type : {{ archive.type }}</div>
                         <div>Localisation : {{ archive.museum.address }}</div>
@@ -19,9 +30,7 @@
                             <div>Présentation de contenue :</div>
                             <div> {{ archive.description }}</div>
                         </div>
-                    </div>
-                    <div class="star_div">
-                        <div id="btn_star"></div>
+                        <input type="hidden" name="archive_id" value="{{ archive.id }}">
                     </div>
                 </div>
 

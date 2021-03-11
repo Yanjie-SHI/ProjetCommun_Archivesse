@@ -1,10 +1,11 @@
 {% extends "home_base.html" %}
+{% load encode %}
 {% block body_main %}
     <div id="search-result-bg-image">
         <div class="search_div">
             <div id="result_search_1">
                 <div class="search-input-div">
-                    <input type="text" placeholder="Rechercher">
+                    <input type="text" placeholder="Rechercher" value="{{ search_input }}">
                     <div>
                         <span class="glyphicon glyphicon-play btn-xs" aria-hidden="true"></span>
                         <span>Tous les mots saisis</span>
@@ -15,9 +16,12 @@
                 </span>
                 </div>
                 <div class="search-type-btns-div">
-                    <div class="search-type-btn" id="search-type-toutes"><span>Toutes les archives</span></div>
-                    <div class="search-type-btn" id="search-type-numeric"><span>Archives numérisées</span></div>
-                    <div class="search-type-btn" id="search-type-producteurs"><span>Producteurs d'archives</span></div>
+                    <div class="search-type-btn {% if archive_search_type == "1" %}search-type-btn-selected{% endif %}"
+                         id="search-type-toutes"><span>Toutes les archives</span></div>
+                    <div class="search-type-btn {% if archive_search_type == "2" %}search-type-btn-selected{% endif %}"
+                         id="search-type-numeric"><span>Archives numérisées</span></div>
+                    <div class="search-type-btn {% if archive_search_type == "3" %}search-type-btn-selected{% endif %}"
+                         id="search-type-producteurs"><span>Producteurs d'archives</span></div>
                 </div>
             </div>
         </div>
@@ -116,10 +120,11 @@
                     <div class="code_producer_location">
                         <div>Cotes : {{ item.id }}</div>
                         <div>Producteur : {{ item.author }}</div>
-                        <div>Localisation : {{ item.museum.address }}</div>
+                        <div>Localisation : {{ item.museum.address }} / {{ item.museum.post_code }}
+                            / {{ item.museum.city }}</div>
                     </div>
                     <div class="view_detail_link">
-                        <a href="/archivedetail?id={{ item.id }}">Voir les détails</a>
+                        <a href="/archivedetail?id={{ item.id|encode }}">Voir les détails</a>
                     </div>
                 </div>
             {% endfor %}

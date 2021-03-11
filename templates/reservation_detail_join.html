@@ -1,0 +1,146 @@
+{% extends "home_base.html" %}
+{% block body_main %}
+    {% load mrange %}
+    <form id="form_join_reservation" action="/joinreservation" method="post">
+        <div id="reservation-detail-bg-image">
+            <div class="resv_detail_banner_img_div">
+            </div>
+
+            <div class="reservation_detail">
+                <div class="return_link">
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="javascript:history.back(-1)">Retour au résultat</a>
+                </div>
+                <div class="result_title">Aperçu de rendez-vous</div>
+                <div class="resv_basic">
+                    <div>Nom de centre : {{ reservation.museum.name }}</div>
+                    <div>Adresse : {{ reservation.museum.address }}</div>
+                    <div>
+                        <div>Proposé par : {{ reservation.creator.username }}</div>
+                        <div>Fin de date : {{ reservation.expire_date|date:"d/m/Y" }}</div>
+                    </div>
+                    <div>
+                        <div>Nombre document disponible : {{ available_doc_archive_count }}</div>
+                        <div>Nombre vidéo disponible : {{ available_video_archive_count }}</div>
+                    </div>
+                    <input type="hidden" name="resv_id" value="{{ reservation.id }}">
+                </div>
+                <div class="input_inform">Merci de compléter les informations suivantes pour finaliser votre
+                    rendez-vous
+                </div>
+                <div class="join_input_div">
+                    <div class="archive_document_demand">
+                        <div class="document_demand_title">
+                            Nombre d'archives documentaires demandées :
+                            <select name="needed_doc_demand_count" id="doc_demand_count">
+                                {% if available_doc_archive_count > 0 %}
+                                    <option value="0">0</option>
+                                    {% for i in available_doc_archive_count|mrange %}
+                                        <option value="{{ i|add:1 }}"
+                                                {% if i|add:1 == available_doc_archive_count %}selected{% endif %}>{{ i|add:1 }}</option>
+                                    {% endfor %}
+                                {% else %}
+                                    <option value="0">0</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                        {% if available_doc_archive_count > 0 %}
+                            <ul id="doc_archive_input_ul">
+                                {% for j in available_doc_archive_count|mrange %}
+                                    <li id="li_doc_{{ j|add:1 }}">
+                                        <div class="doc_demand_item">
+                                            <div>- Archives N°{{ j|add:1 }} :</div>
+                                            <div>
+                                                <div>
+                                                    <div>Cote<span style="color:red;">*</span> :</div>
+                                                    <input type="text" name="doc_archive_id_{{ j|add:1 }}">
+                                                </div>
+                                                <div>
+                                                    <div>Folio :</div>
+                                                    <input type="number" name="doc_folio_{{ j|add:1 }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        <div class="no_results" id="no_doc_archive_demand_notice_div">Vous n'avez pas d'archives
+                            documentaires demandées.
+                        </div>
+                    </div>
+
+                    <div class="archive_video_demand">
+                        <div class="video_demand_title">
+                            Nombre d'archives audio-visuelles demandées :
+                            <select name="needed_video_demand_count" id="video_demand_count">
+                                {% if available_video_archive_count > 0 %}
+                                    <option value="0">0</option>
+                                    {% for i in available_video_archive_count|mrange %}
+                                        <option value="{{ i|add:1 }}"
+                                                {% if i|add:1 == available_video_archive_count %}selected{% endif %}>{{ i|add:1 }}</option>
+                                    {% endfor %}
+                                {% else %}
+                                    <option value="0">0</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                        {% if available_video_archive_count > 0 %}
+                            <ul id="video_archive_input_ul">
+                                {% for i in available_video_archive_count|mrange %}
+                                    <li id="li_video_{{ i|add:1 }}">
+                                        <div class="video_demand_item">
+                                            <div>- Archives N°{{ i|add:1 }} :</div>
+                                            <div>
+                                                <div>
+                                                    <div>Cote<span style="color:red;">*</span> :</div>
+                                                    <input type="text" name="video_archive_id_{{ i|add:1 }}">
+                                                </div>
+                                                <div>
+                                                    <div>Ouvert :</div>
+                                                    <input type="text" name="video_ouvert_{{ i|add:1 }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        <div class="no_results" id="no_video_archive_demand_notice_div">Vous n'avez pas d'archives
+                            audio-visuelles demandées.
+                        </div>
+                    </div>
+
+                    <div class="vos_information">
+                        <div class="vos_information_title">
+                            Vos informations :
+                        </div>
+                        <div class="vos_information_info">
+                            Merci de renseignez au moins une méthode de contact pour que le owner de ce rendez-vous peut
+                            vous contacter et peut vous envoyer les archives que vous avez demandées dans ce
+                            rendez-vous.
+                        </div>
+                        <div>
+                            <div>
+                                <div>Nom :</div>
+                                {{ user.last_name }}</div>
+                            <div>
+                                <div>Prénom :</div>
+                                {{ user.first_name }}</div>
+                        </div>
+                        <div>
+                            <div>Adresse e-mail :</div>
+                            <input type="email" name="receiver_email" value="
+                                    {% if user.receiver_mail %}{{ user.receiver_mail }}{% else %}{{ user.mail }}{% endif %}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cancle_comfirm_div">
+                    <a href="#">Annuler</a>
+                    <div id="btn_send_request">Envoyer la demande</div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+{% endblock %}

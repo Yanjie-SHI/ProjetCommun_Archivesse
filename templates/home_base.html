@@ -5,6 +5,7 @@
     <title>Historien</title>
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="/static/bootstrap/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="/static/css/common.css">
     <link rel="stylesheet" href="/static/css/search.css">
     <link rel="stylesheet" href="/static/css/login.css">
     <link rel="stylesheet" href="/static/css/register.css">
@@ -15,6 +16,7 @@
     <link rel="stylesheet" href="/static/css/reservation.css">
     <link rel="stylesheet" href="/static/css/search_result.css">
     <link rel="stylesheet" href="/static/css/archive_detail.css">
+    <link rel="stylesheet" href="/static/css/reservation_detail_join.css">
     <script src="/static/js/jquery-3.2.1.min.js"></script>
     <script src="/static/bootstrap/js/bootstrap.min.js"></script>
     <script src="/static/bootstrap/js/moment-with-locales.js"></script>
@@ -29,10 +31,12 @@
         <span>Archivesses</span>
     </div>
     <div id="header-right">
-        <span{% if request.session.login_user_id != '' %} id="link_to_selfcenter" style="cursor:pointer;"{% endif %}>Espace Personnel</span>
+        <span{% if user %} id="link_to_selfcenter" style="cursor:pointer;"{% endif %}>Espace Personnel</span>
         <span>-</span>
-        {% if request.session.login_user_id %}<span>{{ user.u_username }}</span>{% else %}
-            <span id="link_to_login">Me connecter</span>{% endif %}
+        {% if request.session.login_user_id == None %}<span id="link_to_login">Me connecter</span>{% else %}
+            <span>{{ user.username }}</span>
+        {% endif %}
+        <input type="hidden" id="session_login_user_id" value="{{ request.session.login_user_id }}">
     </div>
 </div>
 

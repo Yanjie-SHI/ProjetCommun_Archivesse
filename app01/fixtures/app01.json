@@ -12,7 +12,8 @@
             "nation": "Chine",
             "city": "Shanghai",
             "address": "16 rue Huanlong",
-            "post_code": 200125
+            "post_code": 200125,
+            "receiver_mail": ""
         }
     },
     {
@@ -28,7 +29,8 @@
             "nation": "France",
             "city": "Ivry-sur-Seine",
             "address": "132 boulevard de Stalingrad",
-            "post_code": 94200
+            "post_code": 94200,
+            "receiver_mail": ""
         }
     },
     {
@@ -44,7 +46,8 @@
             "nation": "France",
             "city": "Paris",
             "address": "90 rue de Tolbiac",
-            "post_code": 75013
+            "post_code": 75013,
+            "receiver_mail": ""
         }
     },
     {
@@ -60,7 +63,8 @@
             "nation": "France",
             "city": "Paris",
             "address": "90 rue de Tolbiac",
-            "post_code": 75013
+            "post_code": 75013,
+            "receiver_mail": ""
         }
     },
     {
@@ -76,7 +80,8 @@
             "nation": "France",
             "city": "Marseilles",
             "address": "90 rue de Tolbiac",
-            "post_code": 75013
+            "post_code": 75013,
+            "receiver_mail": ""
         }
     },
     {
@@ -92,7 +97,8 @@
             "nation": "Allemagne",
             "city": "Berlin",
             "address": "28 rue Akazienstra\u00dfe",
-            "post_code": 10823
+            "post_code": 10823,
+            "receiver_mail": ""
         }
     },
     {
@@ -108,7 +114,8 @@
             "nation": "Belgique",
             "city": "Bruxelles",
             "address": "4 Avenue Palmerston",
-            "post_code": 1000
+            "post_code": 1000,
+            "receiver_mail": ""
         }
     },
     {
@@ -124,7 +131,8 @@
             "nation": "\u00c9tats-Unis",
             "city": "Westmont",
             "address": "921 Pasquinelli Dr",
-            "post_code": 60559
+            "post_code": 60559,
+            "receiver_mail": ""
         }
     },
     {
@@ -140,7 +148,8 @@
             "nation": "France",
             "city": "Paris",
             "address": "90 rue de Tolbiac",
-            "post_code": 75013
+            "post_code": 75013,
+            "receiver_mail": ""
         }
     },
     {
@@ -156,7 +165,8 @@
             "nation": "Gr\u00e8ce",
             "city": "Larisa",
             "address": "2 rue Papandreou",
-            "post_code": 41334
+            "post_code": 41334,
+            "receiver_mail": ""
         }
     },
     {
@@ -442,9 +452,10 @@
         "model": "app01.res_dem_arch",
         "pk": 1,
         "fields": {
-            "reservation": 1,
-            "resv_user": 1,
-            "archive": "10/EDT/204"
+            "reservation": 3,
+            "resv_user": 2,
+            "archive": "19770932/1",
+            "folio": null
         }
     },
     {
@@ -453,7 +464,8 @@
         "fields": {
             "reservation": 3,
             "resv_user": 7,
-            "archive": "10/EDT/204"
+            "archive": "19770932/1",
+            "folio": null
         }
     },
     {
@@ -462,25 +474,28 @@
         "fields": {
             "reservation": 3,
             "resv_user": 4,
-            "archive": "122/J/1273"
+            "archive": "122/J/1273",
+            "folio": null
         }
     },
     {
         "model": "app01.res_dem_arch",
         "pk": 4,
         "fields": {
-            "reservation": 2,
-            "resv_user": 6,
-            "archive": "122/J/1273"
+            "reservation": 3,
+            "resv_user": 3,
+            "archive": "122/J/1273",
+            "folio": null
         }
     },
     {
         "model": "app01.res_dem_arch",
         "pk": 5,
         "fields": {
-            "reservation": 3,
-            "resv_user": 5,
-            "archive": "105/FI/1337"
+            "reservation": 4,
+            "resv_user": 6,
+            "archive": "105/FI/1337",
+            "folio": null
         }
     },
     {
@@ -489,7 +504,8 @@
         "fields": {
             "reservation": 4,
             "resv_user": 2,
-            "archive": "MC/ET/I/64"
+            "archive": "MC/ET/I/64",
+            "folio": null
         }
     }
 ]

@@ -23,7 +23,8 @@ urlpatterns = [
     url(r'^$', views.welcome),
     url(r'^search', views.search),
     url(r'^archivedetail', views.archive_detail),
-    url(r'^reservationdetail', views.reservation_detail),
+    url(r'^createreservation', views.create_reservation),
+    url(r'^joinreservation', views.join_reservation),
     url(r'^login', views.login),
     url(r'^register', views.register),
     url(r'^selfcenter', views.self_center),
@@ -31,6 +32,7 @@ urlpatterns = [
     url(r'^profile', views.profile),
     url(r'^favorites', views.favorites),
     url(r'^addfavorites', views.add_favorites),
+    url(r'^removefavorites', views.remove_favorites),
     url(r'^reservation', views.reservation),
     url(r'^logout', views.logout),
 ]

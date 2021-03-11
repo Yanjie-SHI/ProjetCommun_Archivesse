@@ -18,15 +18,45 @@ $(document).ready(function () {
 
 
     /* archive detail page */
-    $("#btn_star").hover(function () {
-        $("#btn_star").css("background-image", "url('/static/image/star-yellow.png')");
-        $("#form_add_favorites").submit();
+    $("#btn_star").click(function () {
+        if ($("#session_login_user_id").val() == '') {
+            $(location).attr("href", "/login");
+        } else {
+            if ($("#favorite_flag").val() == "false") {
+                $("#form_add_favorites").submit();
+            } else {
+                $("#form_add_favorites").attr("action", "/removefavorites");
+                $("#form_add_favorites").submit();
+            }
+        }
+    });
+
+    /* reservation detail join page */
+    $("#btn_send_request").click(function () {
+        $.ajax({
+            url: "/joinreservation",
+            type: "POST",
+            dataType: "json",//预期服务器返回的数据类型
+            data: $('#form_join_reservation').serialize(),
+            success: function (result) {
+                if (result.msg == "success") {
+                    alert("Vous avez réservé avec succès");
+                }
+            },
+            error: function () {
+
+            }
+        });
     });
 
 
     /* login page */
     $("#btn_login").click(function () {
         $("#form_login").submit();
+    });
+
+    $("#login-bg-image > div:nth-child(6) > div:nth-child(3)").click(function () {
+        $(location).attr("href", "/register");
     });
 
 

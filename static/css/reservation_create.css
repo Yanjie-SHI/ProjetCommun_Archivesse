@@ -1,0 +1,425 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: underline;
+}
+
+#reservation-create-bg-image {
+    width: 100%;
+    height: 200%;
+    background-image: url('/static/image/bg_login.jpeg');
+    background-repeat: repeat-y;
+    filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+    -moz-background-size: 100% 200%;
+    background-size: 100% 200%;
+    position: absolute;
+    z-index: 30;
+    top: 0;
+    left: 0;
+    color: white;
+}
+
+.resv_detail_banner_img_div {
+    width: 100%;
+    height: 380px;
+    background-image: url('/static/image/bg_resv_detail.jpg');
+    background-repeat: no-repeat;
+    filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
+    -moz-background-size: 100% 380px;
+    background-size: 100% 380px;
+    position: absolute;
+    z-index: 100;
+    top: -80px;
+    left: 0;
+}
+
+#reservation-create-bg-image > div.reservation_detail {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 320px;
+    color: black;
+    font-size: 22px;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.return_link {
+    width: 300px;
+    margin: 20px 0;
+    color: #2b669a;
+    font-size: 24px;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.result_title {
+    height: 40px;
+    font-size: 28px;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.resv_basic {
+    width: 80%;
+    margin-left: 5%;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.resv_basic > div {
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 5px;
+}
+
+#resv_create_detail > div:nth-child(1) > div {
+    width: 15% !important;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.resv_basic > div > div {
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 5px;
+    width: 50%;
+    float: left;
+    text-align: left;
+}
+
+#datetimepicker3 {
+    width: 340px;
+}
+
+#datetimepicker3 > input {
+    height: 41px;
+    line-height: 42px;
+    font-size: 22px;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.input_inform {
+    color: #2b669a;
+    font-size: 24px;
+    margin-top: 30px;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.join_input_div {
+    width: 80%;
+    margin-left: 5%;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.join_input_div > div > div {
+    font-weight: bold;
+    height: 50px;
+    line-height: 50px;
+    margin: 10px 0;
+}
+
+#doc_demand_count, #video_demand_count {
+    width: 80px;
+    margin-left: 20px;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.join_input_div > div:nth-child(2),
+#reservation-create-bg-image > div.reservation_detail > div.join_input_div > div:nth-child(3) {
+    margin-top: 50px;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.join_input_div > div > ul {
+    margin-left: 50px;
+    list-style: none;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.join_input_div > div > ul > li > div {
+    height: 100px;
+    line-height: 40px;
+    margin-top: 10px;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.join_input_div > div > ul > li > div > div:nth-child(2) {
+    margin-left: 10%;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.join_input_div > div > ul > li > div > div:nth-child(2) > div {
+    width: 50%;
+    float: left;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.join_input_div > div > ul > li > div > div:nth-child(2) > div > div {
+    width: 20%;
+    float: left;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.join_input_div > div > ul > li > div > div:nth-child(2) > div > input {
+    width: 70%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.join_input_div > div > div.no_results {
+    font-weight: normal;
+    text-align: center;
+    height: 100px;
+    line-height: 100px;
+    display: none;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.join_input_div > div.vos_information > div.vos_information_info {
+    margin-left: 5%;
+    color: #2b669a;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: normal;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.join_input_div > div.vos_information > div:nth-child(3),
+#reservation-create-bg-image > div.reservation_detail > div.join_input_div > div.vos_information > div:nth-child(4),
+#reservation-create-bg-image > div.reservation_detail > div.join_input_div > div.vos_information > div:nth-child(5) {
+    margin-left: 10%;
+    font-weight: normal;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.join_input_div > div.vos_information > div:nth-child(3) > div {
+    width: 45%;
+    float: left;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.join_input_div > div.vos_information > div:nth-child(3) > div > div {
+    width: 20%;
+    float: left;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.join_input_div > div.vos_information > div:nth-child(4) > div {
+    width: 200px;
+    text-align: justify;
+    float: left;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.join_input_div > div.vos_information > div:nth-child(4) > input {
+    width: 70%;
+    height: 40px;
+    line-height: 40px;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.cancle_comfirm_div {
+    width: 90%;
+    margin-left: 5%;
+    height: 60px;
+    line-height: 60px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+#reservation-create-bg-image > div.reservation_detail > div.cancle_comfirm_div > a {
+    width: 100px;
+    float: left;
+    color: red;
+}
+
+#btn_send_request {
+    width: 330px;
+    float: right;
+    background-color: #2b669a;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+/* reservation create page */
+#resv_create_findedate {
+    width: 50%;
+    float: left;
+}
+
+#resv_create_findedate > div:nth-child(1) {
+    width: 20%;
+    float: left;
+}
+
+#resv_create_findedate > div:nth-child(2) {
+    width: 78%;
+    float: left;
+}
+
+#resv_create_detail > div:nth-child(3) > div:nth-child(3) {
+    width: 100% !important;
+}
+
+#resv_create_detail > div:nth-child(3) > div:nth-child(3) > div {
+    width: 50%;
+    float: left;
+}
+
+#resv_create_detail > div.input_inform {
+    color: #2b669a;
+    font-size: 26px;
+    margin-top: 60px;
+    width: 100%;
+    margin-left: -80px;
+}
+
+#resv_create_detail > div.join_input_div {
+    width: 100%;
+}
+
+#resv_create_detail > div.join_input_div > div.archive_document_demand {
+    width: 100% !important;
+    float: none !important;
+}
+
+#resv_create_detail > div.join_input_div > div.archive_video_demand {
+    width: 100% !important;
+    margin-top: 600px;
+    float: none !important;
+}
+
+#resv_create_detail > div.join_input_div > div.archive_document_demand > div.document_demand_title {
+    width: 100% !important;
+    font-weight: bold;
+    height: 50px;
+    line-height: 50px;
+    margin: 10px 0;
+}
+
+#resv_create_detail > div.join_input_div > div.archive_video_demand > div.video_demand_title {
+    width: 100% !important;
+    font-weight: bold;
+    height: 50px;
+    line-height: 50px;
+    margin: 10px 0;
+}
+
+#doc_archive_input_ul {
+    margin-left: 50px;
+    list-style: none;
+}
+
+#doc_archive_input_ul > li > div {
+    height: 100px;
+    line-height: 40px;
+    margin-top: 10px;
+}
+
+#doc_archive_input_ul > li > div > div:nth-child(2) {
+    margin-left: 10%;
+}
+
+#doc_archive_input_ul > li > div > div:nth-child(2) > div {
+    width: 50%;
+    float: left;
+}
+
+#doc_archive_input_ul > li > div > div:nth-child(2) > div > div {
+    width: 20%;
+    float: left;
+}
+
+#doc_archive_input_ul > li > div > div:nth-child(2) > div > input {
+    width: 70%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+#no_doc_archive_demand_notice_div, #no_video_archive_demand_notice_div {
+    display: none;
+}
+
+#video_archive_input_ul {
+    margin-left: 50px;
+    list-style: none;
+}
+
+#video_archive_input_ul > li > div {
+    height: 100px;
+    line-height: 40px;
+    margin-top: 10px;
+}
+
+#video_archive_input_ul > li > div > div:nth-child(2) {
+    margin-left: 10%;
+}
+
+#video_archive_input_ul > li > div > div:nth-child(2) > div {
+    width: 50%;
+    float: left;
+}
+
+#video_archive_input_ul > li > div > div:nth-child(2) > div > div {
+    width: 20%;
+    float: left;
+}
+
+#video_archive_input_ul > li > div > div:nth-child(2) > div > input {
+    width: 70%;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+}
+
+#resv_create_detail > div.join_input_div > div.vos_information {
+    width: 100% !important;
+    margin-top: 350px;
+    float: none !important;
+}
+
+#resv_create_detail > div.join_input_div > div.vos_information > div.vos_information_info {
+    margin-left: 5%;
+    color: #2b669a;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: normal;
+}
+
+#resv_create_detail > div.join_input_div > div.vos_information > div:nth-child(3),
+#resv_create_detail > div.join_input_div > div.vos_information > div:nth-child(4),
+#resv_create_detail > div.join_input_div > div.vos_information > div:nth-child(5) {
+    margin-left: 10%;
+    font-weight: normal;
+}
+
+#resv_create_detail > div.join_input_div > div.vos_information > div:nth-child(3) > div {
+    width: 45%;
+    float: left;
+}
+
+#resv_create_detail > div.join_input_div > div.vos_information > div:nth-child(3) > div > div {
+    width: 20%;
+    float: left;
+}
+
+#resv_create_detail > div.join_input_div > div.vos_information > div:nth-child(4) > div {
+    width: 200px;
+    text-align: justify;
+    float: left;
+}
+
+#resv_create_detail > div.join_input_div > div.vos_information > div:nth-child(4) > input {
+    width: 70%;
+    height: 40px;
+    line-height: 40px;
+}
+
+#resv_create_detail > div.cancle_comfirm_div {
+    width: 90%;
+    margin-left: 5%;
+    height: 60px;
+    line-height: 60px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    border: 1px solid red;
+}
+
+#resv_create_detail > div.cancle_comfirm_div > a {
+    width: 100px;
+    float: left;
+    color: red;
+}
+
+#btn_create_request {
+    width: 300px;
+    float: right;
+    background-color: #2b669a;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}

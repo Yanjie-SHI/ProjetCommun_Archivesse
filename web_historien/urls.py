@@ -16,23 +16,30 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from app01 import views
+from app01 import views, views_reservation as views_resv, utils
 
 urlpatterns = [
     url('admin/', admin.site.urls),
     url(r'^$', views.welcome),
     url(r'^search', views.search),
-    url(r'^archivedetail', views.archive_detail),
-    url(r'^createreservation', views.create_reservation),
-    url(r'^joinreservation', views.join_reservation),
+    url(r'^archive_detail', views.archive_detail),
     url(r'^login', views.login),
     url(r'^register', views.register),
     url(r'^selfcenter', views.self_center),
     url(r'^messagelist', views.message_list),
     url(r'^profile', views.profile),
     url(r'^favorites', views.favorites),
-    url(r'^addfavorites', views.add_favorites),
-    url(r'^removefavorites', views.remove_favorites),
-    url(r'^reservation', views.reservation),
+    url(r'^add_favorites', views.add_favorites),
+    url(r'^remove_favorites', views.remove_favorites),
     url(r'^logout', views.logout),
+
+    url(r'^to_my_reservation', views_resv.to_my_reservation_list),
+    url(r'^to_resv_detail_creatorview', views_resv.to_resv_detail_creatorview),
+    url(r'^to_create_resv', views_resv.to_create_reservation),
+    url(r'^create_resv', views_resv.create_reservation),
+    url(r'^join_resv', views_resv.join_reservation),
+    url(r'^undo_join_resv', views_resv.undo_join_reservation),
+    url(r'^confirm_sent_receive_status', views_resv.confirm_sent_receive_status),
+
+    url(r'^fetchmuseumaddress', utils.fetch_museum_address),
 ]

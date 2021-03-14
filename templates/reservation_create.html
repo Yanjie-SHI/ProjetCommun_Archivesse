@@ -1,8 +1,8 @@
 {% extends "home_base.html" %}
 {% block body_main %}
     {% load mrange %}
-    <form id="form_create_reservation" action="/createreservation" method="post">
-        <div id="reservation-detail-bg-image">
+    <form id="form_create_reservation" action="/create_resv" method="post">
+        <div id="reservation-create-bg-image">
             <div class="resv_detail_banner_img_div">
             </div>
 
@@ -11,18 +11,44 @@
                     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="javascript:history.back(-1)">Retour au résultat</a>
                 </div>
                 <div class="result_title">Aperçu de rendez-vous</div>
-                <div class="resv_basic">
-                    <div>Nom de centre : {{ museum_name }}</div>
-                    <div>Adresse : {{ museum_address }}</div>
+                <div id="resv_create_detail" class="resv_basic">
                     <div>
-                        <div>Proposé par : {{ reservation.creator.username }}</div>
-                        <div>Fin de date : {{ reservation.expire_date|date:"d/m/Y" }}</div>
+                        <div>Nom de centre :</div>
+                        <select name="sel_museum" id="select_museum">
+                            {% for item in museum_list %}
+                                <option value="{{ item.id }}"
+                                        {% if item.name == museum_name %}selected{% endif %}>{{ item.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div>Adresse : <span id="auto_museum_address"></span></div>
+                    <div>
+                        <div>Proposé par : {{ user.username }}</div>
+                        <div id="resv_create_findedate">
+                            <div>Fin de date :</div>
+                            <div class="form-group">
+                                <div class='input-group date' id='datetimepicker3'>
+                                    <input type='text' class="form-control" name="resvEndDate"
+                                           value="{{ resv_end_date|date:"d/m/Y" }}"/>
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar btn-sm"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                $(function () {
+                                    $('#datetimepicker3').datetimepicker({
+                                        format: 'DD/MM/YYYY',
+                                        locale: moment.locale('fr-FR')
+                                    });
+                                });
+                            </script>
+                        </div>
                     </div>
                     <div>
                         <div>Nombre document disponible : {{ available_doc_archive_count }}</div>
                         <div>Nombre vidéo disponible : {{ available_video_archive_count }}</div>
                     </div>
-                    <input type="hidden" name="resv_id" value="{{ reservation.id }}">
                 </div>
                 <div class="input_inform">Merci de compléter les informations suivantes pour finaliser votre
                     rendez-vous
@@ -137,10 +163,11 @@
 
                 <div class="cancle_comfirm_div">
                     <a href="#">Annuler</a>
-                    <div id="btn_send_request">Envoyer la demande</div>
+                    <div id="btn_create_request">Envoyer la demande</div>
                 </div>
 
             </div>
+        </div>
         </div>
     </form>
 {% endblock %}

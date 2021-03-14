@@ -63,10 +63,6 @@ class Reservation(models.Model):
     expire_date = models.DateField(db_column='r_enddate', blank=False, null=False, help_text="本次预约的时间结束日期")
     status = models.IntegerField(db_column='r_status', blank=False, null=False,
                                  help_text="本次预约的状态 0:Pas encore aller; 1:suis allé")
-    sent_flag = models.IntegerField(db_column='r_providerhassent', blank=False, null=False,
-                                    help_text="提供者是否已把需求者要求的文献照片发送给需求者 0否1是")
-    received_flag = models.IntegerField(db_column='r_demanderhasreceived', blank=False, null=False,
-                                        help_text="需求者是否已确认收到提供者发送的文献 0否1是")
 
     museum = models.ForeignKey(Museum, db_index=True, on_delete=models.DO_NOTHING, help_text="关联获取该馆可预约数，计算剩余可用预约数")
     creator = models.ForeignKey(Users, db_index=True, on_delete=models.DO_NOTHING, help_text="创建预约的用户")
@@ -74,6 +70,21 @@ class Reservation(models.Model):
     class Meta:
         managed = True
         db_table = 'Reservation'
+
+
+class Res_Dem_Confirm_Status(models.Model):
+    id = models.AutoField(db_column='rdc_id', primary_key=True, help_text="本关系id")
+    reservation = models.ForeignKey(Reservation, db_index=True, on_delete=models.DO_NOTHING, help_text="预约号")
+    resv_user = models.ForeignKey(Users, db_index=True, on_delete=models.DO_NOTHING, help_text="预约的用户编号")
+
+    sent_flag = models.IntegerField(db_column='rdc_provider_hassent', blank=True, null=True,
+                                    help_text="提供者是否已把需求者要求的文献照片发送给需求者 0否1是")
+    received_flag = models.IntegerField(db_column='rdc_demander_hasreceived', blank=True, null=True,
+                                        help_text="需求者是否已确认收到提供者发送的文献 0否1是")
+
+    class Meta:
+        managed = True
+        db_table = 'Res_Dem_Confirm_Status'
 
 
 '''

@@ -34,7 +34,7 @@
 url('admin/', admin.site.urls),
 url(r'^$', views.welcome),
 url(r'^search', views.search),
-url(r'^archivedetail', views.archive_detail),
+url(r'^archive_detail', views.archive_detail),
 url(r'^login', views.login),
 url(r'^register', views.register),
 url(r'^selfcenter', views.self_center),

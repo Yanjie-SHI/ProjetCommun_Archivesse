@@ -22,15 +22,59 @@
                 <table>
                     <thead>
                     <tr>
-                        <th>Date</th>
-                        <th>Lieu</th>
-                        <th>Archive demandé</th>
+                        <th>
+                            <div>Numéro</div>
+                        </th>
+                        <th>
+                            <div>Rôle</div>
+                        </th>
+                        <th>
+                            <div>Fin de date</div>
+                        </th>
+                        <th>
+                            <div>Archive demandé</div>
+                        </th>
+                        <th>
+                            <div>Status</div>
+                        </th>
+                        <th>
+                            <div>Opération</div>
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td colspan="3">Vous n'avez pas de rendez-vous en cours.</td>
-                    </tr>
+                    {% if reservation_list|length > 0 %}
+                        {% for item in reservation_list %}
+                            <tr class="my_resv_table_tr">
+                                <td id="resv_list_item_id" class="my_resv_table_tr_td">{{ item.id }}</td>
+                                <td id="resv_list_item_role" class="my_resv_table_tr_td">
+                                    {% if item.creator.id == user.id %}Proposeur{% else %}Demandeur{% endif %}</td>
+                                <td class="my_resv_table_tr_td">{{ item.expire_date|date:"d/m/Y" }}</td>
+                                <td class="my_resv_table_tr_td_archive">
+                                    {% for item2 in item.archive_list %}
+                                        <div>{{ item2.archive.id }}</div>
+                                    {% endfor %}
+                                </td>
+                                <td class="my_resv_table_tr_td">{% if item.status == 0 %}N'est pas allé{% else %}Est
+                                    allé{% endif %}</td>
+                                <td class="my_resv_table_tr_td">
+                                    {% if item.creator.id == user.id %}
+                                        <a href="/to_resv_detail_creatorview?resv_id={{ item.id }}">Voir les détails</a>
+                                    {% else %}
+                                        {% if item.status == 0 %}
+                                            <a id="submit_undo_join_link" href="#" style="color: red;">Supprimer</a>
+                                        {% else %}
+                                            <a id="submit_confirm_status_link" href="#" style="color: #4cae4c;">Confirmer</a>
+                                        {% endif %}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr>
+                            <td colspan="6">Vous n'avez pas de rendez-vous en cours.</td>
+                        </tr>
+                    {% endif %}
                     </tbody>
                 </table>
             </div>

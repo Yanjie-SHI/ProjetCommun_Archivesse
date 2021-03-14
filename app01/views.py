@@ -1,7 +1,6 @@
 import datetime
 
 from django.db.models import Q
-from django.http import JsonResponse
 from django.shortcuts import render
 
 from app01.utils import *
@@ -246,82 +245,6 @@ def remove_favorites(request):
         request.POST.archive_id = archive_id
         return archive_detail(request)
 
-
-def reservation(request):
-    if request.session.get("login_user_id", 0) == 0:
-        return render(request, "login.html")
-    return render(request, 'my_reservation.html')
-
-
-def create_reservation(request):
-    if request.session.get("login_user_id", 0) == 0:
-        return render(request, "login.html")
-    options = verify_login(request)
-    if request.method == "GET":
-        return render(request, "create_reservation.html", options)
-    elif request.method == "POST":
-        pass
-
-
-def join_reservation(request):
-    if request.session.get("login_user_id", 0) == 0:
-        return render(request, "login.html")
-    options = verify_login(request)
-    if request.method == "GET":
-        resv_id = request.GET.get("id")
-        reservation = Reservation.objects.filter(id=resv_id)
-        if len(reservation) > 0:
-            options.update({"reservation": reservation[0]})
-
-            # get available document archive count
-            available_doc_archive_count = reservation[0].museum.document_limit
-            # get available video archive count
-            available_video_archive_count = reservation[0].museum.video_limit
-            # recount available doc/video archive count, according to record numbers in Res_Dem_Arch table
-            res_dem_arch = Res_Dem_Arch.objects.filter(reservation__id=resv_id)
-            if len(res_dem_arch) > 0:
-                for rda in res_dem_arch:
-                    if rda.archive.type == 0:
-                        available_doc_archive_count -= 1
-                    elif rda.archive.type == 2:
-                        available_video_archive_count -= 1
-
-            options.update({"available_doc_archive_count": available_doc_archive_count})
-            options.update({"available_video_archive_count": available_video_archive_count})
-
-            return render(request, "reservation_detail_join.html", options)
-    elif request.method == "POST":
-        # save data in relation Res_Dem_Arch
-        resv_id = request.POST.get("resv_id")
-        demand_user = options.get("user")
-        needed_doc_demand_count = request.POST.get("needed_doc_demand_count")
-        needed_video_demand_count = request.POST.get("needed_video_demand_count")
-
-        for i in range(1, int(needed_doc_demand_count) + 1):
-            res_dem_arch = Res_Dem_Arch()
-            res_dem_arch.reservation_id = int(resv_id)
-            res_dem_arch.resv_user_id = demand_user.id
-            res_dem_arch.archive_id = request.POST.get("doc_archive_id_" + str(i))
-            if request.POST.get("doc_folio_" + str(i)):
-                res_dem_arch.folio = int(request.POST.get("doc_folio_" + str(i)))
-            res_dem_arch.save()
-
-        for i in range(1, int(needed_video_demand_count) + 1):
-            res_dem_arch = Res_Dem_Arch()
-            res_dem_arch.reservation_id = int(resv_id)
-            res_dem_arch.resv_user_id = demand_user.id
-            res_dem_arch.archive_id = request.POST.get("video_archive_id_" + str(i))
-            if request.POST.get("video_ouvert_" + str(i)):
-                res_dem_arch.folio = int(request.POST.get("video_ouvert_" + str(i)))
-            res_dem_arch.save()
-
-        # save receiver email if not equal to user register email
-        receiver_email = request.POST.get("receiver_email")
-        if demand_user.mail != receiver_email:
-            demand_user.receiver_mail = receiver_email
-            demand_user.save()
-
-        return JsonResponse({"msg": "success"})
 
 def logout(request):
     request.session.clear()

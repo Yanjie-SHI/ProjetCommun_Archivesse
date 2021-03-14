@@ -207,3 +207,60 @@ a {
     text-align: center;
     cursor: pointer;
 }
+
+
+/* reservation_detail_creatorview */
+#reservation-detail-bg-image > div.reservation_detail > div.resv_basic > div:nth-child(6) > div:nth-child(1) {
+    width: 30%;
+    float: left;
+    font-weight: bold;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.resv_basic > div:nth-child(6) > div:nth-child(2) {
+    width: 70%;
+    float: left;
+}
+
+#reservation-detail-bg-image > div.reservation_detail > div.resv_basic > div:nth-child(6) > div:nth-child(2) > input:nth-child(2) {
+    margin-left: 100px;
+}
+
+#resv_creatorview_docarch_ul > li > div {
+    font-size: 22px;
+}
+
+#resv_creatorview_docarch_ul > li > div > div:nth-child(1) > div:nth-child(1) {
+    width: 80%;
+    float: left;
+}
+
+#resv_creatorview_docarch_ul > li > div > div:nth-child(1) > div:nth-child(2) {
+    width: 20%;
+    float: right;
+}
+
+#resv_creatorview_docarch_ul > li > div > div.archive_code {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 15px;
+}
+
+#resv_creatorview_videoarch_ul > li > div {
+    font-size: 22px;
+}
+
+#resv_creatorview_videoarch_ul > li > div > div:nth-child(1) > div:nth-child(1) {
+    width: 80%;
+    float: left;
+}
+
+#resv_creatorview_videoarch_ul > li > div > div:nth-child(1) > div:nth-child(2) {
+    width: 20%;
+    float: right;
+}
+
+#resv_creatorview_videoarch_ul > li > div > div.archive_code {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 15px;
+}

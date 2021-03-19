@@ -40,6 +40,7 @@ urlpatterns = [
     url(r'^join_resv', views_resv.join_reservation),
     url(r'^undo_join_resv', views_resv.undo_join_reservation),
     url(r'^confirm_sent_receive_status', views_resv.confirm_sent_receive_status),
+    url(r'^update_resv_status', views_resv.update_resv_status),
 
     url(r'^fetchmuseumaddress', utils.fetch_museum_address),
 ]

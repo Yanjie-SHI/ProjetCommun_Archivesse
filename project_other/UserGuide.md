@@ -23,9 +23,32 @@
 - message detail
        
 ## TODO list
-- archive detail page return button (jump to search result list)
-- reservation detail page return button
-- favorites table create
+- 2021/03/19
+    - My reservation 已完成列表
+    - 需求部分：创建需求，我的需求页，需求搜索结果页
+    - 登录后跳转回前一个页面，带结果
+    - 分页的各个页面完善
+    - 注册功能
+    - 搜索filter及结果页的搜索按钮
+- 2021/03/14
+    - 创建和加入的成功提示框，确定后返回上一个页面  √  但上一个搜索结果页还得刷新
+    - 预约加入时创建Res_Dem_Confirm_Status  √
+    - 加一个定时任务，时刻监测对于所有reservation，是否所有demander都确认了收获，是就把reservation status设成2已结束  √
+    - 预约creatorview 根据Res_Dem_Confirm_Status表数据获取是已发送按钮还是待发送按钮，非reservation.status  √
+    - 预约creatorview Envoye按钮点击时更新Res_Dem_Confirm_Status记录  √
+    - selfcenter 预约demander confirm按钮，在原始已发送的数据上更新状态received=1  √
+    - 预约creatorview Oui和Non 点击时更新Reservation表的状态为1  √
+    - 把提示框垂直居中  √
+    - 创建预约默认数字为0，让用户自己选成其他的  √
+    - 创建预约的蓝色按钮文字改成Confirmer  √
+    - 创建预约页面 Annuler 取消返回上一页  √
+    - 加入预约，默认可用数也改成0  √
+    - 加入预约，选成2以后，创建了10以后的所有input 框  √
+    - 预约creatorview email前面的提示文字  √
+- 2021/03/12
+    - archive detail page return button (jump to search result list)
+    - reservation detail page return button
+    - favorites table create
 
 
 

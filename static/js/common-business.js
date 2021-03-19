@@ -57,7 +57,8 @@ $(document).ready(function () {
             data: $('#form_create_reservation').serialize(),
             success: function (result) {
                 if (result.msg == "success") {
-                    alert("Vous avez réservé avec succès");
+                    //alert("Vous avez réservé avec succès");
+                    $.MsgBox.Alert("Messages", "Vous avez réservé avec succès");
                 }
             }
         });
@@ -72,7 +73,8 @@ $(document).ready(function () {
             data: $('#form_join_reservation').serialize(),
             success: function (result) {
                 if (result.msg == "success") {
-                    alert("Vous avez réservé avec succès");
+                    //alert("Vous avez réservé avec succès");
+                    $.MsgBox.Alert("Messages", "Vous avez réservé avec succèss");
                 }
             }
         });
@@ -117,30 +119,88 @@ $(document).ready(function () {
     });
 
     /* my_reservation page */
-    $("#submit_undo_join_link").click(function () {
+    $("a[id^=submit_undo_join_link]").click(function () {
+        let resv_id = $(this).attr("id").substr(22);
         $.ajax({
             url: "/undo_join_resv",
             type: "POST",
             dataType: "json",//预期服务器返回的数据类型
-            data: {"resv_id": $("#resv_list_item_id").html()},
+            data: {"resv_id": resv_id},
             success: function (result) {
                 if (result.msg == "success") {
-                    alert("Vous avez annulé avec succès");
+                    $.MsgBox.Alert("Messages", "Vous avez annulé avec succès");
+                    //alert("Vous avez annulé avec succès");
                 }
             }
         });
     });
 
-    $("#submit_confirm_status_link").click(function () {
-        let role = $("#resv_list_item_role").html() == "Proposeur" ? "1" : "2";
+    $("a[id^=submit_confirm_status_link]").click(function () {
+        let resv_id = $(this).attr("id").substr(27);
         $.ajax({
             url: "/confirm_sent_receive_status",
             type: "POST",
             dataType: "json",
-            data: {"resv_id": $("#resv_list_item_id").html()},
+            data: {"resv_id": resv_id},
             success: function (result) {
                 if (result.msg == "success") {
-                    alert("Vous avez reçu avec succès");
+                    $.MsgBox.Alert("Messages", "Vous avez reçu avec succès");
+                }
+            }
+        });
+    });
+
+    /* reservation creator view from selfcenter */
+    $("#notgo_radio").click(function () {
+        $.ajax({
+            url: "/update_resv_status",
+            type: "POST",
+            dataType: "json",
+            data: {"resv_id": $("#resv_id").val(), "status": "0"},
+            success: function (result) {
+                if (result.msg == "success") {
+                    $.MsgBox.Alert("Messages", "Reservation status change success");
+                }
+            }
+        });
+    });
+    $("#gone_radio").click(function () {
+        $.ajax({
+            url: "/update_resv_status",
+            type: "POST",
+            dataType: "json",
+            data: {"resv_id": $("#resv_id").val(), "status": "1"},
+            success: function (result) {
+                if (result.msg == "success") {
+                    $.MsgBox.Alert("Messages", "Reservation status change success");
+                }
+            }
+        });
+    });
+    $("a[id^=doc_send_link]").click(function () {
+        let receiver_id = $(this).attr("id").substr(14);
+        $.ajax({
+            url: "/confirm_sent_receive_status",
+            type: "POST",
+            dataType: "json",
+            data: {"resv_id": $("#resv_id").val(), "receiver_id": receiver_id, "arch_type": 0},
+            success: function (result) {
+                if (result.msg == "success") {
+                    $.MsgBox.Alert("Messages", "Send success");
+                }
+            }
+        });
+    });
+    $("a[id^=video_send_link]").click(function () {
+        let receiver_id = $(this).attr("id").substr(16);
+        $.ajax({
+            url: "/confirm_sent_receive_status",
+            type: "POST",
+            dataType: "json",
+            data: {"resv_id": $("#resv_id").val(), "receiver_id": receiver_id, "arch_type": 2},
+            success: function (result) {
+                if (result.msg == "success") {
+                    $.MsgBox.Alert("Messages", "Send success");
                 }
             }
         });

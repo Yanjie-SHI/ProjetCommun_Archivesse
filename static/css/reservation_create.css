@@ -123,6 +123,7 @@ a {
 #reservation-create-bg-image > div.reservation_detail > div.join_input_div > div > ul {
     margin-left: 50px;
     list-style: none;
+    display: none;
 }
 
 #reservation-create-bg-image > div.reservation_detail > div.join_input_div > div > ul > li > div {
@@ -157,7 +158,6 @@ a {
     text-align: center;
     height: 100px;
     line-height: 100px;
-    display: none;
 }
 
 #reservation-create-bg-image > div.reservation_detail > div.join_input_div > div.vos_information > div.vos_information_info {
@@ -290,6 +290,7 @@ a {
 #doc_archive_input_ul {
     margin-left: 50px;
     list-style: none;
+    display: none;
 }
 
 #doc_archive_input_ul > li > div {
@@ -320,12 +321,13 @@ a {
 }
 
 #no_doc_archive_demand_notice_div, #no_video_archive_demand_notice_div {
-    display: none;
+    /*display: none;*/
 }
 
 #video_archive_input_ul {
     margin-left: 50px;
     list-style: none;
+    display: none;
 }
 
 #video_archive_input_ul > li > div {

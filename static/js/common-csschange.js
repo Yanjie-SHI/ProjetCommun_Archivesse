@@ -113,13 +113,12 @@ $(document).ready(function () {
                 $("#no_doc_archive_demand_notice_div").css("display", "none");
                 $("#doc_archive_input_ul").css("display", "block");
                 let li_id = $(this).attr("id");
-                if (li_id.substr(7) > needed_li_count) {
+                if (parseInt(li_id.substr(7)) > parseInt(needed_li_count)) {
                     $(this).css("display", "none");
                 } else {
                     if ($(this).css("display") == "none") {
                         $(this).css("display", "block");
                     }
-                    ;
                 }
             });
         }
@@ -135,13 +134,12 @@ $(document).ready(function () {
                 $("#no_video_archive_demand_notice_div").css("display", "none");
                 $("#video_archive_input_ul").css("display", "block");
                 let li_id = $(this).attr("id");
-                if (li_id.substr(9) > needed_li_count) {
+                if (parseInt(li_id.substr(9)) > parseInt(needed_li_count)) {
                     $(this).css("display", "none");
                 } else {
                     if ($(this).css("display") == "none") {
                         $(this).css("display", "block");
                     }
-                    ;
                 }
             });
         }
@@ -202,5 +200,6 @@ $(document).ready(function () {
     $("#edit_profile_form > div:nth-child(2) > div:nth-child(3) > span").mouseleave(function () {
         $("#edit_profile_form > div:nth-child(2) > div:nth-child(3) > span").removeClass("hover");
     });
+
 });
 

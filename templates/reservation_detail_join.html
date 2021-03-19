@@ -7,9 +7,6 @@
             </div>
 
             <div class="reservation_detail">
-                <div class="return_link">
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="javascript:history.back(-1)">Retour au résultat</a>
-                </div>
                 <div class="result_title">Aperçu de rendez-vous</div>
                 <div class="resv_basic">
                     <div>Nom de centre : {{ reservation.museum.name }}</div>
@@ -33,10 +30,9 @@
                             Nombre d'archives documentaires demandées :
                             <select name="needed_doc_demand_count" id="doc_demand_count">
                                 {% if available_doc_archive_count > 0 %}
-                                    <option value="0">0</option>
+                                    <option value="0" selected>0</option>
                                     {% for i in available_doc_archive_count|mrange %}
-                                        <option value="{{ i|add:1 }}"
-                                                {% if i|add:1 == available_doc_archive_count %}selected{% endif %}>{{ i|add:1 }}</option>
+                                        <option value="{{ i|add:1 }}">{{ i|add:1 }}</option>
                                     {% endfor %}
                                 {% else %}
                                     <option value="0">0</option>
@@ -74,10 +70,9 @@
                             Nombre d'archives audio-visuelles demandées :
                             <select name="needed_video_demand_count" id="video_demand_count">
                                 {% if available_video_archive_count > 0 %}
-                                    <option value="0">0</option>
+                                    <option value="0" selected>0</option>
                                     {% for i in available_video_archive_count|mrange %}
-                                        <option value="{{ i|add:1 }}"
-                                                {% if i|add:1 == available_video_archive_count %}selected{% endif %}>{{ i|add:1 }}</option>
+                                        <option value="{{ i|add:1 }}">{{ i|add:1 }}</option>
                                     {% endfor %}
                                 {% else %}
                                     <option value="0">0</option>
@@ -136,7 +131,7 @@
                 </div>
 
                 <div class="cancle_comfirm_div">
-                    <a href="#">Annuler</a>
+                    <a href="javascript:history.back(-1)">Annuler</a>
                     <div id="btn_send_request">Envoyer la demande</div>
                 </div>
 

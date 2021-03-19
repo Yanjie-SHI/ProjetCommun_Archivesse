@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_crontab',
     'app01.apps.App01Config',
 ]
 
@@ -88,6 +89,29 @@ DATABASES = {
     }
 }
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '%(asctime)s %(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['console'],
+            'propagate': False,
+            'level': 'DEBUG',
+        },
+    },
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -130,3 +154,10 @@ STATICFILES_DIRS = [
 ]
 
 PER_PAGE_SIZE = 10
+
+CRONJOBS = (
+    # ('*/1 * * * *', 'app01.scheduler.update_resv_status'),
+    ('*/1 * * * *', 'app01.scheduler.update_resv_status',
+     '>> /Users/melody/workspace/web_historien/app01/scheduler.log'),
+    # ('0   0 1 * *', '你的app名.定时函数所在的py文件名.定时函数名', '> 输出文件路径和名称'),
+)

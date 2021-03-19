@@ -25,11 +25,13 @@
                     <div>
                         <div>Est-ce que vous êtes y allés ?</div>
                         <div>
-                            <input type="checkbox">Oui
-                            <input type="checkbox" checked>Non
+                            <input type="radio" name="goneornot" id="gone_radio" value="1"
+                                   {% if reservation.status == 1 %}checked{% endif %}>Oui
+                            <input type="radio" name="goneornot" id="notgo_radio" value="0"
+                                   {% if reservation.status == 0 %}checked{% endif %}>Non
                         </div>
                     </div>
-                    <input type="hidden" name="resv_id" value="{{ reservation.id }}">
+                    <input type="hidden" name="resv_id" id="resv_id" value="{{ reservation.id }}">
                 </div>
                 <div class="input_inform">List de demandeurs</div>
                 <div class="join_input_div">
@@ -44,10 +46,12 @@
                                         <div class="doc_demand_item">
                                             <div>
                                                 <div>{{ item.user.username }}</div>
-                                                <div>{% if reservation.status == 1 %}Envoyé{% else %}
-                                                    <a href="#" style="color: red;">Envoyer</a>{% endif %}</div>
+                                                <div>{% if item.sent_flag == 1 %}Envoyé{% else %}
+                                                    <a id="doc_send_link_{{ item.user.id }}" href="#"
+                                                       style="color: red;">Envoyer</a>{% endif %}
+                                                </div>
                                             </div>
-                                            <div>{{ item.user.mail }}</div>
+                                            <div>E-mail: {{ item.user.mail }}</div>
                                             {% for item2 in item.doc_archive_list %}
                                                 <div class="archive_code">Cote: {{ item2.archive.id }}</div>
                                             {% endfor %}
@@ -72,10 +76,12 @@
                                         <div class="video_demand_item">
                                             <div>
                                                 <div>{{ item.user.username }}</div>
-                                                <div>{% if reservation.status == 1 %}Envoyé{% else %}
-                                                    <a href="#" style="color: red;">Envoyer</a>{% endif %}</div>
+                                                <div>{% if item.sent_flag == 1 %}Envoyé{% else %}
+                                                    <a id="video_send_link_{{ item.user.id }}" href="#"
+                                                       style="color: red;">Envoyer</a>{% endif %}
+                                                </div>
                                             </div>
-                                            <div>{{ item.user.mail }}</div>
+                                            <div>E-mail: {{ item.user.mail }}</div>
                                             {% for item2 in item.video_archive_list %}
                                                 <div class="archive_code">Cote: {{ item2.archive.id }}</div>
                                             {% endfor %}

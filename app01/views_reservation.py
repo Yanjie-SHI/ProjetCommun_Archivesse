@@ -50,26 +50,32 @@ def to_resv_detail_creatorview(request):
     resv_users_list = Res_Dem_Arch.objects.filter(
         Q(reservation__id=resv_id) & ~Q(resv_user=options.get("user"))).values_list("resv_user_id",
                                                                                     flat=True).distinct()
-    doc_archive_lists = []
-    video_archive_lists = []
+    resv_doc_archive_lists = []
+    resv_video_archive_lists = []
     count_doc_archive_exclude_my = 0
     count_video_archive_exclude_my = 0
     for user_id in resv_users_list:
         doc_archive_list = Res_Dem_Arch.objects.filter(reservation__id=resv_id, archive__type=0, resv_user__id=user_id)
         if len(doc_archive_list) > 0:
-            user_doc_archive_list = {"user": Users.objects.get(id=user_id), "doc_archive_list": doc_archive_list}
-            doc_archive_lists.append(user_doc_archive_list)
+            sent_flag = Res_Dem_Confirm_Status.objects.get(reservation__id=resv_id, resv_user__id=user_id,
+                                                           arch_type=0).sent_flag
+            user_doc_archive_list = {"user": Users.objects.get(id=user_id), "doc_archive_list": doc_archive_list,
+                                     "sent_flag": sent_flag}
+            resv_doc_archive_lists.append(user_doc_archive_list)
             count_doc_archive_exclude_my += len(doc_archive_list)
         video_archive_list = Res_Dem_Arch.objects.filter(reservation__id=resv_id, archive__type=2,
                                                          resv_user__id=user_id)
         if len(video_archive_list) > 0:
-            user_video_archive_list = {"user": Users.objects.get(id=user_id), "video_archive_list": video_archive_list}
-            video_archive_lists.append(user_video_archive_list)
+            sent_flag = Res_Dem_Confirm_Status.objects.get(reservation__id=resv_id, resv_user__id=user_id,
+                                                           arch_type=2).sent_flag
+            user_video_archive_list = {"user": Users.objects.get(id=user_id), "video_archive_list": video_archive_list,
+                                       "sent_flag": sent_flag}
+            resv_video_archive_lists.append(user_video_archive_list)
             count_video_archive_exclude_my += len(video_archive_list)
     resv.count_doc_archive_exclude_my = count_doc_archive_exclude_my
     resv.count_video_archive_exclude_my = count_video_archive_exclude_my
-    resv.doc_archive_lists = doc_archive_lists
-    resv.video_archive_lists = video_archive_lists
+    resv.doc_archive_lists = resv_doc_archive_lists
+    resv.video_archive_lists = resv_video_archive_lists
     options.update({"reservation": resv})
 
     return render(request, "reservation_detail_creatorview.html", options)
@@ -185,6 +191,7 @@ def join_reservation(request):
         needed_video_demand_count = request.POST.get("needed_video_demand_count")
 
         for i in range(1, int(needed_doc_demand_count) + 1):
+            # save data in Res_Dem_Arch relation
             res_dem_arch = Res_Dem_Arch()
             res_dem_arch.reservation_id = int(resv_id)
             res_dem_arch.resv_user_id = demand_user.id
@@ -192,6 +199,14 @@ def join_reservation(request):
             if request.POST.get("doc_folio_" + str(i)):
                 res_dem_arch.folio = int(request.POST.get("doc_folio_" + str(i)))
             res_dem_arch.save()
+        # save data in Res_Dem_Confirm_Status relation
+        res_dem_confirm_status = Res_Dem_Confirm_Status()
+        res_dem_confirm_status.reservation_id = resv_id
+        res_dem_confirm_status.resv_user = options.get("user")
+        res_dem_confirm_status.arch_type = 0
+        res_dem_confirm_status.sent_flag = 0
+        res_dem_confirm_status.received_flag = 0
+        res_dem_confirm_status.save()
 
         for i in range(1, int(needed_video_demand_count) + 1):
             res_dem_arch = Res_Dem_Arch()
@@ -201,10 +216,19 @@ def join_reservation(request):
             if request.POST.get("video_ouvert_" + str(i)):
                 res_dem_arch.folio = int(request.POST.get("video_ouvert_" + str(i)))
             res_dem_arch.save()
+        # save data in Res_Dem_Confirm_Status relation
+        res_dem_confirm_status = Res_Dem_Confirm_Status()
+        res_dem_confirm_status.reservation_id = resv_id
+        res_dem_confirm_status.resv_user = options.get("user")
+        res_dem_confirm_status.arch_type = 2
+        res_dem_confirm_status.sent_flag = 0
+        res_dem_confirm_status.received_flag = 0
+        res_dem_confirm_status.save()
 
         # save receiver email if not equal to user register email
         receiver_email = request.POST.get("receiver_email")
-        if demand_user.mail != receiver_email:
+        if (demand_user.receiver_mail and demand_user.receiver_mail != receiver_email) or (
+                not demand_user.receiver_mail and demand_user.mail != receiver_email):
             demand_user.receiver_mail = receiver_email
             demand_user.save()
 
@@ -216,9 +240,16 @@ def undo_join_reservation(request):
         return render(request, "login.html")
     options = verify_login(request)
 
+    # delete data in Res_Dem_Arch
     resv_id = request.POST.get("resv_id")
     res_dem_arch = Res_Dem_Arch.objects.filter(reservation__id=resv_id, resv_user=options.get("user"))
     for record in res_dem_arch:
+        record.delete()
+
+    # delete data from Res_Dem_Confirm_Status
+    res_dem_confirm_status = Res_Dem_Confirm_Status.objects.filter(reservation__id=resv_id,
+                                                                   resv_user=options.get("user"))
+    for record in res_dem_confirm_status:
         record.delete()
 
     return JsonResponse({"msg": "success"})
@@ -230,11 +261,43 @@ def confirm_sent_receive_status(request):
     options = verify_login(request)
 
     resv_id = request.POST.get("resv_id")
-    # demander confirm all archives received
-    res_dem_confirm_status = Res_Dem_Confirm_Status()
-    res_dem_confirm_status.reservation_id = int(resv_id)
-    res_dem_confirm_status.resv_user = options.get("user")
-    res_dem_confirm_status.received_flag = 1
-    res_dem_confirm_status.save()
+    resv = Reservation.objects.get(id=resv_id)
+    if resv.creator == options.get("user"):
+        # creator update sent status
+        receiver_id = request.POST.get("receiver_id")
+        receiver = Users.objects.get(id=receiver_id)
+        arch_type = request.POST.get("arch_type")
+        res_dem_confirm_status = Res_Dem_Confirm_Status.objects.filter(reservation__id=resv_id, resv_user=receiver,
+                                                                       arch_type=arch_type)
+        if len(res_dem_confirm_status) > 0:
+            res_dem_confirm_status[0].sent_flag = 1
+            res_dem_confirm_status[0].save()
+
+        return JsonResponse({"msg": "success"})
+    else:
+        # demander confirm all archives received, both archive type = 0 and 2
+        res_dem_confirm_status = Res_Dem_Confirm_Status.objects.filter(reservation__id=resv_id,
+                                                                       resv_user=options.get("user"))
+        for record in res_dem_confirm_status:
+            record.received_flag = 1
+            record.save()
+        return JsonResponse({"msg": "success"})
+
+
+def update_resv_status(request):
+    if request.session.get("login_user_id", 0) == 0:
+        return render(request, "login.html")
+    options = verify_login(request)
+
+    resv_id = request.POST.get("resv_id")
+    status = request.POST.get("status")
+
+    reservation = Reservation.objects.get(id=resv_id)
+    if status == "1":
+        reservation.status = "1"
+        reservation.save()
+    elif status == "0":
+        reservation.status = "0"
+        reservation.save()
 
     return JsonResponse({"msg": "success"})

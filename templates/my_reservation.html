@@ -62,9 +62,10 @@
                                         <a href="/to_resv_detail_creatorview?resv_id={{ item.id }}">Voir les détails</a>
                                     {% else %}
                                         {% if item.status == 0 %}
-                                            <a id="submit_undo_join_link" href="#" style="color: red;">Supprimer</a>
+                                            <a id="submit_undo_join_link_{{ item.id }}" href="#" style="color: red;">Supprimer</a>
                                         {% else %}
-                                            <a id="submit_confirm_status_link" href="#" style="color: #4cae4c;">Confirmer</a>
+                                            <a id="submit_confirm_status_link_{{ item.id }}" href="#"
+                                               style="color: #4cae4c;">Confirmer</a>
                                         {% endif %}
                                     {% endif %}
                                 </td>

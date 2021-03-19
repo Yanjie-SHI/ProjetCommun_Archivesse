@@ -1,4 +1,7 @@
 django==2.1.15
 PyMySQL==0.10.1
+# django-crontab is used to call a task in certain time, like Unix crontab
+django-crontab
+# following 2 packages are used to generate UML diagram
 pylint
 graphviz

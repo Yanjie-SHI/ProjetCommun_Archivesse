@@ -12,7 +12,7 @@ class Users(models.Model):
     username = models.CharField(db_column='u_username', max_length=128, blank=True, null=True,
                                 help_text="使用者的用户名(名首字母大写+姓全大写,例子：Yanjie SHI)")
     password = models.CharField(db_column='u_password', max_length=32, blank=True, null=True, help_text="使用者的密码")
-    gender = models.IntegerField(db_column='u_sex', blank=True, null=True, help_text="使用者的性别(1:male 2:female)")
+    gender = models.IntegerField(db_column='u_sex', blank=True, null=True, help_text="使用者的性别(0:male 1:female)")
     nation = models.CharField(db_column='u_country', max_length=64, blank=True, null=True, help_text="使用者的所在国家")
     city = models.CharField(db_column='u_city', max_length=64, blank=True, null=True, help_text="使用者的所在城市")
     address = models.CharField(db_column='u_address', max_length=500, blank=True, null=True, help_text="使用者的住址")
@@ -125,6 +125,7 @@ class Demand(models.Model):
     status = models.IntegerField(db_column="d_status", blank=False, null=False, help_text="需求状态 0未完成1已完成")
     demander = models.ForeignKey(Users, db_index=True, on_delete=models.DO_NOTHING, help_text="需求发布的人")
     archive = models.ForeignKey(Archive, db_index=True, on_delete=models.DO_NOTHING, help_text="该需求关联的文献id")
+    folio = models.IntegerField(db_column="d_folio", db_index=True, blank=True, null=True, help_text="需要的文献篇章/页码")
 
     class Meta:
         managed = True

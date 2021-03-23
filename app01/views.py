@@ -14,108 +14,119 @@ def welcome(request):
     return render(request, 'welcome.html')
 
 
-def search(request):
+def to_search(request):
     options = verify_login(request)
     if request.method == "GET":
         return render(request, 'search.html', options)
-    elif request.method == "POST":
-        current_page = request.POST.get("currentPage", "1")
-        # archive search
-        if request.POST.get("searchType") == "1":
-            input = request.POST.get("archiveKeyword")
-            search_particile = request.POST.get("particleRadios")
-            archive_search_type = request.POST.get("archiveSearchType")
-            # all words entered
-            if search_particile == "1":
-                if archive_search_type == "2":
-                    archive_list = Archive.objects.filter(
-                        Q(Q(title__contains=input) | Q(description__contains=input)) & Q(type=1))
-                elif archive_search_type == "3":
-                    archive_list = Archive.objects.filter(author__contains=input)
-                else:
-                    archive_list = Archive.objects.filter(Q(title__contains=input) | Q(description__contains=input))
-            # at least one of the words entered
-            elif search_particile == "2":
-                input_split = input.split(" ")
-                archive_list = []
-                if archive_search_type == "2":
-                    for str in input_split:
-                        temp_archive_list = Archive.objects.filter(
-                            Q(Q(title__contains=str) | Q(description__contains=str)) & Q(type=1))
-                        archive_list.append(temp_archive_list)
-                elif archive_search_type == "3":
-                    for str in input_split:
-                        temp_archive_list = Archive.objects.filter(author__contains=str)
-                        archive_list.append(temp_archive_list)
-                else:
-                    for str in input_split:
-                        temp_archive_list = Archive.objects.filter(
-                            Q(title__contains=str) | Q(description__contains=str))
-                        archive_list.append(temp_archive_list)
-            # exact expression
-            elif search_particile == "3":
-                if archive_search_type == "2":
-                    archive_list = Archive.objects.filter(Q(Q(title=input) | Q(description=input)) & Q(type__in=[2, 3]))
-                elif archive_search_type == "3":
-                    archive_list = Archive.objects.filter(author=input)
-                else:
-                    archive_list = Archive.objects.filter(Q(title=input) | Q(description=input))
-            else:
-                pass
 
-            options.update({"particleRadios": search_particile})
-            options.update({"total_size": len(archive_list)})
-            total_pages = int(len(archive_list) / settings.PER_PAGE_SIZE) + 1
-            pages = []
-            for page in range(1, total_pages + 1, 1):
-                pages.append(page)
-            options.update({"pages": pages})
-            options.update({"current_page": current_page})
-            options.update({"search_input": input})
-            options.update({"archive_search_type": archive_search_type})
-            options.update({"archive_list": archive_list})
 
-            return render(request, "search_result_archive.html", options)
-        # reservation search
-        elif request.POST.get("searchType") == "2":
-            museum_name = request.POST.get("museumName")
-            resv_end_date = request.POST.get("resvEndDate")
-            resv_end_date = datetime.date(int(resv_end_date[6:10]), int(resv_end_date[3:5]), int(resv_end_date[0:2]))
-
-            current_page = request.POST.get("currentPage", "1")
-            # reservation search
-            reservation_list = Reservation.objects.filter(
-                Q(museum__name__contains=museum_name) & Q(expire_date__lte=resv_end_date))
-            for resv in reservation_list:
-                resv.available_doc_archive_count = resv.museum.document_limit
-                resv.available_video_archive_count = resv.museum.video_limit
-                # recount available doc/video archive count, according to record numbers in Res_Dem_Arch table
-                res_dem_arch = Res_Dem_Arch.objects.filter(reservation__id=resv.id)
-                if len(res_dem_arch) > 0:
-                    for rda in res_dem_arch:
-                        if rda.archive.type == 0:
-                            resv.available_doc_archive_count -= 1
-                        elif rda.archive.type == 2:
-                            resv.available_video_archive_count -= 1
-
-            options.update({"total_size": len(reservation_list)})
-            total_pages = int(len(reservation_list) / settings.PER_PAGE_SIZE) + 1
-            pages = []
-            for page in range(1, total_pages + 1, 1):
-                pages.append(page)
-            options.update({"pages": pages})
-            options.update({"current_page": current_page})
-            options.update({"input_museum_name": museum_name})
-            options.update({"input_resv_end_date": resv_end_date.strftime("%d/%m/%Y")})
-            options.update({"reservation_list": reservation_list})
-
-            return render(request, "search_result_reservation.html", options)
-        # demand search
-        elif request.POST.get("searchType") == "3":
-            input = request.POST.get("demandSearchInput")
-            pass
+def search_archive(request):
+    options = verify_login(request)
+    current_page = request.POST.get("currentPage", "1")
+    # archive search
+    input = request.POST.get("archiveKeyword")
+    search_particile = request.POST.get("particleRadios")
+    archive_search_type = request.POST.get("archiveSearchType")
+    # all words entered
+    if search_particile == "1":
+        if archive_search_type == "2":
+            archive_list = Archive.objects.filter(
+                Q(Q(title__contains=input) | Q(description__contains=input)) & Q(type=1))
+        elif archive_search_type == "3":
+            archive_list = Archive.objects.filter(author__contains=input)
         else:
-            pass
+            archive_list = Archive.objects.filter(Q(title__contains=input) | Q(description__contains=input))
+    # at least one of the words entered
+    elif search_particile == "2":
+        input_split = input.split(" ")
+        archive_list = []
+        if archive_search_type == "2":
+            for str in input_split:
+                temp_archive_list = Archive.objects.filter(
+                    Q(Q(title__contains=str) | Q(description__contains=str)) & Q(type=1))
+                archive_list.append(temp_archive_list)
+        elif archive_search_type == "3":
+            for str in input_split:
+                temp_archive_list = Archive.objects.filter(author__contains=str)
+                archive_list.append(temp_archive_list)
+        else:
+            for str in input_split:
+                temp_archive_list = Archive.objects.filter(
+                    Q(title__contains=str) | Q(description__contains=str))
+                archive_list.append(temp_archive_list)
+    # exact expression
+    elif search_particile == "3":
+        if archive_search_type == "2":
+            archive_list = Archive.objects.filter(Q(Q(title=input) | Q(description=input)) & Q(type__in=[2, 3]))
+        elif archive_search_type == "3":
+            archive_list = Archive.objects.filter(author=input)
+        else:
+            archive_list = Archive.objects.filter(Q(title=input) | Q(description=input))
+    else:
+        pass
+
+    options.update({"particleRadios": search_particile})
+    options.update({"total_size": len(archive_list)})
+    total_pages = int(len(archive_list) / settings.PER_PAGE_SIZE) + 1
+    pages = []
+    for page in range(1, total_pages + 1, 1):
+        pages.append(page)
+    options.update({"pages": pages})
+    options.update({"current_page": current_page})
+    options.update({"search_input": input})
+    options.update({"archive_search_type": archive_search_type})
+    options.update({"archive_list": archive_list})
+
+    return render(request, "search_result_archive.html", options)
+
+
+def search_resv(request):
+    options = verify_login(request)
+    current_page = request.POST.get("currentPage", "1")
+    # reservation search
+    museum_name = request.POST.get("museumName")
+    resv_end_date = request.POST.get("resvEndDate")
+    resv_end_date = datetime.date(int(resv_end_date[6:10]), int(resv_end_date[3:5]), int(resv_end_date[0:2]))
+
+    current_page = request.POST.get("currentPage", "1")
+    # reservation search
+    reservation_list = Reservation.objects.filter(
+        Q(museum__name__contains=museum_name) & Q(expire_date__lte=resv_end_date))
+    for resv in reservation_list:
+        resv.available_doc_archive_count = resv.museum.document_limit
+        resv.available_video_archive_count = resv.museum.video_limit
+        # recount available doc/video archive count, according to record numbers in Res_Dem_Arch table
+        res_dem_arch = Res_Dem_Arch.objects.filter(reservation__id=resv.id)
+        if len(res_dem_arch) > 0:
+            for rda in res_dem_arch:
+                if rda.archive.type == 0:
+                    resv.available_doc_archive_count -= 1
+                elif rda.archive.type == 2:
+                    resv.available_video_archive_count -= 1
+
+    options.update({"total_size": len(reservation_list)})
+    total_pages = int(len(reservation_list) / settings.PER_PAGE_SIZE) + 1
+    pages = []
+    for page in range(1, total_pages + 1, 1):
+        pages.append(page)
+    options.update({"pages": pages})
+    options.update({"current_page": current_page})
+    options.update({"input_museum_name": museum_name})
+    options.update({"input_resv_end_date": resv_end_date.strftime("%d/%m/%Y")})
+    options.update({"reservation_list": reservation_list})
+
+    return render(request, "search_result_reservation.html", options)
+
+
+def search_demand(request):
+    options = verify_login(request)
+    current_page = request.POST.get("currentPage", "1")
+    # demand search
+    input = request.POST.get("demandSearchInput")
+    demands = Demand.objects.filter(archive__id=input)
+    options.update({"demands": demands})
+
+    return render(request, "search_result_demand.html", options)
 
 
 def archive_detail(request):
@@ -165,7 +176,20 @@ def register(request):
         options.update({"list_data_init_country": list_country})
         return render(request, 'register.html', options)
     if request.method == "POST":
-        return render(request, 'register.html')
+        # TODO verify password, if not equal to password, return Json response
+        user = Users()
+        user.mail = request.POST.get("email")
+        user.first_name = request.POST.get("firstname")
+        user.last_name = request.POST.get("lastname")
+        user.username = user.first_name + " " + user.last_name.upper()
+        user.password = request.POST.get("password")
+        user.gender = int(request.POST.get("genderRadios"))
+        user.nation = request.POST.get("pays")
+        user.address = request.POST.get("address")
+        user.post_code = request.POST.get("post_code")
+        user.save()
+
+        return render(request, 'login.html')
 
 
 def self_center(request):

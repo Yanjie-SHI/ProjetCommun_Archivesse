@@ -12,7 +12,16 @@ $(document).ready(function () {
 
 
     /* search page */
-    $("#search_1 > div.search-input-div > span, #search_2 > div:nth-child(2) > span.input-group-addon").click(function () {
+    $("#search_1 > div.search-input-div > span").click(function () {
+        $("#searchForm").attr("action", "/search_archive")
+        $("#searchForm").submit();
+    });
+    $("#search_2 > div:nth-child(2) > span.input-group-addon").click(function () {
+        $("#searchForm").attr("action", "/search_resv")
+        $("#searchForm").submit();
+    });
+    $("#search_3 > div > span").click(function () {
+        $("#searchForm").attr("action", "/search_demand")
         $("#searchForm").submit();
     });
 
@@ -35,6 +44,18 @@ $(document).ready(function () {
         $("#form_search_result_resv").attr("action", "/to_create_resv");
         $("#form_search_result_resv").submit();
     });
+
+    /* search result demand page */
+    $("#btn_create_demand").click(function () {
+        $(location).attr("href", "/to_create_demand");
+    });
+    $("div[id^=help_btn_]").click(function () {
+        let demander_username = $(this).parent().children()[3].value;
+        let demander_mail = $(this).parent().children()[4].value;
+        $.MsgBox.Alert("Merci d'envoyer les archives au adresse suivante : ", "Demandé par : " + demander_username + "</br></br>E-mail : " + demander_mail);
+        $("#mb_con").css({width: '450px'});
+    });
+
 
     /* reservation create page */
     $("#select_museum").change(function () {
@@ -80,6 +101,22 @@ $(document).ready(function () {
         });
     });
 
+    /* demand create page */
+    $("#btn_div_create_demand").click(function () {
+        $("#form_create_demand")
+        $.ajax({
+            url: "/create_demand",
+            type: "POST",
+            dataType: "json",//预期服务器返回的数据类型
+            data: $('#form_create_demand').serialize(),
+            success: function (result) {
+                if (result.msg == "success") {
+                    //alert("Vous avez réservé avec succès");
+                    $.MsgBox.Alert("Messages", "Vous avez réservé avec succès");
+                }
+            }
+        });
+    });
 
     /* login page */
     $("#btn_login").click(function () {
@@ -90,28 +127,30 @@ $(document).ready(function () {
         $(location).attr("href", "/register");
     });
 
+    /* register page */
+    $("#register-bg-image > form > div:nth-child(4) > div:nth-child(2) > div").click(function () {
+        $("#form_register").submit();
+    });
 
     /* self_center page */
     $("#link_to_profile").click(function () {
-        let login_user_name = $("#header-right > span:nth-child(3)").html()
         $(location).attr("href", "/profile");
-    })
+    });
     $("#link_to_favorites").click(function () {
-        let login_user_name = $("#header-right > span:nth-child(3)").html()
         $(location).attr("href", "/favorites");
-    })
+    });
     $("#link_to_messagelist").click(function () {
-        let login_user_name = $("#header-right > span:nth-child(3)").html()
         $(location).attr("href", "/messagelist");
-    })
+    });
     $("#link_to_reservation").click(function () {
-        let login_user_name = $("#header-right > span:nth-child(3)").html()
         $(location).attr("href", "/to_my_reservation");
-    })
+    });
+    $("#link_to_demand").click(function () {
+        $(location).attr("href", "/to_my_demand");
+    });
     $("#link_to_logout").click(function () {
-        let login_user_name = $("#header-right > span:nth-child(3)").html()
         $(location).attr("href", "/logout");
-    })
+    });
 
     /* my profile page */
     $("#edit_profile_form > div:nth-child(2) > div:nth-child(3) > span").click(function () {
@@ -142,6 +181,37 @@ $(document).ready(function () {
             type: "POST",
             dataType: "json",
             data: {"resv_id": resv_id},
+            success: function (result) {
+                if (result.msg == "success") {
+                    $.MsgBox.Alert("Messages", "Vous avez reçu avec succès");
+                }
+            }
+        });
+    });
+
+    /* my demand page */
+    $("a[id^=terminate_demand_]").click(function () {
+        let demand_id = $(this).attr("id").substr(17);
+        $.ajax({
+            url: "/terminate_demand",
+            type: "POST",
+            dataType: "json",//预期服务器返回的数据类型
+            data: {"demand_id": demand_id},
+            success: function (result) {
+                if (result.msg == "success") {
+                    $.MsgBox.Alert("Messages", "Vous avez annulé avec succès");
+                }
+            }
+        });
+    });
+
+    $("a[id^=delete_demand_]").click(function () {
+        let demand_id = $(this).attr("id").substr(14);
+        $.ajax({
+            url: "/delete_demand",
+            type: "POST",
+            dataType: "json",
+            data: {"demand_id": demand_id},
             success: function (result) {
                 if (result.msg == "success") {
                     $.MsgBox.Alert("Messages", "Vous avez reçu avec succès");

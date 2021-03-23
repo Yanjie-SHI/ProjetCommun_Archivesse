@@ -1,11 +1,11 @@
 #register-bg-image {
     width: 100%;
-    height: 130%;
+    height: 100%;
     background-image: url('/static/image/bg_login.jpeg');
     background-repeat: no-repeat;
     filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
-    -moz-background-size: 100% 130%;
-    background-size: 100% 130%;
+    -moz-background-size: 100% 100%;
+    background-size: 100% 100%;
     position: absolute;
     z-index: 50;
     top: 0;
@@ -19,14 +19,15 @@
     font-size: 36px;
     font-weight: bold;
     margin-top: 40px;
-    width: 400px;
-    border-bottom: 3px solid #2aabd2;
+    width: 420px;
+    border-bottom: 3px solid #2b669a;
 }
 
 .subtitle {
     font-size: 26px;
     font-weight: bold;
     margin-top: 30px;
+    color: #2b669a;
 }
 
 #register-bg-image > form > div {
@@ -36,11 +37,12 @@
 #fiche_personnelle {
     float: left;
     width: 48%;
-    height: 530px;
+    height: 450px;
     border: 1px solid darkgray;
     border-radius: 8px;
     padding: 10px 20px;
     font-size: 18px;
+    margin-top: 20px;
 }
 
 #fiche_personnelle > div {
@@ -63,21 +65,14 @@
     width: 100%;
 }
 
-#fiche_personnelle > ul {
-    margin-top: 50px;
-    margin-left: 20px;
-    margin-right: 20px;
-    list-style-image: url("/static/image/list_icon.png");
-}
-
 #code_dacces {
     float: right;
     width: 48%;
-    height: 530px;
+    height: 450px;
     padding: 10px 20px;
     border: 1px solid darkgray;
     border-radius: 8px;
-    /*margin-left: 20px;*/
+    margin-top: 20px;
 }
 
 #code_dacces > div {
@@ -92,15 +87,8 @@
     margin: 0;
 }
 
-#code_dacces > div > input[type=text] {
+#code_dacces > div > input[type=text], #code_dacces > div > input[type=password], #code_dacces > div > input[type=email] {
     width: 100%;
-}
-
-#register-bg-image > form > div:nth-child(4) > div:nth-child(1) {
-    width: 58%;
-    height: 150px;
-    float: left;
-    margin-top: 50px;
 }
 
 #register-bg-image > form > div:nth-child(4) > div:nth-child(1) > ul {
@@ -137,43 +125,41 @@
 #lettre_dinformation > div:nth-child(3) {
     width: 30px;
     margin-top: 10px;
-    color: #2aabd2;
+    color: #2b669a;
 }
 
-#register-bg-image > form > div:nth-child(5) {
+#register-bg-image > form > div:nth-child(4) {
     clear: both;
     width: 90%;
 }
 
-#register-bg-image > form > div:nth-child(5) > div:nth-child(1) {
+#register-bg-image > form > div:nth-child(4) > div:nth-child(1) {
     width: 100%;
-    padding-top: 50px;
+    height: 50px;
+    line-height: 50px;
+    padding-top: 20px;
 }
 
-#register-bg-image > form > div:nth-child(5) > div:nth-child(2) {
+#register-bg-image > form > div:nth-child(4) > div:nth-child(1) > label > input {
+    height: 40px;
+    line-height: 40px;
+}
+
+#register-bg-image > form > div:nth-child(4) > div:nth-child(2) {
     width: 200px;
     float: right;
 }
 
-#register-bg-image > form > div:nth-child(5) > div:nth-child(2) > div:nth-child(1) {
+#register-bg-image > form > div:nth-child(4) > div:nth-child(2) > div {
     width: 100px;
     height: 30px;
     line-height: 30px;
     margin-top: 10px;
     float: left;
-    background-color: #2aabd2;
+    background-color: #2b669a;
     color: white;
     text-align: center;
     font-weight: bold;
+    cursor: pointer;
 }
 
-#register-bg-image > form > div:nth-child(5) > div:nth-child(2) > div:nth-child(2) {
-    width: 64px;
-    height: 30px;
-    line-height: 30px;
-    margin-top: 10px;
-    float: right;
-    color: red;
-    border-bottom: 1px solid red;
-
-}

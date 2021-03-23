@@ -16,12 +16,15 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from app01 import views, views_reservation as views_resv, utils
+from app01 import views, views_reservation as views_resv, views_demand, utils
 
 urlpatterns = [
     url('admin/', admin.site.urls),
     url(r'^$', views.welcome),
-    url(r'^search', views.search),
+    url(r'^to_search', views.to_search),
+    url(r'^search_archive', views.search_archive),
+    url(r'^search_resv', views.search_resv),
+    url(r'^search_demand', views.search_demand),
     url(r'^archive_detail', views.archive_detail),
     url(r'^login', views.login),
     url(r'^register', views.register),
@@ -41,6 +44,12 @@ urlpatterns = [
     url(r'^undo_join_resv', views_resv.undo_join_reservation),
     url(r'^confirm_sent_receive_status', views_resv.confirm_sent_receive_status),
     url(r'^update_resv_status', views_resv.update_resv_status),
+
+    url(r'^to_my_demand', views_demand.to_my_demand),
+    url(r'^to_create_demand', views_demand.to_create_demand),
+    url(r'^create_demand', views_demand.create_demand),
+    url(r'^terminate_demand', views_demand.terminate_demand),
+    url(r'^delete_demand', views_demand.delete_demand),
 
     url(r'^fetchmuseumaddress', utils.fetch_museum_address),
 ]

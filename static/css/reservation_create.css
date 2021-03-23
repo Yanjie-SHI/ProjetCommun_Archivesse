@@ -425,3 +425,154 @@ a {
     text-align: center;
     cursor: pointer;
 }
+
+/* demand_create html */
+.demand-bg {
+    height: 105% !important;
+    -moz-background-size: 100% 105%;
+    background-size: 100% 105%;
+}
+
+#reservation-create-bg-image > div.demand_detail {
+    margin-top: 320px;
+    color: black;
+    font-size: 22px;
+    width: 90%;
+    margin-left: 5%;
+}
+
+#reservation-create-bg-image > div.demand_detail > .input_inform {
+    color: #2b669a;
+}
+
+#reservation-create-bg-image > div.demand_detail > .input_inform:nth-child(1) {
+    font-size: 28px;
+}
+
+#reservation-create-bg-image > div.demand_detail > .input_inform:nth-child(2) {
+    margin-top: 20px;
+}
+
+#reservation-create-bg-image > div.demand_detail > div.join_input_div {
+    margin-left: 5%;
+}
+
+#reservation-create-bg-image > div.demand_detail > div.join_input_div > div.demand_basic_info {
+    margin-top: 30px;
+}
+
+#reservation-create-bg-image > div.demand_detail > div.join_input_div > div.demand_basic_info > div {
+    width: 40%;
+    float: left;
+}
+
+#reservation-create-bg-image > div.demand_detail > div.join_input_div > div.archive_document_demand {
+    width: 80%;
+    padding-top: 50px;
+}
+
+#reservation-create-bg-image > div.demand_detail > div.join_input_div > div.archive_document_demand > div:nth-child(1) {
+    width: 100%;
+}
+
+#reservation-create-bg-image > div.demand_detail > div.join_input_div > div.archive_document_demand > div:nth-child(2),
+#reservation-create-bg-image > div.demand_detail > div.join_input_div > div.archive_document_demand > div:nth-child(3) {
+    width: 40%;
+    float: left;
+    font-weight: normal;
+    margin-left: 10%;
+    margin-top: 20px;
+}
+
+#reservation-create-bg-image > div.demand_detail > div.join_input_div > div.archive_document_demand > div:nth-child(2) > div,
+#reservation-create-bg-image > div.demand_detail > div.join_input_div > div.archive_document_demand > div:nth-child(3) > div {
+    width: 25%;
+    float: left;
+}
+
+#reservation-create-bg-image > div.demand_detail > div.join_input_div > div.archive_document_demand > div:nth-child(2) > input,
+#reservation-create-bg-image > div.demand_detail > div.join_input_div > div.archive_document_demand > div:nth-child(3) > input {
+    width: 70%;
+    height: 40px;
+    line-height: 40px;
+}
+
+#reservation-create-bg-image > div.demand_detail > div.vos_information {
+    clear: both;
+    margin-top: 100px;
+    width: 80%;
+    margin-left: 5%;
+}
+
+#reservation-create-bg-image > div.demand_detail > div.vos_information > .vos_information_title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#reservation-create-bg-image > div.demand_detail > div.vos_information > .vos_information_info {
+    color: #2b669a;
+    width: 80%;
+    margin-left: 2%;
+    margin-top: 20px;
+}
+
+#reservation-create-bg-image > div.demand_detail > div.vos_information > div:nth-child(3) {
+    width: 80%;
+    margin-top: 20px;
+}
+
+#reservation-create-bg-image > div.demand_detail > div.vos_information > div:nth-child(3) > div {
+    width: 30%;
+    float: left;
+    margin-left: 10%;
+}
+
+#reservation-create-bg-image > div.demand_detail > div.vos_information > div:nth-child(3) > div > div {
+    float: left;
+}
+
+#reservation-create-bg-image > div.demand_detail > div.vos_information > div:nth-child(4) {
+    width: 80%;
+    clear: both;
+    margin-top: 70px;
+}
+
+#reservation-create-bg-image > div.demand_detail > div.vos_information > div:nth-child(4) > div {
+    float: left;
+    width: 30%;
+    margin-left: 10%;
+}
+
+#reservation-create-bg-image > div.demand_detail > div.vos_information > div:nth-child(4) > input {
+    width: 50%;
+    height: 40px;
+    line-height: 40px;
+}
+
+#reservation-create-bg-image > div.demand_detail > div.cancle_comfirm_div {
+    width: 80%;
+    margin-left: 5%;
+    margin-top: 30px;
+}
+
+#reservation-create-bg-image > div.demand_detail > div.cancle_comfirm_div > a {
+    color: red;
+    height: 50px;
+    line-height: 50px;
+    width: 100px;
+    float: left;
+}
+
+#btn_div_create_demand {
+    width: 290px;
+    margin-left: 35%;
+    height: 50px;
+    line-height: 50px;
+    background-color: #2b669a;
+    border-radius: 5px;
+    float: right;
+    color: white;
+    font-size: 26px;
+    text-align: center;
+    cursor: pointer;
+}

@@ -1,13 +1,15 @@
 {% extends "home_base.html" %}
 {% block body_main %}
     <div id="register-bg-image">
-        <div class="title">Mon espace personnel</div>
+        <div class="title">Votre espace personnel</div>
         <div class="subtitle">S'inscrire à l'espace personnel</div>
-        <form action="">
-            <div>Veuillez renseigner le formulaire suivant. Les champs précédés d’un astérisque (*) sont obligatoires.
+        <form id="form_register" action="/register" method="post">
+            <div>Veuillez renseigner le formulaire suivant. Les champs précédés d’un astérisque (<span
+                    style="color: red;">*</span>) sont obligatoires.
                 Cette inscription est indépendante de celle réalisée en salle de lecture.
             </div>
-            <div>Une fois ces informations validées, vous recevrez un courriel de confirmation de votre inscription.
+            <div>Une fois ces informations validées, vous recevrez un courriel de confirmation de confirmation de votre
+                inscription.
             </div>
             <div>
                 <div id="fiche_personnelle">
@@ -16,22 +18,22 @@
                         <div>Civilité <span style="color: red">*</span></div>
                         <div class="radio">
                             <label>
-                                <input type="radio" name="genderRadios" id="optionsRadios1" value="1" checked>
+                                <input type="radio" name="genderRadios" id="optionsRadios1" value="0" checked>
                                 M.
                             </label>
                             <label>
-                                <input type="radio" name="genderRadios" id="optionsRadios2" value="2">
+                                <input type="radio" name="genderRadios" id="optionsRadios2" value="1">
                                 Mme
                             </label>
                         </div>
                     </div>
                     <div>
                         <span>Votre nom <span style="color: red">*</span></span><br/>
-                        <input type="text" name="lastname">
+                        <input type="text" name="firstname">
                     </div>
                     <div>
                         <span>Votre prénom <span style="color: red">*</span></span><br/>
-                        <input type="text" name="firstname">
+                        <input type="text" name="lastname">
                     </div>
                     <div>
                         <span>Votre pays</span><br/>
@@ -43,20 +45,16 @@
                         </select>
                     </div>
                     <div>
-                        <span>Votre code postal (en chiffres et/ou lettres suivant le pays)</span><br/>
+                        <span>Votre code postal</span><br/>
                         <input type="text" name="post_code">
                     </div>
-                    <ul>
-                        <li>Vous souhaitez accéder à des fichiers en accès réservé ? Veuillez compléter le <span
-                                style="color:#2aabd2;">formulaire de demande suivant.</span></li>
-                    </ul>
                 </div>
                 <div id="code_dacces">
                     <div>Code d'accès</div>
                     <div>
                         <span>Votre adresse électronique (exemple : nomprenom@domaine.com) <span
                                 style="color: red">*</span></span><br/>
-                        <input type="text" name="email">
+                        <input type="email" name="email">
                     </div>
                     <div>
                         <span>Répéter votre adresse électronique <span style="color: red">*</span></span><br/>
@@ -65,41 +63,24 @@
                     <div>
                         <span>Votre mot de passe <span style="color: red">*</span></span>
                         <span>(8 caractères minimum, lettres et chiffres.)</span><br/>
-                        <input type="text" name="password">
+                        <input type="password" name="password">
                     </div>
                     <div>
                         <span>Répéter votre mot de passe <span style="color: red">*</span></span><br/>
-                        <input type="text" name="password_verify">
+                        <input type="password" name="password_verify">
                     </div>
                 </div>
             </div>
 
             <div>
-                <div>
-                    <ul>
-                        <li>Vous souhaitez réserver des documents en salle de lecture pour un jour ultérieur ? Veuillez
-                            compléter le <span style="color:#2aabd2;">formulaire de demande suivant.</span></li>
-                        <li>Vous souhaitez faire une demande de copie de transcription hypothécaire ? Veuillez compléter
-                            le <span style="color:#2aabd2;">formulaire de demande suivant</span></li>
-                    </ul>
-                </div>
-                <div id="lettre_dinformation">
-                    <div>Lettre d'information</div>
-                    <div>Restez informé des dernières nouvelles de Pierresvives</div>
-                    <div>S'abonner</div>
-                </div>
-            </div>
-            <div>
                 <div class="checkbox">
                     <label>
                         <input type="checkbox" checked> En cochant cette case, je reconnais avoir pris connaissance des
-                        <span style="color:#2aabd2;">Conditions générales d'utilisation et</span> je les accepte. <span
-                            style="color:red;">*</span>
+                        Conditions générales d'utilisation et je les accepte. <span style="color:red;">*</span>
                     </label>
                 </div>
                 <div>
                     <div>Valider</div>
-                    <div>Annuler</div>
                 </div>
 
             </div>

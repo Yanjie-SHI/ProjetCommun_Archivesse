@@ -275,6 +275,7 @@ a {
     color: dimgray;
     padding: 7px 12px;
     background-color: #eeeeee;
+    cursor: pointer;
 }
 
 /*type switch*/

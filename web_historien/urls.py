@@ -52,4 +52,6 @@ urlpatterns = [
     url(r'^delete_demand', views_demand.delete_demand),
 
     url(r'^fetchmuseumaddress', utils.fetch_museum_address),
+    url(r'^verify_login', utils.verify_login_js),
+
 ]

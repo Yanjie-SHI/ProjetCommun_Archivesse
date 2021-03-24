@@ -201,5 +201,18 @@ $(document).ready(function () {
         $("#edit_profile_form > div:nth-child(2) > div:nth-child(3) > span").removeClass("hover");
     });
 
+    /* my reservation page */
+    $("#reservation-bg-image > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div:nth-child(1)").click(function () {
+        $("#reservation_detail").css("display", "block");
+        $("#reservation-bg-image > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div.indicator").css("display", "block");
+        $("#reservation_detail_finished").css("display", "none");
+        $("#reservation-bg-image > div:nth-child(2) > div:nth-child(3) > div:nth-child(2) > div.indicator").css("display", "none");
+    });
+    $("#reservation-bg-image > div:nth-child(2) > div:nth-child(3) > div:nth-child(2) > div:nth-child(1)").click(function () {
+        $("#reservation_detail_finished").css("display", "block");
+        $("#reservation-bg-image > div:nth-child(2) > div:nth-child(3) > div:nth-child(2) > div.indicator").css("display", "block");
+        $("#reservation_detail").css("display", "none");
+        $("#reservation-bg-image > div:nth-child(2) > div:nth-child(3) > div:nth-child(1) > div.indicator").css("display", "none");
+    });
 });
 

@@ -50,10 +50,23 @@ $(document).ready(function () {
         $(location).attr("href", "/to_create_demand");
     });
     $("div[id^=help_btn_]").click(function () {
-        let demander_username = $(this).parent().children()[3].value;
-        let demander_mail = $(this).parent().children()[4].value;
-        $.MsgBox.Alert("Merci d'envoyer les archives au adresse suivante : ", "Demandé par : " + demander_username + "</br></br>E-mail : " + demander_mail);
-        $("#mb_con").css({width: '450px'});
+        let this_node = $(this);
+        $.ajax({
+            url: "/verify_login",
+            type: "POST",
+            dataType: "json",//预期服务器返回的数据类型
+            success: function (result) {
+                if (result.msg == "success") {
+                    let demander_username = this_node.parent().children()[3].value;
+                    let demander_mail = this_node.parent().children()[4].value;
+                    $.MsgBox.Alert("Merci d'envoyer les archives au adresse suivante : ", "Demandé par : " + demander_username + "</br></br>E-mail : " + demander_mail);
+                    $("#mb_con").css({width: '450px'});
+                } else {
+                    $(location).attr("href", "/login");
+                }
+            },
+
+        });
     });
 
 

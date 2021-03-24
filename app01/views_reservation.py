@@ -27,13 +27,33 @@ def to_my_reservation_list(request):
     if len(reservation_list2) > 0:
         for resv in reservation_list2:
             result_set.add(resv)
-
     # get all corresponding archive for each reservation
     for resv in result_set:
         archive_list = Res_Dem_Arch.objects.filter(reservation__id=resv.id, resv_user=options.get("user"))
         resv.archive_list = archive_list
 
     options.update({"reservation_list": result_set})
+
+    # get all finished reservations
+    result_set_finished = set()
+    # find all reservation as creator
+    reservation_list_finished = Reservation.objects.filter(creator=options.get("user"), status=2)
+    if len(reservation_list_finished) > 0:
+        for resv in reservation_list_finished:
+            result_set_finished.add(resv)
+    # find all reservation as joiner
+    res_dem_arch_resvid_finished_list = Res_Dem_Arch.objects.filter(resv_user=options.get("user"),
+                                                                    reservation__status=2).values("reservation_id")
+    reservation_list_finished2 = Reservation.objects.filter(id__in=res_dem_arch_resvid_finished_list)
+    if len(reservation_list_finished2) > 0:
+        for resv in reservation_list_finished2:
+            result_set_finished.add(resv)
+    # get all corresponding archive for each reservation
+    for resv in result_set_finished:
+        archive_list = Res_Dem_Arch.objects.filter(reservation__id=resv.id, resv_user=options.get("user"))
+        resv.archive_list = archive_list
+
+    options.update({"reservation_list_finished": result_set_finished})
 
     return render(request, 'my_reservation.html', options)
 

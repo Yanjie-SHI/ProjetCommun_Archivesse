@@ -24,12 +24,13 @@
        
 ## TODO list
 - 2021/03/23
-    - question: after search demand, click button need login verify or not?
-    - My reservation 已完成列表
+    - 3个页面的多语言版本
     - 注册js校验，密码和重复密码是否一致，是否为8位密码
     - 登录后跳转回前一个页面，带结果
     - 分页的各个页面完善
     - 搜索filter及结果页的搜索按钮
+    - question: after search demand, click button need login verify or not?  A: yes  √
+    - My reservation 已完成列表  √
 - 2021/03/19
     - 需求部分：创建需求，我的需求页，需求搜索结果页  √
     - 注册功能 √

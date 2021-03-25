@@ -39,6 +39,9 @@
             <span>{{ user.username }}</span>
         {% endif %}
         <input type="hidden" id="session_login_user_id" value="{{ request.session.login_user_id }}">
+        {% if request.session.login_user_id != None %}
+            <a href="/logout">Déconnexion</a>
+        {% endif %}
     </div>
 </div>
 

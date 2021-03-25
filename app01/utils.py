@@ -26,6 +26,10 @@ def verify_login_js(request):
 
 
 def fetch_museum_address(request):
+    options = {}
     museum_id = request.POST.get("museum_id")
-    museum = Museum.objects.filter(id=museum_id)[0]
-    return JsonResponse({"address": museum.address})
+    museum = Museum.objects.get(id=museum_id)
+    options.update({"address": museum.address})
+    options.update({"available_doc_archive_count": museum.document_limit})
+    options.update({"available_video_archive_count": museum.video_limit})
+    return JsonResponse(options)

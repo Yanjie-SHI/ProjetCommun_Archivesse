@@ -17,11 +17,11 @@
         _html += '<div id="mb_box"></div><div id="mb_con"><span id="mb_tit">' + title + '</span>';
         _html += '<a id="mb_ico">x</a><div id="mb_msg">' + msg + '</div><div id="mb_btnbox">';
         if (type == "alert") {
-            _html += '<input id="mb_btn_ok" type="button" value="Confirm" />';
+            _html += '<input id="mb_btn_ok" type="button" value="Confirmer" />';
         }
         if (type == "confirm") {
-            _html += '<input id="mb_btn_ok" type="button" value="Confirm" />';
-            _html += '<input id="mb_btn_no" type="button" value="Cancel" />';
+            _html += '<input id="mb_btn_ok" type="button" value="Confirmer" />';
+            _html += '<input id="mb_btn_no" type="button" value="Annuler" />';
         }
         _html += '</div></div>';
         //必须先将_html添加到body，再设置Css样式

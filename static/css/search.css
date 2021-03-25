@@ -226,6 +226,15 @@ a {
     background-color: #eeeeee;
 }
 
+#search_2 > div:nth-child(3), #search_3 > div:nth-child(2) {
+    width: 100%;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+}
+
 #datetimepicker1 {
     width: 100%;
     color: black !important;

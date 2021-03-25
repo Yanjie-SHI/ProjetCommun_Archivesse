@@ -1,5 +1,3 @@
-import datetime
-
 from django.db.models import Q
 from django.shortcuts import render
 
@@ -105,25 +103,28 @@ def to_create_reservation(request):
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
     options = verify_login(request)
-    if request.method == "GET":
-        return render(request, "create_reservation.html", options)
-    elif request.method == "POST":
-        museum_list = Museum.objects.all()
-        options.update({"museum_list": museum_list})
 
-        input_museum_name = request.POST.get("museumName")
-        input_resv_end_date = request.POST.get("resvEndDate")
-        options.update({"museum_name": input_museum_name})
-        options.update({"resv_end_date": input_resv_end_date})
+    museum_list = Museum.objects.all()
+    options.update({"museum_list": museum_list})
 
+    input_museum_name = request.POST.get("museumName", "")
+    input_resv_end_date = request.POST.get("resvEndDate", "")
+    options.update({"museum_name": input_museum_name})
+    options.update({"resv_end_date": input_resv_end_date})
+
+    if input_museum_name:
         museum = Museum.objects.filter(name__contains=input_museum_name)
         if len(museum) > 0:
-            available_doc_archive_count = museum[0].document_limit
-            available_video_archive_count = museum[0].video_limit
-            options.update({"available_doc_archive_count": available_doc_archive_count})
-            options.update({"available_video_archive_count": available_video_archive_count})
+            options.update({"address": museum[0].address})
+            options.update({"available_doc_archive_count": museum[0].document_limit})
+            options.update({"available_video_archive_count": museum[0].video_limit})
+    else:
+        options.update({"address": museum_list[0].address})
+        options.update({"resv_end_date": datetime.datetime.today()})
+        options.update({"available_doc_archive_count": museum_list[0].document_limit})
+        options.update({"available_video_archive_count": museum_list[0].video_limit})
 
-        return render(request, "reservation_create.html", options)
+    return render(request, "reservation_create.html", options)
 
 
 def create_reservation(request):
@@ -140,7 +141,7 @@ def create_reservation(request):
         reservation.sent_flag = 0
         reservation.received_flag = 0
         reservation.museum_id = int(request.POST.get("sel_museum"))
-        reservation.creator_id = int(request.session.get("login_user_id"))
+        reservation.creator = options.get("user")
         reservation.save()
 
         # save data in relation Res_Dem_Arch
@@ -172,6 +173,17 @@ def create_reservation(request):
         if demand_user.mail != receiver_email:
             demand_user.receiver_mail = receiver_email
             demand_user.save()
+
+        # save a message data in Message table
+        notification = Notification()
+        notification.category = 1
+        notification.title = "Confirmation de création de rendez-vous"
+        notification.content = "Bonjour,</br></br>Vous avez crée le rendez-vous à {} avec succès.</br></br>Cordialement,</br>Groupe Archivesse".format(
+            reservation.museum.name)
+        notification.status = 0
+        notification.create_date_time = datetime.datetime.now()
+        notification.receiver = options.get("user")
+        notification.save()
 
         return JsonResponse({"msg": "success"})
 

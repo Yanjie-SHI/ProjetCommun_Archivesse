@@ -1,5 +1,3 @@
-import datetime
-
 from django.db.models import Q
 from django.shortcuts import render
 
@@ -91,7 +89,7 @@ def search_resv(request):
     current_page = request.POST.get("currentPage", "1")
     # reservation search
     reservation_list = Reservation.objects.filter(
-        Q(museum__name__contains=museum_name) & Q(expire_date__lte=resv_end_date))
+        Q(museum__name__contains=museum_name) & Q(expire_date__lte=resv_end_date) & Q(status=0))
     for resv in reservation_list:
         resv.available_doc_archive_count = resv.museum.document_limit
         resv.available_video_archive_count = resv.museum.video_limit

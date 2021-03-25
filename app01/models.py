@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 
 
@@ -112,6 +114,8 @@ class Notification(models.Model):
     title = models.CharField(db_column="n_title", max_length=200, blank=False, null=False, help_text="通知标题")
     content = models.CharField(db_column="n_content", max_length=2000, blank=False, null=False, help_text="通知内容")
     status = models.IntegerField(db_column="n_status", blank=False, null=False, help_text="通知状态 0未读1已读")
+    create_date_time = models.DateTimeField(db_column="n_create_datetime", blank=False, null=False,
+                                            default=datetime.datetime.now(), help_text="创建日期时间")
     receiver = models.ForeignKey(Users, db_index=True, on_delete=models.DO_NOTHING, help_text="通知接收人")
 
     class Meta:

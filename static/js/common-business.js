@@ -3,6 +3,9 @@ $(document).ready(function () {
     $("#link_to_login").click(function () {
         $(location).attr("href", "/login");
     });
+    $("#header-left > img").click(function () {
+        $(location).attr("href", "/to_search");
+    });
 
 
     $("#link_to_selfcenter").click(function () {
@@ -20,9 +23,15 @@ $(document).ready(function () {
         $("#searchForm").attr("action", "/search_resv")
         $("#searchForm").submit();
     });
+    $("#search_2 > div:nth-child(3) > a").click(function () {
+        $(location).attr("href", "/to_create_resv");
+    });
     $("#search_3 > div > span").click(function () {
         $("#searchForm").attr("action", "/search_demand")
         $("#searchForm").submit();
+    });
+    $("#search_3 > div:nth-child(2) > a").click(function () {
+        $(location).attr("href", "/to_create_demand");
     });
 
     /* archive detail page */
@@ -79,6 +88,23 @@ $(document).ready(function () {
             data: {"museum_id": $("#select_museum").val()},
             success: function (result) {
                 $("#auto_museum_address").html(result.address);
+                $("#resv_create_detail > div:nth-child(4) > div:nth-child(1)").html("Nombre document disponible : " + result.available_doc_archive_count);
+                $("#resv_create_detail > div:nth-child(4) > div:nth-child(2)").html("Nombre vidéo disponible : " + result.available_video_archive_count);
+
+                for (let i = $("#doc_demand_count").children().length - 1; i > 0; i--) {
+                    if ($("#doc_demand_count").children()[i].value > result.available_doc_archive_count) {
+                        $("#doc_demand_count").children()[i].remove();
+                        let li_obj = document.getElementById("li_doc_" + i);
+                        li_obj.style.display = "none";
+                    }
+                }
+                for (let i = $("#video_demand_count").children().length - 1; i > 0; i--) {
+                    if ($("#video_demand_count").children()[i].value > result.available_video_archive_count) {
+                        $("#video_demand_count").children()[i].remove();
+                        let li_obj = document.getElementById("li_video_" + i);
+                        li_obj.style.display = "none";
+                    }
+                }
             }
         });
     });
@@ -212,7 +238,7 @@ $(document).ready(function () {
             data: {"demand_id": demand_id},
             success: function (result) {
                 if (result.msg == "success") {
-                    $.MsgBox.Alert("Messages", "Vous avez annulé avec succès");
+                    $.MsgBox.Alert("Messages", "Vous avez terminé avec succès");
                 }
             }
         });
@@ -227,7 +253,7 @@ $(document).ready(function () {
             data: {"demand_id": demand_id},
             success: function (result) {
                 if (result.msg == "success") {
-                    $.MsgBox.Alert("Messages", "Vous avez reçu avec succès");
+                    $.MsgBox.Alert("Messages", "Vous avez supprimé avec succès");
                 }
             }
         });

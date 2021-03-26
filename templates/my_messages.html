@@ -1,7 +1,8 @@
 {% extends "home_base.html" %}
 {% block body_main %}
     <div id="messages-list-bg-image">
-        <div class="return_link"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="">Retour au menu de l'espace
+        <div class="return_link"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="javascript:history.back(-1)">Retour au
+            menu de l'espace
             personnel</a></div>
 
         <div>
@@ -17,31 +18,37 @@
                 <div>
                     <select name="" id="">
                         <option value="">Tous les catégories</option>
+                        <option value="">RDV</option>
+                        <option value="">ADMIN</option>
+                        <option value="">DEMAND</option>
                     </select>
                 </div>
             </div>
             <ul>
-                <li>
-                    <div class="envelop"></div>
-                    <div style="font-weight: bold;">25/02/2021</div>
-                    <div>
-                        <div>RDV</div>
-                    </div>
-                    <div style="font-weight: bold;">Confirmation de votre adhésion à RDV</div>
-                    <div><a href="">Supprimer</a></div>
-                </li>
-                <li>
-                    <div class="envelop"></div>
-                    <div>25/02/2021</div>
-                    <div>
-                        <div>ADMIN</div>
-                    </div>
-                    <div>Confirmation de création de vote compte</div>
-                    <div><a href="">Supprimer</a></div>
-                </li>
+                {% for msg in message_list %}
+                    <li>
+                        <div class="envelop"
+                             {% if msg.status == 0 %}style="background-image: url('/static/image/icon_envelop_close.png');"
+                             {% else %}style="background-image: url('/static/image/icon_envelop_open.png');"{% endif %}></div>
+                        <div {% if msg.status == 0 %}style="font-weight: bold;"{% endif %}>{{ msg.create_date_time|date:'d/m/Y H:i' }}</div>
+                        <div>
+                            {% if msg.category == 0 %}
+                                <div style="background-color: orangered;">ADMIN</div>
+                            {% elif msg.category == 1 %}
+                                <div style="background-color: aqua;">RDV</div>
+                            {% else %}
+                                <div>DEMAND</div>
+                            {% endif %}
+                        </div>
+                        <div {% if msg.status == 0 %}style="font-weight: bold;"{% endif %}>
+                            <a href="/message_detail?id={{ msg.id }}">{{ msg.title }}</a>
+                        </div>
+                        <div><a href="">Supprimer</a></div>
+                    </li>
+                {% endfor %}
             </ul>
             <div class="pager">
-                <div>2 sur 2</div>
+                <div>1 sur {{ message_list|length }}</div>
                 <div><a href="">1</a></div>
             </div>
         </div>

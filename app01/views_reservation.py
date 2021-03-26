@@ -15,13 +15,13 @@ def to_my_reservation_list(request):
     # get all my related reservation
     result_set = set()
     # find all reservation as creator
-    reservation_list = Reservation.objects.filter(creator=options.get("user"))
+    reservation_list = Reservation.objects.filter(creator=options.get("user"), status__lt=2)
     if len(reservation_list) > 0:
         for resv in reservation_list:
             result_set.add(resv)
     # find all reservation as joiner
     res_dem_arch_resvid_list = Res_Dem_Arch.objects.filter(resv_user=options.get("user")).values("reservation_id")
-    reservation_list2 = Reservation.objects.filter(id__in=res_dem_arch_resvid_list)
+    reservation_list2 = Reservation.objects.filter(id__in=res_dem_arch_resvid_list, status__lt=2)
     if len(reservation_list2) > 0:
         for resv in reservation_list2:
             result_set.add(resv)
@@ -178,7 +178,7 @@ def create_reservation(request):
         notification = Notification()
         notification.category = 1
         notification.title = "Confirmation de création de rendez-vous"
-        notification.content = "Bonjour,</br></br>Vous avez crée le rendez-vous à {} avec succès.</br></br>Cordialement,</br>Groupe Archivesse".format(
+        notification.content = "Bonjour,</br></br>&nbsp;&nbsp;&nbsp;&nbsp;Vous avez crée le rendez-vous à {} avec succès.</br></br></br>Cordialement,</br>Groupe Archivesse".format(
             reservation.museum.name)
         notification.status = 0
         notification.create_date_time = datetime.datetime.now()
@@ -232,13 +232,14 @@ def join_reservation(request):
                 res_dem_arch.folio = int(request.POST.get("doc_folio_" + str(i)))
             res_dem_arch.save()
         # save data in Res_Dem_Confirm_Status relation
-        res_dem_confirm_status = Res_Dem_Confirm_Status()
-        res_dem_confirm_status.reservation_id = resv_id
-        res_dem_confirm_status.resv_user = options.get("user")
-        res_dem_confirm_status.arch_type = 0
-        res_dem_confirm_status.sent_flag = 0
-        res_dem_confirm_status.received_flag = 0
-        res_dem_confirm_status.save()
+        if int(needed_doc_demand_count) > 0:
+            res_dem_confirm_status = Res_Dem_Confirm_Status()
+            res_dem_confirm_status.reservation_id = resv_id
+            res_dem_confirm_status.resv_user = options.get("user")
+            res_dem_confirm_status.arch_type = 0
+            res_dem_confirm_status.sent_flag = 0
+            res_dem_confirm_status.received_flag = 0
+            res_dem_confirm_status.save()
 
         for i in range(1, int(needed_video_demand_count) + 1):
             res_dem_arch = Res_Dem_Arch()
@@ -249,13 +250,14 @@ def join_reservation(request):
                 res_dem_arch.folio = int(request.POST.get("video_ouvert_" + str(i)))
             res_dem_arch.save()
         # save data in Res_Dem_Confirm_Status relation
-        res_dem_confirm_status = Res_Dem_Confirm_Status()
-        res_dem_confirm_status.reservation_id = resv_id
-        res_dem_confirm_status.resv_user = options.get("user")
-        res_dem_confirm_status.arch_type = 2
-        res_dem_confirm_status.sent_flag = 0
-        res_dem_confirm_status.received_flag = 0
-        res_dem_confirm_status.save()
+        if int(needed_video_demand_count) > 0:
+            res_dem_confirm_status = Res_Dem_Confirm_Status()
+            res_dem_confirm_status.reservation_id = resv_id
+            res_dem_confirm_status.resv_user = options.get("user")
+            res_dem_confirm_status.arch_type = 2
+            res_dem_confirm_status.sent_flag = 0
+            res_dem_confirm_status.received_flag = 0
+            res_dem_confirm_status.save()
 
         # save receiver email if not equal to user register email
         receiver_email = request.POST.get("receiver_email")

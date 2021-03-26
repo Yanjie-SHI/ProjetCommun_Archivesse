@@ -1,7 +1,8 @@
 {% extends "home_base.html" %}
 {% block body_main %}
     <div id="self-profile-bg-image">
-        <div class="return_link"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="">Retour au menu de l'espace
+        <div class="return_link"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="javascript:history.back(-1)">Retour au
+            menu de l'espace
             personnel</a></div>
 
         <div>
@@ -15,39 +16,39 @@
                         <div class="radio">
                             <label>
                                 <input type="radio" name="genderRadios" id="optionsRadios1" value="1"
-                                       {% if user.u_gender == 1 %}checked{% endif %}>
+                                       {% if user.gender == 1 %}checked{% endif %}>
                                 M.
                             </label>
                             <label>
                                 <input type="radio" name="genderRadios" id="optionsRadios2" value="2"
-                                       {% if user.u_gender == 2 %}checked{% endif %}>
+                                       {% if user.gender == 2 %}checked{% endif %}>
                                 Mme.
                             </label>
                         </div>
                     </div>
                     <div>
                         <div class="hint">Nom <span style="color: red">*</span> :</div>
-                        <input type="text" name="firstname" value="{{ user.u_first_name }}" disabled>
+                        <input type="text" name="firstname" value="{{ user.first_name }}" disabled>
                         <div class="hint hint2">Prénom <span style="color: red">*</span> :</div>
-                        <input type="text" name="lastname" value="{{ user.u_last_name }}" disabled>
+                        <input type="text" name="lastname" value="{{ user.last_name }}" disabled>
                     </div>
                     <div>
                         <div class="hint">Pays:</div>
-                        <input type="text" name="nation" value="{{ user.u_nation }}">
+                        <input type="text" name="nation" value="{{ user.nation }}">
                     </div>
                     <div>
                         <div class="hint">Code Postal:</div>
-                        <input type="text" name="post_code" value="{{ user.u_post_code }}">
+                        <input type="text" name="post_code" value="{{ user.post_code }}">
                         <div class="hint hint2">Ville:</div>
-                        <input type="text" name="city" value="{{ user.u_city }}">
+                        <input type="text" name="city" value="{{ user.city }}">
                     </div>
                     <div>
                         <div class="hint">Adresse :</div>
-                        <input type="text" name="address" value="{{ user.u_address }}">
+                        <input type="text" name="address" value="{{ user.address }}">
                     </div>
                     <div>
                         <div class="hint">E-mail<span style="color: red">*</span> :</div>
-                        <input type="text" name="mail" value="{{ user.u_mail }}" disabled>
+                        <input type="text" name="mail" value="{{ user.mail }}" disabled>
                     </div>
                 </div>
 

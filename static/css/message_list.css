@@ -157,6 +157,7 @@
     position: relative;
     top: 50px;
     left: 0;
+    margin-top: 200px;
 }
 
 .pager > div:nth-child(1) {
@@ -167,4 +168,37 @@
 .pager > div:nth-child(2) {
     float: right;
     width: 20%;
+}
+
+
+/* message detail page */
+#msg_title_div {
+    width: 90%;
+    margin-top: 20px;
+}
+
+#msg_title_div > span {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+}
+
+#msg_title_div > div {
+    width: 10%;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-weight: bold;
+    margin-left: 30px;
+    margin-top: 5px;
+    color: black;
+}
+
+#msg_content {
+    clear: both;
+    color: black !important;
+    width: 80% !important;
+    margin-left: 2%;
+    margin-top: 80px !important;
 }

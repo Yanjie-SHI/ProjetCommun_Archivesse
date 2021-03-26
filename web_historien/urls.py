@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^register', views.register),
     url(r'^selfcenter', views.self_center),
     url(r'^messagelist', views.message_list),
+    url(r'^message_detail', views.message_detail),
     url(r'^profile', views.profile),
     url(r'^favorites', views.favorites),
     url(r'^add_favorites', views.add_favorites),

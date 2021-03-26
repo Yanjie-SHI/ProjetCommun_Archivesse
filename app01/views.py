@@ -84,12 +84,15 @@ def search_resv(request):
     # reservation search
     museum_name = request.POST.get("museumName")
     resv_end_date = request.POST.get("resvEndDate")
-    resv_end_date = datetime.date(int(resv_end_date[6:10]), int(resv_end_date[3:5]), int(resv_end_date[0:2]))
 
     current_page = request.POST.get("currentPage", "1")
-    # reservation search
-    reservation_list = Reservation.objects.filter(
-        Q(museum__name__contains=museum_name) & Q(expire_date__lte=resv_end_date) & Q(status=0))
+    if resv_end_date:
+        resv_end_date = datetime.date(int(resv_end_date[6:10]), int(resv_end_date[3:5]), int(resv_end_date[0:2]))
+        # reservation search
+        reservation_list = Reservation.objects.filter(
+            Q(museum__name__contains=museum_name) & Q(expire_date__lte=resv_end_date) & Q(status=0))
+    else:
+        reservation_list = Reservation.objects.filter(status=0)
     for resv in reservation_list:
         resv.available_doc_archive_count = resv.museum.document_limit
         resv.available_video_archive_count = resv.museum.video_limit
@@ -110,7 +113,8 @@ def search_resv(request):
     options.update({"pages": pages})
     options.update({"current_page": current_page})
     options.update({"input_museum_name": museum_name})
-    options.update({"input_resv_end_date": resv_end_date.strftime("%d/%m/%Y")})
+    if resv_end_date:
+        options.update({"input_resv_end_date": resv_end_date.strftime("%d/%m/%Y")})
     options.update({"reservation_list": reservation_list})
 
     return render(request, "search_result_reservation.html", options)
@@ -183,7 +187,7 @@ def register(request):
         user.password = request.POST.get("password")
         user.gender = int(request.POST.get("genderRadios"))
         user.nation = request.POST.get("pays")
-        user.address = request.POST.get("address")
+        # user.address = request.POST.get("address")
         user.post_code = request.POST.get("post_code")
         user.save()
 
@@ -207,7 +211,21 @@ def self_center(request):
 def message_list(request):
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
-    return render(request, 'my_messages.html')
+    options = verify_login(request)
+    message_list = Notification.objects.filter(receiver=options.get("user"))
+    options.update({"message_list": message_list})
+
+    return render(request, 'my_messages.html', options)
+
+
+def message_detail(request):
+    if request.session.get("login_user_id", 0) == 0:
+        return render(request, "login.html")
+    options = verify_login(request)
+    message = Notification.objects.get(id=request.GET.get("id"))
+    options.update({"message": message})
+
+    return render(request, 'message_detail.html', options)
 
 
 def profile(request):
@@ -215,23 +233,23 @@ def profile(request):
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
     user_id = request.session['login_user_id']
-    user = Users.objects.get(u_id=user_id)
+    user = Users.objects.get(id=user_id)
     if request.method == "GET":
         if user:
             options.update({"user": user})
         return render(request, 'my_profile.html', options)
     elif request.method == "POST":
         if user:
-            if request.POST['old_password'] and not request.POST['old_password'] == user.u_password:
+            if request.POST['old_password'] and not request.POST['old_password'] == user.password:
                 return JsonResponse({"err": "old password input error"})
-            user.u_gender = request.POST['genderRadios']
-            user.u_nation = request.POST['nation']
-            user.u_post_code = request.POST['post_code']
-            user.u_city = request.POST['city']
-            user.u_address = request.POST['address']
-            user.u_password = request.POST['new_password']
+            user.gender = request.POST['genderRadios']
+            user.nation = request.POST['nation']
+            user.post_code = request.POST['post_code']
+            user.city = request.POST['city']
+            user.address = request.POST['address']
+            user.password = request.POST['new_password']
             user.save()
-        return JsonResponse({"msg": "User update success!"})
+        return JsonResponse({"msg": "success"})
 
 
 def favorites(request):

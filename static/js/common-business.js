@@ -142,7 +142,6 @@ $(document).ready(function () {
 
     /* demand create page */
     $("#btn_div_create_demand").click(function () {
-        $("#form_create_demand")
         $.ajax({
             url: "/create_demand",
             type: "POST",
@@ -193,7 +192,20 @@ $(document).ready(function () {
 
     /* my profile page */
     $("#edit_profile_form > div:nth-child(2) > div:nth-child(3) > span").click(function () {
-        $("#edit_profile_form").submit();
+        $.ajax({
+            url: "/profile",
+            type: "POST",
+            dataType: "json",//预期服务器返回的数据类型
+            data: $('#edit_profile_form').serialize(),
+            success: function (result) {
+                if (result.msg == "success") {
+                    //alert("Vous avez réservé avec succès");
+                    $.MsgBox.Alert("Messages", "Les modifications sont bien enregistrées");
+                } else {
+                    $.MsgBox.Alert("Messages", "Votre ancien mot de passe n'est pas correct");
+                }
+            }
+        });
     });
 
     /* my_reservation page */
@@ -268,7 +280,7 @@ $(document).ready(function () {
             data: {"resv_id": $("#resv_id").val(), "status": "0"},
             success: function (result) {
                 if (result.msg == "success") {
-                    $.MsgBox.Alert("Messages", "Reservation status change success");
+                    $.MsgBox.Alert("Messages", "Le status de réservation est bien changé");
                 }
             }
         });
@@ -281,7 +293,7 @@ $(document).ready(function () {
             data: {"resv_id": $("#resv_id").val(), "status": "1"},
             success: function (result) {
                 if (result.msg == "success") {
-                    $.MsgBox.Alert("Messages", "Reservation status change success");
+                    $.MsgBox.Alert("Messages", "Le status de réservation est bien changé");
                 }
             }
         });
@@ -295,7 +307,7 @@ $(document).ready(function () {
             data: {"resv_id": $("#resv_id").val(), "receiver_id": receiver_id, "arch_type": 0},
             success: function (result) {
                 if (result.msg == "success") {
-                    $.MsgBox.Alert("Messages", "Send success");
+                    $.MsgBox.Alert("Messages", "Envoyer avec succès");
                 }
             }
         });
@@ -309,7 +321,7 @@ $(document).ready(function () {
             data: {"resv_id": $("#resv_id").val(), "receiver_id": receiver_id, "arch_type": 2},
             success: function (result) {
                 if (result.msg == "success") {
-                    $.MsgBox.Alert("Messages", "Send success");
+                    $.MsgBox.Alert("Messages", "Envoyer avec succès");
                 }
             }
         });

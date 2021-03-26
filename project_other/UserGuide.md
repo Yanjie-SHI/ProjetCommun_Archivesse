@@ -24,7 +24,7 @@
        
 ## TODO list
 - 2021/03/23
-    - my message 页面数据从数据库获取
+    - 注册时不填postcode保存报错
     - 定时任务，只要有站内信，就标题栏展示小图标，链接进入my messages页面
     - 个人预约详情，点了是否已经去过的按钮，弹出框确认后留在当前页面
     - 3个页面的多语言版本
@@ -34,7 +34,14 @@
     - 登录后跳转回前一个页面，带结果
     - 分页的各个页面完善
     - 搜索filter及结果页的搜索按钮
-    - 预约和demand search 页面直接有创建按钮  √...
+    - bug: resv create 切换museum后，从大的可用数改小，archive id和folio填入没问题，从小改大显示不出多的input框
+    - multilanguage select frame  √
+    - message detail page  √
+    - selfcenter each sub page return link  √
+    - profile page error  √
+    - finished resv should not show in 'En cour' tab  √
+    - my message page fetch data from db  √
+    - resv and demand search page, add create button directly  √
     - 预约成功的站内信  √
     - header的书图标，回到文献搜索页面  √
     - 预约查询结果页面，2个新建按钮一高一低  √

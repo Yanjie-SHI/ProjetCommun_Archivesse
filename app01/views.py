@@ -1,5 +1,4 @@
 from django.db.models import Q
-from django.shortcuts import render
 
 from app01.utils import *
 from web_historien import settings
@@ -127,6 +126,7 @@ def search_demand(request):
     input = request.POST.get("demandSearchInput")
     demands = Demand.objects.filter(archive__id=input)
     options.update({"demands": demands})
+    options.update({"demandSearchInput": input})
 
     return render(request, "search_result_demand.html", options)
 
@@ -188,7 +188,8 @@ def register(request):
         user.gender = int(request.POST.get("genderRadios"))
         user.nation = request.POST.get("pays")
         # user.address = request.POST.get("address")
-        user.post_code = request.POST.get("post_code")
+        if request.POST.get("post_code"):
+            user.post_code = int(request.POST.get("post_code"))
         user.save()
 
         return render(request, 'login.html')

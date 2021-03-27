@@ -7,15 +7,17 @@
     <link rel="stylesheet" href="/static/css/welcome.css">
 </head>
 <body>
+{% load i18n %}
 <div id="bg-image" class="bg_fill_parent">
-    <div id="splash-title"><span>Bienvenue au Archivesses</span></div>
+    <div id="splash-title"><span>{% trans 'Bienvenue au Archivesses' %}</span></div>
     <div id="splash-content">
-        <div>- Découvrez les ressources des archives françaises en ligne</div>
-        <div>- Prenez un rdv en ligne pour les centres éloignés</div>
-        <div>- Demander un document en ligne</div>
+        <div>- {% trans 'Découvrez les ressources des archives françaises en ligne' %}</div>
+        <div>- {% trans 'Prenez un rdv en ligne pour les centres éloignés' %}</div>
+        <div>- {% trans 'Demander un document en ligne' %}</div>
     </div>
     <div id="clear-split"></div>
-    <div id="splash-btn"><a href="/to_search" style="text-underline-style: single">Commence votre visite</a></div>
+    <div id="splash-btn"><a href="/to_search"
+                            style="text-underline-style: single">{% trans 'Commence votre visite' %}</a></div>
 
 </div>
 </body>

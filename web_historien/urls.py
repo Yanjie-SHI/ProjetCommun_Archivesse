@@ -54,5 +54,6 @@ urlpatterns = [
 
     url(r'^fetchmuseumaddress', utils.fetch_museum_address),
     url(r'^verify_login', utils.verify_login_js),
+    url(r'change_language', utils.change_language),
 
 ]

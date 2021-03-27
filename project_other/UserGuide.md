@@ -23,18 +23,24 @@
 - message detail
        
 ## TODO list
-- 2021/03/23
-    - 注册时不填postcode保存报错
+- 2021/03/28
+    - search filter in search result archive page
+    - search filter in search result resv page
     - 定时任务，只要有站内信，就标题栏展示小图标，链接进入my messages页面
-    - 个人预约详情，点了是否已经去过的按钮，弹出框确认后留在当前页面
-    - 3个页面的多语言版本
-    - 个人预约详情，如果有一个人很多个预约数据，展示的文献列表样式重叠
-    - 预约搜索页面，博物馆名称改成下拉框
+    - globalization
+    - 预约搜索页面，博物馆名称改成输入3个字符后，列出相应的可选项
     - 注册js校验，密码和重复密码是否一致，是否为8位密码
     - 登录后跳转回前一个页面，带结果
     - 分页的各个页面完善
-    - 搜索filter及结果页的搜索按钮
     - bug: resv create 切换museum后，从大的可用数改小，archive id和folio填入没问题，从小改大显示不出多的input框
+    - search archive func in search result archive page  √
+    - search resv func in search result resv page  √
+    - search demand func in search result demand page  √
+    - bugfix: empty post code cause register failed with error  √
+    - cssfix: resv creator view: css error for one joiner with multiple archives  √
+    - resv creator view: when change go or not checkbox, after success alert, should not jump back to last page, but stay at current page  √
+    - resv creator view: when click on send link, after success alert, refresh current page  √
+- 2021/03/23
     - multilanguage select frame  √
     - message detail page  √
     - selfcenter each sub page return link  √

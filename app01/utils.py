@@ -1,4 +1,6 @@
 from django.http import JsonResponse
+from django.shortcuts import render
+from django.utils.translation import activate
 
 from app01.models import *
 
@@ -33,3 +35,9 @@ def fetch_museum_address(request):
     options.update({"available_doc_archive_count": museum.document_limit})
     options.update({"available_video_archive_count": museum.video_limit})
     return JsonResponse(options)
+
+
+def change_language(request):
+    lang = request.GET.get("lang")
+    activate(lang)
+    return render(request, "welcome.html")

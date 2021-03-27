@@ -1,8 +1,8 @@
 (function () {
     $.MsgBox = {
-        Alert: function (title, msg) {
+        Alert: function (title, msg, callback) {
             GenerateHtml("alert", title, msg);
-            btnOk();  //alert只是弹出消息，因此没必要用到回调函数callback
+            btnOk(callback);  //alert只是弹出消息，因此没必要用到回调函数callback
             btnNo();
         },
         Confirm: function (title, msg, callback) {
@@ -82,10 +82,14 @@
     var btnOk = function (callback) {
         $("#mb_btn_ok").click(function () {
             $("#mb_box,#mb_con").remove();
-            history.back(-1);
-            /*if (typeof (callback) == 'function') {
+            //history.back(-1);
+            if (typeof (callback) == 'boolean') {
+                if (callback == true) {
+                    window.location.reload();
+                }
+            } else if (typeof (callback) == 'function') {
                 callback();
-            }*/
+            }
         });
     }
     //取消按钮事件

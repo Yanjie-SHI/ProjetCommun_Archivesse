@@ -1,0 +1,59 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-26 17:30+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: templates/home_base.html:41
+msgid "Espace Personnel"
+msgstr "Personal space"
+
+#: templates/home_base.html:43
+msgid "Me connecter"
+msgstr "Log in"
+
+#: templates/home_base.html:48
+msgid "Déconnexion"
+msgstr "Logout"
+
+#: templates/welcome.html:12
+msgid "Bienvenue au Archivesses"
+msgstr "Welcome to Archivesses"
+
+#: templates/welcome.html:14
+msgid "Découvrez les ressources des archives françaises en ligne"
+msgstr "Discover the resources of French archives online"
+
+#: templates/welcome.html:15
+msgid "Prenez un rdv en ligne pour les centres éloignés"
+msgstr "Make an appointment online for remote centers"
+
+#: templates/welcome.html:16
+msgid "Demander un document en ligne"
+msgstr "Request a document online"
+
+#: templates/welcome.html:19
+msgid "Commence votre visite"
+msgstr "Start your visit"
+
+#: web_historien/settings.py:144
+msgid "English"
+msgstr "English"
+
+#: web_historien/settings.py:145
+msgid "French"
+msgstr "French"

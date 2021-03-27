@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load i18n %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -33,18 +34,20 @@
         <span>Archivesses</span>
         <select name="site_language" id="site_language" style="font-size: 20px;">
             <option value="fr" selected>Français</option>
-            <option value="en"><img src="/static/image/cl_en.png" alt="">English</option>
+            <option value="en">English</option>
         </select>
     </div>
     <div id="header-right">
-        <span{% if user %} id="link_to_selfcenter" style="cursor:pointer;"{% endif %}>Espace Personnel</span>
+        <span{% if user %} id="link_to_selfcenter"
+                           style="cursor:pointer;"{% endif %}>{% trans 'Espace Personnel' %}</span>
         <span>-</span>
-        {% if request.session.login_user_id == None %}<span id="link_to_login">Me connecter</span>{% else %}
+        {% if request.session.login_user_id == None %}
+            <span id="link_to_login">{% trans 'Me connecter' %}</span>{% else %}
             <span>{{ user.username }}</span>
         {% endif %}
         <input type="hidden" id="session_login_user_id" value="{{ request.session.login_user_id }}">
         {% if request.session.login_user_id != None %}
-            <a href="/logout">Déconnexion</a>
+            <a href="/logout">{% trans 'Déconnexion' %}</a>
         {% endif %}
     </div>
 </div>

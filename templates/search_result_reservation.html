@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <!--指定 date标记-->
                         <div class='input-group date' id='datetimepicker2'>
-                            <input type='text' class="form-control" name="resvEndDate"
+                            <input type='text' class="form-control" name="filterResvEndDate"
                                    value="{{ input_resv_end_date }}"/>
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar btn-sm"></span>
@@ -74,22 +74,22 @@
                     <div>Type d'archive :</div>
                     <div class="result_radio">
                         <label class="first">
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                            <input type="radio" name="archiveTypeRadios" id="optionsRadios1" value="option1" checked>
                             Tous
                         </label>
                         <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                            <input type="radio" name="archiveTypeRadios" id="optionsRadios2" value="option2">
                             Document
                         </label>
                         <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+                            <input type="radio" name="archiveTypeRadios" id="optionsRadios3" value="option3">
                             Audio-visuelle
                         </label>
                     </div>
                 </div>
                 <div>
                     <div>Nombre d'archive :</div>
-                    <input type="text" name="lastname">
+                    <input type="text" name="archive_name">
                 </div>
             </div>
 
@@ -98,8 +98,8 @@
             </div>
         </div>
 
-        <div class="search_result">
-            <div class="trier_par">
+            <div class="search_result">
+                <div class="trier_par">
                 <div>
                     <!-- order by -->
                     <span>Trier par:</span>
@@ -131,14 +131,14 @@
                 </div>
             {% endfor %}
 
-            <div class="create_resv_div">
-                <div id="btn_create_reservation">Je veux proposer un rendez-vous</div>
-                <div id="btn_create_demand">Je veux faire une demande</div>
-            </div>
+                <div class="create_resv_div">
+                    <div id="btn_create_reservation">Je veux proposer un rendez-vous</div>
+                    <div id="btn_create_demand_inresv">Je veux faire une demande</div>
+                </div>
 
-            <div class="pager">
-                <div>
-                    {{ current_page }} sur {{ total_size }} résultats
+                <div class="pager">
+                    <div>
+                        {{ current_page }} sur {{ total_size }} résultats
                 </div>
 
                 <div>

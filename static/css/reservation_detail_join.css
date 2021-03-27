@@ -112,7 +112,7 @@ a {
 }
 
 #reservation-detail-bg-image > div.reservation_detail > div.join_input_div > div > ul > li > div {
-    height: 100px;
+    height: 100%;
     line-height: 40px;
     margin-top: 10px;
 }

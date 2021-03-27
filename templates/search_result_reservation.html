@@ -2,21 +2,21 @@
 {% block body_main %}
     <form id="form_search_result_resv" action="" method="post">
         <div id="search-result-bg-image">
-            <div class="search_div">
+            <div id="search_result_2" class="search_div">
                 <div id="result_search_2">
                     <div>
                         <span>Centre</span>
-                        <input type="text" name="museumName" value="{{ input_museum_name }}">
-                </div>
-                <div>
-                    <span>Fin de Date</span>
-                    <!-- <input type="text" name="date"> -->
-                    <div class="form-group">
-                        <!--指定 date标记-->
-                        <div class='input-group date' id='datetimepicker1'>
-                            <input type='text' class="form-control" name="resvEndDate"
-                                   value="{{ input_resv_end_date }}"/>
-                            <span class="input-group-addon">
+                        <input type="text" id="inputMuseumName" name="museumName" value="{{ input_museum_name }}">
+                    </div>
+                    <div>
+                        <span>Fin de Date</span>
+                        <!-- <input type="text" name="date"> -->
+                        <div class="form-group">
+                            <!--指定 date标记-->
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input type='text' class="form-control" name="resvEndDate"
+                                       value="{{ input_resv_end_date }}"/>
+                                <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar btn-lg"></span>
                             </span>
                         </div>

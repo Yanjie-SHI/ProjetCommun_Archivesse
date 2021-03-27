@@ -170,7 +170,8 @@ PER_PAGE_SIZE = 10
 CRONJOBS = (
     # ('*/1 * * * *', 'app01.scheduler.update_resv_status'),
     (
-    '*/1 * * * *', 'app01.scheduler.update_resv_status', '> /Users/melody/workspace/web_historien/app01/scheduler.log'),
-    # ('*/1 * * * *', 'app01.scheduler.update_resv_status', '> /Users/yanjieshi/Pycharm-workspace/ProjetCommun_Archivesse/app01/scheduler.log'),
+        '*/1 * * * *', 'app01.scheduler.update_resv_status',
+        '>> /Users/melody/workspace/web_historien/app01/scheduler.log'),
+    # ('*/1 * * * *', 'app01.scheduler.update_resv_status', '>> /Users/yanjieshi/Pycharm-workspace/ProjetCommun_Archivesse/app01/scheduler.log'),
     # ('0   0 1 * *', '你的app名.定时函数所在的py文件名.定时函数名', '> 输出文件路径和名称'),
 )

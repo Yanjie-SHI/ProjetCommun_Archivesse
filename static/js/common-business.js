@@ -39,6 +39,70 @@ $(document).ready(function () {
         $("#form_search_result_resv").attr("action", "/search_resv")
         $("#form_search_result_resv").submit();
     });
+    setInputMuseumValue = function (value) {
+        $("#inputMuseumName").val(value);
+        $("#museum_name_hint_ul").remove();
+        $("#museum_name_hint_ul2").remove();
+    };
+    $("#inputMuseumName").keyup(function (event) {
+        if (event.keyCode == '8' || event.keyCode == '46') {
+            $("#museum_name_hint_ul").remove();
+        }
+        let museum_name = $(this).val();
+        if (museum_name.length >= 3) {
+            $.ajax({
+                url: "/fetchmuseumname",
+                type: "POST",
+                dataType: "json",//预期服务器返回的数据类型
+                data: {"museum_name": museum_name},
+                success: function (result) {
+                    $("#museum_name_hint_ul").remove();
+                    $("#museum_name_hint_ul2").remove();
+                    if (result.museum_list.length > 0) {
+                        let _html = "";
+                        _html += '<ul id="museum_name_hint_ul">';
+                        for (let item in result.museum_list) {
+                            _html += '<li onclick="setInputMuseumValue($(this).html())">' + result.museum_list[item].name + '</li>';
+                        }
+                        _html += '</ul>';
+                        //必须先将_html添加到body，再设置Css样式
+                        $("#search_2").append(_html);
+                        //生成Css
+                        $("#museum_name_hint_ul").css({
+                            width: '100%', height: '100%', zIndex: '99999', position: 'fixed',
+                            top: '49%', left: '31%', listStyle: 'none', color: 'black',
+                        });
+                        $("#museum_name_hint_ul > li").css({
+                            width: '650px', height: '30px', lineHight: '30px', fontSize: '18px', paddingLeft: '5px',
+                            backgroundColor: 'white', cursor: 'pointer',
+                        });
+                        $("#museum_name_hint_ul > li:odd").css({
+                            backgroundColor: '#eeeeee',
+                        });
+                        // search result resv page, search div
+                        let _html2 = "";
+                        _html2 += '<ul id="museum_name_hint_ul2">';
+                        for (let item in result.museum_list) {
+                            _html2 += '<li onclick="setInputMuseumValue($(this).html())">' + result.museum_list[item].name + '</li>';
+                        }
+                        _html2 += '</ul>';
+                        $("#search_result_2").append(_html2);
+                        $("#museum_name_hint_ul2").css({
+                            width: '100%', height: '100%', zIndex: '99999', position: 'fixed',
+                            top: '23%', left: '31%', listStyle: 'none', color: 'black',
+                        });
+                        $("#museum_name_hint_ul2 > li").css({
+                            width: '650px', height: '30px', lineHight: '30px', fontSize: '18px', paddingLeft: '5px',
+                            backgroundColor: 'white', cursor: 'pointer',
+                        });
+                        $("#museum_name_hint_ul2 > li:odd").css({
+                            backgroundColor: '#eeeeee',
+                        });
+                    }
+                },
+            });
+        }
+    });
     $("#search_2 > div:nth-child(3) > a").click(function () {
         // main page resv create link
         $(location).attr("href", "/to_create_resv");

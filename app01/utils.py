@@ -37,6 +37,14 @@ def fetch_museum_address(request):
     return JsonResponse(options)
 
 
+def fetch_museum_name(request):
+    options = {}
+    name = request.POST.get("museum_name")
+    museum_list = Museum.objects.filter(name__contains=name).values()
+    options.update({"museum_list": list(museum_list)})
+    return JsonResponse(options)
+
+
 def change_language(request):
     lang = request.GET.get("lang")
     activate(lang)

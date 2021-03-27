@@ -53,6 +53,7 @@ urlpatterns = [
     url(r'^delete_demand', views_demand.delete_demand),
 
     url(r'^fetchmuseumaddress', utils.fetch_museum_address),
+    url(r'^fetchmuseumname', utils.fetch_museum_name),
     url(r'^verify_login', utils.verify_login_js),
     url(r'change_language', utils.change_language),
 

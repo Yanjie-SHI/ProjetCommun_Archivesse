@@ -28,11 +28,11 @@
     - search filter in search result resv page
     - 定时任务，只要有站内信，就标题栏展示小图标，链接进入my messages页面
     - globalization
-    - 预约搜索页面，博物馆名称改成输入3个字符后，列出相应的可选项
     - 注册js校验，密码和重复密码是否一致，是否为8位密码
     - 登录后跳转回前一个页面，带结果
     - 分页的各个页面完善
     - bug: resv create 切换museum后，从大的可用数改小，archive id和folio填入没问题，从小改大显示不出多的input框
+    - search resv: type in 3 characters in museum input, popup a list containing all relavant museums  √
     - search archive func in search result archive page  √
     - search resv func in search result resv page  √
     - search demand func in search result demand page  √
@@ -88,17 +88,41 @@
 ```djangourlpath
 url('admin/', admin.site.urls),
 url(r'^$', views.welcome),
-url(r'^search', views.search),
+url(r'^to_search', views.to_search),
+url(r'^search_archive', views.search_archive),
+url(r'^search_resv', views.search_resv),
+url(r'^search_demand', views.search_demand),
 url(r'^archive_detail', views.archive_detail),
 url(r'^login', views.login),
 url(r'^register', views.register),
 url(r'^selfcenter', views.self_center),
 url(r'^messagelist', views.message_list),
+url(r'^message_detail', views.message_detail),
 url(r'^profile', views.profile),
 url(r'^favorites', views.favorites),
-url(r'^addfavorites', views.add_favorites),
-url(r'^reservation', views.reservation),
+url(r'^add_favorites', views.add_favorites),
+url(r'^remove_favorites', views.remove_favorites),
 url(r'^logout', views.logout),
+
+url(r'^to_my_reservation', views_resv.to_my_reservation_list),
+url(r'^to_resv_detail_creatorview', views_resv.to_resv_detail_creatorview),
+url(r'^to_create_resv', views_resv.to_create_reservation),
+url(r'^create_resv', views_resv.create_reservation),
+url(r'^join_resv', views_resv.join_reservation),
+url(r'^undo_join_resv', views_resv.undo_join_reservation),
+url(r'^confirm_sent_receive_status', views_resv.confirm_sent_receive_status),
+url(r'^update_resv_status', views_resv.update_resv_status),
+
+url(r'^to_my_demand', views_demand.to_my_demand),
+url(r'^to_create_demand', views_demand.to_create_demand),
+url(r'^create_demand', views_demand.create_demand),
+url(r'^terminate_demand', views_demand.terminate_demand),
+url(r'^delete_demand', views_demand.delete_demand),
+
+url(r'^fetchmuseumaddress', utils.fetch_museum_address),
+url(r'^fetchmuseumname', utils.fetch_museum_name),
+url(r'^verify_login', utils.verify_login_js),
+url(r'change_language', utils.change_language),
 ```
 
 ## MySQL settings

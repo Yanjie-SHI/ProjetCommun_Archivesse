@@ -17,51 +17,60 @@
             <div class="search_result search_result_demand">
                 <div class="trier_par">
                     <div></div>
-                    <div>{% if total_size > 0 %}{{ total_size }}{% else %}0{% endif %} résultats</div>
-            </div>
+                    <div>{{ demands.paginator.count }} résultats</div>
+                </div>
 
-            {% for item in demands %}
-                <div class="result_general">
-                    <div class="result_title">{{ item.archive.id }} - {{ item.archive.museum.name }}</div>
-                    <div class="code_producer_location float-left">
-                        <div>Demandé par: {{ item.demander.username }}</div>
-                        <div>Crée le : {{ item.create_date|date:'d/m/Y' }}</div>
-                    </div>
-                    <div id="help_btn_{{ item.id }}" class="help_btn">Aider</div>
+                {% for item in demands %}
+                    <div class="result_general">
+                        <div class="result_title">{{ item.archive.id }} - {{ item.archive.museum.name }}</div>
+                        <div class="code_producer_location float-left">
+                            <div>Demandé par: {{ item.demander.username }}</div>
+                            <div>Crée le : {{ item.create_date|date:'d/m/Y' }}</div>
+                        </div>
+                        <div id="help_btn_{{ item.id }}" class="help_btn">Aider</div>
                     <input type="hidden" value="{{ item.demander.username }}">
-                    <input type="hidden" value="{{ item.demander.mail }}">
-                </div>
-            {% endfor %}
+                        <input type="hidden" value="{{ item.demander.mail }}">
+                    </div>
+                {% endfor %}
 
-            <div class="create_demand_div">
-                <div id="btn_create_demand">Je veux faire une demande</div>
-            </div>
-
-            <div class="pager">
-                <div>
-                    {{ current_page }} sur {{ total_size }} résultats
+                <div class="create_demand_div">
+                    <div id="btn_create_demand">Je veux faire une demande</div>
                 </div>
 
-                <div>
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            {% for page in pages %}
-                                <li><a href="#">{{ page }}</a></li>
-                            {% endfor %}
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                <div class="pager">
+                    <div>
+                        <select name="per_page" id="">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                        sur {{ demands.paginator.count }} résultats
+                    </div>
+
+                    <div>
+                        <nav aria-label="Page navigation">
+                            <input id="currentPage" name="currentPage" type="hidden" value="{{ demands.number }}">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                {% for page in demands.paginator.page_range %}
+                                    <li><a id="demand_page_link_{{ page }}" href="#"
+                                           {% if demands.number == page %}style="background: #2b669a; color: white;"{% endif %}>{{ page }}</a>
+                                    </li>
+                                {% endfor %}
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     </form>

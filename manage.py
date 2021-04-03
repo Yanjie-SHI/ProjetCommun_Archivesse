@@ -3,9 +3,6 @@
 import os
 import sys
 
-from django.utils.translation import activate
-
-
 def main():
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'web_historien.settings')
@@ -18,7 +15,6 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
-    activate("fr")
 
 
 if __name__ == '__main__':

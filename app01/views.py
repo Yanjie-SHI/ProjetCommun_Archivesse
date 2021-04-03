@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.db.models import Q
 
 from app01.utils import *
@@ -18,6 +19,31 @@ def to_search(request):
 
 
 def search_archive(request):
+    options = verify_login(request)
+    current_page = request.POST.get("currentPage", "1")
+    # archive search
+    input = request.POST.get("archiveKeyword")
+    archive_search_type = request.POST.get("archiveSearchType")
+
+    if archive_search_type == "2":
+        archive_list = Archive.objects.filter(
+            Q(Q(title__contains=input) | Q(description__contains=input)) & Q(type=1))
+    elif archive_search_type == "3":
+        archive_list = Archive.objects.filter(author__contains=input)
+    else:
+        archive_list = Archive.objects.filter(
+            Q(title__contains=input) | Q(description__contains=input))
+
+    options.update({"searchInput": input})
+    options.update({"archiveSearchType": archive_search_type})
+    # paginator
+    archive_list_paginator = Paginator(archive_list, settings.PER_PAGE_SIZE)
+    options.update({"archive_list": archive_list_paginator.get_page(current_page)})
+
+    return render(request, "search_result_archive.html", options)
+
+
+def search_archive_particles(request):
     options = verify_login(request)
     current_page = request.POST.get("currentPage", "1")
     # archive search
@@ -63,16 +89,11 @@ def search_archive(request):
         pass
 
     options.update({"particleRadios": search_particile})
-    options.update({"total_size": len(archive_list)})
-    total_pages = int(len(archive_list) / settings.PER_PAGE_SIZE) + 1
-    pages = []
-    for page in range(1, total_pages + 1, 1):
-        pages.append(page)
-    options.update({"pages": pages})
-    options.update({"current_page": current_page})
     options.update({"search_input": input})
-    options.update({"archive_search_type": archive_search_type})
-    options.update({"archive_list": archive_list})
+    options.update({"archiveSearchType": archive_search_type})
+    # paginator
+    archive_list_paginator = Paginator(archive_list, settings.PER_PAGE_SIZE)
+    options.update({"archive_list": archive_list_paginator.get_page(current_page)})
 
     return render(request, "search_result_archive.html", options)
 
@@ -83,8 +104,10 @@ def search_resv(request):
     # reservation search
     museum_name = request.POST.get("museumName")
     resv_end_date = request.POST.get("resvEndDate")
-
+    archive_type = request.POST.get("archiveTypeRadios", "all")
+    archive_count = request.POST.get("archive_count")
     current_page = request.POST.get("currentPage", "1")
+    reservation_temp_list = []
     if resv_end_date:
         resv_end_date = datetime.date(int(resv_end_date[6:10]), int(resv_end_date[3:5]), int(resv_end_date[0:2]))
         # reservation search
@@ -103,18 +126,20 @@ def search_resv(request):
                     resv.available_doc_archive_count -= 1
                 elif rda.archive.type == 2:
                     resv.available_video_archive_count -= 1
+        # exclude search filter detail
+        if archive_type == "0" and archive_count and resv.available_doc_archive_count >= int(archive_count):
+            reservation_temp_list.append(resv)
+        if archive_type == "2" and archive_count and resv.available_video_archive_count >= int(archive_count):
+            reservation_temp_list.append(resv)
 
-    options.update({"total_size": len(reservation_list)})
-    total_pages = int(len(reservation_list) / settings.PER_PAGE_SIZE) + 1
-    pages = []
-    for page in range(1, total_pages + 1, 1):
-        pages.append(page)
-    options.update({"pages": pages})
-    options.update({"current_page": current_page})
     options.update({"input_museum_name": museum_name})
+    options.update({"input_archive_type": archive_type})
+    options.update({"input_archive_count": archive_count})
     if resv_end_date:
         options.update({"input_resv_end_date": resv_end_date.strftime("%d/%m/%Y")})
-    options.update({"reservation_list": reservation_list})
+    # paginator
+    reservation_list_paginator = Paginator(reservation_temp_list, settings.PER_PAGE_SIZE)
+    options.update({"reservation_list": reservation_list_paginator.get_page(current_page)})
 
     return render(request, "search_result_reservation.html", options)
 
@@ -125,8 +150,10 @@ def search_demand(request):
     # demand search
     input = request.POST.get("demandSearchInput")
     demands = Demand.objects.filter(archive__id=input)
-    options.update({"demands": demands})
     options.update({"demandSearchInput": input})
+    # paginator
+    demands_list_paginator = Paginator(demands, settings.PER_PAGE_SIZE)
+    options.update({"demands": demands_list_paginator.get_page(current_page)})
 
     return render(request, "search_result_demand.html", options)
 

@@ -1,15 +1,16 @@
 {% extends "home_base.html" %}
+{% load i18n %}
 {% block body_main %}
     <form id="form_search_result_resv" action="" method="post">
         <div id="search-result-bg-image">
             <div id="search_result_2" class="search_div">
                 <div id="result_search_2">
                     <div>
-                        <span>Centre</span>
+                        <span>{% trans 'Centre' %}</span>
                         <input type="text" id="inputMuseumName" name="museumName" value="{{ input_museum_name }}">
                     </div>
                     <div>
-                        <span>Fin de Date</span>
+                        <span>{% trans 'Fin de Date' %}</span>
                         <!-- <input type="text" name="date"> -->
                         <div class="form-group">
                             <!--指定 date标记-->
@@ -17,150 +18,181 @@
                                 <input type='text' class="form-control" name="resvEndDate"
                                        value="{{ input_resv_end_date }}"/>
                                 <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar btn-lg"></span>
-                            </span>
+                                    <span class="glyphicon glyphicon-calendar btn-lg"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-search btn-lg"></span>
+                        </span>
+                        <script type="text/javascript">
+                            $(function () {
+                                $('#datetimepicker1').datetimepicker({
+                                    format: 'DD/MM/YYYY',
+                                    locale: moment.locale('fr-FR')
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search_resv_filters">
+                <div>
+                    <div>{% trans 'CRITÈRES SÉLECTIONNÉS' %} :</div>
+                    <!--<div class="filter_tag">Type de producteur : Personne <span>✖️</span></div>-->
+                    <div class="filter_tag">{% trans 'Localisation' %} : {{ input_museum_name }} <span>✖️</span>️</div>
+                    <div class="filter_tag">{% trans 'Fin de date' %} : {{ input_resv_end_date }} <span>✖️</span>️</div>
+                    <div class="filter_tag">{% trans "Type d'archive" %} :
+                        {% if input_archive_type == 'all' %}<span>{% trans "Tous" %}</span> {% endif %}
+                        {% if input_archive_type == '0' %}<span>{% trans "Document" %}</span> {% endif %}
+                        {% if input_archive_type == '2' %}<span>{% trans "Audio-visuelle" %}</span> {% endif %}
+                        <span>✖️</span>️
+                    </div>
+                    <div class="filter_tag"
+                         {% if input_archive_type == 'all' %}style="display: none"{% endif %}>{% trans "Nombre d'archive" %}
+                        : <span>{{ input_archive_count }}</span> <span>✖️</span>️
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <div>{% trans "Localisation" %} :</div>
+                        <input type="text" name="filterMuseumName" value="{{ input_museum_name }}">
+                    </div>
+                    <div>
+                        <div>{% trans "Fin de date" %} :</div>
+                        <div class="form-group">
+                            <!--指定 date标记-->
+                            <div class='input-group date' id='datetimepicker2'>
+                                <input type='text' class="form-control" name="filterResvEndDate"
+                                       value="{{ input_resv_end_date }}"/>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar btn-sm"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            $(function () {
+                                $('#datetimepicker2').datetimepicker({
+                                    format: 'DD/MM/YYYY',
+                                    locale: moment.locale('fr-FR')
+                                });
+                            });
+                        </script>
+                    </div>
+                    <div>
+                        <div>{% trans "Type d'archivee" %} :</div>
+                        <div class="result_radio">
+                            <label class="first">
+                                <input type="radio" name="archiveTypeRadios" id="archiveTypeRadios1" value="all"
+                                       checked>
+                                {% trans "Tous" %}
+                            </label>
+                            <label>
+                                <input type="radio" name="archiveTypeRadios" id="archiveTypeRadios2" value="0">
+                                {% trans "Document" %}
+                            </label>
+                            <label>
+                                <input type="radio" name="archiveTypeRadios" id="archiveTypeRadios3" value="2">
+                                {% trans "Audio-visuelle" %}
+                            </label>
                         </div>
                     </div>
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-search btn-lg"></span>
-                    </span>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#datetimepicker1').datetimepicker({
-                                format: 'DD/MM/YYYY',
-                                locale: moment.locale('fr-FR')
-                            });
-                        });
-                    </script>
-                </div>
-            </div>
-        </div>
-
-        <div class="search_resv_filters">
-            <div>
-                <div>CRITÈRES SÉLECTIONNÉS :</div>
-                <div class="filter_tag">Type de producteur : Personne <span>✖️</span></div>
-                <div class="filter_tag">Producteur : Etude I <span>✖️</span>️</div>
-                <div class="filter_tag">Catégories d'archives : Tous les catégories <span>✖️</span>️</div>
-            </div>
-
-            <div>
-                <div>
-                    <div>Localisation :</div>
-                    <input type="text" name="location">
-                </div>
-                <div>
-                    <div>Fin de date :</div>
-                    <div class="form-group">
-                        <!--指定 date标记-->
-                        <div class='input-group date' id='datetimepicker2'>
-                            <input type='text' class="form-control" name="filterResvEndDate"
-                                   value="{{ input_resv_end_date }}"/>
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar btn-sm"></span>
-                            </span>
-                        </div>
-                    </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#datetimepicker2').datetimepicker({
-                                format: 'DD/MM/YYYY',
-                                locale: moment.locale('fr-FR')
-                            });
-                        });
-                    </script>
-                </div>
-                <div>
-                    <div>Type d'archive :</div>
-                    <div class="result_radio">
-                        <label class="first">
-                            <input type="radio" name="archiveTypeRadios" id="optionsRadios1" value="option1" checked>
-                            Tous
-                        </label>
-                        <label>
-                            <input type="radio" name="archiveTypeRadios" id="optionsRadios2" value="option2">
-                            Document
-                        </label>
-                        <label>
-                            <input type="radio" name="archiveTypeRadios" id="optionsRadios3" value="option3">
-                            Audio-visuelle
-                        </label>
+                    <div id="num_archive_div">
+                        <div>{% trans "Nombre d'archive" %} :</div>
+                        <input type="text" name="archive_count">
+                        <span id="hint_info_doc">{% trans "Document" %}</span>
+                        <span id="hint_info_audio">{% trans "Audio-visuelle" %}</span>
                     </div>
                 </div>
+
                 <div>
-                    <div>Nombre d'archive :</div>
-                    <input type="text" name="archive_name">
+                    <a href="#">{% trans "Modifier la recherche" %}</a>
                 </div>
             </div>
 
-            <div>
-                <a href="#">Modifier la recherche</a>
-            </div>
-        </div>
-
-            <div class="search_result">
+            <div id="search_result_resv_div" class="search_result" style="margin-top:10px;">
+                <script>
+                    $(window).ready(function () {
+                        let resultCount = $("div[class=result_resv_general]").length;
+                        $("#search_result_resv_div").css("height", (300 + resultCount * 300).toString() + 'px');
+                        $("#search-result-bg-image").css("height", (1000 + resultCount * 300).toString() + 'px')
+                    });
+                </script>
                 <div class="trier_par">
-                <div>
-                    <!-- order by -->
-                    <span>Trier par:</span>
-                    <select name="" id="">
-                        <option value="">Fin de date</option>
-                    </select>
+                    <div>
+                        <!-- order by -->
+                        <span>{% trans "Trier par" %}:</span>
+                        <select name="" id="">
+                            <option value="">{% trans "Fin de date" %}</option>
+                        </select>
+                    </div>
+                    <div>{{ reservation_list.paginator.count }}{% trans "résultats" %}</div>
                 </div>
-                <div>{% if total_size > 0 %}{{ total_size }}{% else %}0{% endif %} résultats</div>
-            </div>
 
-            {% for item in reservation_list %}
-                <div class="result_resv_general">
-                    <div class="result_title">{{ item.museum.name }}</div>
-                    <div class="code_producer_location">
-                        <div>Proposé par : {{ item.creator.username }}</div>
-                        <div>Fin de date : {{ item.expire_date|date:"d/m/Y" }}</div>
-                        <div>Nombre document disponible : {% if item.status == 1 %}0{% else %}
-                            {{ item.available_doc_archive_count }}{% endif %}</div>
-                        <div>Nombre vidéo disponible : {% if item.status == 1 %}0{% else %}
-                            {{ item.available_video_archive_count }}{% endif %}</div>
+                {% for item in reservation_list %}
+                    <div class="result_resv_general">
+                        <div class="result_title">{{ item.museum.name }}</div>
+                        <div class="code_producer_location">
+                            <div>{% trans "Proposé par" %} : {{ item.creator.username }}</div>
+                            <div>{% trans "Fin de date" %} : {{ item.expire_date|date:"d/m/Y" }}</div>
+                            <div>{% trans "Nombre document disponible" %} : {% if item.status == 1 %}0{% else %}
+                                {{ item.available_doc_archive_count }}{% endif %}</div>
+                            <div>{% trans "Nombre vidéo disponible" %} : {% if item.status == 1 %}0{% else %}
+                                {{ item.available_video_archive_count }}{% endif %}</div>
+                        </div>
+                        <div class="resv_status_div">
+                            {% if item.status == 1 %}
+                                <a href="#" class="resv_status_complete">{% trans "Complet" %}</a>
+                            {% else %}
+                                <a href="/join_resv?id={{ item.id }}"
+                                   class="resv_status_incomplete">{% trans "Réserver" %}</a>
+                            {% endif %}
+                        </div>
                     </div>
-                    <div class="resv_status_div">
-                        {% if item.status == 1 %}
-                            <a href="#" class="resv_status_complete">Complet</a>
-                        {% else %}
-                            <a href="/join_resv?id={{ item.id }}" class="resv_status_incomplete">Réserver</a>
-                        {% endif %}
-                    </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
 
                 <div class="create_resv_div">
-                    <div id="btn_create_reservation">Je veux proposer un rendez-vous</div>
-                    <div id="btn_create_demand_inresv">Je veux faire une demande</div>
+                    <div id="btn_create_reservation">{% trans "Je veux proposer un rendez-vousr" %}</div>
+                    <div id="btn_create_demand_inresv">{% trans "Je veux faire une demande" %}</div>
                 </div>
 
-                <div class="pager">
+                <div class="pager" style="margin-top: 0px">
                     <div>
-                        {{ current_page }} sur {{ total_size }} résultats
-                </div>
+                        <select name="per_page" id="">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                        {% trans "sur" %} {{ reservation_list.paginator.count }} {% trans "résultats" %}
+                    </div>
 
-                <div>
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            {% for page in pages %}
-                                <li><a href="#">{{ page }}</a></li>
-                            {% endfor %}
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <div>
+                        <nav aria-label="Page navigation">
+                            <input id="currentPage" name="currentPage" type="hidden"
+                                   value="{{ reservation_list.number }}">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                {% for page in reservation_list.paginator.page_range %}
+                                    <li><a id="resv_page_link_{{ page }}" href="#"
+                                           {% if reservation_list.number == page %}style="background: #2b669a; color: white;"{% endif %}>{{ page }}</a>
+                                    </li>
+                                {% endfor %}
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
-            </div>
         </div>
         </div>
     </form>

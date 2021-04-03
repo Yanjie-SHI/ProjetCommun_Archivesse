@@ -1,11 +1,13 @@
 {% extends "home_base.html" %}
+{% load i18n %}
 {% block body_main %}
     <form action="/search" method="post" id="searchForm">
         <div id="search-bg-image" class="bg_fill_parent">
             <div id="content-main">
                 <div id="search_1">
-                    <div id="search_1_particle">  <!-- 查询粒度选择 -->
-                        <div class="radio">
+                    <!--
+                    <div id="search_1_particle">  --> <!-- 查询粒度选择 -->
+                    <!-- <div class="radio">
                             <label>
                                 <input type="radio" name="particleRadios" id="particleRadio1" value="1" checked>
                                 Tous les mots saisis
@@ -19,13 +21,13 @@
                                 Expression exacte
                             </label>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="search-input-div">
-                        <input type="text" placeholder="Rechercher" name="archiveKeyword">
-                        <div>
+                        <input type="text" placeholder="{% trans 'Rechercher' %}" name="archiveKeyword">
+                        <!--<div>
                             <span class="glyphicon glyphicon-play btn-xs" aria-hidden="true"></span>
                             <span>Tous les mots saisis</span>
-                        </div>
+                        </div>-->
                         <!--<div class="search-btn-div"></div>-->
                         <span class="input-group-addon">
                         <span class="glyphicon glyphicon-search btn-lg"></span>
@@ -33,10 +35,12 @@
                     </div>
                     <div class="search-type-btns-div">
                         <div class="search-type-btn search-type-btn-selected" id="search-type-toutes" value="1">
-                            <span>Toutes les archives<!--All archives--></span></div>
-                        <div class="search-type-btn" id="search-type-numeric" value="2"><span>Archives numérisées
+                            <span>{% trans 'Toutes les archives' %}<!--All archives--></span></div>
+                        <div class="search-type-btn" id="search-type-numeric"
+                             value="2"><span>{% trans 'Archives numérisées' %}
                             <!--digital archives--></span></div>
-                        <div class="search-type-btn" id="search-type-producteurs" value="3"><span>Producteurs d'archives
+                        <div class="search-type-btn" id="search-type-producteurs"
+                             value="3"><span>{% trans "Producteurs d'archives" %}
                             <!--Archive producer--></span></div>
                         <input type="hidden" name="archiveSearchType" id="archiveSearchType" value="1">
                     </div>
@@ -44,11 +48,11 @@
 
                 <div id="search_2">
                     <div>
-                        <span>Centre</span>
+                        <span>{% trans 'Centre' %}</span>
                         <input id="inputMuseumName" type="text" name="museumName">
                     </div>
                     <div>
-                        <span>Fin de Date</span>
+                        <span>{% trans 'Fin de Date' %}</span>
                         <!-- <input type="text" name="date"> -->
                         <div class="form-group">
                             <!--指定 date标记-->
@@ -71,7 +75,7 @@
                             });
                         </script>
                     </div>
-                    <div><a href="#">Proposer un rendez-vous</a></div>
+                    <div><a href="#">{% trans 'Proposer un rendez-vous' %}</a></div>
                 </div>
 
                 <div id="search_3">
@@ -82,15 +86,15 @@
                         <span class="glyphicon glyphicon-search btn-lg"></span>
                     </span>
                     </div>
-                    <div><a href="#">Déposer une demande</a></div>
+                    <div><a href="#">{% trans 'Déposer une demande' %}</a></div>
                 </div>
 
                 <div id="type_switch">
-                    <span>Recherche</span>
+                    <span>{% trans 'Recherche' %}</span>
                     <div class="switch_indicator" id="si1"></div>
-                    <span>Rendez-vous</span>
+                    <span>{% trans 'Rendez-vous' %}</span>
                     <div class="switch_indicator" id="si2"></div>
-                    <span>Demande</span>
+                    <span>{% trans 'Demande' %}</span>
                     <div class="switch_indicator" id="si3"></div>
                     <input type="hidden" name="searchType" id="searchType" value="1"></input>
                 </div>

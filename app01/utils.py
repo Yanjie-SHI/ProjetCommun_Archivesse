@@ -48,4 +48,4 @@ def fetch_museum_name(request):
 def change_language(request):
     lang = request.GET.get("lang")
     activate(lang)
-    return render(request, "welcome.html")
+    return render(request, "search.html", {"lang": lang})

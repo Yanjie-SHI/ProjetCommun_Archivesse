@@ -70,13 +70,13 @@ $(document).ready(function () {
                         //生成Css
                         $("#museum_name_hint_ul").css({
                             width: '100%', height: '100%', zIndex: '99999', position: 'fixed',
-                            top: '49%', left: '31%', listStyle: 'none', color: 'black',
+                            top: '48.5%', left: '31.8%', listStyle: 'none', color: 'black',
                         });
                         $("#museum_name_hint_ul > li").css({
-                            width: '650px', height: '30px', lineHight: '30px', fontSize: '18px', paddingLeft: '5px',
+                            width: '648px', height: '30px', lineHight: '30px', fontSize: '18px', paddingLeft: '5px',
                             backgroundColor: 'white', cursor: 'pointer',
                         });
-                        $("#museum_name_hint_ul > li:odd").css({
+                        $("#museum_name_hint_ul > li:even").css({
                             backgroundColor: '#eeeeee',
                         });
                         // search result resv page, search div
@@ -89,13 +89,13 @@ $(document).ready(function () {
                         $("#search_result_2").append(_html2);
                         $("#museum_name_hint_ul2").css({
                             width: '100%', height: '100%', zIndex: '99999', position: 'fixed',
-                            top: '23%', left: '31%', listStyle: 'none', color: 'black',
+                            top: '22.5%', left: '31%', listStyle: 'none', color: 'black',
                         });
                         $("#museum_name_hint_ul2 > li").css({
-                            width: '650px', height: '30px', lineHight: '30px', fontSize: '18px', paddingLeft: '5px',
+                            width: '656px', height: '30px', lineHight: '30px', fontSize: '18px', paddingLeft: '5px',
                             backgroundColor: 'white', cursor: 'pointer',
                         });
-                        $("#museum_name_hint_ul2 > li:odd").css({
+                        $("#museum_name_hint_ul2 > li:even").css({
                             backgroundColor: '#eeeeee',
                         });
                     }
@@ -122,6 +122,12 @@ $(document).ready(function () {
         $(location).attr("href", "/to_create_demand");
     });
 
+    /* search result archive page */
+    $("a[id^=archive_page_link_]").click(function () {
+        $("#currentPage").val($(this).html());
+        $("#searchArchiveForm").submit();
+    });
+
     /* archive detail page */
     $("#btn_star").click(function () {
         if ($("#session_login_user_id").val() == '') {
@@ -137,14 +143,33 @@ $(document).ready(function () {
     });
 
     /* search result reservation page */
+    $("#search-result-bg-image > div.search_resv_filters > div:nth-child(3) > a").click(function () {
+        if ($(this).html() == "Recherche") {
+            $("#form_search_result_resv").attr("action", "/search_resv");
+            $("#form_search_result_resv").submit();
+        } else {
+            // search filter div display link
+            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(2)").css("display", "block");
+            $(".search_resv_filters").css("height", "300px");
+            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(3) > a").html("Recherche");
+        }
+    });
     $("#btn_create_reservation").click(function () {
         $("#form_search_result_resv").attr("action", "/to_create_resv");
+        $("#form_search_result_resv").submit();
+    });
+    $("a[id^=resv_page_link_]").click(function () {
+        $("#currentPage").val($(this).html());
         $("#form_search_result_resv").submit();
     });
 
     /* search result demand page */
     $("#btn_create_demand, #btn_create_demand_inresv").click(function () {
         $(location).attr("href", "/to_create_demand");
+    });
+    $("a[id^=demand_page_link_]").click(function () {
+        $("#currentPage").val($(this).html());
+        $("#form_search_result_demand").submit();
     });
     $("div[id^=help_btn_]").click(function () {
         let this_node = $(this);

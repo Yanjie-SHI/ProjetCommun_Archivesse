@@ -138,12 +138,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'fr'
 
-from django.utils.translation import ugettext_lazy as _
-
-LANGUAGES = (
-    ('fr', _('French')),
-    ('en', _('English')),
-)
+# from django.utils.translation import ugettext_lazy as _
+# LANGUAGES = (
+#     ('fr', _('French')),
+#     ('en', _('English')),
+# )
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
@@ -165,7 +164,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
 
-PER_PAGE_SIZE = 10
+PER_PAGE_SIZE = 5
 
 CRONJOBS = (
     # ('*/1 * * * *', 'app01.scheduler.update_resv_status'),

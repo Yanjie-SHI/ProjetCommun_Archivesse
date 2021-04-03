@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-26 17:30+0100\n"
+"POT-Creation-Date: 2021-04-03 21:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,42 +18,78 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: templates/home_base.html:41
+#: templates/home_base.html:42
 msgid "Espace Personnel"
-msgstr "Espace Personnel"
+msgstr ""
 
-#: templates/home_base.html:43
+#: templates/home_base.html:45
 msgid "Me connecter"
-msgstr "Me connecter"
+msgstr ""
 
-#: templates/home_base.html:48
+#: templates/home_base.html:50
 msgid "Déconnexion"
-msgstr "Déconnexion"
+msgstr ""
+
+#: templates/search.html:25
+msgid "Rechercher"
+msgstr ""
+
+#: templates/search.html:37
+msgid "Toutes les archives"
+msgstr ""
+
+#: templates/search.html:38
+msgid "Archives numérisées"
+msgstr ""
+
+#: templates/search.html:40
+msgid "Producteurs d'archives"
+msgstr ""
+
+#: templates/search.html:48
+msgid "Centre"
+msgstr ""
+
+#: templates/search.html:52
+msgid "Fin de Date"
+msgstr ""
+
+#: templates/search.html:75
+msgid "Proposer un rendez-vous"
+msgstr ""
+
+#: templates/search.html:86
+msgid "Déposer une demande"
+msgstr ""
+
+#: templates/search.html:90
+msgid "Recherche"
+msgstr ""
+
+#: templates/search.html:92
+msgid "Rendez-vous"
+msgstr ""
+
+#: templates/search.html:94
+msgid "Demande"
+msgstr ""
 
 #: templates/welcome.html:12
 msgid "Bienvenue au Archivesses"
-msgstr "Bienvenue au Archivesses"
+msgstr ""
 
 #: templates/welcome.html:14
 msgid "Découvrez les ressources des archives françaises en ligne"
-msgstr "Découvrez les ressources des archives françaises en ligne"
+msgstr ""
 
 #: templates/welcome.html:15
 msgid "Prenez un rdv en ligne pour les centres éloignés"
-msgstr "Prenez un rdv en ligne pour les centres éloignés"
+msgstr ""
 
 #: templates/welcome.html:16
 msgid "Demander un document en ligne"
-msgstr "Demander un document en ligne"
+msgstr ""
 
-#: templates/welcome.html:19
+#: templates/welcome.html:20
 msgid "Commence votre visite"
-msgstr "Commence votre visite"
-
-#: web_historien/settings.py:144
-msgid "English"
-msgstr "English"
-
-#: web_historien/settings.py:145
-msgid "French"
-msgstr "French"
+msgstr ""

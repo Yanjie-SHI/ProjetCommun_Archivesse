@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-03-26 17:30+0100\n"
+"POT-Creation-Date: 2021-04-03 21:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,17 +18,249 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/home_base.html:41
+#: templates/home_base.html:42
 msgid "Espace Personnel"
 msgstr "Personal space"
 
-#: templates/home_base.html:43
+#: templates/home_base.html:45
 msgid "Me connecter"
 msgstr "Log in"
 
-#: templates/home_base.html:48
+#: templates/home_base.html:50
 msgid "Déconnexion"
 msgstr "Logout"
+
+#: templates/login.html:5
+#, fuzzy
+#| msgid "Espace Personnel"
+msgid "Mon espace personnel"
+msgstr "Personal space"
+
+#: templates/login.html:6 templates/login.html:19
+#, fuzzy
+#| msgid "Me connecter"
+msgid "Se connecter"
+msgstr "Log in"
+
+#: templates/login.html:8
+msgid "Les champs précédés d'un astérisque"
+msgstr ""
+
+#: templates/login.html:8
+msgid "sont obligatoires"
+msgstr ""
+
+#: templates/login.html:10
+msgid "Adresse courriel (exemple : nomprenom@domaine.com)"
+msgstr ""
+
+#: templates/login.html:14
+msgid "Mot de passe"
+msgstr ""
+
+#: templates/login.html:18
+msgid "Mot de passe oublié ?"
+msgstr ""
+
+#: templates/login.html:23 templates/login.html:37
+msgid "S'inscrire"
+msgstr ""
+
+#: templates/login.html:26
+msgid "Inscrivez-vous et bénéficiez des services de l'espace personnel pour"
+msgstr ""
+
+#: templates/login.html:28
+msgid "Sauvegarder vos recherches dans les archives"
+msgstr ""
+
+#: templates/login.html:29
+#, fuzzy
+#| msgid "Toutes les archives"
+msgid "Ajouter les archives à favoris"
+msgstr "All archives"
+
+#: templates/login.html:30
+msgid "Consulter les détails de demande"
+msgstr ""
+
+#: templates/login.html:31
+msgid "Consulter les détails de rendez-vous"
+msgstr ""
+
+#: templates/search.html:26
+msgid "Rechercher"
+msgstr "Search"
+
+#: templates/search.html:38
+msgid "Toutes les archives"
+msgstr "All archives"
+
+#: templates/search.html:39 templates/search_result_archive.html:40
+msgid "Archives numérisées"
+msgstr "Digitized Archives"
+
+#: templates/search.html:41 templates/search_result_archive.html:42
+msgid "Producteurs d'archives"
+msgstr "Archive producers"
+
+#: templates/search.html:49 templates/search_result_reservation.html:9
+msgid "Centre"
+msgstr "Centre"
+
+#: templates/search.html:53 templates/search_result_reservation.html:13
+msgid "Fin de Date"
+msgstr "End of Date"
+
+#: templates/search.html:76
+msgid "Proposer un rendez-vous"
+msgstr "Create a reservation"
+
+#: templates/search.html:87
+msgid "Déposer une demande"
+msgstr "Create a demand"
+
+#: templates/search.html:91
+msgid "Recherche"
+msgstr "Research"
+
+#: templates/search.html:93
+msgid "Rendez-vous"
+msgstr "Reservation"
+
+#: templates/search.html:95
+msgid "Demande"
+msgstr "Demand"
+
+#: templates/search_result_archive.html:38
+#, fuzzy
+#| msgid "Toutes les archives"
+msgid "Toutes les archivese"
+msgstr "All archives"
+
+#: templates/search_result_archive.html:122
+#: templates/search_result_reservation.html:122
+msgid "Trier par"
+msgstr ""
+
+#: templates/search_result_archive.html:124
+msgid "Pertinance"
+msgstr ""
+
+#: templates/search_result_archive.html:127
+#: templates/search_result_archive.html:153
+#: templates/search_result_reservation.html:127
+#: templates/search_result_reservation.html:164
+msgid "résultats"
+msgstr ""
+
+#: templates/search_result_archive.html:134
+msgid "Cotes"
+msgstr ""
+
+#: templates/search_result_archive.html:135
+#, fuzzy
+#| msgid "Producteurs d'archives"
+msgid "Producteur"
+msgstr "Archive producers"
+
+#: templates/search_result_archive.html:136
+#: templates/search_result_reservation.html:44
+#: templates/search_result_reservation.html:57
+msgid "Localisation"
+msgstr ""
+
+#: templates/search_result_archive.html:140
+msgid "Voir les détails"
+msgstr ""
+
+#: templates/search_result_archive.html:153
+#: templates/search_result_reservation.html:164
+msgid "sur"
+msgstr ""
+
+#: templates/search_result_reservation.html:42
+msgid "CRITÈRES SÉLECTIONNÉS"
+msgstr ""
+
+#: templates/search_result_reservation.html:45
+#: templates/search_result_reservation.html:61
+#: templates/search_result_reservation.html:124
+#: templates/search_result_reservation.html:135
+#, fuzzy
+#| msgid "Fin de Date"
+msgid "Fin de date"
+msgstr "End of Date"
+
+#: templates/search_result_reservation.html:46
+#, fuzzy
+#| msgid "Producteurs d'archives"
+msgid "Type d'archive"
+msgstr "Archive producers"
+
+#: templates/search_result_reservation.html:47
+#: templates/search_result_reservation.html:86
+msgid "Tous"
+msgstr ""
+
+#: templates/search_result_reservation.html:48
+#: templates/search_result_reservation.html:90
+#: templates/search_result_reservation.html:101
+msgid "Document"
+msgstr ""
+
+#: templates/search_result_reservation.html:49
+#: templates/search_result_reservation.html:94
+#: templates/search_result_reservation.html:102
+msgid "Audio-visuelle"
+msgstr ""
+
+#: templates/search_result_reservation.html:52
+#: templates/search_result_reservation.html:99
+#, fuzzy
+#| msgid "Producteurs d'archives"
+msgid "Nombre d'archive"
+msgstr "Archive producers"
+
+#: templates/search_result_reservation.html:82
+msgid "Type d'archivee"
+msgstr ""
+
+#: templates/search_result_reservation.html:107
+msgid "Modifier la recherche"
+msgstr ""
+
+#: templates/search_result_reservation.html:134
+msgid "Proposé par"
+msgstr ""
+
+#: templates/search_result_reservation.html:136
+msgid "Nombre document disponible"
+msgstr ""
+
+#: templates/search_result_reservation.html:138
+msgid "Nombre vidéo disponible"
+msgstr ""
+
+#: templates/search_result_reservation.html:143
+msgid "Complet"
+msgstr ""
+
+#: templates/search_result_reservation.html:145
+msgid "Réserver"
+msgstr ""
+
+#: templates/search_result_reservation.html:152
+#, fuzzy
+#| msgid "Proposer un rendez-vous"
+msgid "Je veux proposer un rendez-vousr"
+msgstr "Create a reservation"
+
+#: templates/search_result_reservation.html:153
+#, fuzzy
+#| msgid "Déposer une demande"
+msgid "Je veux faire une demande"
+msgstr "Create a demand"
 
 #: templates/welcome.html:12
 msgid "Bienvenue au Archivesses"
@@ -46,14 +278,12 @@ msgstr "Make an appointment online for remote centers"
 msgid "Demander un document en ligne"
 msgstr "Request a document online"
 
-#: templates/welcome.html:19
+#: templates/welcome.html:20
 msgid "Commence votre visite"
 msgstr "Start your visit"
 
-#: web_historien/settings.py:144
-msgid "English"
-msgstr "English"
+#~ msgid "English"
+#~ msgstr "English"
 
-#: web_historien/settings.py:145
-msgid "French"
-msgstr "French"
+#~ msgid "French"
+#~ msgstr "French"

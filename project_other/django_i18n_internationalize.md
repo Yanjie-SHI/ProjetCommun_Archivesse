@@ -1,3 +1,5 @@
+reference from: http://www.marinamele.com/taskbuster-django-tutorial/internationalization-localization-languages-time-zones
+
 # Internationalization – Settings
 Let’s work on how we can implement internationalization, i.e. that our page can support multiple languages.
 
@@ -153,75 +155,63 @@ Change the h1 and p contents of the jumbotron container for the following code:
 ```
 Moreover, to have access to the previous template tags, you will have to write {% load i18n %} near the top of your template. In this case, after the extends from base.html tag.
 
-Internationalization – Translation
+# Internationalization – Translation  
 Finally, we are able to translate our strings!
 
 Go to the terminal, inside the taskbuster_project folder (at the same level as the manage.py file), and run:
-
+``` shell script
 $ python manage.py makemessages -l ca
-1
-$ python manage.py makemessages -l ca
+```
 This will create a message file for the language we want to translate. As we will write all our code in english, there is no need to create a message file for that language.
 
 But ohh!! we get an ugly error that says that we don’t have the GNU gettext installed (if you don’t get the error, good for you! skip this installation part then!). Go to the GNU gettext home page and download the last version. Inside the zip file you’ll find the installation instructions on a file named INSTALL.
 
 Basically, you should go inside the package folder (once unzipped) and type:
-
+```
 $ ./configure
-1
-$ ./configure
+```
 to configure the installation for your system. Next, type
-
+```
 $ make
-1
-$ make
+```
 to compile the package. I always wonder why some installations print all that awful code on your terminal!
 
 If you want, use
-
+```X
 $ make check
-1
-$ make check
+```
 to run package tests before installing them, to see that everything works. Finally, run
-
+```
 $ make install
-1
-$ make install
+```
 to install the package.
 
 Okey! Let’s go back to our developing environment, and try to generate our message file!
-
-$ python manage.py makemessages -l ca
-1
-$ python manage.py makemessages -l ca
+```
+$ python manage.py makemessages -l fr
+```
 Yes! It worked!
 
 Now go to the taskbuster/locale folder to see what’s in there.
-
+```
 $ cd taskbuster/locale
 $ ls
-1
-2
-$ cd taskbuster/locale
-$ ls
+```
 There is a folder named ca (or the language you chose to translate) with a folder named LC_MESSAGES inside. If you go inside it, you’ll find another file named django.po. Inspect that file with your editor.
 
 There is some metadata at the beginning of the file, but after that you’ll see the strings we marked for translation:
 
-The language’s names “English” and “Catalan” in the base.py settings file
-The Welcome to TaskBuster! title on the index.html file
-The paragraph after the title on the index.html file
+    The language’s names “English” and “Catalan” in the base.py settings file
+    The Welcome to TaskBuster! title on the index.html file
+    The paragraph after the title on the index.html file
 Each of these sentences appear in a line beginning with msgid. You have to put your translation in the next line, the one that starts with msgstr.
 Translating the title is simple:
-
+```
 msgid "Welcome to TaskBuster!"
 msgstr "Benvingut a TaskBuster!"
-1
-2
-msgid "Welcome to TaskBuster!"
-msgstr "Benvingut a TaskBuster!"
+```
 And with a paragraph, you have to be careful to start and end each line with "":
-
+```
 msgid ""
 "TaskBuster is a simple Task manager that helps you organize your daylife. </"
 "br> You can create todo lists, periodic tasks and more! </br></br> If you "
@@ -232,37 +222,17 @@ msgstr ""
 "el teu dia a dia. </br> Pots crear llistes de coses pendents, tasques "
 "periòdiques i molt més! </br></br> Si vols apendre com s'ha creat, o"
 "crear-lo tu mateix!, visita la pàgina <a href='http://www.marinamele.com/taskbuster-django-tutorial' target=_'blank'>Taskbuster Django Tutorial</a>."
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-msgid ""
-"TaskBuster is a simple Task manager that helps you organize your daylife. </"
-"br> You can create todo lists, periodic tasks and more! </br></br> If you "
-"want to learn how it was created, or create it yourself!, check www.django-"
-"tutorial.com"
-msgstr ""
-"TaskBuster és un administrador senzill de tasques que t'ajuda a administrar "
-"el teu dia a dia. </br> Pots crear llistes de coses pendents, tasques "
-"periòdiques i molt més! </br></br> Si vols apendre com s'ha creat, o"
-"crear-lo tu mateix!, visita la pàgina <a href='http://www.marinamele.com/taskbuster-django-tutorial' target=_'blank'>Taskbuster Django Tutorial</a>."
+```
 Also, note the final space at the end of the line. If you don’t include that space, the words at the end of the line and at the beginning of the next line will concatenate.
 
 Once you have all the translations set, you must compile them with:
-
-$ python manage.py compilemessages -l ca
-1
-$ python manage.py compilemessages -l ca
+```
+$ python manage.py compilemessages -l fr
+```
 You can run your local server and see the effect by going to the home page, but I prefer writing a test first! 🙂
 
 In the functional_tests/test_all_users.py add the following tests:
-
+```python
 def test_internationalization(self):
     for lang, h1_text in [('en', 'Welcome to TaskBuster!'),
                                 ('ca', 'Benvingut a TaskBuster!')]:
@@ -270,20 +240,7 @@ def test_internationalization(self):
         self.browser.get(self.get_full_url("home"))
         h1 = self.browser.find_element_by_tag_name("h1")
         self.assertEqual(h1.text, h1_text)
-1
-2
-3
-4
-5
-6
-7
-def test_internationalization(self):
-    for lang, h1_text in [('en', 'Welcome to TaskBuster!'),
-                                ('ca', 'Benvingut a TaskBuster!')]:
-        activate(lang)
-        self.browser.get(self.get_full_url("home"))
-        h1 = self.browser.find_element_by_tag_name("h1")
-        self.assertEqual(h1.text, h1_text)
+```
 Remember to change the Benvingut a TaskBuster!  sentence and the activate('ca') if you’re using another language!
 
 I hope all of your tests passed! 🙂

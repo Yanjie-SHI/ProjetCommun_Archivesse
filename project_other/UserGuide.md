@@ -23,15 +23,15 @@
 - message detail
        
 ## TODO list
-- 2021/03/28
-    - search filter in search result archive page
-    - search filter in search result resv page
+- 2021/04/04
+    - paginator for search result page  √ ... exclude page size selection and prev&next button
+    - search filter in search result resv page  √ .. exclude all filter tag X button
+    - globalization  √ half (welcom, login,header,main,search result archive, search result resv,)
     - 定时任务，只要有站内信，就标题栏展示小图标，链接进入my messages页面
-    - globalization
-    - 注册js校验，密码和重复密码是否一致，是否为8位密码
     - 登录后跳转回前一个页面，带结果
-    - 分页的各个页面完善
     - bug: resv create 切换museum后，从大的可用数改小，archive id和folio填入没问题，从小改大显示不出多的input框
+    - 注册js校验，密码和重复密码是否一致，是否为8位密码
+- 2021/03/28
     - search resv: type in 3 characters in museum input, popup a list containing all relavant museums  √
     - search archive func in search result archive page  √
     - search resv func in search result resv page  √

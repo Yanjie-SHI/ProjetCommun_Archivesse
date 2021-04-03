@@ -78,19 +78,42 @@ $(document).ready(function () {
         $("#searchType").val("3");
     });
 
-
-    /* search result page */
-    $("#search-result-bg-image > div.search_filters > div:nth-child(3) > a").click(function () {
+    /* search result archive page */
+    /*$("#search-result-bg-image > div.search_filters > div:nth-child(3) > a").click(function () {
         // search filter div display link
         $("#search-result-bg-image > div.search_filters > div:nth-child(2)").css("display", "block");
         $(".search_filters").css("height", "440px");
         $("#search-result-bg-image > div.search_filters > div:nth-child(3) > a").html("Recherche");
+    });*/
+    /* search result resv page */
+    $("#archiveTypeRadios1").change(function () {
+        if ($(this)[0].checked) {
+            $("#num_archive_div").css("display", "none");
+            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(4) > span:nth-child(1)").html("Tous");
+            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(5)").css("display", "none");
+            $("#num_archive_div > input[type=text]").val("");
+        }
     });
-    $("#search-result-bg-image > div.search_resv_filters > div:nth-child(3) > a").click(function () {
-        // search filter div display link
-        $("#search-result-bg-image > div.search_resv_filters > div:nth-child(2)").css("display", "block");
-        $(".search_resv_filters").css("height", "300px");
-        $("#search-result-bg-image > div.search_resv_filters > div:nth-child(3) > a").html("Recherche");
+    $("#archiveTypeRadios2").change(function () {
+        if ($(this)[0].checked) {
+            $("#num_archive_div").css("display", "block");
+            $("#hint_info_doc").css("display", "block");
+            $("#hint_info_audio").css("display", "none");
+            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(4) > span:nth-child(1)").html("Document");
+            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(5)").css("display", "block");
+        }
+    });
+    $("#archiveTypeRadios3").change(function () {
+        if ($(this)[0].checked) {
+            $("#num_archive_div").css("display", "block");
+            $("#hint_info_doc").css("display", "none");
+            $("#hint_info_audio").css("display", "block");
+            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(4) > span:nth-child(1)").html("Audio-visuelle");
+            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(5)").css("display", "block");
+        }
+    });
+    $("#num_archive_div > input[type=text]").focusout(function () {
+        $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(5) > span:nth-child(1)").html($(this).val());
     });
 
     /* archive detail page */

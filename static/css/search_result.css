@@ -334,16 +334,6 @@ a {
     padding-left: 6px;
 }
 
-#search-result-bg-image > div.search_filters > div:nth-child(2) > div:nth-child(3) > input[type=text] {
-    margin-left: 20px;
-    width: 20%;
-    padding-left: 6px;
-}
-
-#search-result-bg-image > div.search_filters > div:nth-child(2) > div:nth-child(3) > span {
-    margin-left: 20px;
-}
-
 #search-result-bg-image > div.search_filters > div:nth-child(2) > div:nth-child(5) > select {
     width: 25%;
     margin-left: 20px;
@@ -377,9 +367,10 @@ a {
 }
 
 #search-result-bg-image > div.search_resv_filters > div {
-    width: 100%;
+    width: 90%;
     height: 30px;
     line-height: 30px;
+    margin-left: 5%;
 }
 
 #search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div {
@@ -393,7 +384,7 @@ a {
 
 
 #search-result-bg-image > div.search_resv_filters > div:nth-child(2) {
-    margin-top: 30px;
+    margin-top: 40px;
     display: none;
 }
 
@@ -413,7 +404,7 @@ a {
 
 #search-result-bg-image > div.search_resv_filters > div:nth-child(2) > div > input[type=text] {
     margin-left: 20px;
-    width: 50%;
+    width: 80%;
     padding-left: 6px;
 }
 
@@ -421,6 +412,11 @@ a {
     width: 20%;
     height: 30px;
     margin-left: 20px;
+    line-height: 30px;
+}
+
+#search-result-bg-image > div.search_resv_filters > div:nth-child(2) > div:nth-child(2) > div.form-group > div > input {
+    font-size: 18px;
 }
 
 #datetimepicker2 > span {
@@ -431,12 +427,32 @@ a {
     font-weight: normal;
 }
 
+#search-result-bg-image > div.search_resv_filters > div:nth-child(2) > div:nth-child(4) {
+    display: none;
+}
+
+#search-result-bg-image > div.search_resv_filters > div:nth-child(2) > div:nth-child(4) > input {
+    width: 20%;
+}
+
 
 #search-result-bg-image > div.search_resv_filters > div:nth-child(3) {
-    width: 100%;
+    /*width: 100%;*/
     margin-top: 10px;
     float: right;
     font-size: 20px;
+    position: relative;
+    bottom: 10px;
+    left: 0px;
+}
+
+#num_archive_div > input[type=text] {
+    float: left;
+}
+
+#hint_info_doc, #hint_info_audio {
+    float: left;
+    margin-left: 15px;
 }
 
 #search-result-bg-image > div.search_resv_filters > div:nth-child(3) > a {
@@ -470,9 +486,9 @@ a {
 
 .search_result {
     width: 92%;
-    height: 1250px;
+    height: 450px;
     margin-left: 4%;
-    margin-top: 10px;
+    margin-top: 390px;
     background-color: rgb(245, 245, 245);
     border: 1px solid lightgrey;
     border-radius: 5px;

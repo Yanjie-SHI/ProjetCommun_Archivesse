@@ -1,12 +1,13 @@
 {% extends "home_base.html" %}
+{% load i18n %}
 {% load encode %}
 {% block body_main %}
-    <form action="/search" method="post" id="searchArchiveForm">
+    <form action="/search_archive" method="post" id="searchArchiveForm">
         <div id="search-result-bg-image">
             <div class="search_div">
                 <div id="result_search_1">
-                    <div id="search_1_particle">  <!-- 查询粒度选择 -->
-                        <div class="radio">
+                    <!-- <div id="search_1_particle">  --><!-- 查询粒度选择 -->
+                    <!-- <div class="radio">
                             <label>
                                 <input type="radio" name="particleRadios" id="particleRadio1" value="1" checked>
                                 Tous les mots saisis
@@ -20,159 +21,166 @@
                                 Expression exacte
                             </label>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="search-input-div">
-                        <input type="text" placeholder="Rechercher" value="{{ search_input }}" name="archiveKeyword">
-                        <div>
+                        <input type="text" placeholder="Rechercher" value="{{ searchInput }}" name="archiveKeyword">
+                        <!--<div>
                             <span class="glyphicon glyphicon-play btn-xs" aria-hidden="true"></span>
                             <span>Tous les mots saisis</span>
-                        </div>
+                        </div>-->
                         <!--<div class="search-btn-div"></div>-->
                         <span class="input-group-addon">
                     <span class="glyphicon glyphicon-search btn-lg"></span>
                 </span>
                     </div>
                     <div class="search-type-btns-div">
-                    <div class="search-type-btn {% if archive_search_type == "1" %}search-type-btn-selected{% endif %}"
-                         id="search-type-toutes"><span>Toutes les archives</span></div>
-                    <div class="search-type-btn {% if archive_search_type == "2" %}search-type-btn-selected{% endif %}"
-                         id="search-type-numeric"><span>Archives numérisées</span></div>
-                    <div class="search-type-btn {% if archive_search_type == "3" %}search-type-btn-selected{% endif %}"
-                         id="search-type-producteurs"><span>Producteurs d'archives</span></div>
+                        <div class="search-type-btn {% if archive_search_type == "1" %}search-type-btn-selected{% endif %}"
+                             id="search-type-toutes"><span>{% trans 'Toutes les archivese' %}</span></div>
+                        <div class="search-type-btn {% if archive_search_type == "2" %}search-type-btn-selected{% endif %}"
+                             id="search-type-numeric"><span>{% trans 'Archives numérisées' %}</span></div>
+                        <div class="search-type-btn {% if archive_search_type == "3" %}search-type-btn-selected{% endif %}"
+                             id="search-type-producteurs"><span>{% trans "Producteurs d'archives" %}</span></div>
                         <input type="hidden" name="archiveSearchType" id="archiveSearchType" value="1">
                     </div>
                 </div>
             </div>
 
-            <div class="search_filters">
+            <!-- <div class="search_filters">
                 <div>
                     <div>CRITÈRES SÉLECTIONNÉS :</div>
                     <div class="filter_tag">Type de producteur : Personne <span>✖️</span></div>
                     <div class="filter_tag">Producteur : Etude I <span>✖️</span>️</div>
                     <div class="filter_tag">Catégories d'archives : Tous les catégories <span>✖️</span>️</div>
-            </div>
+                </div>
 
-            <div>
                 <div>
-                    <div>Rcherche libre :</div>
-                    <input type="text" name="lastname">
-                </div>
-                <div class="result_radio">
-                    <label class="first">
-                        <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                        Tous les mots saisis
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                        Au moins un des mots saisis
-                    </label>
-                    <label>
-                        <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-                        Expression exacte
-                    </label>
-                </div>
-                <div>
-                    <div>Intervalle d'années :</div>
-                    <span>de</span>
-                    <input type="text" name="lastname">
-                    <span>à</span>
-                    <input type="text" name="lastname">
-                </div>
-                <div>
-                    <div>Lieu :</div>
-                    <input type="text" name="lastname">
-                </div>
-                <div>
-                    <div>Type de producteur :</div>
-                    <select name="" id="">
-                        <option value="">Personne</option>
-                    </select>
-                </div>
-                <div>
-                    <div>Producteur :</div>
-                    <input type="text" name="lastname">
-                </div>
-                <div>
-                    <div>Catégorie d'archive :</div>
+                    <div>
+                        <div>Rcherche libre :</div>
+                        <input type="text" name="lastname">
+                    </div>
                     <div class="result_radio">
                         <label class="first">
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                            Tous les catégories
+                            <input type="radio" name="particleRadios" id="optionsRadios1" value="1"
+                    {% if particleRadios == '1' %}checked{% endif %}>
+                            Tous les mots saisis
                         </label>
                         <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                            Archives papiers
+                            <input type="radio" name="particleRadios" id="optionsRadios2" value="2"
+                    {% if particleRadios == '2' %}checked{% endif %}>
+                            Au moins un des mots saisis
                         </label>
                         <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-                            Archives audio-visuelles
-                        </label>
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-                            Archives électronique
+                            <input type="radio" name="particleRadios" id="optionsRadios3" value="3"
+                    {% if particleRadios == '3' %}checked{% endif %}>
+                            Expression exacte
                         </label>
                     </div>
-                </div>
-            </div>
-
-            <div>
-                <a href="#">Modifier la recherche</a>
-            </div>
-        </div>
-
-        <div class="search_result">
-            <div class="trier_par">
-                <div>
-                    <!-- order by -->
-                    <span>Trier par:</span>
-                    <select name="" id="">
-                        <option value="">Pertinance</option>
-                    </select>
-                </div>
-                <div>{% if total_size > 0 %}{{ total_size }}{% else %}0{% endif %} résultats</div>
-            </div>
-
-            {% for item in archive_list %}
-                <div class="result_general">
-                    <div class="result_title">{{ item.title }}</div>
-                    <div class="code_producer_location">
-                        <div>Cotes : {{ item.id }}</div>
-                        <div>Producteur : {{ item.author }}</div>
-                        <div>Localisation : {{ item.museum.address }} / {{ item.museum.post_code }}
-                            / {{ item.museum.city }}</div>
+                    <div>
+                        <div>Lieu :</div>
+                        <input type="text" name="museumAddress">
                     </div>
-                    <div class="view_detail_link">
-                        <a href="/archive_detail?id={{ item.id|encode }}">Voir les détails</a>
+                    <div>
+                        <div>Producteur :</div>
+                        <input type="text" name="author">
                     </div>
-                </div>
-            {% endfor %}
-
-            <div class="pager">
-                <div>
-                    {{ current_page }} sur {{ total_size }} résultats
+                    <div>
+                        <div>Catégorie d'archive :</div>
+                        <div class="result_radio">
+                            <label class="first">
+                                <input type="radio" name="archiveTypeRadios" id="optionsRadios1" value="all">
+                                Tous les catégories
+                            </label>
+                            <label>
+                                <input type="radio" name="archiveTypeRadios" id="optionsRadios2" value="0">
+                                Archives papiers
+                            </label>
+                            <label>
+                                <input type="radio" name="archiveTypeRadios" id="optionsRadios3" value="1">
+                                Archives audio-visuelles
+                            </label>
+                            <label>
+                                <input type="radio" name="archiveTypeRadios" id="optionsRadios3" value="2"
+                    {% if archiveSearchType == '2' %}checked{% endif %}>
+                                Archives numérisées
+                            </label>
+                        </div>
+                    </div>
                 </div>
 
                 <div>
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            {% for page in pages %}
-                                <li><a href="#">{{ page }}</a></li>
-                            {% endfor %}
-                            <li>
-                                <a href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    <a href="#">Modifier la recherche</a>
+                </div>
+            </div> -->
+
+            <div id="search_result_archive_div" class="search_result">
+                <script>
+                    $(window).ready(function () {
+                        let resultCount = $("div[class=result_general]").length;
+                        $("#search_result_archive_div").css("height", (250 + resultCount * 250).toString() + 'px');
+                        $("#search-result-bg-image").css("height", (700 + resultCount * 250).toString() + 'px')
+                    });
+                </script>
+                <div class="trier_par">
+                    <div>
+                        <!-- order by -->
+                        <span>{% trans "Trier par" %}:</span>
+                        <select name="" id="">
+                            <option value="">{% trans "Pertinance" %}</option>
+                        </select>
+                    </div>
+                    <div>{{ archive_list.paginator.count }} {% trans "résultats" %}</div>
+                </div>
+
+                {% for item in archive_list %}
+                    <div class="result_general">
+                        <div class="result_title">{{ item.title }}</div>
+                        <div class="code_producer_location">
+                            <div>{% trans "Cotes" %} : {{ item.id }}</div>
+                            <div>{% trans "Producteur" %} : {{ item.author }}</div>
+                            <div>{% trans "Localisation" %} : {{ item.museum.address }} / {{ item.museum.post_code }}
+                                / {{ item.museum.city }}</div>
+                        </div>
+                        <div class="view_detail_link">
+                            <a href="/archive_detail?id={{ item.id|encode }}">{% trans "Voir les détails" %} </a>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                <div class="pager" style="margin-top: 0px;">
+                    <div>
+                        <select name="per_page" id="">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                        {% trans "sur" %} {{ archive_list.paginator.count }} {% trans "résultats" %}
+                    </div>
+
+                    <div>
+                        <nav aria-label="Page navigation">
+                            <input id="currentPage" name="currentPage" type="hidden" value="{{ archive_list.number }}">
+                            <ul class="pagination">
+                                <li>
+                                    <a href="#" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                                {% for page in archive_list.paginator.page_range %}
+                                    <li><a id="archive_page_link_{{ page }}" href="#"
+                                           {% if archive_list.number == page %}style="background: #2b669a; color: white;"{% endif %}>{{ page }}</a>
+                                    </li>
+                                {% endfor %}
+                                <li>
+                                    <a href="#" aria-label="Next">
+                                        <span aria-hidden="true">&raquo;</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     </form>
 {% endblock %}

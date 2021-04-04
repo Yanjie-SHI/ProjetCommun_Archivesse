@@ -152,7 +152,7 @@ msgstr "Relevance"
 #: templates/search_result_reservation.html:131
 #: templates/search_result_reservation.html:169
 msgid "résultats"
-msgstr "Result"
+msgstr "Results"
 
 #: templates/search_result_archive.html:138
 msgid "Cotes"

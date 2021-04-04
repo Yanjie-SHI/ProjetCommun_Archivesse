@@ -137,8 +137,7 @@
                         <div class="code_producer_location">
                             <div>{% trans "Cotes" %} : {{ item.id }}</div>
                             <div>{% trans "Producteur" %} : {{ item.author }}</div>
-                            <div>{% trans "Localisation" %} : {{ item.museum.address }} / {{ item.museum.post_code }}
-                                / {{ item.museum.city }}</div>
+                            <div>{% trans "Centre" %} : {{ item.museum.name }}</div>
                         </div>
                         <div class="view_detail_link">
                             <a href="/archive_detail?id={{ item.id|encode }}">{% trans "Voir les détails" %} </a>

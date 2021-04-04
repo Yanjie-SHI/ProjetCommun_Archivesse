@@ -127,9 +127,11 @@ def search_resv(request):
                 elif rda.archive.type == 2:
                     resv.available_video_archive_count -= 1
         # exclude search filter detail
-        if archive_type == "0" and archive_count and resv.available_doc_archive_count >= int(archive_count):
+        if archive_type == 'all':
+            reservation_temp_list = reservation_list
+        elif archive_type == "0" and archive_count and resv.available_doc_archive_count >= int(archive_count):
             reservation_temp_list.append(resv)
-        if archive_type == "2" and archive_count and resv.available_video_archive_count >= int(archive_count):
+        elif archive_type == "2" and archive_count and resv.available_video_archive_count >= int(archive_count):
             reservation_temp_list.append(resv)
 
     options.update({"input_museum_name": museum_name})

@@ -1,4 +1,5 @@
 {% extends "home_base.html" %}
+{% load i18n %}
 {% block body_main %}
     <form id="form_search_result_demand" action="" method="post">
         <div id="search-result-bg-image">
@@ -17,24 +18,24 @@
             <div class="search_result search_result_demand">
                 <div class="trier_par">
                     <div></div>
-                    <div>{{ demands.paginator.count }} résultats</div>
+                    <div>{{ demands.paginator.count }} {% trans "résultats" %}</div>
                 </div>
 
                 {% for item in demands %}
                     <div class="result_general">
                         <div class="result_title">{{ item.archive.id }} - {{ item.archive.museum.name }}</div>
                         <div class="code_producer_location float-left">
-                            <div>Demandé par: {{ item.demander.username }}</div>
-                            <div>Crée le : {{ item.create_date|date:'d/m/Y' }}</div>
+                            <div>{% trans "Demandé par" %}: {{ item.demander.username }}</div>
+                            <div>{% trans "Crée le" %} : {{ item.create_date|date:'d/m/Y' }}</div>
                         </div>
-                        <div id="help_btn_{{ item.id }}" class="help_btn">Aider</div>
-                    <input type="hidden" value="{{ item.demander.username }}">
+                        <div id="help_btn_{{ item.id }}" class="help_btn">{% trans "Aider" %}</div>
+                        <input type="hidden" value="{{ item.demander.username }}">
                         <input type="hidden" value="{{ item.demander.mail }}">
                     </div>
                 {% endfor %}
 
                 <div class="create_demand_div">
-                    <div id="btn_create_demand">Je veux faire une demande</div>
+                    <div id="btn_create_demand">{% trans "Je veux faire une demande" %}</div>
                 </div>
 
                 <div class="pager">
@@ -45,7 +46,7 @@
                             <option value="20">20</option>
                             <option value="50">50</option>
                         </select>
-                        sur {{ demands.paginator.count }} résultats
+                        sur {{ demands.paginator.count }} {% trans "résultats" %}
                     </div>
 
                     <div>

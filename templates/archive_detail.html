@@ -1,4 +1,5 @@
 {% extends "home_base.html" %}
+{% load i18n %}
 {% block body_main %}
     <form id="form_add_favorites" action="/add_favorites" method="post">
         <div id="archive-detail-bg-image">
@@ -8,8 +9,8 @@
             <div class="archive_detail">
                 <div class="result_general">
                     <div class="return_link">
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="javascript:history.back(-1)">Retour au
-                        résultat</a>
+                        <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a
+                            href="javascript:history.back(-1)">{% trans "Retour au résultat" %}</a>
                     </div>
                     <div>
                         <div class="result_title">{{ archive.title }}</div>
@@ -21,9 +22,11 @@
                         </div>
                     </div>
                     <div class="ar_detail">
-                        <div>Cotes : {{ archive.id }}</div>
+                        <div>{% trans "Cotes" %} : {{ archive.id }}</div>
                         <div>Producteur : {{ archive.author }}</div>
-                        <div>Type : {{ archive.type }}</div>
+                        <div>Centre : {{ archive.museum.name }}</div>
+                        <div>Type : {% if archive.type == '0' %}Document{% elif archive.type == '1' %}
+                            Audio-visuelle{% else %}Numérisée{% endif %}</div>
                         <div>Localisation : {{ archive.museum.address }} , {{ archive.museum.post_code }}
                             , {{ archive.museum.city }}</div>
                         <div>Langue des documents : {{ archive.language }}</div>

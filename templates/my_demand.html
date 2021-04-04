@@ -1,32 +1,32 @@
 {% extends "home_base.html" %}
+{% load i18n %}
 {% block body_main %}
     <div id="demand-bg-image">
-        <div class="return_link"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="javascript:history.back(-1)">Retour au
-            menu de l'espace
-            personnel</a></div>
+        <div class="return_link"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="javascript:history.back(-1)">
+            {% trans "Retour au menu de l'espace personnel" %}</a></div>
 
         <div>
-            <div>Mes Demandes</div>
-            <div>Retrouvez touts les demandes que vous avez demandées.</div>
+            <div>{% trans "Mes Demandes" %}</div>
+            <div>{% trans "Retrouvez touts les demandes que vous avez demandées." %}</div>
 
             <div id="reservation_detail">
                 <table>
                     <thead>
                     <tr>
                         <th>
-                            <div>Numéro</div>
+                            <div>{% trans "Numéro" %}</div>
                         </th>
                         <th>
-                            <div>Date</div>
+                            <div>{% trans "Date" %}</div>
                         </th>
                         <th>
-                            <div>Archive demandé</div>
+                            <div>{% trans "Archive demandé" %}</div>
                         </th>
                         <th>
-                            <div>Status</div>
+                            <div>{% trans "Status" %}</div>
                         </th>
                         <th>
-                            <div>Opération</div>
+                            <div>{% trans "Opération" %}</div>
                         </th>
                     </tr>
                     </thead>
@@ -37,20 +37,23 @@
                                 <td id="resv_list_item_id" class="my_resv_table_tr_td">{{ item.id }}</td>
                                 <td class="my_resv_table_tr_td">{{ item.create_date|date:"d/m/Y" }}</td>
                                 <td class="my_resv_table_tr_td_archive">{{ item.archive.id }}</td>
-                                <td class="my_resv_table_tr_td">{% if item.status == 0 %}En attente{% else %}
-                                    Terminé{% endif %}</td>
+                                <td class="my_resv_table_tr_td">
+                                    {% if item.status == 0 %}{% trans "En attente" %}{% else %}
+                                        {% trans "Terminé" %}{% endif %}</td>
                                 <td class="my_resv_table_tr_td">
                                     {% if item.status == 0 %}
-                                        <a style="color:limegreen;" id="terminate_demand_{{ item.id }}" href="#">Terminer</a>
+                                        <a style="color:limegreen;" id="terminate_demand_{{ item.id }}"
+                                           href="#">{% trans "Terminer" %}</a>
                                         &nbsp;&nbsp;
-                                        <a style="color:red;" id="delete_demand_{{ item.id }}" href="#">Supprimer</a>
+                                        <a style="color:red;" id="delete_demand_{{ item.id }}"
+                                           href="#">{% trans "Supprimer" %}</a>
                                     {% endif %}
                                 </td>
                             </tr>
                         {% endfor %}
                     {% else %}
                         <tr>
-                            <td colspan="5">Vous n'avez pas de demande en cours.</td>
+                            <td colspan="5">{% trans "Vous n'avez pas de demande en cours." %}</td>
                         </tr>
                     {% endif %}
                     </tbody>
@@ -58,7 +61,7 @@
             </div>
 
             <div id="demand_pager" class="pager">
-                <div>0 sur 0</div>
+                <div></div>
                 <div><a href="">1</a></div>
             </div>
         </div>

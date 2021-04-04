@@ -1,4 +1,5 @@
 {% extends "home_base.html" %}
+{% load i18n %}
 {% block body_main %}
     {% load mrange %}
     <form id="form_create_reservation" action="/create_resv" method="post">
@@ -7,10 +8,10 @@
             </div>
 
             <div class="reservation_detail">
-                <div class="result_title">Aperçu de rendez-vous</div>
+                <div class="result_title">{% trans "Aperçu de rendez-vous" %}</div>
                 <div id="resv_create_detail" class="resv_basic">
                     <div>
-                        <div>Nom de centre :</div>
+                        <div>{% trans "Nom de centre" %} :</div>
                         <select name="sel_museum" id="select_museum">
                             {% for item in museum_list %}
                                 <option value="{{ item.id }}"
@@ -18,11 +19,11 @@
                             {% endfor %}
                         </select>
                     </div>
-                    <div>Adresse : <span id="auto_museum_address">{{ address }}</span></div>
+                    <div>{% trans "Adresse" %} : <span id="auto_museum_address">{{ address }}</span></div>
                     <div>
-                        <div>Proposé par : {{ user.username }}</div>
+                        <div>{% trans "Proposé par" %} : {{ user.username }}</div>
                         <div id="resv_create_findedate">
-                            <div>Fin de date :</div>
+                            <div>{% trans "Fin de date" %} :</div>
                             <div class="form-group">
                                 <div class='input-group date' id='datetimepicker3'>
                                     <input type='text' class="form-control" name="resvEndDate"
@@ -43,17 +44,16 @@
                         </div>
                     </div>
                     <div>
-                        <div>Nombre document disponible : {{ available_doc_archive_count }}</div>
-                        <div>Nombre vidéo disponible : {{ available_video_archive_count }}</div>
+                        <div>{% trans "Nombre document disponible" %} : {{ available_doc_archive_count }}</div>
+                        <div>{% trans "Nombre vidéo disponible" %} : {{ available_video_archive_count }}</div>
                     </div>
                 </div>
-                <div class="input_inform">Merci de compléter les informations suivantes pour finaliser votre
-                    rendez-vous
+                <div class="input_inform">{% trans "Merci de compléter les informations suivantes pour finaliser votre rendez-vous" %}
                 </div>
                 <div class="join_input_div">
                     <div class="archive_document_demand">
                         <div class="document_demand_title">
-                            Nombre d'archives documentaires demandées :
+                            {% trans "Nombre d'archives documentaires demandées" %} :
                             <select name="needed_doc_demand_count" id="doc_demand_count">
                                 {% if available_doc_archive_count > 0 %}
                                     <option value="0" selected>0</option>
@@ -70,14 +70,14 @@
                                 {% for j in available_doc_archive_count|mrange %}
                                     <li id="li_doc_{{ j|add:1 }}">
                                         <div class="doc_demand_item">
-                                            <div>- Archives N°{{ j|add:1 }} :</div>
+                                            <div>- {% trans "Archives" %} N°{{ j|add:1 }} :</div>
                                             <div>
                                                 <div>
-                                                    <div>Cote<span style="color:red;">*</span> :</div>
+                                                    <div>{% trans "Cote" %}<span style="color:red;">*</span> :</div>
                                                     <input type="text" name="doc_archive_id_{{ j|add:1 }}">
                                                 </div>
                                                 <div>
-                                                    <div>Folio :</div>
+                                                    <div>{% trans "Folio" %} :</div>
                                                     <input type="number" name="doc_folio_{{ j|add:1 }}">
                                                 </div>
                                             </div>
@@ -86,14 +86,14 @@
                                 {% endfor %}
                             </ul>
                         {% endif %}
-                        <div class="no_results" id="no_doc_archive_demand_notice_div">Vous n'avez pas d'archives
-                            documentaires demandées.
+                        <div class="no_results"
+                             id="no_doc_archive_demand_notice_div">{% trans "Vous n'avez pas d'archives documentaires demandées." %}
                         </div>
                     </div>
 
                     <div class="archive_video_demand">
                         <div class="video_demand_title">
-                            Nombre d'archives audio-visuelles demandées :
+                            {% trans "Nombre d'archives audio-visuelles demandées" %} :
                             <select name="needed_video_demand_count" id="video_demand_count">
                                 {% if available_video_archive_count > 0 %}
                                     <option value="0" selected>0</option>
@@ -110,14 +110,14 @@
                                 {% for i in available_video_archive_count|mrange %}
                                     <li id="li_video_{{ i|add:1 }}">
                                         <div class="video_demand_item">
-                                            <div>- Archives N°{{ i|add:1 }} :</div>
+                                            <div>- {% trans "Archives" %} N°{{ i|add:1 }} :</div>
                                             <div>
                                                 <div>
-                                                    <div>Cote<span style="color:red;">*</span> :</div>
+                                                    <div>{% trans "Cote" %}<span style="color:red;">*</span> :</div>
                                                     <input type="text" name="video_archive_id_{{ i|add:1 }}">
                                                 </div>
                                                 <div>
-                                                    <div>Ouvert :</div>
+                                                    <div>{% trans "Ouvert" %} :</div>
                                                     <input type="text" name="video_ouvert_{{ i|add:1 }}">
                                                 </div>
                                             </div>
@@ -126,39 +126,38 @@
                                 {% endfor %}
                             </ul>
                         {% endif %}
-                        <div class="no_results" id="no_video_archive_demand_notice_div">Vous n'avez pas d'archives
-                            audio-visuelles demandées.
+                        <div class="no_results"
+                             id="no_video_archive_demand_notice_div">{% trans "Vous n'avez pas d'archives audio-visuelles demandées." %}
                         </div>
                     </div>
 
                     <div class="vos_information">
                         <div class="vos_information_title">
-                            Vos informations :
+                            {% trans "Vos informations" %} :
                         </div>
                         <div class="vos_information_info">
-                            Merci de renseignez au moins une méthode de contact pour que le owner de ce rendez-vous peut
-                            vous contacter et peut vous envoyer les archives que vous avez demandées dans ce
-                            rendez-vous.
+                            {% trans "Merci de renseignez au moins une méthode de contact pour que le owner de ce rendez-vous peut vous contacter et peut vous envoyer les archives que vous avez demandées dans ce rendez-vous." %}
                         </div>
                         <div>
                             <div>
-                                <div>Nom :</div>
+                                <div>{% trans "Nom" %} :</div>
                                 {{ user.last_name }}</div>
                             <div>
-                                <div>Prénom :</div>
+                                <div>{% trans "Prénom" %} :</div>
                                 {{ user.first_name }}</div>
                         </div>
                         <div>
-                            <div>Adresse e-mail :</div>
+                            <div>{% trans "Adresse e-mail" %} :</div>
                             <input type="email" name="receiver_email" value="
+
                                     {% if user.receiver_mail %}{{ user.receiver_mail }}{% else %}{{ user.mail }}{% endif %}">
                         </div>
                     </div>
                 </div>
 
                 <div class="cancle_comfirm_div">
-                    <a href="javascript:history.back(-1)">Annuler</a>
-                    <div id="btn_create_request">Confirmer</div>
+                    <a href="javascript:history.back(-1)">{% trans "Annuler" %}</a>
+                    <div id="btn_create_request">{% trans "Confirmer" %}</div>
                 </div>
 
             </div>

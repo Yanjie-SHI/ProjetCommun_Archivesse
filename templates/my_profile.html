@@ -1,75 +1,76 @@
 {% extends "home_base.html" %}
+{% load i18n %}
 {% block body_main %}
     <div id="self-profile-bg-image">
-        <div class="return_link"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="javascript:history.back(-1)">Retour au
-            menu de l'espace
-            personnel</a></div>
+        <div class="return_link"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="javascript:history.back(-1)">
+            {% trans "Retour au menu de l'espace personnel" %}</a></div>
 
         <div>
-            <div>Mon profil</div>
-            <div>Vous pouvez ici modifier ou compléter vos coordonnées et informations personnelles.</div>
-            <div>Les champs précédés d'un astérisque (<span style="color: red;">*</span>) sont obligatoires.</div>
+            <div>{% trans "Mon profil" %}</div>
+            <div>{% trans "Vous pouvez ici modifier ou compléter vos coordonnées et informations personnelles." %}</div>
+            <div>{% trans "Les champs précédés d'un astérisque" %} (<span
+                    style="color: red;">*</span>) {% trans "sont obligatoires." %}</div>
             <form id="edit_profile_form" action="/profile" method="post">
                 <div>
                     <div>
-                        <div class="hint">Civilité <span style="color: red">*</span> :</div>
+                        <div class="hint">{% trans "Civilité" %} <span style="color: red">*</span> :</div>
                         <div class="radio">
                             <label>
                                 <input type="radio" name="genderRadios" id="optionsRadios1" value="1"
                                        {% if user.gender == 1 %}checked{% endif %}>
-                                M.
+                                {% trans "M." %}
                             </label>
                             <label>
                                 <input type="radio" name="genderRadios" id="optionsRadios2" value="2"
                                        {% if user.gender == 2 %}checked{% endif %}>
-                                Mme.
+                                {% trans "Mme." %}
                             </label>
                         </div>
                     </div>
                     <div>
-                        <div class="hint">Nom <span style="color: red">*</span> :</div>
+                        <div class="hint">{% trans "Nom" %} <span style="color: red">*</span> :</div>
                         <input type="text" name="firstname" value="{{ user.first_name }}" disabled>
-                        <div class="hint hint2">Prénom <span style="color: red">*</span> :</div>
+                        <div class="hint hint2">{% trans "Prénom" %} <span style="color: red">*</span> :</div>
                         <input type="text" name="lastname" value="{{ user.last_name }}" disabled>
                     </div>
                     <div>
-                        <div class="hint">Pays:</div>
+                        <div class="hint">{% trans "Pays" %}:</div>
                         <input type="text" name="nation" value="{{ user.nation }}">
                     </div>
                     <div>
-                        <div class="hint">Code Postal:</div>
+                        <div class="hint">{% trans "Code Postal" %}:</div>
                         <input type="text" name="post_code" value="{{ user.post_code }}">
-                        <div class="hint hint2">Ville:</div>
+                        <div class="hint hint2">{% trans "Ville" %}:</div>
                         <input type="text" name="city" value="{{ user.city }}">
                     </div>
                     <div>
-                        <div class="hint">Adresse :</div>
+                        <div class="hint">{% trans "Adresse" %} :</div>
                         <input type="text" name="address" value="{{ user.address }}">
                     </div>
                     <div>
-                        <div class="hint">E-mail<span style="color: red">*</span> :</div>
+                        <div class="hint">{% trans "E-mail" %}<span style="color: red">*</span> :</div>
                         <input type="text" name="mail" value="{{ user.mail }}" disabled>
                     </div>
                 </div>
 
                 <div>
-                    <div>Sécurité</div>
+                    <div>{% trans "Sécurité" %}</div>
                     <div>
                         <div>
-                            <div class="hint3">Ancien mot de passe :</div>
+                            <div class="hint3">{% trans "Ancien mot de passe" %} :</div>
                             <input type="password" name="old_password">
                         </div>
                         <div>
-                            <div class="hint3">Nouveau mot de passe :</div>
+                            <div class="hint3">{% trans "Nouveau mot de passe" %} :</div>
                             <input type="password" name="new_password">
                         </div>
                         <div>
-                            <div class="hint3">Confirmez le nouveau mot de passe :</div>
+                            <div class="hint3">{% trans "Confirmez le nouveau mot de passe" %} :</div>
                             <input type="password" name="new_password_verify">
                         </div>
                     </div>
                     <div>
-                        <span>Enregistrer les modification</span>
+                        <span>{% trans "Enregistrer les modification" %}</span>
                     </div>
                 </div>
             </form>

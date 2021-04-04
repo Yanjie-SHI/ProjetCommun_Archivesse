@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-04 13:55+0200\n"
+"POT-Creation-Date: 2021-04-04 17:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,6 +18,103 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: templates/archive_detail.html:12
+#: templates/reservation_detail_creatorview.html:11
+#, fuzzy
+#| msgid "résultats"
+msgid "Retour au résultat"
+msgstr "Results"
+
+#: templates/archive_detail.html:24 templates/search_result_archive.html:138
+msgid "Cotes"
+msgstr "Codes"
+
+#: templates/demand_create.html:11
+msgid ""
+"Merci de compléter les informations suivantes pour finaliser votre demande"
+msgstr ""
+
+#: templates/demand_create.html:12
+msgid ""
+"Vous pouvez choisir qu'une seule archives que vous souhaitez pour chaque "
+"demande."
+msgstr ""
+
+#: templates/demand_create.html:16 templates/reservation_create.html:24
+#: templates/reservation_detail_creatorview.html:19
+#: templates/reservation_detail_join.html:16
+#: templates/search_result_reservation.html:138
+msgid "Proposé par"
+msgstr "Proposed by"
+
+#: templates/demand_create.html:17 templates/search_result_demand.html:29
+msgid "Crée le"
+msgstr ""
+
+#: templates/demand_create.html:20 templates/reservation_create.html:73
+#: templates/reservation_create.html:112
+#: templates/reservation_detail_join.html:47
+#: templates/reservation_detail_join.html:86
+msgid "Archives"
+msgstr ""
+
+#: templates/demand_create.html:22 templates/reservation_create.html:76
+#: templates/reservation_create.html:115
+#: templates/reservation_detail_creatorview.html:57
+#: templates/reservation_detail_creatorview.html:87
+#: templates/reservation_detail_join.html:50
+#: templates/reservation_detail_join.html:89
+#, fuzzy
+#| msgid "Cotes"
+msgid "Cote"
+msgstr "Codes"
+
+#: templates/demand_create.html:26 templates/reservation_create.html:80
+#: templates/reservation_detail_join.html:54
+msgid "Folio"
+msgstr ""
+
+#: templates/demand_create.html:34 templates/reservation_create.html:134
+#: templates/reservation_detail_join.html:108
+msgid "Vos informations"
+msgstr ""
+
+#: templates/demand_create.html:37 templates/reservation_create.html:137
+#: templates/reservation_detail_join.html:111
+msgid ""
+"Merci de renseignez au moins une méthode de contact pour que le owner de ce "
+"rendez-vous peut vous contacter et peut vous envoyer les archives que vous "
+"avez demandées dans ce rendez-vous."
+msgstr ""
+
+#: templates/demand_create.html:41 templates/my_profile.html:30
+#: templates/reservation_create.html:141
+#: templates/reservation_detail_join.html:115
+msgid "Nom"
+msgstr ""
+
+#: templates/demand_create.html:44 templates/my_profile.html:32
+#: templates/reservation_create.html:144
+#: templates/reservation_detail_join.html:118
+msgid "Prénom"
+msgstr ""
+
+#: templates/demand_create.html:48 templates/reservation_create.html:148
+#: templates/reservation_detail_join.html:122
+msgid "Adresse e-mail"
+msgstr ""
+
+#: templates/demand_create.html:55 templates/reservation_create.html:156
+#: templates/reservation_detail_join.html:130
+msgid "Annuler"
+msgstr ""
+
+#: templates/demand_create.html:56
+#, fuzzy
+#| msgid "Déposer une demande"
+msgid "Déposer la demande"
+msgstr "Create a demand"
+
 #: templates/home_base.html:42
 msgid "Espace Personnel"
 msgstr "Personal space"
@@ -26,7 +123,7 @@ msgstr "Personal space"
 msgid "Me connecter"
 msgstr "Log in"
 
-#: templates/home_base.html:50
+#: templates/home_base.html:50 templates/self_center.html:49
 msgid "Déconnexion"
 msgstr "Logout"
 
@@ -42,7 +139,7 @@ msgstr "My personal space"
 msgid "Se connecter"
 msgstr "Log in"
 
-#: templates/login.html:8
+#: templates/login.html:8 templates/my_profile.html:11
 msgid "Les champs précédés d'un astérisque"
 msgstr "Fields preceded by an asterisk"
 
@@ -88,11 +185,473 @@ msgstr "Consult the details of the demand"
 msgid "Consulter les détails de rendez-vous"
 msgstr "Consult the details of the reservation"
 
+#: templates/message_detail.html:6 templates/my_demand.html:6
+#: templates/my_favorites.html:6 templates/my_messages.html:6
+#: templates/my_profile.html:6 templates/my_reservation.html:6
+#, fuzzy
+#| msgid "Espace Personnel"
+msgid "Retour au menu de l'espace personnel"
+msgstr "My personal space"
+
+#: templates/message_detail.html:9 templates/my_messages.html:9
+#: templates/self_center.html:25
+msgid "Ma messagerie"
+msgstr ""
+
+#: templates/message_detail.html:11
+msgid "Sujet"
+msgstr ""
+
+#: templates/my_demand.html:9
+#, fuzzy
+#| msgid "Demande"
+msgid "Mes Demandes"
+msgstr "Demand"
+
+#: templates/my_demand.html:10
+msgid "Retrouvez touts les demandes que vous avez demandées."
+msgstr ""
+
+#: templates/my_demand.html:17 templates/my_reservation.html:27
+#: templates/my_reservation.html:88
+msgid "Numéro"
+msgstr ""
+
+#: templates/my_demand.html:20
+msgid "Date"
+msgstr ""
+
+#: templates/my_demand.html:23 templates/my_reservation.html:36
+#: templates/my_reservation.html:97
+msgid "Archive demandé"
+msgstr ""
+
+#: templates/my_demand.html:26 templates/my_reservation.html:39
+#: templates/my_reservation.html:100
+msgid "Status"
+msgstr ""
+
+#: templates/my_demand.html:29 templates/my_reservation.html:42
+msgid "Opération"
+msgstr ""
+
+#: templates/my_demand.html:40
+msgid "En attente"
+msgstr ""
+
+#: templates/my_demand.html:41 templates/my_reservation.html:117
+msgid "Terminé"
+msgstr ""
+
+#: templates/my_demand.html:44
+msgid "Terminer"
+msgstr ""
+
+#: templates/my_demand.html:46 templates/my_messages.html:44
+#: templates/my_reservation.html:65
+msgid "Supprimer"
+msgstr ""
+
+#: templates/my_demand.html:53
+msgid "Vous n'avez pas de demande en cours."
+msgstr ""
+
+#: templates/my_favorites.html:9 templates/self_center.html:18
+msgid "Mes favoris"
+msgstr ""
+
+#: templates/my_favorites.html:10 templates/self_center.html:19
+msgid "Retrouvez toutes les ressources que vous avez ajoutées à vos favoris."
+msgstr ""
+
+#: templates/my_favorites.html:12
+#, fuzzy
+#| msgid "Archives numérisées"
+msgid "Archive sauvegardé"
+msgstr "Digitized Archives"
+
+#: templates/my_favorites.html:13
+msgid "Vous n'avez pas encore ajouté d'archives à votre liste favoris."
+msgstr ""
+
+#: templates/my_messages.html:10
+msgid ""
+"Retrouvez toutes les notifications que vous avez reçues pour les rendez-vous "
+"et pour l'administration."
+msgstr ""
+
+#: templates/my_messages.html:12
+msgid ""
+"L'ouverture d'une notification fait office d'accusé de confirmation de "
+"rendez-vous réservé et tous les modifications fait par le rendez-vous owner."
+msgstr ""
+
+#: templates/my_messages.html:15
+msgid "Filtrer mes notifications"
+msgstr ""
+
+#: templates/my_messages.html:18
+#, fuzzy
+#| msgid "Toutes les archives"
+msgid "Tous les catégories"
+msgstr "All archives"
+
+#: templates/my_profile.html:9 templates/self_center.html:11
+msgid "Mon profil"
+msgstr ""
+
+#: templates/my_profile.html:10
+msgid ""
+"Vous pouvez ici modifier ou compléter vos coordonnées et informations "
+"personnelles."
+msgstr ""
+
+#: templates/my_profile.html:11 templates/register.html:9
+#, fuzzy
+#| msgid "sont obligatoires"
+msgid "sont obligatoires."
+msgstr "are obligatory"
+
+#: templates/my_profile.html:15 templates/register.html:18
+msgid "Civilité"
+msgstr ""
+
+#: templates/my_profile.html:20 templates/register.html:22
+msgid "M."
+msgstr ""
+
+#: templates/my_profile.html:25 templates/register.html:26
+msgid "Mme."
+msgstr ""
+
+#: templates/my_profile.html:36
+msgid "Pays"
+msgstr ""
+
+#: templates/my_profile.html:40
+msgid "Code Postal"
+msgstr ""
+
+#: templates/my_profile.html:42
+msgid "Ville"
+msgstr ""
+
+#: templates/my_profile.html:46 templates/reservation_create.html:22
+#: templates/reservation_detail_creatorview.html:17
+#: templates/reservation_detail_join.html:14
+msgid "Adresse"
+msgstr ""
+
+#: templates/my_profile.html:50
+#: templates/reservation_detail_creatorview.html:55
+#: templates/reservation_detail_creatorview.html:85
+msgid "E-mail"
+msgstr ""
+
+#: templates/my_profile.html:56
+msgid "Sécurité"
+msgstr ""
+
+#: templates/my_profile.html:59
+#, fuzzy
+#| msgid "Mot de passe"
+msgid "Ancien mot de passe"
+msgstr "Password"
+
+#: templates/my_profile.html:63
+#, fuzzy
+#| msgid "Mot de passe"
+msgid "Nouveau mot de passe"
+msgstr "Password"
+
+#: templates/my_profile.html:67
+msgid "Confirmez le nouveau mot de passe"
+msgstr ""
+
+#: templates/my_profile.html:72
+msgid "Enregistrer les modification"
+msgstr ""
+
+#: templates/my_reservation.html:9 templates/self_center.html:35
+#, fuzzy
+#| msgid "Rendez-vous"
+msgid "Mes rendez-vous"
+msgstr "Reservation"
+
+#: templates/my_reservation.html:10 templates/self_center.html:36
+msgid "Retrouvez touts les rendez-vous que vous avez demandés ou rejoint."
+msgstr ""
+
+#: templates/my_reservation.html:13
+msgid "En cours"
+msgstr ""
+
+#: templates/my_reservation.html:17
+msgid "Passé"
+msgstr ""
+
+#: templates/my_reservation.html:30 templates/my_reservation.html:91
+msgid "Rôle"
+msgstr ""
+
+#: templates/my_reservation.html:33 templates/my_reservation.html:94
+#: templates/reservation_create.html:26
+#: templates/reservation_detail_creatorview.html:20
+#: templates/reservation_detail_join.html:17
+#: templates/search_result_reservation.html:45
+#: templates/search_result_reservation.html:64
+#: templates/search_result_reservation.html:128
+#: templates/search_result_reservation.html:139
+#, fuzzy
+#| msgid "Fin de Date"
+msgid "Fin de date"
+msgstr "End of Date"
+
+#: templates/my_reservation.html:52 templates/my_reservation.html:110
+#, fuzzy
+#| msgid "Proposé par"
+msgid "Proposeur"
+msgstr "Proposed by"
+
+#: templates/my_reservation.html:52 templates/my_reservation.html:110
+#, fuzzy
+#| msgid "Demande"
+msgid "Demandeur"
+msgstr "Demand"
+
+#: templates/my_reservation.html:59
+msgid "N'est pas allé"
+msgstr ""
+
+#: templates/my_reservation.html:59
+msgid "Est allé"
+msgstr ""
+
+#: templates/my_reservation.html:62 templates/search_result_archive.html:143
+msgid "Voir les détails"
+msgstr "Read the details"
+
+#: templates/my_reservation.html:68 templates/reservation_create.html:157
+msgid "Confirmer"
+msgstr ""
+
+#: templates/my_reservation.html:76 templates/my_reservation.html:122
+msgid "Vous n'avez pas de rendez-vous en cours."
+msgstr ""
+
+#: templates/register.html:5
+#, fuzzy
+#| msgid "Espace Personnel"
+msgid "Votre espace personnel"
+msgstr "My personal space"
+
+#: templates/register.html:6
+#, fuzzy
+#| msgid "Espace Personnel"
+msgid "S'inscrire à l'espace personnel"
+msgstr "My personal space"
+
+#: templates/register.html:8
+#, fuzzy
+#| msgid "Les champs précédés d'un astérisque"
+msgid ""
+"Veuillez renseigner le formulaire suivant. Les champs précédés d’un "
+"astérisque"
+msgstr "Fields preceded by an asterisk"
+
+#: templates/register.html:10
+msgid ""
+"Cette inscription est indépendante de celle réalisée en salle de lecture."
+msgstr ""
+
+#: templates/register.html:12
+msgid ""
+"Une fois ces informations validées, vous recevrez un courriel de "
+"confirmation de confirmation de votre inscription."
+msgstr ""
+
+#: templates/register.html:16
+#, fuzzy
+#| msgid "Espace Personnel"
+msgid "Fiche personnelle"
+msgstr "Personal space"
+
+#: templates/register.html:31
+msgid "Votre nom"
+msgstr ""
+
+#: templates/register.html:35
+msgid "Votre prénom"
+msgstr ""
+
+#: templates/register.html:39
+#, fuzzy
+#| msgid "Mot de passe"
+msgid "Votre pays"
+msgstr "Password"
+
+#: templates/register.html:41
+msgid "Veuillez sélectionner un pays"
+msgstr ""
+
+#: templates/register.html:48
+msgid "Votre code postal"
+msgstr ""
+
+#: templates/register.html:53
+msgid "Code d'accès"
+msgstr ""
+
+#: templates/register.html:55
+#, fuzzy
+#| msgid "Adresse courriel (exemple : nomprenom@domaine.com)"
+msgid "Votre adresse électronique (exemple : nomprenom@domaine.com)"
+msgstr "E-mail address (example : namefirstname@domaine.com)"
+
+#: templates/register.html:60
+msgid "Répéter votre adresse électronique"
+msgstr ""
+
+#: templates/register.html:64
+#, fuzzy
+#| msgid "Mot de passe"
+msgid "Votre mot de passe"
+msgstr "Password"
+
+#: templates/register.html:65
+msgid "8 caractères minimum, lettres et chiffres."
+msgstr ""
+
+#: templates/register.html:69
+msgid "Répéter votre mot de passe"
+msgstr ""
+
+#: templates/register.html:78
+msgid ""
+"En cochant cette case, je reconnais avoir pris connaissance des Conditions "
+"générales d'utilisation et je les accepte."
+msgstr ""
+
+#: templates/register.html:82
+msgid "Valider"
+msgstr ""
+
+#: templates/reservation_create.html:11
+#: templates/reservation_detail_creatorview.html:13
+#: templates/reservation_detail_join.html:11
+#, fuzzy
+#| msgid "Proposer un rendez-vous"
+msgid "Aperçu de rendez-vous"
+msgstr "Create a reservation"
+
+#: templates/reservation_create.html:14
+#: templates/reservation_detail_creatorview.html:16
+#: templates/reservation_detail_join.html:13
+msgid "Nom de centre"
+msgstr ""
+
+#: templates/reservation_create.html:47
+#: templates/reservation_detail_join.html:20
+#: templates/search_result_reservation.html:140
+msgid "Nombre document disponible"
+msgstr "Number of documents available"
+
+#: templates/reservation_create.html:48
+#: templates/reservation_detail_join.html:21
+#: templates/search_result_reservation.html:142
+msgid "Nombre vidéo disponible"
+msgstr "Number of video available"
+
+#: templates/reservation_create.html:51
+#: templates/reservation_detail_join.html:25
+msgid ""
+"Merci de compléter les informations suivantes pour finaliser votre rendez-"
+"vous"
+msgstr ""
+
+#: templates/reservation_create.html:56
+#: templates/reservation_detail_join.html:30
+msgid "Nombre d'archives documentaires demandées"
+msgstr ""
+
+#: templates/reservation_create.html:89
+#: templates/reservation_detail_creatorview.html:64
+#: templates/reservation_detail_join.html:63
+msgid "Vous n'avez pas d'archives documentaires demandées."
+msgstr ""
+
+#: templates/reservation_create.html:95
+#: templates/reservation_detail_creatorview.html:70
+#: templates/reservation_detail_join.html:69
+msgid "Nombre d'archives audio-visuelles demandées"
+msgstr ""
+
+#: templates/reservation_create.html:119
+#: templates/reservation_detail_join.html:93
+msgid "Ouvert"
+msgstr ""
+
+#: templates/reservation_create.html:128
+#: templates/reservation_detail_creatorview.html:94
+#: templates/reservation_detail_join.html:102
+msgid "Vous n'avez pas d'archives audio-visuelles demandées."
+msgstr ""
+
+#: templates/reservation_detail_creatorview.html:15
+#, fuzzy
+#| msgid "Proposer un rendez-vous"
+msgid "Numéro de rendez-vous"
+msgstr "Create a reservation"
+
+#: templates/reservation_detail_creatorview.html:23
+msgid "Document à envoyer"
+msgstr ""
+
+#: templates/reservation_detail_creatorview.html:24
+msgid "Vidéo à envoyer"
+msgstr ""
+
+#: templates/reservation_detail_creatorview.html:27
+msgid "Est-ce que vous êtes y allés ?"
+msgstr ""
+
+#: templates/reservation_detail_creatorview.html:30
+msgid "Oui"
+msgstr ""
+
+#: templates/reservation_detail_creatorview.html:32
+msgid "Non"
+msgstr ""
+
+#: templates/reservation_detail_creatorview.html:37
+msgid "List de demandeurs"
+msgstr ""
+
+#: templates/reservation_detail_creatorview.html:41
+msgid "Les archives documentaires demandées"
+msgstr ""
+
+#: templates/reservation_detail_creatorview.html:50
+#: templates/reservation_detail_creatorview.html:80
+msgid "Envoyé"
+msgstr ""
+
+#: templates/reservation_detail_creatorview.html:52
+#: templates/reservation_detail_creatorview.html:82
+msgid "Envoyer"
+msgstr ""
+
+#: templates/reservation_detail_join.html:131
+#, fuzzy
+#| msgid "Déposer une demande"
+msgid "Envoyer la demande"
+msgstr "Create a demand"
+
 #: templates/search.html:26
 msgid "Rechercher"
 msgstr "Search"
 
-#: templates/search.html:38
+#: templates/search.html:38 templates/search_result_archive.html:38
 msgid "Toutes les archives"
 msgstr "All archives"
 
@@ -104,7 +663,8 @@ msgstr "Digitized Archives"
 msgid "Producteurs d'archives"
 msgstr "Archive producers"
 
-#: templates/search.html:51 templates/search_result_reservation.html:9
+#: templates/search.html:51 templates/search_result_archive.html:140
+#: templates/search_result_reservation.html:9
 msgid "Centre"
 msgstr "Centre"
 
@@ -132,12 +692,6 @@ msgstr "Reservation"
 msgid "Demande"
 msgstr "Demand"
 
-#: templates/search_result_archive.html:38
-#, fuzzy
-#| msgid "Toutes les archives"
-msgid "Toutes les archives"
-msgstr "All archives"
-
 #: templates/search_result_archive.html:126
 #: templates/search_result_reservation.html:126
 msgid "Trier par"
@@ -148,15 +702,13 @@ msgid "Pertinance"
 msgstr "Relevance"
 
 #: templates/search_result_archive.html:131
-#: templates/search_result_archive.html:157
+#: templates/search_result_archive.html:156
+#: templates/search_result_demand.html:21
+#: templates/search_result_demand.html:49
 #: templates/search_result_reservation.html:131
 #: templates/search_result_reservation.html:169
 msgid "résultats"
 msgstr "Results"
-
-#: templates/search_result_archive.html:138
-msgid "Cotes"
-msgstr "Codes"
 
 #: templates/search_result_archive.html:139
 #, fuzzy
@@ -164,37 +716,39 @@ msgstr "Codes"
 msgid "Producteur"
 msgstr "Archive producers"
 
-#: templates/search_result_archive.html:140
-#: templates/search_result_reservation.html:44
-#: templates/search_result_reservation.html:60
-msgid "Localisation"
-msgstr "Location"
-
-#: templates/search_result_archive.html:144
-msgid "Voir les détails"
-msgstr "Read the details"
-
-#: templates/search_result_archive.html:157
+#: templates/search_result_archive.html:156
 #: templates/search_result_reservation.html:169
 msgid "sur"
 msgstr "of"
+
+#: templates/search_result_demand.html:28
+#, fuzzy
+#| msgid "Demande"
+msgid "Demandé par"
+msgstr "Demand"
+
+#: templates/search_result_demand.html:31
+msgid "Aider"
+msgstr ""
+
+#: templates/search_result_demand.html:38
+#: templates/search_result_reservation.html:158
+#, fuzzy
+#| msgid "Déposer une demande"
+msgid "Je veux faire une demande"
+msgstr "I want to create a demand"
 
 #: templates/search_result_reservation.html:42
 msgid "CRITÈRES SÉLECTIONNÉS"
 msgstr "SELECTED CRITERIA"
 
-#: templates/search_result_reservation.html:45
-#: templates/search_result_reservation.html:64
-#: templates/search_result_reservation.html:128
-#: templates/search_result_reservation.html:139
-#, fuzzy
-#| msgid "Fin de Date"
-msgid "Fin de date"
-msgstr "End of Date"
+#: templates/search_result_reservation.html:44
+#: templates/search_result_reservation.html:60
+msgid "Localisation"
+msgstr "Location"
 
 #: templates/search_result_reservation.html:46
-#, fuzzy
-#| msgid "Producteurs d'archives"
+#: templates/search_result_reservation.html:85
 msgid "Type d'archive"
 msgstr "Archive type"
 
@@ -222,25 +776,9 @@ msgstr "Audio-visual"
 msgid "Nombre d'archive"
 msgstr "Archive number"
 
-#: templates/search_result_reservation.html:85
-msgid "Type d'archive"
-msgstr "Archive type"
-
 #: templates/search_result_reservation.html:111
 msgid "Modifier la recherche"
 msgstr "Modify the research"
-
-#: templates/search_result_reservation.html:138
-msgid "Proposé par"
-msgstr "Proposed by"
-
-#: templates/search_result_reservation.html:140
-msgid "Nombre document disponible"
-msgstr "Number of documents available"
-
-#: templates/search_result_reservation.html:142
-msgid "Nombre vidéo disponible"
-msgstr "Number of video available"
 
 #: templates/search_result_reservation.html:147
 msgid "Complet"
@@ -256,11 +794,34 @@ msgstr "Reserve"
 msgid "Je veux proposer un rendez-vousr"
 msgstr "I want to create a reservation"
 
-#: templates/search_result_reservation.html:158
+#: templates/self_center.html:5
 #, fuzzy
-#| msgid "Déposer une demande"
-msgid "Je veux faire une demande"
-msgstr "I want to create a demand"
+#| msgid "Espace Personnel"
+msgid "Bienvenue dans votre espace personnel"
+msgstr "My personal space"
+
+#: templates/self_center.html:12
+msgid "Vous pouvez ici modifier vos coordonnées et informations personnelles."
+msgstr ""
+
+#: templates/self_center.html:26
+msgid ""
+"Retrouvez toutes les notifications que vous avez reçues pour les rendez-vous"
+msgstr ""
+
+#: templates/self_center.html:42
+#, fuzzy
+#| msgid "Demande"
+msgid "Mes demandes"
+msgstr "Demand"
+
+#: templates/self_center.html:43
+msgid "Retrouvez toutes les demandes que vous avez demandées."
+msgstr ""
+
+#: templates/self_center.html:50
+msgid "Pensez à vous déconnecter une fois votre session terminée."
+msgstr ""
 
 #: templates/welcome.html:12
 msgid "Bienvenue au Archivesses"

@@ -1,23 +1,21 @@
 {% extends "home_base.html" %}
+{% load i18n %}
 {% block body_main %}
     <div id="messages-list-bg-image">
-        <div class="return_link"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="javascript:history.back(-1)">Retour au
-            menu de l'espace
-            personnel</a></div>
+        <div class="return_link"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="javascript:history.back(-1)">
+            {% trans "Retour au menu de l'espace personnel" %}</a></div>
 
         <div>
-            <div>Ma messagerie</div>
-            <div>Retrouvez toutes les notifications que vous avez reçues pour les rendez-vous et pour
-                l'administration.
+            <div>{% trans "Ma messagerie" %}</div>
+            <div>{% trans "Retrouvez toutes les notifications que vous avez reçues pour les rendez-vous et pour l'administration." %}
             </div>
-            <div>L'ouverture d'une notification fait office d'accusé de confirmation de rendez-vous réservé et tous les
-                modifications fait par le rendez-vous owner.
+            <div>{% trans "L'ouverture d'une notification fait office d'accusé de confirmation de rendez-vous réservé et tous les modifications fait par le rendez-vous owner." %}
             </div>
             <div>
-                <div>Filtrer mes notifications :</div>
+                <div>{% trans "Filtrer mes notifications" %} :</div>
                 <div>
                     <select name="" id="">
-                        <option value="">Tous les catégories</option>
+                        <option value="">{% trans "Tous les catégories" %}</option>
                         <option value="">RDV</option>
                         <option value="">ADMIN</option>
                         <option value="">DEMAND</option>
@@ -43,12 +41,12 @@
                         <div {% if msg.status == 0 %}style="font-weight: bold;"{% endif %}>
                             <a href="/message_detail?id={{ msg.id }}">{{ msg.title }}</a>
                         </div>
-                        <div><a href="">Supprimer</a></div>
+                        <div><a href="">{% trans "Supprimer" %}</a></div>
                     </li>
                 {% endfor %}
             </ul>
             <div class="pager">
-                <div>1 sur {{ message_list|length }}</div>
+                <div></div>
                 <div><a href="">1</a></div>
             </div>
         </div>

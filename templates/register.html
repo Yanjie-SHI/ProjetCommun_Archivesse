@@ -1,72 +1,73 @@
 {% extends "home_base.html" %}
+{% load i18n %}
 {% block body_main %}
     <div id="register-bg-image">
-        <div class="title">Votre espace personnel</div>
-        <div class="subtitle">S'inscrire à l'espace personnel</div>
+        <div class="title">{% trans "Votre espace personnel" %}</div>
+        <div class="subtitle">{% trans "S'inscrire à l'espace personnel" %}</div>
         <form id="form_register" action="/register" method="post">
-            <div>Veuillez renseigner le formulaire suivant. Les champs précédés d’un astérisque (<span
-                    style="color: red;">*</span>) sont obligatoires.
-                Cette inscription est indépendante de celle réalisée en salle de lecture.
+            <div>{% trans "Veuillez renseigner le formulaire suivant. Les champs précédés d’un astérisque" %} (<span
+                    style="color: red;">*</span>) {% trans "sont obligatoires." %}
+                {% trans "Cette inscription est indépendante de celle réalisée en salle de lecture." %}
             </div>
-            <div>Une fois ces informations validées, vous recevrez un courriel de confirmation de confirmation de votre
-                inscription.
+            <div>{% trans "Une fois ces informations validées, vous recevrez un courriel de confirmation de confirmation de votre inscription." %}
             </div>
             <div>
                 <div id="fiche_personnelle">
-                    <div>Fiche personnelle</div>
+                    <div>{% trans "Fiche personnelle" %}</div>
                     <div>
-                        <div>Civilité <span style="color: red">*</span></div>
+                        <div>{% trans "Civilité" %}<span style="color: red">*</span></div>
                         <div class="radio">
                             <label>
                                 <input type="radio" name="genderRadios" id="optionsRadios1" value="0" checked>
-                                M.
+                                {% trans "M." %}
                             </label>
                             <label>
                                 <input type="radio" name="genderRadios" id="optionsRadios2" value="1">
-                                Mme
+                                {% trans "Mme." %}
                             </label>
                         </div>
                     </div>
                     <div>
-                        <span>Votre nom <span style="color: red">*</span></span><br/>
+                        <span>{% trans "Votre nom" %}<span style="color: red">*</span></span><br/>
                         <input type="text" name="firstname">
                     </div>
                     <div>
-                        <span>Votre prénom <span style="color: red">*</span></span><br/>
+                        <span>{% trans "Votre prénom" %}<span style="color: red">*</span></span><br/>
                         <input type="text" name="lastname">
                     </div>
                     <div>
-                        <span>Votre pays</span><br/>
+                        <span>{% trans "Votre pays" %}</span><br/>
                         <select name="pays">
-                            <option value="">Veuillez sélectionner un pays</option>
+                            <option value="">{% trans "Veuillez sélectionner un pays" %}</option>
                             {% for item in list_data_init_country %}
                                 <option value="{{ item.key }}">{{ item.display_name }}</option>
                             {% endfor %}
                         </select>
                     </div>
                     <div>
-                        <span>Votre code postal</span><br/>
+                        <span>{% trans "Votre code postal" %}</span><br/>
                         <input type="text" name="post_code">
                     </div>
                 </div>
                 <div id="code_dacces">
-                    <div>Code d'accès</div>
+                    <div>{% trans "Code d'accès" %}</div>
                     <div>
-                        <span>Votre adresse électronique (exemple : nomprenom@domaine.com) <span
+                        <span>{% trans "Votre adresse électronique (exemple : nomprenom@domaine.com)" %} <span
                                 style="color: red">*</span></span><br/>
                         <input type="email" name="email">
                     </div>
                     <div>
-                        <span>Répéter votre adresse électronique <span style="color: red">*</span></span><br/>
+                        <span>{% trans "Répéter votre adresse électronique" %}<span
+                                style="color: red">*</span></span><br/>
                         <input type="text" name="address">
                     </div>
                     <div>
-                        <span>Votre mot de passe <span style="color: red">*</span></span>
-                        <span>(8 caractères minimum, lettres et chiffres.)</span><br/>
+                        <span>{% trans "Votre mot de passe" %}<span style="color: red">*</span></span>
+                        <span>({% trans "8 caractères minimum, lettres et chiffres." %})</span><br/>
                         <input type="password" name="password">
                     </div>
                     <div>
-                        <span>Répéter votre mot de passe <span style="color: red">*</span></span><br/>
+                        <span>{% trans "Répéter votre mot de passe" %}<span style="color: red">*</span></span><br/>
                         <input type="password" name="password_verify">
                     </div>
                 </div>
@@ -75,12 +76,13 @@
             <div>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" checked> En cochant cette case, je reconnais avoir pris connaissance des
-                        Conditions générales d'utilisation et je les accepte. <span style="color:red;">*</span>
+                        <input type="checkbox"
+                               checked>{% trans "En cochant cette case, je reconnais avoir pris connaissance des Conditions générales d'utilisation et je les accepte." %}<span
+                            style="color:red;">*</span>
                     </label>
                 </div>
                 <div>
-                    <div>Valider</div>
+                    <div>{% trans "Valider" %}</div>
                 </div>
 
             </div>

@@ -1,28 +1,29 @@
 {% extends "home_base.html" %}
+{% load i18n %}
 {% block body_main %}
     <div id="sc-bg-image">
-        <div class="selfcenter_title">Bienvenue dans votre espace personnel</div>
+        <div class="selfcenter_title">{% trans "Bienvenue dans votre espace personnel" %}</div>
 
         <div id="line_profile">
             <div id="link_to_profile">
                 <div class="sc_imgs" id="sc_profile_img"></div>
                 <div>
-                    <div>Mon profil</div>
-                    <div>Vous pouvez ici modifier vos coordonnées et informations personnelles.</div>
+                    <div>{% trans "Mon profil" %}</div>
+                    <div>{% trans "Vous pouvez ici modifier vos coordonnées et informations personnelles." %}</div>
                 </div>
             </div>
             <div id="link_to_favorites">
                 <div class="sc_imgs" id="sc_favorites_img"></div>
                 <div>
-                    <div>Mes favoris</div>
-                    <div>Retrouvez toutes les ressources que vous avez ajoutées à vos favoris.</div>
+                    <div>{% trans "Mes favoris" %}</div>
+                    <div>{% trans "Retrouvez toutes les ressources que vous avez ajoutées à vos favoris." %}</div>
                 </div>
             </div>
             <div id="link_to_messagelist">
                 <div class="sc_imgs" id="sc_messages_img"></div>
                 <div>
-                    <div>Ma messagerie</div>
-                    <div>Retrouvez toutes les notifications que vous avez reçues pour les rendez-vous</div>
+                    <div>{% trans "Ma messagerie" %}</div>
+                    <div>{% trans "Retrouvez toutes les notifications que vous avez reçues pour les rendez-vous" %}</div>
                 </div>
             </div>
         </div>
@@ -31,22 +32,22 @@
             <div id="link_to_reservation">
                 <div class="sc_imgs" id="sc_reservation_img"></div>
                 <div>
-                    <div>Mes rendez-vous</div>
-                    <div>Retrouvez touts les rendez-vous que vous avez demandés ou rejoint.</div>
+                    <div>{% trans "Mes rendez-vous" %}</div>
+                    <div>{% trans "Retrouvez touts les rendez-vous que vous avez demandés ou rejoint." %}</div>
                 </div>
             </div>
             <div id="link_to_demand">
                 <div class="sc_imgs" id="sc_demand_img"></div>
                 <div>
-                    <div>Mes demandes</div>
-                    <div>Retrouvez toutes les demandes que vous avez demandées.</div>
+                    <div>{% trans "Mes demandes" %}</div>
+                    <div>{% trans "Retrouvez toutes les demandes que vous avez demandées." %}</div>
                 </div>
             </div>
             <div id="link_to_logout">
                 <div class="sc_imgs" id="sc_logout_img"></div>
                 <div>
-                    <div>Déconnexion</div>
-                    <div>Pensez à vous déconnecter une fois votre session terminée.</div>
+                    <div>{% trans "Déconnexion" %}</div>
+                    <div>{% trans "Pensez à vous déconnecter une fois votre session terminée." %}</div>
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
 {% extends "home_base.html" %}
+{% load i18n %}
 {% block body_main %}
     {% load mrange %}
     <form id="form_create_demand" action="/create_demand" method="post">
@@ -7,24 +8,22 @@
             </div>
 
             <div class="demand_detail">
-                <div class="input_inform">Merci de compléter les informations suivantes pour finaliser votre demande
-                </div>
-                <div class="input_inform">Vous pouvez choisir qu'une seule archives que vous souhaitez pour chaque
-                    demande.
+                <div class="input_inform">{% trans "Merci de compléter les informations suivantes pour finaliser votre demande" %}</div>
+                <div class="input_inform">{% trans "Vous pouvez choisir qu'une seule archives que vous souhaitez pour chaque demande." %}
                 </div>
                 <div class="join_input_div">
                     <div class="demand_basic_info">
-                        <div>Proposé par : {{ user.username }}</div>
-                        <div>Crée le : {{ create_date|date:'d/m/Y' }}</div>
+                        <div>{% trans "Proposé par" %} : {{ user.username }}</div>
+                        <div>{% trans "Crée le" %} : {{ create_date|date:'d/m/Y' }}</div>
                     </div>
                     <div class="archive_document_demand">
-                        <div>Archives :</div>
+                        <div>{% trans "Archives" %} :</div>
                         <div>
-                            <div>Cote<span style="color:red;">*</span> :</div>
+                            <div>{% trans "Cote" %}<span style="color:red;">*</span> :</div>
                             <input type="text" name="archive_id">
                         </div>
                         <div>
-                            <div>Folio :</div>
+                            <div>{% trans "Folio" %} :</div>
                             <input type="number" name="folio">
                         </div>
                     </div>
@@ -32,23 +31,21 @@
 
                 <div class="vos_information">
                     <div class="vos_information_title">
-                        Vos informations :
+                        {% trans "Vos informations" %} :
                     </div>
                     <div class="vos_information_info">
-                        Merci de renseignez au moins une méthode de contact pour que le owner de ce rendez-vous peut
-                        vous contacter et peut vous envoyer les archives que vous avez demandées dans ce
-                        rendez-vous.
+                        {% trans "Merci de renseignez au moins une méthode de contact pour que le owner de ce rendez-vous peut vous contacter et peut vous envoyer les archives que vous avez demandées dans ce rendez-vous." %}
                     </div>
                     <div>
                         <div>
-                            Nom : {{ user.last_name }}
+                            {% trans "Nom" %} : {{ user.last_name }}
                         </div>
                         <div>
-                            Prénom : {{ user.first_name }}
+                            {% trans "Prénom" %} : {{ user.first_name }}
                         </div>
                     </div>
                     <div>
-                        <div>Adresse e-mail :</div>
+                        <div>{% trans "Adresse e-mail" %} :</div>
                         <input type="email" name="receiver_email" value="
 
                                 {% if user.receiver_mail %}{{ user.receiver_mail }}{% else %}{{ user.mail }}{% endif %}">
@@ -56,8 +53,8 @@
                 </div>
 
                 <div class="cancle_comfirm_div">
-                    <a href="javascript:history.back(-1)">Annuler</a>
-                    <div id="btn_div_create_demand">Déposer la demande</div>
+                    <a href="javascript:history.back(-1)">{% trans "Annuler" %}</a>
+                    <div id="btn_div_create_demand">{% trans "Déposer la demande" %}</div>
                 </div>
 
             </div>

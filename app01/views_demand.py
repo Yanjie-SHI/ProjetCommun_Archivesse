@@ -1,7 +1,3 @@
-import datetime
-
-from django.shortcuts import render
-
 from app01.utils import *
 
 
@@ -9,6 +5,7 @@ from app01.utils import *
 
 
 def to_create_demand(request):
+    activate(settings.LANGUAGE_CODE)
     options = verify_login(request)
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
@@ -17,6 +14,7 @@ def to_create_demand(request):
 
 
 def to_my_demand(request):
+    activate(settings.LANGUAGE_CODE)
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
 
@@ -30,6 +28,7 @@ def to_my_demand(request):
 
 
 def create_demand(request):
+    activate(settings.LANGUAGE_CODE)
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
     options = verify_login(request)
@@ -55,6 +54,7 @@ def create_demand(request):
 
 
 def terminate_demand(request):
+    activate(settings.LANGUAGE_CODE)
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
     options = verify_login(request)
@@ -68,6 +68,7 @@ def terminate_demand(request):
 
 
 def delete_demand(request):
+    activate(settings.LANGUAGE_CODE)
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
     options = verify_login(request)

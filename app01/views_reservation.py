@@ -1,5 +1,4 @@
 from django.db.models import Q
-from django.shortcuts import render
 
 from app01.utils import *
 
@@ -8,6 +7,7 @@ from app01.utils import *
 
 
 def to_my_reservation_list(request):
+    activate(settings.LANGUAGE_CODE)
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
 
@@ -57,6 +57,7 @@ def to_my_reservation_list(request):
 
 
 def to_resv_detail_creatorview(request):
+    activate(settings.LANGUAGE_CODE)
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
 
@@ -100,6 +101,7 @@ def to_resv_detail_creatorview(request):
 
 
 def to_create_reservation(request):
+    activate(settings.LANGUAGE_CODE)
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
     options = verify_login(request)
@@ -128,6 +130,7 @@ def to_create_reservation(request):
 
 
 def create_reservation(request):
+    activate(settings.LANGUAGE_CODE)
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
     options = verify_login(request)
@@ -189,6 +192,7 @@ def create_reservation(request):
 
 
 def join_reservation(request):
+    activate(settings.LANGUAGE_CODE)
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
     options = verify_login(request)
@@ -270,6 +274,7 @@ def join_reservation(request):
 
 
 def undo_join_reservation(request):
+    activate(settings.LANGUAGE_CODE)
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
     options = verify_login(request)
@@ -290,6 +295,7 @@ def undo_join_reservation(request):
 
 
 def confirm_sent_receive_status(request):
+    activate(settings.LANGUAGE_CODE)
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
     options = verify_login(request)
@@ -319,6 +325,7 @@ def confirm_sent_receive_status(request):
 
 
 def update_resv_status(request):
+    activate(settings.LANGUAGE_CODE)
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
     options = verify_login(request)

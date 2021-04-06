@@ -3,10 +3,12 @@ from django.shortcuts import render
 from django.utils.translation import activate
 
 from app01.models import *
+from web_historien import settings
 
 
 def verify_login(request):
     options = {}
+    options.update({"lang": settings.LANGUAGE_CODE})
     login_user_id = request.session.get("login_user_id", 0)
     if login_user_id != 0:
         user = Users.objects.filter(id=login_user_id)
@@ -48,4 +50,5 @@ def fetch_museum_name(request):
 def change_language(request):
     lang = request.GET.get("lang")
     activate(lang)
+    settings.LANGUAGE_CODE = lang
     return render(request, "search.html", {"lang": lang})

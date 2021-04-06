@@ -93,3 +93,41 @@
     margin-left: 5%;
     color: black;
 }
+
+#my_favorites_detail > table {
+    width: 100%;
+    border-spacing: 5px;
+    /*border-collapse: separate;*/
+}
+
+#my_favorites_detail > table > thead > tr > th {
+    text-align: center;
+}
+
+#my_favorites_detail > table > thead > tr > th > div {
+    width: 98%;
+    margin-left: 1%;
+    margin-right: 1%;
+    color: white;
+    font-size: 22px;
+    background-color: #2b669a;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#my_favorites_detail > table > tbody > tr.my_resv_table_tr {
+    height: 50px;
+    border-bottom: 2px solid lightgrey;
+}
+
+#my_favorites_detail > table > tbody > tr.my_resv_table_tr > td.my_resv_table_tr_td {
+    height: 48px;
+    line-height: 48px;
+    font-size: 22px;
+}
+
+#my_favorites_detail > table > tbody > tr > td {
+    color: black;
+    font-size: 18px;
+    text-align: center;
+}

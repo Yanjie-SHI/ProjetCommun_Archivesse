@@ -7,18 +7,20 @@ from web_historien import settings
 
 # Create your views here.
 
-
 def welcome(request):
-    return render(request, 'welcome.html')
+    activate(settings.LANGUAGE_CODE)
+    return render(request, 'welcome.html', {"lang": settings.LANGUAGE_CODE})
 
 
 def to_search(request):
+    activate(settings.LANGUAGE_CODE)
     options = verify_login(request)
     if request.method == "GET":
         return render(request, 'search.html', options)
 
 
 def search_archive(request):
+    activate(settings.LANGUAGE_CODE)
     options = verify_login(request)
     current_page = request.POST.get("currentPage", "1")
     # archive search
@@ -44,6 +46,7 @@ def search_archive(request):
 
 
 def search_archive_particles(request):
+    activate(settings.LANGUAGE_CODE)
     options = verify_login(request)
     current_page = request.POST.get("currentPage", "1")
     # archive search
@@ -99,6 +102,7 @@ def search_archive_particles(request):
 
 
 def search_resv(request):
+    activate(settings.LANGUAGE_CODE)
     options = verify_login(request)
     current_page = request.POST.get("currentPage", "1")
     # reservation search
@@ -147,6 +151,7 @@ def search_resv(request):
 
 
 def search_demand(request):
+    activate(settings.LANGUAGE_CODE)
     options = verify_login(request)
     current_page = request.POST.get("currentPage", "1")
     # demand search
@@ -161,6 +166,7 @@ def search_demand(request):
 
 
 def archive_detail(request):
+    activate(settings.LANGUAGE_CODE)
     options = verify_login(request)
     archive_id = request.GET.get("id") if request.GET.get("id") else request.POST.get("archive_id")
     archive = Archive.objects.filter(id=archive_id)
@@ -178,10 +184,12 @@ def archive_detail(request):
 
 
 def login(request):
+    activate(settings.LANGUAGE_CODE)
     if request.method == "GET":
         return render(request, 'login.html')
     elif request.method == "POST":
         options = {}
+        options.update({"lang": settings.LANGUAGE_CODE})
         user = Users.objects.filter(mail=request.POST.get('email'), password=request.POST.get('password'))
         if len(user) > 0:
             request.session['login_user_id'] = user[0].id
@@ -189,12 +197,14 @@ def login(request):
             return render(request, 'search.html', options)
             # return render(request, 'search.html')
         else:
-            return render(request, 'login.html')
+            return render(request, 'login.html', {"lang": settings.LANGUAGE_CODE})
 
 
 def register(request):
+    activate(settings.LANGUAGE_CODE)
     if request.method == "GET":
         options = {}
+        options.update({"lang": settings.LANGUAGE_CODE})
         list_country = [
             {"key": "Germany", "display_name": "Allemagne"},
             {"key": "South Africa", "display_name": "Afrique du sud"},
@@ -221,10 +231,11 @@ def register(request):
             user.post_code = int(request.POST.get("post_code"))
         user.save()
 
-        return render(request, 'login.html')
+        return render(request, 'login.html', {"lang": settings.LANGUAGE_CODE})
 
 
 def self_center(request):
+    activate(settings.LANGUAGE_CODE)
     options = verify_login(request)
     if not options.get("user", ""):
         return render(request, "login.html")
@@ -239,6 +250,7 @@ def self_center(request):
 
 
 def message_list(request):
+    activate(settings.LANGUAGE_CODE)
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
     options = verify_login(request)
@@ -249,16 +261,33 @@ def message_list(request):
 
 
 def message_detail(request):
+    activate(settings.LANGUAGE_CODE)
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
     options = verify_login(request)
     message = Notification.objects.get(id=request.GET.get("id"))
+    message.status = 1
+    message.save()
     options.update({"message": message})
 
     return render(request, 'message_detail.html', options)
 
 
+def fetch_my_mew_message_for_header_icon(request):
+    activate(settings.LANGUAGE_CODE)
+    if request.session.get("login_user_id", 0) != 0:
+        options = verify_login(request)
+        new_messages = Notification.objects.filter(receiver=options.get("user"), status=0)
+        if len(new_messages) > 0:
+            return JsonResponse({"msg": True})
+        else:
+            return JsonResponse({"msg": False})
+    else:
+        return JsonResponse({"msg": False})
+
+
 def profile(request):
+    activate(settings.LANGUAGE_CODE)
     options = verify_login(request)
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
@@ -283,12 +312,21 @@ def profile(request):
 
 
 def favorites(request):
+    activate(settings.LANGUAGE_CODE)
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
-    return render(request, 'my_favorites.html')
+    options = verify_login(request)
+
+    current_page = request.POST.get("currentPage", "1")
+    favorites = Favorites.objects.filter(user=options.get("user"))
+    favorites_paginator = Paginator(favorites, settings.PER_PAGE_SIZE)
+    options.update({"favorite_list": favorites_paginator.get_page(current_page)})
+
+    return render(request, 'my_favorites.html', options)
 
 
 def add_favorites(request):
+    activate(settings.LANGUAGE_CODE)
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
     if request.method == "POST":
@@ -304,6 +342,7 @@ def add_favorites(request):
 
 
 def remove_favorites(request):
+    activate(settings.LANGUAGE_CODE)
     if request.method == "POST":
         user_id = request.session["login_user_id"]
         archive_id = request.POST.get("archive_id")
@@ -317,5 +356,6 @@ def remove_favorites(request):
 
 
 def logout(request):
+    activate(settings.LANGUAGE_CODE)
     request.session.clear()
     return render(request, 'search.html')

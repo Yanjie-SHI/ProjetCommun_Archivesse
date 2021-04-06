@@ -20,7 +20,7 @@ msgstr ""
 
 #: templates/home_base.html:42
 msgid "Espace Personnel"
-msgstr ""
+msgstr "Espace Personnel"
 
 #: templates/home_base.html:45
 msgid "Me connecter"

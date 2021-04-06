@@ -42,7 +42,7 @@
                     <div>{% trans 'CRITÈRES SÉLECTIONNÉS' %} :</div>
                     <!--<div class="filter_tag">Type de producteur : Personne <span>✖️</span></div>-->
                     <div class="filter_tag">{% trans 'Localisation' %} : {{ input_museum_name }} <span>✖️</span>️</div>
-                    <div class="filter_tag">{% trans 'Fin de date' %} : {{ input_resv_end_date }} <span>✖️</span>️</div>
+                    <div class="filter_tag">{% trans 'Fin de Date' %} : {{ input_resv_end_date }} <span>✖️</span>️</div>
                     <div class="filter_tag">{% trans "Type d'archive" %} :
                         {% if input_archive_type == 'all' %}<span>{% trans "Tous" %}</span> {% endif %}
                         {% if input_archive_type == '0' %}<span>{% trans "Document" %}</span> {% endif %}
@@ -61,7 +61,7 @@
                         <input type="text" name="filterMuseumName" value="{{ input_museum_name }}">
                     </div>
                     <div>
-                        <div>{% trans "Fin de date" %} :</div>
+                        <div>{% trans "Fin de Date" %} :</div>
                         <div class="form-group">
                             <!--指定 date标记-->
                             <div class='input-group date' id='datetimepicker2'>
@@ -125,7 +125,7 @@
                         <!-- order by -->
                         <span>{% trans "Trier par" %}:</span>
                         <select name="" id="">
-                            <option value="">{% trans "Fin de date" %}</option>
+                            <option value="">{% trans "Fin de Date" %}</option>
                         </select>
                     </div>
                     <div>{{ reservation_list.paginator.count }}{% trans "résultats" %}</div>
@@ -136,7 +136,7 @@
                         <div class="result_title">{{ item.museum.name }}</div>
                         <div class="code_producer_location">
                             <div>{% trans "Proposé par" %} : {{ item.creator.username }}</div>
-                            <div>{% trans "Fin de date" %} : {{ item.expire_date|date:"d/m/Y" }}</div>
+                            <div>{% trans "Fin de Date" %} : {{ item.expire_date|date:"d/m/Y" }}</div>
                             <div>{% trans "Nombre document disponible" %} : {% if item.status == 1 %}0{% else %}
                                 {{ item.available_doc_archive_count }}{% endif %}</div>
                             <div>{% trans "Nombre vidéo disponible" %} : {% if item.status == 1 %}0{% else %}

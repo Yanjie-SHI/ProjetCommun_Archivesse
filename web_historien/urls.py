@@ -56,5 +56,6 @@ urlpatterns = [
     url(r'^fetchmuseumname', utils.fetch_museum_name),
     url(r'^verify_login', utils.verify_login_js),
     url(r'change_language', utils.change_language),
+    url(r'fetch_my_mew_message_for_header_icon', views.fetch_my_mew_message_for_header_icon),
 
 ]

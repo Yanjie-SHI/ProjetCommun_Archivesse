@@ -5,32 +5,21 @@
 - search demand  
     - this is for person who has certain digital archive backup on his disk, he search for demands who need this archive
     - for people who need an digital archive regardless of whether there is a suitable reservation, he can create a demand directly from the link in search page
-    
 
-## Done
-- welcome: Commence votre visite
-- header: Me connecter -> login / Espace Personnel -> self_center
-- login: login logic, interaction with database, jump to search page
-- search: 
-    - Toutes les archives / Archives numérisées / Producteurs d'archives: switch background change
-    - Tous les mots saisis: click to show/hide search particle view
-    - Recherch / Rendez-vous indicator show/hide when cliced
-- archive detail
-- reservation detail
-- self_center:
-    - profile / favorites / message_list / reservation / logout click to jump to relevant page
-    - logout logic (clear browser session and cache, return to search page)
-- message detail
        
 ## TODO list
-- 2021/04/04
-    - paginator for search result page  √ ... exclude page size selection and prev&next button
-    - search filter in search result resv page  √ .. exclude all filter tag X button
-    - globalization  √ half (welcom, login,header,main,search result archive, search result resv,)
-    - 定时任务，只要有站内信，就标题栏展示小图标，链接进入my messages页面
+- 2021/04/06
     - 登录后跳转回前一个页面，带结果
     - bug: resv create 切换museum后，从大的可用数改小，archive id和folio填入没问题，从小改大显示不出多的input框
     - 注册js校验，密码和重复密码是否一致，是否为8位密码
+    - paginator for personal space list page
+    - js timer task, fetch data from server Notification table, if there are data, show an icon on header  √
+    - after read the message, put the status to 'already read'  √
+    - personal space my favorite page fetch data from server  √
+    - globalization for all pages √ except in js & return from server
+- 2021/04/04
+    - search filter in search result resv page  √ .. exclude all filter tag X button
+    - globalization  √ half (welcom, login,header,main,search result archive, search result resv,)
 - 2021/03/28
     - search resv: type in 3 characters in museum input, popup a list containing all relavant museums  √
     - search archive func in search result archive page  √

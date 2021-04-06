@@ -16,6 +16,23 @@ $(document).ready(function () {
         let lang = $(this).val();
         $(location).attr("href", "/change_language?lang=" + lang);
     });
+    let myInterval = setInterval(function () {
+        $.ajax({
+            url: "/fetch_my_mew_message_for_header_icon",
+            type: "POST",
+            dataType: "json",
+            success: function (result) {
+                if (result.msg == true) {
+                    $("#new_msg_icon").css("display", "block");
+                } else {
+                    $("#new_msg_icon").css("display", "none");
+                }
+            }
+        });
+    }, 3000);
+    $("#new_msg_icon").click(function () {
+        $(location).attr("href", "/messagelist");
+    });
 
 
     /* search page */

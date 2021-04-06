@@ -10,7 +10,49 @@
             <div>{% trans "Retrouvez toutes les ressources que vous avez ajoutées à vos favoris." %}</div>
             <div>
                 <div>{% trans "Archive sauvegardé" %} :</div>
-                <div>{% trans "Vous n'avez pas encore ajouté d'archives à votre liste favoris." %}</div>
+
+                <div id="my_favorites_detail">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>
+                                <div>{% trans "Côtes" %}</div>
+                            </th>
+                            <th>
+                                <div>{% trans "Titre" %}</div>
+                            </th>
+                            <th>
+                                <div>{% trans "Centre" %}</div>
+                            </th>
+                            <th>
+                                <div>{% trans "Opération" %}</div>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if favorite_list|length > 0 %}
+                            {% for item in favorite_list %}
+                                <tr class="my_resv_table_tr">
+                                    <td id="favorite_list_item_id"
+                                        class="my_resv_table_tr_td">{{ item.archive.id }}</td>
+                                    <td id="resv_list_item_role"
+                                        class="my_resv_table_tr_td">{{ item.archive.title }}</td>
+                                    <td class="my_resv_table_tr_td">{{ item.archive.museum.name }}</td>
+                                    <td class="my_resv_table_tr_td">
+                                        <a href="/archive_detail?id={{ item.archive.id }}">{% trans "Voir les détails" %}</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="4">{% trans "Vous n'avez pas encore ajouté d'archives à votre liste favoris." %}</td>
+                            </tr>
+                        {% endif %}
+                        </tbody>
+                    </table>
+
+                </div>
+
             </div>
 
         </div>

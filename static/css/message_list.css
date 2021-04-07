@@ -40,13 +40,14 @@
 
 #messages-list-bg-image > div:nth-child(2) {
     width: 80%;
-    height: 600px;
+    height: 680px;
     margin-top: 50px;
     margin-left: 10%;
     border: 1px solid dimgray;
     border-radius: 20px;
     padding: 30px 70px;
     background-color: white;
+    position: relative;
 }
 
 #messages-list-bg-image > div:nth-child(2) > div:nth-child(1) {
@@ -123,14 +124,15 @@
 }
 
 #messages-list-bg-image > div:nth-child(2) > ul > li > div:nth-child(3) {
-    width: 200px;
+    /* colored tag: admin, rdv, demand */
+    width: 140px;
 }
-
 #messages-list-bg-image > div:nth-child(2) > ul > li > div:nth-child(3) > div {
-    width: 180px;
-    height: 50px;
-    line-height: 50px;
-    margin-top: 15px;
+    /* colored tag: admin, rdv, demand */
+    width: 140px;
+    height: 40px;
+    line-height: 40px;
+    margin-top: 20px;
 }
 
 #messages-list-bg-image > div:nth-child(2) > ul > li > div:nth-child(4) {
@@ -170,6 +172,15 @@
     width: 20%;
 }
 
+.my_msg_pager {
+    position: absolute;
+    bottom: 0px;
+    width: 90%;
+}
+
+.my_msg_pager > div:nth-child(2) {
+    float: right;
+}
 
 /* message detail page */
 #msg_title_div {

@@ -52,3 +52,16 @@ def change_language(request):
     activate(lang)
     settings.LANGUAGE_CODE = lang
     return render(request, "search.html", {"lang": lang})
+
+
+def create_message(category, title, content, receiver):
+    # save a message data in Notification table
+    notification = Notification()
+    notification.category = category
+    notification.title = title
+    notification.content = "Bonjour,</br></br>&nbsp;&nbsp;&nbsp;&nbsp;{}</br></br></br>Cordialement,</br>Groupe Archivesse".format(
+        content)
+    notification.status = 0
+    notification.create_date_time = datetime.datetime.now()
+    notification.receiver = receiver
+    notification.save()

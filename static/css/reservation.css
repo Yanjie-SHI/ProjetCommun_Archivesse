@@ -41,13 +41,14 @@
 #reservation-bg-image > div:nth-child(2),
 #demand-bg-image > div:nth-child(2) {
     width: 80%;
-    height: 600px;
+    height: 680px;
     margin-top: 50px;
     margin-left: 10%;
     border: 1px solid dimgray;
     border-radius: 20px;
     padding: 30px 70px;
     background-color: white;
+    position: relative;
 }
 
 #reservation-bg-image > div:nth-child(2) > div:nth-child(1),
@@ -148,10 +149,6 @@
     font-size: 22px;
 }
 
-#reservation_detail > table > tbody > tr.my_resv_table_tr > td.my_resv_table_tr_td_archive {
-
-}
-
 #reservation_detail > table > tbody > tr > td {
     color: black;
     font-size: 18px;
@@ -194,10 +191,6 @@
     font-size: 22px;
 }
 
-#reservation_detail_finished > table > tbody > tr.my_resv_table_tr > td.my_resv_table_tr_td_archive {
-
-}
-
 #reservation_detail_finished > table > tbody > tr > td {
     color: black;
     font-size: 18px;
@@ -221,11 +214,22 @@
     width: 20%;
 }
 
-#demand_pager {
-    width: 100%;
-    font-size: 22px;
-    line-height: 50px;
-    position: relative;
-    top: 330px;
-    padding-right: 50px;
+.my_demand_pager {
+    position: absolute;
+    bottom: 0px;
+    width: 90%;
+}
+
+.my_demand_pager > div:nth-child(2) {
+    float: right;
+}
+
+.my_resv_pager {
+    position: absolute;
+    bottom: 0px;
+    width: 88%;
+}
+
+.my_resv_pager > div:nth-child(2) {
+    float: right;
 }

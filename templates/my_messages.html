@@ -1,9 +1,10 @@
 {% extends "home_base.html" %}
 {% load i18n %}
 {% block body_main %}
-    <div id="messages-list-bg-image">
-        <div class="return_link"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="javascript:history.back(-1)">
-            {% trans "Retour au menu de l'espace personnel" %}</a></div>
+    <form id="form_my_message" action="/messages" method="post">
+        <div id="messages-list-bg-image">
+            <div class="return_link"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="javascript:history.back(-1)">
+                {% trans "Retour au menu de l'espace personnel" %}</a></div>
 
         <div>
             <div>{% trans "Ma messagerie" %}</div>
@@ -14,11 +15,11 @@
             <div>
                 <div>{% trans "Filtrer mes notifications" %} :</div>
                 <div>
-                    <select name="" id="">
+                    <select name="messageType" id="message_type_sel">
                         <option value="">{% trans "Tous les catégories" %}</option>
-                        <option value="">RDV</option>
-                        <option value="">ADMIN</option>
-                        <option value="">DEMAND</option>
+                        <option value="1" {% if messageType == '1' %}selected{% endif %}>RDV</option>
+                        <option value="0" {% if messageType == '0' %}selected{% endif %}>ADMIN</option>
+                        <option value="2" {% if messageType == '2' %}selected{% endif %}>DEMAND</option>
                     </select>
                 </div>
             </div>
@@ -26,8 +27,9 @@
                 {% for msg in message_list %}
                     <li>
                         <div class="envelop"
-                             {% if msg.status == 0 %}style="background-image: url('/static/image/icon_envelop_close.png');"
-                             {% else %}style="background-image: url('/static/image/icon_envelop_open.png');"{% endif %}></div>
+                             {% if msg.status == 0 %}style="background-image: url('/static/image/icon_envelop_close.png');width:50px;height:50px;margin-top:10px;"
+                             {% else %}style="background-image: url('/static/image/icon_envelop_open.png');width:50px;height:50px;margin-top:13px;"{% endif %}>
+                        </div>
                         <div {% if msg.status == 0 %}style="font-weight: bold;"{% endif %}>{{ msg.create_date_time|date:'d/m/Y H:i' }}</div>
                         <div>
                             {% if msg.category == 0 %}
@@ -35,21 +37,43 @@
                             {% elif msg.category == 1 %}
                                 <div style="background-color: aqua;">RDV</div>
                             {% else %}
-                                <div>DEMAND</div>
+                                <div style="background-color: yellow;">DEMAND</div>
                             {% endif %}
                         </div>
                         <div {% if msg.status == 0 %}style="font-weight: bold;"{% endif %}>
                             <a href="/message_detail?id={{ msg.id }}">{{ msg.title }}</a>
                         </div>
-                        <div><a href="">{% trans "Supprimer" %}</a></div>
+                        <div><a id="delete_msg_link_{{ msg.id }}" href="#">{% trans "Supprimer" %}</a></div>
                     </li>
                 {% endfor %}
             </ul>
-            <div class="pager">
+            <div class="my_msg_pager">
                 <div></div>
-                <div><a href="">1</a></div>
+                <div>
+                    <nav aria-label="Page navigation">
+                        <input id="currentPage" name="currentPage" type="hidden" value="{{ message_list.number }}">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            {% for page in message_list.paginator.page_range %}
+                                <li><a id="mymsg_page_link_{{ page }}" href="#"
+                                       {% if message_list.number == page %}style="background: #2b669a; color: white;"{% endif %}>{{ page }}</a>
+                                </li>
+                            {% endfor %}
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
 
-    </div>
+        </div>
+    </form>
 {% endblock %}

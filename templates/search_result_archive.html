@@ -34,11 +34,11 @@
                 </span>
                     </div>
                     <div class="search-type-btns-div">
-                        <div class="search-type-btn {% if archive_search_type == "1" %}search-type-btn-selected{% endif %}"
+                        <div class="search-type-btn {% if archiveSearchType == "1" %}search-type-btn-selected{% endif %}"
                              id="search-type-toutes"><span>{% trans 'Toutes les archives' %}</span></div>
-                        <div class="search-type-btn {% if archive_search_type == "2" %}search-type-btn-selected{% endif %}"
+                        <div class="search-type-btn {% if archiveSearchType == "2" %}search-type-btn-selected{% endif %}"
                              id="search-type-numeric"><span>{% trans 'Archives numérisées' %}</span></div>
-                        <div class="search-type-btn {% if archive_search_type == "3" %}search-type-btn-selected{% endif %}"
+                        <div class="search-type-btn {% if archiveSearchType == "3" %}search-type-btn-selected{% endif %}"
                              id="search-type-producteurs"><span>{% trans "Producteurs d'archives" %}</span></div>
                         <input type="hidden" name="archiveSearchType" id="archiveSearchType" value="1">
                     </div>

@@ -28,9 +28,11 @@ urlpatterns = [
     url(r'^archive_detail', views.archive_detail),
     url(r'^login', views.login),
     url(r'^register', views.register),
+
     url(r'^selfcenter', views.self_center),
-    url(r'^messagelist', views.message_list),
+    url(r'^messages', views.message_list),
     url(r'^message_detail', views.message_detail),
+    url(r'^delete_message', views.delete_message),
     url(r'^profile', views.profile),
     url(r'^favorites', views.favorites),
     url(r'^add_favorites', views.add_favorites),

@@ -1,9 +1,10 @@
 {% extends "home_base.html" %}
 {% load i18n %}
 {% block body_main %}
-    <div id="favorites-bg-image">
-        <div class="return_link"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="javascript:history.back(-1)">
-            {% trans "Retour au menu de l'espace personnel" %}</a></div>
+    <form id="form_my_favorites" action="/favorites" method="post">
+        <div id="favorites-bg-image">
+            <div class="return_link"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="javascript:history.back(-1)">
+                {% trans "Retour au menu de l'espace personnel" %}</a></div>
 
         <div>
             <div>{% trans "Mes favoris" %}</div>
@@ -18,10 +19,10 @@
                             <th>
                                 <div>{% trans "Côtes" %}</div>
                             </th>
-                            <th>
+                            <th style="width: 400px;">
                                 <div>{% trans "Titre" %}</div>
                             </th>
-                            <th>
+                            <th style="width: 300px;">
                                 <div>{% trans "Centre" %}</div>
                             </th>
                             <th>
@@ -35,9 +36,12 @@
                                 <tr class="my_resv_table_tr">
                                     <td id="favorite_list_item_id"
                                         class="my_resv_table_tr_td">{{ item.archive.id }}</td>
-                                    <td id="resv_list_item_role"
-                                        class="my_resv_table_tr_td">{{ item.archive.title }}</td>
-                                    <td class="my_resv_table_tr_td">{{ item.archive.museum.name }}</td>
+                                    <td class="my_resv_table_tr_td">
+                                        <div class="my_favorite_title_td">{{ item.archive.title }}</div>
+                                    </td>
+                                    <td class="my_resv_table_tr_td">
+                                        <div class="my_favorite_museumname_td">{{ item.archive.museum.name }}</div>
+                                    </td>
                                     <td class="my_resv_table_tr_td">
                                         <a href="/archive_detail?id={{ item.archive.id }}">{% trans "Voir les détails" %}</a>
                                     </td>
@@ -54,8 +58,34 @@
                 </div>
 
             </div>
+            <div class="my_favorite_pager">
+                <div></div>
+                <div>
+                    <nav aria-label="Page navigation">
+                        <input id="currentPage" name="currentPage" type="hidden" value="{{ favorite_list.number }}">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            {% for page in favorite_list.paginator.page_range %}
+                                <li><a id="favorite_page_link_{{ page }}" href="#"
+                                       {% if favorite_list.number == page %}style="background: #2b669a; color: white;"{% endif %}>{{ page }}</a>
+                                </li>
+                            {% endfor %}
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
 
         </div>
 
-    </div>
+        </div>
+    </form>
 {% endblock %}

@@ -31,7 +31,7 @@ $(document).ready(function () {
         });
     }, 3000);
     $("#new_msg_icon").click(function () {
-        $(location).attr("href", "/messagelist");
+        $(location).attr("href", "/messages");
     });
 
 
@@ -308,7 +308,7 @@ $(document).ready(function () {
         $(location).attr("href", "/favorites");
     });
     $("#link_to_messagelist").click(function () {
-        $(location).attr("href", "/messagelist");
+        $(location).attr("href", "/messages");
     });
     $("#link_to_reservation").click(function () {
         $(location).attr("href", "/to_my_reservation");
@@ -336,6 +336,40 @@ $(document).ready(function () {
                 }
             }
         });
+    });
+
+    /* my favorites page */
+    $("a[id^=favorite_page_link_]").click(function () {
+        /* my message page button */
+        let currentPage = $(this).attr("id").substr(19);
+        $("#currentPage").val(currentPage);
+        $("#form_my_favorites").submit();
+    });
+
+    /* my messages page */
+    $("a[id^=delete_msg_link_]").click(function () {
+        let msg_id = $(this).attr("id").substr(16);
+        $.ajax({
+            url: "/delete_message",
+            type: "POST",
+            dataType: "json",//预期服务器返回的数据类型
+            data: {"id": msg_id},
+            success: function (result) {
+                if (result.msg == "success") {
+                    $.MsgBox.Alert("Messages", "Vous avez supprimé avec succès");
+                }
+            }
+        });
+    });
+    $("#message_type_sel").change(function () {
+        /* my message page message type select */
+        $("#form_my_message").submit();
+    });
+    $("a[id^=mymsg_page_link_]").click(function () {
+        /* my message page button */
+        let currentPage = $(this).attr("id").substr(16);
+        $("#currentPage").val(currentPage);
+        $("#form_my_message").submit();
     });
 
     /* my_reservation page */

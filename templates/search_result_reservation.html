@@ -41,13 +41,12 @@
                 <div>
                     <div>{% trans 'CRITÈRES SÉLECTIONNÉS' %} :</div>
                     <!--<div class="filter_tag">Type de producteur : Personne <span>✖️</span></div>-->
-                    <div class="filter_tag">{% trans 'Localisation' %} : {{ input_museum_name }} <span>✖️</span>️</div>
-                    <div class="filter_tag">{% trans 'Fin de Date' %} : {{ input_resv_end_date }} <span>✖️</span>️</div>
+                    <div class="filter_tag">{% trans 'Localisation' %} : {{ input_museum_name }}</div>
+                    <div class="filter_tag">{% trans 'Fin de Date' %} : {{ input_resv_end_date }}️</div>
                     <div class="filter_tag">{% trans "Type d'archive" %} :
                         {% if input_archive_type == 'all' %}<span>{% trans "Tous" %}</span> {% endif %}
                         {% if input_archive_type == '0' %}<span>{% trans "Document" %}</span> {% endif %}
                         {% if input_archive_type == '2' %}<span>{% trans "Audio-visuelle" %}</span> {% endif %}
-                        <span>✖️</span>️
                     </div>
                     <div class="filter_tag"
                          {% if input_archive_type == 'all' %}style="display: none"{% endif %}>{% trans "Nombre d'archive" %}
@@ -128,7 +127,7 @@
                             <option value="">{% trans "Fin de Date" %}</option>
                         </select>
                     </div>
-                    <div>{{ reservation_list.paginator.count }}{% trans "résultats" %}</div>
+                    <div>{{ reservation_list.paginator.count }}&nbsp;{% trans "résultats" %}</div>
                 </div>
 
                 {% for item in reservation_list %}

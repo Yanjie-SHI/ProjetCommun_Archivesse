@@ -92,6 +92,7 @@ $(document).ready(function () {
             $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(4) > span:nth-child(1)").html("Tous");
             $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(5)").css("display", "none");
             $("#num_archive_div > input[type=text]").val("");
+            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(5) > span:nth-child(1)").html("");
         }
     });
     $("#archiveTypeRadios2").change(function () {
@@ -113,7 +114,20 @@ $(document).ready(function () {
         }
     });
     $("#num_archive_div > input[type=text]").focusout(function () {
+        /* if input number of archive needed, tag value change relevantly */
         $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(5) > span:nth-child(1)").html($(this).val());
+    });
+    $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(5) > span:nth-child(2)").click(function () {
+        /* if x button pressed for tag number of archive:
+        1.clear number input, 2.make input number div display none, 3.change archive type to all */
+        $("#num_archive_div > input[type=text]").val("");
+        $("#num_archive_div").css("display", "none");
+        $("#archiveTypeRadios2").removeAttr("checked");
+        $("#archiveTypeRadios3").removeAttr("checked");
+        $("#archiveTypeRadios1").prop("checked", "checked");
+        $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(5) > span:nth-child(1)").html("");
+        $(this).parent().css("display", "none");
+        $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(4) > span:nth-child(1)").html("Tous");
     });
 
     /* archive detail page */

@@ -9,12 +9,12 @@ a {
 
 #archive-detail-bg-image {
     width: 100%;
-    height: 130%;
+    height: 120%;
     background-image: url('/static/image/bg_login.jpeg');
     background-repeat: repeat-y;
     filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='scale')";
-    -moz-background-size: 100% 130%;
-    background-size: 100% 130%;
+    -moz-background-size: 100% 120%;
+    background-size: 100% 120%;
     position: absolute;
     z-index: 30;
     top: 0;
@@ -54,7 +54,7 @@ a {
 
 #archive-detail-bg-image > div.archive_detail {
     margin-top: 330px;
-    height: 850px;
+    height: 750px;
     color: black;
 }
 
@@ -68,7 +68,7 @@ a {
 .result_general {
     width: 96%;
     margin-left: 2%;
-    height: 700px;
+    height: 760px;
     background-color: #efefef;
     border: 1px solid lightgrey;
     border-radius: 20px;
@@ -121,12 +121,12 @@ a {
     line-height: 50px;
 }
 
-#archive-detail-bg-image > div.archive_detail > div > div.ar_detail > div:nth-child(6) > div:nth-child(1) {
+#archive-detail-bg-image > div.archive_detail > div > div.ar_detail > div:nth-child(7) > div:nth-child(1) {
     width: 17%;
     float: left;
 }
 
-#archive-detail-bg-image > div.archive_detail > div > div.ar_detail > div:nth-child(6) > div:nth-child(2) {
+#archive-detail-bg-image > div.archive_detail > div > div.ar_detail > div:nth-child(7) > div:nth-child(2) {
     width: 78%;
     height: 240px;
     overflow-y: scroll;

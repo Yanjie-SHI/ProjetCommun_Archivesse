@@ -231,6 +231,10 @@ def register(request):
             user.post_code = int(request.POST.get("post_code"))
         user.save()
 
+        # save a message data in Message table
+        content = "Vous avez crée le compte avec succès."
+        create_message(0, "Confirmation de création de compte", content, user)
+
         return render(request, 'login.html', {"lang": settings.LANGUAGE_CODE})
 
 
@@ -254,8 +258,17 @@ def message_list(request):
     if request.session.get("login_user_id", 0) == 0:
         return render(request, "login.html")
     options = verify_login(request)
-    message_list = Notification.objects.filter(receiver=options.get("user"))
-    options.update({"message_list": message_list})
+
+    current_page = request.POST.get("currentPage", "1")
+    message_type = request.POST.get("messageType")
+    if message_type:
+        message_list = Notification.objects.filter(receiver=options.get("user"), category=int(message_type)).order_by(
+            "-create_date_time")
+    else:
+        message_list = Notification.objects.filter(receiver=options.get("user")).order_by("-create_date_time")
+    message_list_paginator = Paginator(message_list, settings.PER_PAGE_SIZE_SELFCENTER)
+    options.update({"message_list": message_list_paginator.get_page(current_page)})
+    options.update({"messageType": message_type})
 
     return render(request, 'my_messages.html', options)
 
@@ -271,6 +284,17 @@ def message_detail(request):
     options.update({"message": message})
 
     return render(request, 'message_detail.html', options)
+
+
+def delete_message(request):
+    activate(settings.LANGUAGE_CODE)
+    if request.session.get("login_user_id", 0) == 0:
+        return render(request, "login.html")
+    options = verify_login(request)
+    message = Notification.objects.get(id=request.POST.get("id"))
+    message.delete()
+
+    return JsonResponse({"msg": "success"})
 
 
 def fetch_my_mew_message_for_header_icon(request):
@@ -308,6 +332,10 @@ def profile(request):
             user.address = request.POST['address']
             user.password = request.POST['new_password']
             user.save()
+
+            # save a message data in Message table
+            content = "Les modifications de votre informations personnelles sont enregistrées avec succès."
+            create_message(0, "Confirmation de modification des informations", content, user)
         return JsonResponse({"msg": "success"})
 
 
@@ -319,7 +347,7 @@ def favorites(request):
 
     current_page = request.POST.get("currentPage", "1")
     favorites = Favorites.objects.filter(user=options.get("user"))
-    favorites_paginator = Paginator(favorites, settings.PER_PAGE_SIZE)
+    favorites_paginator = Paginator(favorites, 6)
     options.update({"favorite_list": favorites_paginator.get_page(current_page)})
 
     return render(request, 'my_favorites.html', options)

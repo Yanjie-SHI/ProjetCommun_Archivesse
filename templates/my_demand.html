@@ -60,9 +60,30 @@
                 </table>
             </div>
 
-            <div id="demand_pager" class="pager">
+            <div class="my_demand_pager">
                 <div></div>
-                <div><a href="">1</a></div>
+                <div>
+                    <nav aria-label="Page navigation">
+                        <input id="currentPage" name="currentPage" type="hidden" value="{{ demand_list.number }}">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            {% for page in demand_list.paginator.page_range %}
+                                <li><a id="mydemand_page_link_{{ page }}" href="#"
+                                       {% if demand_list.number == page %}style="background: #2b669a; color: white;"{% endif %}>{{ page }}</a>
+                                </li>
+                            {% endfor %}
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
             </div>
         </div>
 

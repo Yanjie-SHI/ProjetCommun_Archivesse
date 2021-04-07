@@ -1,6 +1,5 @@
-import datetime
-
 from app01.models import *
+from app01.utils import create_message
 
 
 def update_resv_status():
@@ -21,5 +20,8 @@ def update_resv_status():
                     resv.save()
                     count_updated += 1
                     print(now + " - Reservation {} status updated to 2(finished).".format(str(resv.id)))
+                    # save a message data in Message table
+                    content = "Le rendez-vous N° {} à {} est terminé avec succès.".format(resv.id, resv.museum.name)
+                    create_message(1, "Confirmation de finalisation de rendez-vous", content, resv.creator)
     if count_updated == 0:
         print(now + " - Nothing to be updated.")

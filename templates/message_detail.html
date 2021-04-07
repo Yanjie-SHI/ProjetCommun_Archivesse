@@ -14,7 +14,7 @@
                 {% elif message.category == 1 %}
                     <div style="background-color: aqua">RDV</div>
                 {% else %}
-                    <div>DEMAND</div>
+                    <div style="background-color: yellow;">DEMAND</div>
                 {% endif %}
             </div>
             <div id="msg_content">{{ message.content|safe }}</div>

@@ -44,19 +44,27 @@
     margin-top: 5px;
     background-image: url("/static/image/icon_envelop_close.png");
     background-size: 100% 100%;
-    display: block;
+    display: none;
     cursor: pointer;
     float: left;
 }
 
 #header-right {
     float: right;
-    width: 28%;
-    margin-right: 20px;
+    width: 34%;
+    margin-right: 15px;
     text-align: right;
 }
 
 #header-right > span {
     line-height: 50px;
     vertical-align: top;
+    float: left;
+    margin-left: 10px;
+}
+
+#header-right > a {
+    line-height: 50px;
+    float: left;
+    margin-left: 10px;
 }

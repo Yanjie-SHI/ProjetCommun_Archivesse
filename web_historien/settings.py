@@ -165,6 +165,7 @@ STATICFILES_DIRS = [
 ]
 
 PER_PAGE_SIZE = 5
+PER_PAGE_SIZE_SELFCENTER = 4
 
 CRONJOBS = (
     # ('*/1 * * * *', 'app01.scheduler.update_resv_status'),

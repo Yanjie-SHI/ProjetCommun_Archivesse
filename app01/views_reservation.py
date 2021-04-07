@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.db.models import Q
 
 from app01.utils import *
@@ -12,6 +13,7 @@ def to_my_reservation_list(request):
         return render(request, "login.html")
 
     options = verify_login(request)
+    current_page = request.POST.get("currentPage", "1")
     # get all my related reservation
     result_set = set()
     # find all reservation as creator
@@ -30,7 +32,9 @@ def to_my_reservation_list(request):
         archive_list = Res_Dem_Arch.objects.filter(reservation__id=resv.id, resv_user=options.get("user"))
         resv.archive_list = archive_list
 
-    options.update({"reservation_list": result_set})
+    myresv_list = list(result_set)
+    myresv_list_paginator = Paginator(myresv_list, settings.PER_PAGE_SIZE)
+    options.update({"reservation_list": myresv_list_paginator.get_page(current_page)})
 
     # get all finished reservations
     result_set_finished = set()
@@ -51,7 +55,9 @@ def to_my_reservation_list(request):
         archive_list = Res_Dem_Arch.objects.filter(reservation__id=resv.id, resv_user=options.get("user"))
         resv.archive_list = archive_list
 
-    options.update({"reservation_list_finished": result_set_finished})
+    myresv_finished_list = list(result_set_finished)
+    myresv_finished_list_paginator = Paginator(myresv_finished_list, settings.PER_PAGE_SIZE)
+    options.update({"reservation_list_finished": myresv_finished_list_paginator.get_page(current_page)})
 
     return render(request, 'my_reservation.html', options)
 
@@ -178,15 +184,8 @@ def create_reservation(request):
             demand_user.save()
 
         # save a message data in Message table
-        notification = Notification()
-        notification.category = 1
-        notification.title = "Confirmation de création de rendez-vous"
-        notification.content = "Bonjour,</br></br>&nbsp;&nbsp;&nbsp;&nbsp;Vous avez crée le rendez-vous à {} avec succès.</br></br></br>Cordialement,</br>Groupe Archivesse".format(
-            reservation.museum.name)
-        notification.status = 0
-        notification.create_date_time = datetime.datetime.now()
-        notification.receiver = options.get("user")
-        notification.save()
+        content = "Vous avez crée le rendez-vous N°{} à {} avec succès.".format(resv_id, reservation.museum.name)
+        create_message(1, "Confirmation de création de rendez-vous", content, options.get("user"))
 
         return JsonResponse({"msg": "success"})
 
@@ -222,6 +221,7 @@ def join_reservation(request):
     elif request.method == "POST":
         # save data in relation Res_Dem_Arch
         resv_id = request.POST.get("resv_id")
+        reservation = Reservation.objects.get(id=resv_id)
         demand_user = options.get("user")
         needed_doc_demand_count = request.POST.get("needed_doc_demand_count")
         needed_video_demand_count = request.POST.get("needed_video_demand_count")
@@ -270,6 +270,10 @@ def join_reservation(request):
             demand_user.receiver_mail = receiver_email
             demand_user.save()
 
+        # save a message data in Message table
+        content = "Vous avez joint le rendez-vous N°{} à {} avec succès.".format(resv_id, reservation.museum.name)
+        create_message(1, "Confirmation d'adhésion de rendez-vous", content, options.get("user"))
+
         return JsonResponse({"msg": "success"})
 
 
@@ -290,6 +294,10 @@ def undo_join_reservation(request):
                                                                    resv_user=options.get("user"))
     for record in res_dem_confirm_status:
         record.delete()
+
+    # save a message data in Message table
+    content = "Vous avez supprimé le rendez-vous N°{} avec succès.".format(resv_id)
+    create_message(1, "Confirmation d‘annulation de rendez-vous", content, options.get("user"))
 
     return JsonResponse({"msg": "success"})
 

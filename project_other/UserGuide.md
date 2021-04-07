@@ -8,11 +8,15 @@
 
        
 ## TODO list
-- 2021/04/06
+- 2021/04/07
     - 登录后跳转回前一个页面，带结果
     - bug: resv create 切换museum后，从大的可用数改小，archive id和folio填入没问题，从小改大显示不出多的input框
     - 注册js校验，密码和重复密码是否一致，是否为8位密码
-    - paginator for personal space list page
+    - my message page: message type selector  √
+    - add all messages: create resv, join resv, unjoin resv, finalize resv(cron job), create demand, delete demand, terminate demand, register, update profile  √ 
+    - paginator for personal space list page  √ except all prev & next button
+    - filter tag x button in search result resv page  √
+- 2021/04/06
     - js timer task, fetch data from server Notification table, if there are data, show an icon on header  √
     - after read the message, put the status to 'already read'  √
     - personal space my favorite page fetch data from server  √
@@ -112,6 +116,7 @@ url(r'^fetchmuseumaddress', utils.fetch_museum_address),
 url(r'^fetchmuseumname', utils.fetch_museum_name),
 url(r'^verify_login', utils.verify_login_js),
 url(r'change_language', utils.change_language),
+url(r'fetch_my_mew_message_for_header_icon', views.fetch_my_mew_message_for_header_icon),
 ```
 
 ## MySQL settings

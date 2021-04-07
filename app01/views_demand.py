@@ -1,3 +1,5 @@
+from django.core.paginator import Paginator
+
 from app01.utils import *
 
 
@@ -19,10 +21,14 @@ def to_my_demand(request):
         return render(request, "login.html")
 
     options = verify_login(request)
+
+    current_page = request.POST.get("currentPage", "1")
     # get all my created demand
     demand_list = Demand.objects.filter(demander=options.get("user"))
     if len(demand_list) > 0:
-        options.update({"demand_list": demand_list})
+        my_demand_list = list(demand_list)
+        my_demand_list_paginator = Paginator(my_demand_list, settings.PER_PAGE_SIZE)
+        options.update({"demand_list": my_demand_list_paginator.get_page(current_page)})
 
     return render(request, 'my_demand.html', options)
 
@@ -50,6 +56,10 @@ def create_demand(request):
             demander.receiver_mail = receiver_email
             demander.save()
 
+        # save a message data in Message table
+        content = "Vous avez crée la demande N° {} avec succès.".format(demand.id)
+        create_message(2, "Confirmation de création de demande", content, options.get("user"))
+
         return JsonResponse({"msg": "success"})
 
 
@@ -64,6 +74,10 @@ def terminate_demand(request):
     demand.status = 1
     demand.save()
 
+    # save a message data in Message table
+    content = "Vous avez terminé la demande N° {} avec succès.".format(demand.id)
+    create_message(2, "Confirmation de finalisation de demande", content, options.get("user"))
+
     return JsonResponse({"msg": "success"})
 
 
@@ -76,5 +90,9 @@ def delete_demand(request):
     demand_id = request.POST.get("demand_id")
     demand = Demand.objects.get(id=demand_id)
     demand.delete()
+
+    # save a message data in Message table
+    content = "Vous avez supprimé la demande N° {} avec succès.".format(demand.id)
+    create_message(2, "Confirmation d'annulation de demande", content, options.get("user"))
 
     return JsonResponse({"msg": "success"})

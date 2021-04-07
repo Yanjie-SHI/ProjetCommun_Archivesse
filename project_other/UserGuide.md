@@ -10,8 +10,8 @@
 ## TODO list
 - 2021/04/07
     - 登录后跳转回前一个页面，带结果
-    - bug: resv create 切换museum后，从大的可用数改小，archive id和folio填入没问题，从小改大显示不出多的input框
     - 注册js校验，密码和重复密码是否一致，是否为8位密码
+    - bug fix: resv create switch museum, some archive code/folio would not be shown  √
     - my message page: message type selector  √
     - add all messages: create resv, join resv, unjoin resv, finalize resv(cron job), create demand, delete demand, terminate demand, register, update profile  √ 
     - paginator for personal space list page  √ except all prev & next button
@@ -212,5 +212,9 @@ pip install graphviz
 pyreverse ./app01 -o mydiagram.png 
 ```
   
-    
-    
+## Develop Tips
+- use prop to set radio/checkbox checked in js
+```javascript
+$("#archiveTypeRadios1").prop("checked", "checked");
+$("#archiveTypeRadios1").removeAttr("checked");
+```    

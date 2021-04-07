@@ -221,19 +221,54 @@ $(document).ready(function () {
                 $("#resv_create_detail > div:nth-child(4) > div:nth-child(1)").html("Nombre document disponible : " + result.available_doc_archive_count);
                 $("#resv_create_detail > div:nth-child(4) > div:nth-child(2)").html("Nombre vidéo disponible : " + result.available_video_archive_count);
 
-                for (let i = $("#doc_demand_count").children().length - 1; i > 0; i--) {
-                    if ($("#doc_demand_count").children()[i].value > result.available_doc_archive_count) {
-                        $("#doc_demand_count").children()[i].remove();
-                        let li_obj = document.getElementById("li_doc_" + i);
-                        li_obj.style.display = "none";
-                    }
+                $("#doc_demand_count").html("");
+                $("#doc_demand_count").append("<option value=\"0\" selected>0</option>");
+                $("#doc_archive_input_ul").html("");
+                for (let i = 1; i <= parseInt(result.available_doc_archive_count); i++) {
+                    let sel_option_item = "<option value=\"" + i + "\">" + i + "</option>";
+                    $("#doc_demand_count").append(sel_option_item);
+
+                    let ul_li_item = "<li id=\"li_doc_" + i + "\">\n" +
+                        "                 <div class=\"doc_demand_item\">\n" +
+                        "                     <div>- Archives N°" + i + " :</div>\n" +
+                        "                     <div>\n" +
+                        "                         <div>\n" +
+                        "                             <div>Cote<span style=\"color:red;\">*</span> :</div>\n" +
+                        "                             <input type=\"text\" name=\"doc_archive_id_" + i + "\">\n" +
+                        "                         </div>\n" +
+                        "                         <div>\n" +
+                        "                             <div>Folio :</div>\n" +
+                        "                             <input type=\"number\" name=\"doc_folio_" + i + "\">\n" +
+                        "                         </div>\n" +
+                        "                     </div>\n" +
+                        "                 </div>\n" +
+                        "             </li>";
+                    $("#doc_archive_input_ul").append(ul_li_item);
                 }
-                for (let i = $("#video_demand_count").children().length - 1; i > 0; i--) {
-                    if ($("#video_demand_count").children()[i].value > result.available_video_archive_count) {
-                        $("#video_demand_count").children()[i].remove();
-                        let li_obj = document.getElementById("li_video_" + i);
-                        li_obj.style.display = "none";
-                    }
+
+                $("#video_demand_count").html("");
+                $("#video_demand_count").append("<option value=\"0\" selected>0</option>");
+                $("#video_archive_input_ul").html("");
+                for (let i = 1; i <= parseInt(result.available_video_archive_count); i++) {
+                    let sel_option_item = "<option value=\"" + i + "\">" + i + "</option>";
+                    $("#video_demand_count").append(sel_option_item);
+
+                    let ul_li_item = "<li id=\"li_video_" + i + "\">\n" +
+                        "                 <div class=\"video_demand_item\">\n" +
+                        "                     <div>- Archives N°" + i + " :</div>\n" +
+                        "                     <div>\n" +
+                        "                         <div>\n" +
+                        "                             <div>Cote<span style=\"color:red;\">*</span> :</div>\n" +
+                        "                             <input type=\"text\" name=\"video_archive_id_" + i + "\">\n" +
+                        "                         </div>\n" +
+                        "                         <div>\n" +
+                        "                             <div>Ouvert :</div>\n" +
+                        "                             <input type=\"number\" name=\"video_ouvert_" + i + "\">\n" +
+                        "                         </div>\n" +
+                        "                     </div>\n" +
+                        "                 </div>\n" +
+                        "             </li>";
+                    $("#video_archive_input_ul").append(ul_li_item);
                 }
             }
         });

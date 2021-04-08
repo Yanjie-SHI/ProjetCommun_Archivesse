@@ -9,8 +9,13 @@
        
 ## TODO list
 - 2021/04/08
-    - 登录后跳转回前一个页面，带结果
+    - 登录后跳转回前一个页面
     - 注册js校验，密码和重复密码是否一致，是否为8位密码
+    - after switch language, should go back to previous page user viewed
+    - css fix: search result resv filter tags floating  √
+    - css fix: create/join resv: user info email tag too short, shouldn't change line  √
+    - bug fix: after terminate demand in personal space, page didn't refresh  √
+    - bug fix: switch language after login, cannot show login user name  √
     - back link, refresh request result  √
 - 2021/04/07
     - bug fix: resv create switch museum, some archive code/folio would not be shown  √
@@ -226,4 +231,8 @@ var myInterval = setInterval(function () {
     console.log('it works' + new Date());
 },30000);  // milliseconds
 clearInterval(myInterval);
+```
+- return to the previous page and reload page in js
+```javascript
+window.location=document.referrer;
 ```

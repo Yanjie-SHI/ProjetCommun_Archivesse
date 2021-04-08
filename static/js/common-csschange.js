@@ -89,10 +89,10 @@ $(document).ready(function () {
     $("#archiveTypeRadios1").change(function () {
         if ($(this)[0].checked) {
             $("#num_archive_div").css("display", "none");
-            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(4) > span:nth-child(1)").html("Tous");
-            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(5)").css("display", "none");
+            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > span:nth-child(1)").html("Tous");
+            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(3) > div:nth-child(2)").css("display", "none");
             $("#num_archive_div > input[type=text]").val("");
-            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(5) > span:nth-child(1)").html("");
+            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > span:nth-child(1)").html("");
         }
     });
     $("#archiveTypeRadios2").change(function () {
@@ -100,8 +100,8 @@ $(document).ready(function () {
             $("#num_archive_div").css("display", "block");
             $("#hint_info_doc").css("display", "block");
             $("#hint_info_audio").css("display", "none");
-            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(4) > span:nth-child(1)").html("Document");
-            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(5)").css("display", "block");
+            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > span:nth-child(1)").html("Document");
+            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(3) > div:nth-child(2)").css("display", "block");
         }
     });
     $("#archiveTypeRadios3").change(function () {
@@ -109,15 +109,15 @@ $(document).ready(function () {
             $("#num_archive_div").css("display", "block");
             $("#hint_info_doc").css("display", "none");
             $("#hint_info_audio").css("display", "block");
-            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(4) > span:nth-child(1)").html("Audio-visuelle");
-            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(5)").css("display", "block");
+            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > span:nth-child(1)").html("Audio-visuelle");
+            $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(3) > div:nth-child(2)").css("display", "block");
         }
     });
     $("#num_archive_div > input[type=text]").focusout(function () {
         /* if input number of archive needed, tag value change relevantly */
-        $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(5) > span:nth-child(1)").html($(this).val());
+        $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > span:nth-child(1)").html($(this).val());
     });
-    $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(5) > span:nth-child(2)").click(function () {
+    $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > span:nth-child(2)").click(function () {
         /* if x button pressed for tag number of archive:
         1.clear number input, 2.make input number div display none, 3.change archive type to all */
         $("#num_archive_div > input[type=text]").val("");
@@ -125,9 +125,9 @@ $(document).ready(function () {
         $("#archiveTypeRadios2").removeAttr("checked");
         $("#archiveTypeRadios3").removeAttr("checked");
         $("#archiveTypeRadios1").prop("checked", "checked");
-        $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(5) > span:nth-child(1)").html("");
+        $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(3) > div:nth-child(2) > span:nth-child(1)").html("");
         $(this).parent().css("display", "none");
-        $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(4) > span:nth-child(1)").html("Tous");
+        $("#search-result-bg-image > div.search_resv_filters > div:nth-child(1) > div:nth-child(3) > div:nth-child(1) > span:nth-child(1)").html("Tous");
     });
 
     /* archive detail page */

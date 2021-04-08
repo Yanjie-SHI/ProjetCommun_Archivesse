@@ -449,7 +449,7 @@ $(document).ready(function () {
             data: {"demand_id": demand_id},
             success: function (result) {
                 if (result.msg == "success") {
-                    $.MsgBox.Alert("Messages", "Vous avez terminé avec succès");
+                    $.MsgBox.Alert("Messages", "Vous avez terminé avec succès", true);
                 }
             }
         });

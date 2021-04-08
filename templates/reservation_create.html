@@ -141,14 +141,15 @@
                         <div>
                             <div>
                                 <div>{% trans "Nom" %} :</div>
-                                {{ user.last_name }}</div>
+                                &nbsp;&nbsp;{{ user.last_name }}</div>
                             <div>
                                 <div>{% trans "Prénom" %} :</div>
-                                {{ user.first_name }}</div>
+                                &nbsp;&nbsp;{{ user.first_name }}</div>
                         </div>
                         <div>
                             <div>{% trans "Adresse e-mail" %} :</div>
                             <input type="email" name="receiver_email" value="
+
 
 
                                     {% if user.receiver_mail %}{{ user.receiver_mail }}{% else %}{{ user.mail }}{% endif %}">

@@ -51,7 +51,9 @@ def change_language(request):
     lang = request.GET.get("lang")
     activate(lang)
     settings.LANGUAGE_CODE = lang
-    return render(request, "search.html", {"lang": lang})
+    options = verify_login(request)
+    options.update({"lang": lang})
+    return render(request, "search.html", options)
 
 
 def create_message(category, title, content, receiver):

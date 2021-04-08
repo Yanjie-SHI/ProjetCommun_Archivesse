@@ -621,7 +621,7 @@ msgstr "Archive producers"
 #: templates/search.html:51 templates/search_result_archive.html:140
 #: templates/search_result_reservation.html:9
 msgid "Centre"
-msgstr "Centre"
+msgstr "Center"
 
 #: templates/search.html:78
 msgid "Proposer un rendez-vous"
@@ -633,7 +633,7 @@ msgstr "Create a demand"
 
 #: templates/search.html:93
 msgid "Recherche"
-msgstr "Research"
+msgstr "Search"
 
 #: templates/search.html:95
 msgid "Rendez-vous"
@@ -749,7 +749,7 @@ msgstr "My demands"
 
 #: templates/self_center.html:44
 msgid "Retrouvez toutes les demandes que vous avez demandées."
-msgstr "Find all the demands that you have requested."
+msgstr "You can find all the demands that you have requested."
 
 #: templates/self_center.html:51
 msgid "Pensez à vous déconnecter une fois votre session terminée."

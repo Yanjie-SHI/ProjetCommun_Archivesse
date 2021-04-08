@@ -391,7 +391,7 @@ $(document).ready(function () {
             data: {"id": msg_id},
             success: function (result) {
                 if (result.msg == "success") {
-                    $.MsgBox.Alert("Messages", "Vous avez supprimé avec succès");
+                    $.MsgBox.Alert("Messages", "Vous avez supprimé avec succès", true);
                 }
             }
         });
@@ -417,7 +417,7 @@ $(document).ready(function () {
             data: {"resv_id": resv_id},
             success: function (result) {
                 if (result.msg == "success") {
-                    $.MsgBox.Alert("Messages", "Vous avez annulé avec succès");
+                    $.MsgBox.Alert("Messages", "Vous avez annulé avec succès", true);
                     //alert("Vous avez annulé avec succès");
                 }
             }
@@ -464,7 +464,7 @@ $(document).ready(function () {
             data: {"demand_id": demand_id},
             success: function (result) {
                 if (result.msg == "success") {
-                    $.MsgBox.Alert("Messages", "Vous avez supprimé avec succès");
+                    $.MsgBox.Alert("Messages", "Vous avez supprimé avec succès", true);
                 }
             }
         });

@@ -8,9 +8,11 @@
 
        
 ## TODO list
-- 2021/04/07
+- 2021/04/08
     - 登录后跳转回前一个页面，带结果
     - 注册js校验，密码和重复密码是否一致，是否为8位密码
+    - back link, refresh request result  √
+- 2021/04/07
     - bug fix: resv create switch museum, some archive code/folio would not be shown  √
     - my message page: message type selector  √
     - add all messages: create resv, join resv, unjoin resv, finalize resv(cron job), create demand, delete demand, terminate demand, register, update profile  √ 
@@ -218,3 +220,10 @@ pyreverse ./app01 -o mydiagram.png
 $("#archiveTypeRadios1").prop("checked", "checked");
 $("#archiveTypeRadios1").removeAttr("checked");
 ```    
+- set a scheduler task in js
+```javascript
+var myInterval = setInterval(function () {
+    console.log('it works' + new Date());
+},30000);  // milliseconds
+clearInterval(myInterval);
+```

@@ -51,7 +51,7 @@
 
 #header-right {
     float: right;
-    width: 34%;
+    /*width: 34%;*/
     margin-right: 15px;
     text-align: right;
 }

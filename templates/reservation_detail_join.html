@@ -124,13 +124,14 @@
                             <div>{% trans "Adresse e-mail" %} :</div>
                             <input type="email" name="receiver_email" value="
 
+
                                     {% if user.receiver_mail %}{{ user.receiver_mail }}{% else %}{{ user.mail }}{% endif %}">
                         </div>
                     </div>
                 </div>
 
                 <div class="cancle_comfirm_div">
-                    <a href="javascript:history.back(-1)">{% trans "Annuler" %}</a>
+                    <a href="javascript:window.location=document.referrer;">{% trans "Annuler" %}</a>
                     <div id="btn_send_request">{% trans "Envoyer la demande" %}</div>
                 </div>
 

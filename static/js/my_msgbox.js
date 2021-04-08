@@ -85,7 +85,8 @@
             //history.back(-1);
             if (typeof (callback) == 'boolean') {
                 if (callback == true) {
-                    window.location.reload();
+                    location.reload();
+                    //window.location=document.referrer;
                 }
             } else if (typeof (callback) == 'function') {
                 callback();
